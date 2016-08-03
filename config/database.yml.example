@@ -1,0 +1,25 @@
+# PostgreSQL. Versions 8.2 and up are supported.
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: 
+  password: 
+  host: localhost
+
+development:
+  <<: *default
+  database: leuphana_development
+
+test:
+  <<: *default
+  database: leuphana_test
+
+production:
+  <<: *default
+  database: leuphana_production
+  username: 
+  password: <%= ENV['leuphana_password'] %>

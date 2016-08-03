@@ -1,0 +1,29 @@
+# Global GitIgnore file
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+/public/*
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# Ignore application configuration
+config/*.yml
+config/settings/*.yml
+
+#ignore Mac OSX files
+.DS_Store
+.AppleDouble
+.LSOverride
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+npm-debug.log
