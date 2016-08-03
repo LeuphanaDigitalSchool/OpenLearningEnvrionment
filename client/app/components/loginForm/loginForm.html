@@ -1,0 +1,34 @@
+<div layout="row" layout-align="center center" flex>
+
+  <div class="md-whiteframe-z2">
+
+    <md-toolbar>
+      <h2 class="md-toolbar-tools"><span>Login to Leuphana</span></h2>
+    </md-toolbar>
+
+    <form layout="column" layout-padding name="userForm" ng-submit="$ctrl.login($ctrl.loginForm)">
+      <md-input-container>
+        <label>Email</label>
+        <input name="email" type="email" ng-model="$ctrl.loginForm.email" required/>
+        <div ng-messages="userForm.email.$error">
+          <div ng-message="required">This is required!</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Password</label>
+        <input name="password" type="password" ng-model="$ctrl.loginForm.password" required/>
+        <div ng-messages="userForm.password.$error">
+          <div ng-message="required">This is required!</div>
+        </div>
+      </md-input-container>
+      <div ng-show="$ctrl.validateError">
+        Wrong password or email
+      </div>
+      <div layout="row" layout-align="center center">
+        <md-button type="submit" class="md-raised md-primary">Login</md-button>
+        <div flex="flex"></div>
+        <md-button href="" md-no-ink="md-no-ink">Forgot Password</md-button>
+      </div>
+    </form>
+  </div>
+</div>

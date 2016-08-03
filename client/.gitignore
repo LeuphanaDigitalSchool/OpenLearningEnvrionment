@@ -1,0 +1,5 @@
+# Client GitIgnore file
+
+node_modules
+coverage
+npm-debug.log

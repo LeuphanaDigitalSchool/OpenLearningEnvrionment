@@ -1,0 +1,10 @@
+<md-menu>
+ <md-button ng-click="$mdOpenMenu($event)" aria-label="translateSwitcher">
+   <md-icon>flag</md-icon>
+   {{ currentLanguage }}
+ </md-button>
+ <md-menu-content>
+   <md-menu-item><md-button ng-click="$ctrl.changeLanguage('pl')">PL</md-button></md-menu-item>
+   <md-menu-item><md-button ng-click="$ctrl.changeLanguage('en')">EN</md-button></md-menu-item>
+ </md-menu-content>
+</md-menu>
