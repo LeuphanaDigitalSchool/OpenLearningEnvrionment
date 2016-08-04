@@ -12,6 +12,13 @@ export default function routes($stateProvider) {
       url: '/',
       template: require('./routes/home/home.html'),
       controller: 'HomeCtrl',
-      controllerAs: 'HomeCtrl'
+      controllerAs: 'HomeCtrl',
+      resolve: {
+          auth: function ($auth, $location) {
+              return $auth.validateUser().catch(function(err){
+                  $location.path('/login');
+              });
+          }
+      }
     });
 }

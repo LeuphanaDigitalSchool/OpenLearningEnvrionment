@@ -1,9 +1,8 @@
 export default class HomeCtrl {
-  constructor($http, $mdSidenav, appConfig) {
+  constructor($http, $mdSidenav) {
     "ngInject";
     this.$http = $http;
     this.$mdSidenav = $mdSidenav;
-    this.appConfig = appConfig;
   }
 
   getUsers(){
@@ -13,7 +12,6 @@ export default class HomeCtrl {
   }
 
   openLeftMenu() {
-      console.log('test open left');
       this.$mdSidenav('left').toggle();
   }
 }
