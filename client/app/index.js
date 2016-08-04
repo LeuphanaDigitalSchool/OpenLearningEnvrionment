@@ -17,11 +17,6 @@ import style from './assets/stylesheets/style.css';
 import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
 
-import getFromApi from './services/getFromApi';
-import deleteFromApi from './services/deleteFromApi';
-import postToApi from './services/postToApi';
-import putToApi from './services/putToApi';
-
 import angularTranslate from 'angular-translate';
 import angularTranslateLoaderUrl from 'angular-translate-loader-url';
 import angularTranslateStorageCookie from 'angular-translate-storage-cookie';
@@ -50,8 +45,4 @@ const ngModule = angular
         components,
         home,
         login
-      ])
-      .service('getFromApi', getFromApi)
-      .service('postToApi', postToApi)
-      .service('deleteFromApi', deleteFromApi)
-      .service('putToApi', putToApi);
+      ]);
