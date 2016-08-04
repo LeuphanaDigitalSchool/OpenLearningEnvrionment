@@ -9,5 +9,6 @@ FactoryGirl.define do
     password                'FakePassword123'
     password_confirmation   'FakePassword123'
     language                'en'
+    role                    '6'
   end
 end

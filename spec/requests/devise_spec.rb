@@ -4,6 +4,26 @@ describe 'Devise', type: :request do
   let(:user) { FactoryGirl.create(:user) }
   let(:user_params) { { 'email': user.email, 'password': user.password } }
 
+  describe 'POST /api/v1/auth' do
+    context 'if request has wrong params' do
+      it 'should return status 422' do
+        post '/api/v1/auth'
+        expect(response).to have_http_status(422)
+      end
+    end
+  end
+
+  describe 'POST /api/v1/auth' do
+    context 'if request has correct params' do
+      it 'should return status 200 OK' do
+        params = { 'email': 'test@testing.com', 'password': 'admin1234', 'title': 'Title', 'firstname': 'Andrij',
+                   'lastname': 'Kliczko', 'honor_code': 'true', 'terms_and_conditions': 'true', 'data_privacy': 'true' }
+        post '/api/v1/auth', params: params.to_json, headers: { 'CONTENT_TYPE': 'application/json' }
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+
   describe 'GET /api/v1/auth/sign_in' do
     context 'if request has wrong method' do
       it 'should return status 405' do

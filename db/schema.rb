@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_160_803_125_248) do
+ActiveRecord::Schema.define(version: 20_160_804_084_418) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(version: 20_160_803_125_248) do
     t.json     'tokens'
     t.datetime 'created_at',                               null: false
     t.datetime 'updated_at',                               null: false
+    t.string   'title'
+    t.string   'firstname'
+    t.string   'lastname'
+    t.integer  'gender'
+    t.string   'country'
+    t.integer  'age'
+    t.integer  'educational_attainment'
+    t.string   'profession'
+    t.string   'avatar'
+    t.text     'interests'
+    t.string   'timezone'
+    t.text     'introduction'
+    t.boolean  'data_privacy',           default: false
+    t.boolean  'terms_and_conditions',   default: false
+    t.boolean  'honor_code',             default: false
+    t.integer  'role',                   default: 0
     t.index ['email'], name: 'index_users_on_email', using: :btree
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, using: :btree
     t.index %w(uid provider), name: 'index_users_on_uid_and_provider', unique: true, using: :btree
