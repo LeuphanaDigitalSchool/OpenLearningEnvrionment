@@ -8,6 +8,7 @@ gem 'config'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise_token_auth'
 gem 'rack-cors', require: 'rack/cors'
+gem 'apitome'
 
 group :development, :test do
   gem 'pry'
@@ -17,6 +18,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'byebug', platform: :mri
+  gem 'rspec_api_documentation'
 end
 
 group :development do

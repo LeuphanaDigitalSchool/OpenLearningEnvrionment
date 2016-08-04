@@ -1,0 +1,51 @@
+{
+  "resource": "Api::V1::Locales",
+  "http_method": "GET",
+  "route": "/api/v1/locales",
+  "description": "#non-logged #change locales to polish",
+  "explanation": "Change locales to polish language",
+  "parameters": [
+    {
+      "name": "lang",
+      "description": "Set language code"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/locales?lang=pl",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "lang": "pl"
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"homeTitle\": \"Dzień dobry\",\n  \"BAR\": \"Narazie!\"\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "User-Language": "pl",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"e815fc2e534ee9ca38174aa1914e3ba1\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "5c8504e7-6c41-4a1f-85c5-f8502b95d0d7",
+        "X-Runtime": "0.016703",
+        "Vary": "Origin",
+        "Content-Length": "45"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

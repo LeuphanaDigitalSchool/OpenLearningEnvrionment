@@ -36,3 +36,19 @@ namespace :angular do
     end
   end
 end
+
+namespace :documentation do
+  desc 'Generate docs'
+  task :generate do
+    on roles(:web) do
+      run_locally do
+        with rails_env: :test do
+          execute 'rails docs:generate'
+        end
+        execute "rsync -av --delete -e 'ssh -p 5001' ./doc/ leuphana@dev.akra.net:#{current_path}/doc/"
+      end
+    end
+  end
+end
+
+after 'deploy', 'documentation:generate'

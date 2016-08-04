@@ -1,0 +1,126 @@
+{
+  "resources": [
+    {
+      "name": "Api::V1::Auth",
+      "examples": [
+        {
+          "description": "#create new password",
+          "link": "api::v1::auth/#create_new_password.json",
+          "groups": "all",
+          "route": "api/v1/auth/password",
+          "method": "post"
+        },
+        {
+          "description": "#login",
+          "link": "api::v1::auth/#login.json",
+          "groups": "all",
+          "route": "/api/v1/auth/sign_in",
+          "method": "post"
+        },
+        {
+          "description": "#login method not allowed",
+          "link": "api::v1::auth/#login_method_not_allowed.json",
+          "groups": "all",
+          "route": "/api/v1/auth/sign_in",
+          "method": "get"
+        },
+        {
+          "description": "#login unauthorized error empty params",
+          "link": "api::v1::auth/#login_unauthorized_error_empty_params.json",
+          "groups": "all",
+          "route": "/api/v1/auth/sign_in",
+          "method": "post"
+        },
+        {
+          "description": "#login unauthorized error wrong params",
+          "link": "api::v1::auth/#login_unauthorized_error_wrong_params.json",
+          "groups": "all",
+          "route": "/api/v1/auth/sign_in",
+          "method": "post"
+        },
+        {
+          "description": "#logout",
+          "link": "api::v1::auth/#logout.json",
+          "groups": "all",
+          "route": "/api/v1/auth/sign_out",
+          "method": "delete"
+        },
+        {
+          "description": "#logout not found error",
+          "link": "api::v1::auth/#logout_not_found_error.json",
+          "groups": "all",
+          "route": "/api/v1/auth/sign_out",
+          "method": "delete"
+        },
+        {
+          "description": "#signup public user with checked terms",
+          "link": "api::v1::auth/#signup_public_user_with_checked_terms.json",
+          "groups": "all",
+          "route": "/api/v1/auth",
+          "method": "post"
+        },
+        {
+          "description": "#signup public user without checked terms",
+          "link": "api::v1::auth/#signup_public_user_without_checked_terms.json",
+          "groups": "all",
+          "route": "/api/v1/auth",
+          "method": "post"
+        },
+        {
+          "description": "#signup public user without params",
+          "link": "api::v1::auth/#signup_public_user_without_params.json",
+          "groups": "all",
+          "route": "/api/v1/auth",
+          "method": "post"
+        },
+        {
+          "description": "#validate_token",
+          "link": "api::v1::auth/#validate_token.json",
+          "groups": "all",
+          "route": "/api/v1/auth/validate_token",
+          "method": "get"
+        },
+        {
+          "description": "#validate_token unauthorized error",
+          "link": "api::v1::auth/#validate_token_unauthorized_error.json",
+          "groups": "all",
+          "route": "/api/v1/auth/validate_token",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Api::V1::Locales",
+      "examples": [
+        {
+          "description": "#logged #change locales to english",
+          "link": "api::v1::locales/#logged_#change_locales_to_english.json",
+          "groups": "all",
+          "route": "/api/v1/locales",
+          "method": "get"
+        },
+        {
+          "description": "#logged #change locales to polish",
+          "link": "api::v1::locales/#logged_#change_locales_to_polish.json",
+          "groups": "all",
+          "route": "/api/v1/locales",
+          "method": "get"
+        },
+        {
+          "description": "#non-logged #change locales to english",
+          "link": "api::v1::locales/#non-logged_#change_locales_to_english.json",
+          "groups": "all",
+          "route": "/api/v1/locales",
+          "method": "get"
+        },
+        {
+          "description": "#non-logged #change locales to polish",
+          "link": "api::v1::locales/#non-logged_#change_locales_to_polish.json",
+          "groups": "all",
+          "route": "/api/v1/locales",
+          "method": "get"
+        }
+      ]
+    }
+  ]
+}

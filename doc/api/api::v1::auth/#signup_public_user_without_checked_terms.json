@@ -1,0 +1,85 @@
+{
+  "resource": "Api::V1::Auth",
+  "http_method": "POST",
+  "route": "/api/v1/auth",
+  "description": "#signup public user without checked terms",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "email",
+      "description": "Email"
+    },
+    {
+      "required": true,
+      "name": "password",
+      "description": "Password"
+    },
+    {
+      "required": false,
+      "name": "title",
+      "description": "Title"
+    },
+    {
+      "required": false,
+      "name": "firstname",
+      "description": "Firstname"
+    },
+    {
+      "required": false,
+      "name": "lastname",
+      "description": "Lastname"
+    },
+    {
+      "required": true,
+      "name": "honor_code",
+      "description": "Honor code"
+    },
+    {
+      "required": true,
+      "name": "terms_and_conditions",
+      "description": "Terms and conditions"
+    },
+    {
+      "required": true,
+      "name": "data_privacy",
+      "description": "Data privacy"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/auth",
+      "request_body": "{\"email\":\"jola@mis.com\",\"password\":\"user1234\",\"title\":\"Public user\",\"firstname\":\"Public\",\"lastname\":\"user\",\"honor_code\":true,\"terms_and_conditions\":false,\"data_privacy\":true}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 422,
+      "response_status_text": "Unprocessable Entity",
+      "response_body": "{\n  \"status\": \"error\",\n  \"data\": {\n    \"id\": null,\n    \"provider\": \"email\",\n    \"uid\": \"\",\n    \"email\": \"jola@mis.com\",\n    \"language\": \"en\",\n    \"created_at\": null,\n    \"updated_at\": null,\n    \"title\": \"Public user\",\n    \"firstname\": \"Public\",\n    \"lastname\": \"user\",\n    \"gender\": null,\n    \"country\": null,\n    \"age\": null,\n    \"educational_attainment\": null,\n    \"profession\": null,\n    \"avatar\": null,\n    \"interests\": null,\n    \"timezone\": null,\n    \"introduction\": null,\n    \"data_privacy\": true,\n    \"terms_and_conditions\": false,\n    \"honor_code\": true,\n    \"role\": 0\n  },\n  \"errors\": {\n    \"terms_and_conditions\": [\n      \"musi zostać zaakceptowane\"\n    ],\n    \"full_messages\": [\n      \"Terms and conditions musi zostać zaakceptowane\"\n    ]\n  }\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "User-Language": "pl",
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "90ec228f-f819-4080-b58e-cde606c1d309",
+        "X-Runtime": "0.020826",
+        "Vary": "Origin",
+        "Content-Length": "565"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "resource": "Api::V1::Auth",
+  "http_method": "POST",
+  "route": "/api/v1/auth/sign_in",
+  "description": "#login unauthorized error empty params",
+  "explanation": "empty parameters",
+  "parameters": [
+    {
+      "required": true,
+      "name": "email",
+      "description": "Email"
+    },
+    {
+      "required": true,
+      "name": "password",
+      "description": "Password"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/auth/sign_in",
+      "request_body": "{}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 401,
+      "response_status_text": "Unauthorized",
+      "response_body": "{\n  \"errors\": [\n    \"Nieprawidłowe dane logowania. Proszę spróbować ponownie.\"\n  ]\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "User-Language": "pl",
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "dd7aa482-db87-4e99-8e72-b347d16add10",
+        "X-Runtime": "0.004571",
+        "Vary": "Origin",
+        "Content-Length": "75"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "resource": "Api::V1::Auth",
+  "http_method": "POST",
+  "route": "/api/v1/auth/sign_in",
+  "description": "#login",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "email",
+      "description": "Email"
+    },
+    {
+      "required": true,
+      "name": "password",
+      "description": "Password"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/auth/sign_in",
+      "request_body": "{\"email\":\"testing4@email.test\",\"password\":\"FakePassword123\"}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"data\": {\n    \"id\": 478,\n    \"email\": \"testing4@email.test\",\n    \"provider\": \"email\",\n    \"role\": 6,\n    \"uid\": \"testing4@email.test\",\n    \"language\": \"en\",\n    \"title\": null,\n    \"firstname\": null,\n    \"lastname\": null,\n    \"gender\": null,\n    \"country\": null,\n    \"age\": null,\n    \"educational_attainment\": null,\n    \"profession\": null,\n    \"avatar\": null,\n    \"interests\": null,\n    \"timezone\": null,\n    \"introduction\": null,\n    \"data_privacy\": false,\n    \"terms_and_conditions\": false,\n    \"honor_code\": false\n  }\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "User-Language": "pl",
+        "Content-Type": "application/json; charset=utf-8",
+        "access-token": "0gI3VYpaa5o7-qgB6Mb_mg",
+        "token-type": "Bearer",
+        "client": "y7AL5LgoH3bYfm006REnsg",
+        "expiry": "1471530855",
+        "uid": "testing4@email.test",
+        "ETag": "W/\"0ed678c06684a12ac0c23a19f267d4bd\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "e114ee10-478f-4811-b55b-82ddeb8cfa04",
+        "X-Runtime": "0.210570",
+        "Vary": "Origin",
+        "Content-Length": "391"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}
