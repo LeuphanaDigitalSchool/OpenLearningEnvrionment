@@ -3,8 +3,8 @@ import loginForm  from './loginForm.component';
 describe('Components/loginForm', () => {
   // Define all variables for inject
   let fakedData = {};
-  let mocks = {};   
-  let $componentController, $q, $controller, $rootScope, $compile, element; 
+  let mocks = {};
+  let $componentController, $q, $controller, $rootScope, $compile, element;
 
   // Pupulate faked data
   fakedData.loginForm = {name: 'Bartek'};
@@ -27,11 +27,12 @@ describe('Components/loginForm', () => {
     angular.mock.module('mock.app.components.loginForm'); // create mock for new created fake module
 
     window.module($provide => { // window.module comes from angular-mock lib
+      $provide.value('toastr', mocks.toastr);
       $provide.value('$auth', mocks.$auth); // mock $auth service as a empty object
       $provide.value('$state', mocks.$state);// mock $state service as a empty object
     });
 
-    // inject our previously declared variable to module, just do like that, do not try to undarstand 
+    // inject our previously declared variable to module, just do like that, do not try to undarstand
     window.inject((_$q_, _$componentController_, _$rootScope_, _$compile_) => {
       $q = _$q_;
       $componentController = _$componentController_;
@@ -39,7 +40,7 @@ describe('Components/loginForm', () => {
       $compile = _$compile_;
     });
 
-   
+
 
   });
 
@@ -52,12 +53,12 @@ describe('Components/loginForm', () => {
 
   it('define loginForm as empty object', () => {
     $controller = $componentController('loginForm', null);
-    
+
     expect($controller.loginForm).toEqual({});
   });
 
   describe('Method: login', () => {
-    
+
     it('should call $auth.submitLogin service with this.loginForm params', () => {
       spyOn($controller.$auth, 'submitLogin').and.callThrough();
       $controller.loginForm = fakedData.loginForm;
@@ -84,6 +85,6 @@ describe('Components/loginForm', () => {
         expect($controller.handleError).toHaveBeenCalled();
       });
     });
-    
+
   });
 });
