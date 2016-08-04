@@ -1,10 +1,10 @@
 class LoginFormCtrl {
-  constructor($auth, $state) {
+  constructor($auth, $state, toastr) {
     "ngInject";
     this.$state = $state;
     this.$auth = $auth;
+    this.toastr = toastr;
     this.loginForm = {};
-    this.validateError = false;
   }
 
   login() {
@@ -19,8 +19,7 @@ class LoginFormCtrl {
   }
 
   handleError(response) {
-    console.log("error", response);
-    this.validateError = true;
+    this.toastr.error('Your credentials are wrong', 'Error');
   }
 }
 
