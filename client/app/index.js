@@ -17,16 +17,14 @@ import style from './assets/stylesheets/style.css';
 import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
 
-import getFromApi from './services/getFromApi';
-import deleteFromApi from './services/deleteFromApi';
-import postToApi from './services/postToApi';
-import putToApi from './services/putToApi';
-
 import angularTranslate from 'angular-translate';
 import angularTranslateLoaderUrl from 'angular-translate-loader-url';
 import angularTranslateStorageCookie from 'angular-translate-storage-cookie';
 import ngCookies from 'angular-cookies';
+import toastr from 'angular-toastr';
+
 import 'angular-material/angular-material.css';
+import 'angular-toastr/dist/angular-toastr.css';
 
 
 const ngModule = angular
@@ -41,6 +39,7 @@ const ngModule = angular
         angularTranslateLoaderUrl,
         angularTranslateStorageCookie,
         ngCookies,
+        toastr,
 
         // Configs
         config,
@@ -50,8 +49,4 @@ const ngModule = angular
         components,
         home,
         login
-      ])
-      .service('getFromApi', getFromApi)
-      .service('postToApi', postToApi)
-      .service('deleteFromApi', deleteFromApi)
-      .service('putToApi', putToApi);
+      ]);

@@ -5,6 +5,7 @@ import ngTheme from './ngTheme';
 
 import authConfig from './authConfig';
 import translateConfig from './translateConfig';
+import toastrConfig from './toastrConfig';
 
 import constants from './constants';
 
@@ -22,6 +23,7 @@ export default angular
     .config(ngTheme)
     .config(authConfig)
     .config(translateConfig)
+    .config(toastrConfig)
     .service('authResponseInterceptor', authResponseInterceptor)
     .service('apiRequestInterceptor', apiRequestInterceptor)
     .service('translateRequestInterceptor', translateRequestInterceptor)

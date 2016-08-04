@@ -11,6 +11,15 @@ md-badge{
   border-radius: 25%;
 }
 
+.md-center {
+       left: 50%;
+       transform: translate3d(-50%, 0, 0);
+}
+
+.toast-top-center {
+  margin-top: 35px;
+}
+
 /* 2. layout*/
 #leftsidebar {
   width: 200px;
@@ -21,6 +30,12 @@ md-badge{
 #rightsidebar {
   max-width: 1120px;
   width: 1120px;
+}
+
+.l-login-background {
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
+
 }
 
 .l-content-background {
