@@ -8,9 +8,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :data_privacy, :terms_and_conditions, :honor_code, acceptance: true, if: proc { |u| u.role.zero? }
 
-  # GENDER 0 - MALE, 1 - FEMALE, 3 - I'D RATHER NOT SAY
-  # EDUCATION_ATTAINMENT 0 - NONE, 1 - HIGHT SCHOLL, 2 - BECHELOR OR EQUIVALENT, 3 - MASTER OR EQUIVALENT, 4 - PhD,
-  #                      5 - PROFESSOR
+  enum gender_options: [:male, :female]
+  enum educational_attainment_options: [:nope, :highschool, :bechelor, :master, :phd, :professor]
 end
 
 # 0 public user

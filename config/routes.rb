@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'locales' => 'locales#index'
 
       namespace :admin do
+        get 'users/profile_selects'
         resources :teachers, :supports, :course_directors
       end
     end

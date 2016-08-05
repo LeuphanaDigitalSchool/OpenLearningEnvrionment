@@ -25,8 +25,8 @@ module Api
 
         def scourse_director_params
           params.require(:course_director).permit(:title, :firstname, :lastname, :gender, :country, :age, :profession,
-                                          :educational_attainment, :avatar, :interests, :introduction, :email,
-                                          :password, :password_confirmation)
+                                                  :educational_attainment, :avatar, :interests, :introduction, :email,
+                                                  :password, :password_confirmation)
         end
       end
     end

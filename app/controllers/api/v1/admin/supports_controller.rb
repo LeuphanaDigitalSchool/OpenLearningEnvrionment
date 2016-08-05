@@ -2,7 +2,7 @@
 module Api
   module V1
     module Admin
-      # Api::V1::Admin::TeacherProfilesController
+      # Api::V1::Admin::SupportsController
       class SupportsController < ApplicationController
         before_action :authenticate_api_v1_user!
 
