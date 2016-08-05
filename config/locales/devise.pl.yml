@@ -58,3 +58,4 @@ pl:
       not_saved:
         one: "%{resource} nie został zapisany z powodu błędu:"
         other: "%{resource} nie został zapisany z powodu następujących błędów:"
+      validate_sign_up_params: "Nieprawidłowe parametry"
