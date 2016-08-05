@@ -1,21 +1,38 @@
 export default class RegisterPublicUserCtrl {
-  constructor(toastr){
+  constructor($state, toastr, Restangular){
     "ngInject";
     let user,
-        errors;
+        errors,
+        basePublicUser,
+        send;
     this.toastr = toastr;
+    this.$state = $state;
+    this.Restangular = Restangular;
     this.user = null;
+    this.send = true;
+    this.basePublicUser = this.Restangular.all('/api/v1/auth');
   }
 
   submit(form, data){
     this.errors = 0;
-    this.user = data;
-    this.handleError(form);
+    this.handleError(form, data);
     if(this.errors === 0) {
-      console.log('no errors');
+      this.send = false;
+      this.basePublicUser.post(this.user).then(()=>{
+        this.send = true;
+        this.toastr.success('Thank you for registering', 'Success');
+        this.loginPage();
+      }, (response)=> {
+        this.send = true;
+        let status = response.data.errors.full_messages;
+        for (var i = 0; i < status.length; i++) {
+          this.toastr.error(status[i], 'Error');
+        }
+      });
     }
   }
-  handleError(form){
+
+  handleError(form, data){
     if(form.$error.required){
       this.toastr.error('You need to fill all required fields', 'Error');
       this.errors += 1;
@@ -32,5 +49,9 @@ export default class RegisterPublicUserCtrl {
       this.toastr.error('You need to accept data privacy', 'Error');
       this.errors += 1;
     }
+  }
+
+  loginPage(){
+    this.$state.go('login');
   }
 }

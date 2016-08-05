@@ -20,6 +20,7 @@ import angularTranslateLoaderUrl from 'angular-translate-loader-url';
 import angularTranslateStorageCookie from 'angular-translate-storage-cookie';
 import ngCookies from 'angular-cookies';
 import toastr from 'angular-toastr';
+import restangular from 'restangular-umd';
 
 import 'angular-material/angular-material.css';
 import 'angular-toastr/dist/angular-toastr.css';
@@ -38,6 +39,7 @@ const ngModule = angular
         angularTranslateStorageCookie,
         ngCookies,
         toastr,
+        restangular,
 
         // Configs
         config,

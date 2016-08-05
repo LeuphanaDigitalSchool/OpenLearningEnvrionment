@@ -58,7 +58,10 @@
           </md-input-container>
         </div>
         <div layout="row"  layout-align="end center" flex>
-          <md-button type="submit" class="md-raised md-primary" ng-click="register.submit(userRegister, user)">{{ 'register' | translate }}</md-button>
+          <md-button type="submit" class="md-raised md-primary" ng-click="register.submit(userRegister, user)">
+             <md-progress-circular class="md-warn" md-mode="indeterminate" ng-hide="register.send"></md-progress-circular>
+             <div ng-show="register.send">{{ 'register' | translate }}</div>
+          </md-button>
         </div>
       </form>
     </md-content>
