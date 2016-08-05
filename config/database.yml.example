@@ -6,9 +6,6 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: 
-  password: 
-  host: localhost
 
 development:
   <<: *default
@@ -21,5 +18,5 @@ test:
 production:
   <<: *default
   database: leuphana_production
-  username: 
+  username: leuphana
   password: <%= ENV['leuphana_password'] %>
