@@ -1,2 +1,11 @@
 en:
-  homeTitle: "Hello"
+  register: "Register"
+  email: "Email"
+  title: "title"
+  password: "password"
+  firstname: "firstname"
+  lastname: "lastname"
+  thisFieldIsRequired: "This Field Is Required"
+  honorCode: "Honor Code"
+  termsAndConditions: "Terms And Conditions"
+  dataPrivacy: "Data Privacy"
