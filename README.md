@@ -1,3 +1,2 @@
 Leuphana Learning Environment Prototype
 =====================
-

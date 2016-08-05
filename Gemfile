@@ -8,7 +8,10 @@ gem 'config'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise_token_auth'
 gem 'rack-cors', require: 'rack/cors'
-gem 'apitome'
+gem 'apitome' # Api docs reader
+gem 'carrierwave'
+gem 'carrierwave-base64'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'pry'

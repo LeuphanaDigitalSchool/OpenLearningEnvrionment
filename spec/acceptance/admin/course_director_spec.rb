@@ -54,10 +54,12 @@ resource 'Api::V1::Admin::CourseDirectors' do
     example '#create (course director created)' do
       params = { "course_director": { "title": 'Course director', "firstname": 'Sylwia', "lastname": 'Kocyk',
                                       "gender": '1', "country": 'DE', "age": '24', "educational_attainment": '5',
-                                      "profession": 'Master', "avatar": '', "interests": '', "introduction": '',
+                                      "profession": 'Master', "interests": '', "introduction": '',
                                       "email": 'example_course_director@example.com', "password": 'course_director1234',
-                                      "password_confirmation": 'course_director1234' } }
+                                      "password_confirmation": 'course_director1234',
+                                      "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7' } }
       do_request(params)
+      expect(JSON.parse(response_body).to_s).to include('Course director', 'Sylwia', 'Kocyk', 'size_256x256_')
       expect(response_status).to be 201
     end
   end

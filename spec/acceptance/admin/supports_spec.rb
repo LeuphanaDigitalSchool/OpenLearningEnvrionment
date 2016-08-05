@@ -54,9 +54,11 @@ resource 'Api::V1::Admin::Supports' do
     example '#create (support created)' do
       params = { "support": { "title": 'Support', "firstname": 'Sylwia', "lastname": 'Kocyk', "gender": '1',
                               "country": 'DE', "age": '24', "educational_attainment": '5', "profession": 'Master',
-                              "avatar": '', "interests": '', "introduction": '', "email": 'example_support@example.com',
-                              "password": 'support1234', "password_confirmation": 'support1234' } }
+                              "interests": '', "introduction": '', "email": 'example_support@example.com',
+                              "password": 'support1234', "password_confirmation": 'support1234',
+                              "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7' } }
       do_request(params)
+      expect(JSON.parse(response_body).to_s).to include('Support', 'Sylwia', 'Kocyk', 'size_128x128_')
       expect(response_status).to be 201
     end
   end

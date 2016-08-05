@@ -54,9 +54,11 @@ resource 'Api::V1::Admin::Teachers' do
     example '#create (teacher created)' do
       params = { "teacher": { "title": 'Teacher', "firstname": 'Sylwia', "lastname": 'Kocyk', "gender": '1',
                               "country": 'DE', "age": '24', "educational_attainment": '6', "profession": 'Master',
-                              "avatar": '', "interests": '', "introduction": '', "email": 'example_teacher@example.com',
-                              "password": 'teacher1234', "password_confirmation": 'teacher1234' } }
+                              "interests": '', "introduction": '', "email": 'example_teacher@example.com',
+                              "password": 'teacher1234', "password_confirmation": 'teacher1234',
+                              "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7' } }
       do_request(params)
+      expect(JSON.parse(response_body).to_s).to include('Teacher', 'Sylwia', 'Kocyk', 'size_64x64_')
       expect(response_status).to be 201
     end
   end
