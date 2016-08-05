@@ -23,7 +23,7 @@ resource 'Api::V1::Locales' do
   end
 
   get '/api/v1/locales' do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, :public_user) }
 
     example '#logged #change locales to polish' do
       login(user)

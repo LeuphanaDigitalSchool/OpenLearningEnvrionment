@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 resource 'Api::V1::Auth' do
-  let!(:user) { FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.create(:user, :course_manager) }
 
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
