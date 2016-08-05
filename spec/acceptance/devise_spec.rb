@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 resource 'Api::V1::Auth' do
-  let!(:user) { FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.create(:user, :course_manager) }
 
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
@@ -18,12 +18,12 @@ resource 'Api::V1::Auth' do
     parameter :data_privacy, 'Data privacy', required: true
 
     let(:raw_post) { params.to_json }
-    example '#signup public user without params' do
+    example '#signup public user without params', document: false do
       do_request
       expect(response_status).to be 422
     end
 
-    example '#signup public user without checked terms' do
+    example '#signup public user without checked terms', document: false do
       params = {  "email": 'jola@mis.com', "password": 'user1234', "title": 'Public user', "firstname": 'Public',
                   "lastname": 'user', "honor_code": true, "terms_and_conditions": false, "data_privacy": true }
       do_request(params)
@@ -50,13 +50,13 @@ resource 'Api::V1::Auth' do
       expect(response_status).to be 200
     end
 
-    example '#login unauthorized error empty params' do
+    example '#login unauthorized error empty params', document: false do
       explanation 'empty parameters'
       do_request
       expect(response_status).to be 401
     end
 
-    example '#login unauthorized error wrong params' do
+    example '#login unauthorized error wrong params', document: false do
       explanation 'wrong parameters'
       do_request('email': 'wrong@email.com',
                  'password': 'wrong_password')
@@ -65,7 +65,7 @@ resource 'Api::V1::Auth' do
   end
 
   get '/api/v1/auth/sign_in' do
-    example '#login method not allowed' do
+    example '#login method not allowed', document: false do
       explanation 'when request get instead of post'
       do_request
       expect(response_status).to be 405
@@ -80,7 +80,7 @@ resource 'Api::V1::Auth' do
       expect(response_status).to be 200
     end
 
-    example '#validate_token unauthorized error' do
+    example '#validate_token unauthorized error', document: false do
       explanation 'user is logout'
       do_request
       expect(response_status).to be 401
@@ -88,14 +88,14 @@ resource 'Api::V1::Auth' do
   end
 
   delete '/api/v1/auth/sign_out' do
-    example '#logout' do
+    example '#logout', document: false do
       explanation 'logout when user is login'
       login(user)
       do_request
       expect(response_status).to be 200
     end
 
-    example '#logout not found error' do
+    example '#logout not found error', document: false do
       explanation 'logout when user is logout'
       do_request
       expect(response_status).to be 404
