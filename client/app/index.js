@@ -5,13 +5,11 @@ import 'angular-cookie';
 import ngMessages from 'angular-messages';
 import ngtokenauth from './lib/ng-token-auth.min.js';
 
-import routes from './routes';
+import routing from './routing';
 import config from './config';
 
 import components from './components';
-
-import home from './routes/home/';
-import login from './routes/login';
+import routes from './routes';
 
 import style from './assets/stylesheets/style.css';
 import angularAnimate from 'angular-animate';
@@ -22,6 +20,7 @@ import angularTranslateLoaderUrl from 'angular-translate-loader-url';
 import angularTranslateStorageCookie from 'angular-translate-storage-cookie';
 import ngCookies from 'angular-cookies';
 import toastr from 'angular-toastr';
+import restangular from 'restangular-umd';
 
 import 'angular-material/angular-material.css';
 import 'angular-toastr/dist/angular-toastr.css';
@@ -40,13 +39,13 @@ const ngModule = angular
         angularTranslateStorageCookie,
         ngCookies,
         toastr,
+        restangular,
 
         // Configs
         config,
-        routes,
+        routing,
 
         // Internal modules
         components,
-        home,
-        login
+        routes
       ]);

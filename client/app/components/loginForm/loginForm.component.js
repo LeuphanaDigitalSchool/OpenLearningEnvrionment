@@ -21,6 +21,9 @@ class LoginFormCtrl {
   handleError(response) {
     this.toastr.error('Your credentials are wrong', 'Error');
   }
+  registerAsGuest() {
+    this.$state.go('publicRegistration');
+  }
 }
 
 let loginForm = {

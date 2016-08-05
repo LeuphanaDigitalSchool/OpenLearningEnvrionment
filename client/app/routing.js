@@ -1,4 +1,4 @@
-export default function routes($stateProvider) {
+export default function routing($stateProvider) {
   "ngInject";
   $stateProvider
     .state('login', {
@@ -6,6 +6,12 @@ export default function routes($stateProvider) {
       template: require('./routes/login/login.html'),
       controller: 'LoginCtrl',
       controllerAs: 'LoginCtrl'
+    })
+    .state('publicRegistration', {
+      url:'/publicRegistration',
+      template: require('./routes/registerPublicUser/registerPublicUser.html'),
+      controller: 'RegisterPublicUserCtrl',
+      controllerAs: 'RegisterPublicUserCtrl'
     })
 
     .state('home', {
