@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     namespace :v1, except: [:new, :edit] do
       mount_devise_token_auth_for 'User', at: 'auth'
       get 'locales' => 'locales#index'
+
+      namespace :admin do
+        resources :teachers, :supports, :course_directors
+      end
     end
   end
 end
