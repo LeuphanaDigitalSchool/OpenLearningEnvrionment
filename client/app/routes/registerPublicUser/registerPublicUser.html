@@ -1,5 +1,66 @@
-<div layout layout-align="center center" flex class="l-login-background">
-  <div class="md-whiteframe-24dp l-content-background">
-    <login-form></login-form>
+<div layout layout-align="center center" flex class="l-login-background" ng-controller="RegisterPublicUserCtrl as register">
+  <div class="md-whiteframe-z2">
+    <md-toolbar class="md-primary">
+      <div flex class="md-toolbar-tools">
+        <h2>{{ 'register' | translate }}</h2>
+        <div layout="row"  layout-align="end center" flex>
+          <translate-switcher></translate-switcher>
+        </div>
+      </div>
+    </md-toolbar>
+    <md-content layout-padding>
+      <form name="userRegister">
+        <div layout="row">
+          <md-input-container flex>
+            <label>{{'email' | translate}}</label>
+            <input name="email" ng-model="register.user.email" type="email" required>
+            <div ng-messages="userRegister.email.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">{{'thisFieldIsRequired' | translate}}</div>
+            </div>
+          </md-input-container>
+          <md-input-container flex>
+            <label>{{'password' | translate}}</label>
+            <input name="password" ng-model="register.user.password" type="password" required>
+            <div ng-messages="userRegister.password.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">{{'thisFieldIsRequired' | translate}}</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container>
+            <label>{{'title' | translate}}</label>
+            <input ng-model="register.user.title" type="text">
+          </md-input-container>
+          <md-input-container>
+            <label>{{'firstname' | translate}}</label>
+            <input ng-model="register.user.firstname" type="text">
+          </md-input-container>
+          <md-input-container>
+            <label>{{'lastname' | translate}}</label>
+            <input ng-model="register.user.lastname" type="text">
+          </md-input-container>
+        </div>
+        <div layout="row" flex layout-align="space-around center">
+          <md-input-container>
+            <md-checkbox ng-model="register.user.honor_code" aria-label="Checkbox 1" required>
+              {{'honorCode' | translate}}
+            </md-checkbox>
+          </md-input-container>
+          <md-input-container>
+            <md-checkbox ng-model="register.user.terms_and_conditions" aria-label="Checkbox 2" required>
+              {{'termsAndConditions' | translate}}
+            </md-checkbox>
+          </md-input-container>
+          <md-input-container>
+            <md-checkbox ng-model="register.user.data_privacy" aria-label="Checkbox 3" required>
+              {{'dataPrivacy' | translate}}
+            </md-checkbox>
+          </md-input-container>
+        </div>
+        <div layout="row"  layout-align="end center" flex>
+          <md-button type="submit" class="md-raised md-primary" ng-click="register.submit(userRegister, user)">{{ 'register' | translate }}</md-button>
+        </div>
+      </form>
+    </md-content>
   </div>
 </div>

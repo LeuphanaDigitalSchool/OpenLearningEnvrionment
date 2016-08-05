@@ -10,8 +10,8 @@ export default function routing($stateProvider) {
     .state('publicRegistration', {
       url:'/publicRegistration',
       template: require('./routes/registerPublicUser/registerPublicUser.html'),
-      controller: 'HomeCtrl',
-      controllerAs: 'HomeCtrl',
+      controller: 'RegisterPublicUserCtrl',
+      controllerAs: 'RegisterPublicUserCtrl'
     })
 
     .state('home', {

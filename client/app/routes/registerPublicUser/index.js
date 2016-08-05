@@ -1,7 +1,7 @@
 import angular from 'angular';
 
-import registerPublicUserCtrl from './registerPublicUserCtrl';
+import RegisterPublicUserCtrl from './RegisterPublicUserCtrl';
 
 export default angular.module('app.registerPublicUser', [])
-  .controller('registerPublicUserCtrl', registerPublicUserCtrl)
+  .controller('RegisterPublicUserCtrl', RegisterPublicUserCtrl)
   .name;
