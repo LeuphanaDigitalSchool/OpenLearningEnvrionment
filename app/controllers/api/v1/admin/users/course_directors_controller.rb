@@ -6,7 +6,7 @@ module Api
         # Api::V1::Admin::Users::CourseDirectorsController
         class CourseDirectorsController < ApplicationController
           before_action :authenticate_api_v1_user!
-          before_action :set_course_director, only: [:show]
+          before_action :set_course_director, only: [:show, :update, :destroy]
 
           def index
             course_directors = CourseDirector.all
@@ -25,6 +25,22 @@ module Api
 
           def show
             render json: @course_director, status: :ok
+          end
+
+          def update
+            if @course_director.update(course_director_params)
+              render json: @course_director, status: :ok
+            else
+              render json: @course_director.errors, status: :unprocessable_entity
+            end
+          end
+
+          def destroy
+            if @course_director.update(deleted: true)
+              render json: nil, status: :no_content
+            else
+              render json: @course_director.errors, status: :unprocessable_entity
+            end
           end
 
           private
