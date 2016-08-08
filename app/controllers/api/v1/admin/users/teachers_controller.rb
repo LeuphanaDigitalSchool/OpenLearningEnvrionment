@@ -6,6 +6,7 @@ module Api
         # Api::V1::Admin::Users::TeachersController
         class TeachersController < ApplicationController
           before_action :authenticate_api_v1_user!
+          before_action :set_teacher, only: [:show]
 
           def index
             teachers = Teacher.all
@@ -22,12 +23,20 @@ module Api
             end
           end
 
+          def show
+            render json: @teacher, status: :ok
+          end
+
           private
 
           def teacher_params
             params.require(:teacher).permit(:title, :firstname, :lastname, :gender, :country, :birthdate, :profession,
                                             :educational_attainment, :avatar, :interests, :introduction, :email,
                                             :password, :password_confirmation)
+          end
+
+          def set_teacher
+            @teacher = Teacher.find(params[:id])
           end
         end
       end
