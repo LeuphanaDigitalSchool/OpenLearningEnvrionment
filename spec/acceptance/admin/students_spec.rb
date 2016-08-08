@@ -1,0 +1,75 @@
+# frozen_string_literal: true
+require 'rails_helper'
+
+resource 'Api::V1::Admin::Teachers' do
+  before { FactoryGirl.create(:user, :student) }
+  let!(:user) { FactoryGirl.create(:user, :course_manager) }
+
+  header 'Accept', 'application/json'
+  header 'Content-Type', 'application/json'
+
+  get '/api/v1/admin/students' do
+    example '#index (request not authorized)', document: false do
+      no_doc do
+        do_request
+        expect(response_body).to include('errors')
+        expect(response_status).to be 401
+      end
+    end
+
+    example '#index (request authorized)' do
+      login(user)
+      do_request
+      expect(response_body).to include('role')
+      expect(response_status).to be 200
+    end
+  end
+
+  post '/api/v1/admin/students' do
+    parameter :title, 'Title', required: false
+    parameter :firstname, 'Firstname', required: false
+    parameter :lastname, 'Lastname', required: false
+    parameter :gender, 'Gender', required: false
+    parameter :country, 'country', required: false
+    parameter :age, 'Age', required: false
+    parameter :educational_attainment, 'Educational attainment', required: false
+    parameter :profession, 'Profession', required: false
+    parameter :avatar, 'Avatar', required: false
+    parameter :interests, 'Interests', required: false
+    parameter :introduction, 'Introduction', required: false
+    parameter :email, 'E-mail', required: false
+    parameter :password, 'Password', required: true
+    parameter :password_confirmation, 'Password confirmation', required: true
+    parameter :data_privacy, 'Data privacy', required: true
+    parameter :terms_and_conditions, 'Terms and conditions', required: true
+    parameter :honor_code, 'Honor code', required: true
+
+    before { login(user) }
+    let(:raw_post) { params.to_json }
+
+    example '#create (empty parameters)', document: false do
+      no_doc do
+        do_request(student_empty_params)
+        expect(response_status).to be 422
+      end
+    end
+
+    example '#create (student created)' do
+      params = { "student": { "title": 'Student', "firstname": 'Angelika', "lastname": 'Blokers', "gender": '1',
+                              "country": 'PL', "age": '27', "educational_attainment": '3', "profession": '',
+                              "interests": '', "introduction": '', "email": 'example_student@example.com',
+                              "password": 'student1234', "password_confirmation": 'student1234',
+                              "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7',
+                              "data_privacy": 'true', "terms_and_conditions": 'true', "honor_code": 'true' } }
+      do_request(params)
+      expect(JSON.parse(response_body).to_s).to include('Student', 'Angelika', 'Blokers', 'size_128x128_')
+      expect(response_status).to be 201
+    end
+  end
+
+  private
+
+  def student_empty_params
+    { 'student': { 'firstname': '', 'lastname': '' } }
+  end
+end
