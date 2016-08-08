@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-resource 'Api::V1::Admin::Supports' do
+resource 'Api::V1::Admin::Users::Supports' do
   before { FactoryGirl.create(:user, :support) }
   let!(:user) { FactoryGirl.create(:user, :course_manager) }
 
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
 
-  get '/api/v1/admin/supports' do
+  get '/api/v1/admin/users/supports' do
     example '#index (request not authorized)', document: false do
       no_doc do
         do_request
@@ -25,7 +25,7 @@ resource 'Api::V1::Admin::Supports' do
     end
   end
 
-  post '/api/v1/admin/supports' do
+  post '/api/v1/admin/users/supports' do
     parameter :title, 'Title', required: false
     parameter :firstname, 'Firstname', required: true
     parameter :lastname, 'Lastname', required: true

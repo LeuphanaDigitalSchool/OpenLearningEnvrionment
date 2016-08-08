@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-resource 'Api::V1::Admin::Students' do
-  before { FactoryGirl.create(:user, :student) }
+resource 'Api::V1::Admin::Users::CourseDirectors' do
+  before { FactoryGirl.create(:user, :course_director) }
   let!(:user) { FactoryGirl.create(:user, :course_manager) }
 
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
 
-  get '/api/v1/admin/students' do
+  get '/api/v1/admin/users/course_directors' do
     example '#index (request not authorized)', document: false do
       no_doc do
         do_request
@@ -25,13 +25,13 @@ resource 'Api::V1::Admin::Students' do
     end
   end
 
-  post '/api/v1/admin/students' do
+  post '/api/v1/admin/users/course_directors' do
     parameter :title, 'Title', required: false
     parameter :firstname, 'Firstname', required: true
     parameter :lastname, 'Lastname', required: true
-    parameter :gender, 'Gender', required: true
-    parameter :country, 'country', required: true
-    parameter :birthdate, 'Date of birth', required: true
+    parameter :gender, 'Gender', required: false
+    parameter :country, 'country', required: false
+    parameter :birthdate, 'Date of birth', required: false
     parameter :educational_attainment, 'Educational attainment', required: false
     parameter :profession, 'Profession', required: false
     parameter :avatar, 'Avatar', required: false
@@ -40,36 +40,33 @@ resource 'Api::V1::Admin::Students' do
     parameter :email, 'E-mail', required: false
     parameter :password, 'Password', required: true
     parameter :password_confirmation, 'Password confirmation', required: true
-    parameter :data_privacy, 'Data privacy', required: true
-    parameter :terms_and_conditions, 'Terms and conditions', required: true
-    parameter :honor_code, 'Honor code', required: true
 
     before { login(user) }
     let(:raw_post) { params.to_json }
 
     example '#create (empty parameters)', document: false do
       no_doc do
-        do_request(student_empty_params)
+        do_request(course_director_empty_params)
         expect(response_status).to be 422
       end
     end
 
-    example '#create (student created)' do
-      params = { "student": { "title": 'Student', "firstname": 'Angelika', "lastname": 'Blokers', "gender": '1',
-                              "country": 'PL', "birthdate": '1995-05-05', "educational_attainment": '3',
-                              "interests": '', "introduction": '', "email": 'example_student@example.com',
-                              "password": 'student1234', "password_confirmation": 'student1234', "profession": '',
-                              "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7',
-                              "data_privacy": 'true', "terms_and_conditions": 'true', "honor_code": 'true' } }
+    example '#create (course director created)' do
+      params = { "course_director": { "title": 'Course director', "firstname": 'Sylwia', "lastname": 'Kocyk',
+                                      "gender": '1', "country": 'DE', "birthdate": '1900-01-01', "introduction": '',
+                                      "educational_attainment": '5', "profession": 'Master', "interests": '',
+                                      "email": 'example_course_director@example.com', "password": 'course_director1234',
+                                      "password_confirmation": 'course_director1234',
+                                      "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7' } }
       do_request(params)
-      expect(JSON.parse(response_body).to_s).to include('Student', 'Angelika', 'Blokers', 'size_128x128_')
+      expect(JSON.parse(response_body).to_s).to include('Course director', 'Sylwia', 'Kocyk', 'size_256x256_')
       expect(response_status).to be 201
     end
   end
 
   private
 
-  def student_empty_params
-    { 'student': { 'firstname': '', 'lastname': '' } }
+  def course_director_empty_params
+    { 'course_director': { 'title': '' } }
   end
 end

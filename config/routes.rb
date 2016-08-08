@@ -8,8 +8,10 @@ Rails.application.routes.draw do
       get 'locales' => 'locales#index'
 
       namespace :admin do
-        get 'users/profile_selects'
-        resources :public_users, :students, :supports, :teachers, :course_directors
+        namespace :users do
+          resources :public_users, :students, :supports, :teachers, :course_directors
+          get 'profile_selects' => 'users#profile_selects'
+        end
       end
     end
   end
