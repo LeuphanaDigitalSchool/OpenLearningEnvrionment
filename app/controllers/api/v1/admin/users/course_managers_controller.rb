@@ -31,8 +31,8 @@ module Api
 
           def course_manager_params
             params.require(:course_manager).permit(:title, :firstname, :lastname, :gender, :country, :birthdate,
-                                                    :profession, :educational_attainment, :avatar, :interests,
-                                                    :introduction, :email, :password, :password_confirmation)
+                                                   :profession, :educational_attainment, :avatar, :interests,
+                                                   :introduction, :email, :password, :password_confirmation)
           end
 
           def set_course_manager

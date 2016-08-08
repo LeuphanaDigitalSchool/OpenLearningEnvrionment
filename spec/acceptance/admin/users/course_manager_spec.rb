@@ -54,11 +54,11 @@ resource 'Api::V1::Admin::Users::CourseManager' do
 
     example '#create (course manager created)' do
       params = { "course_manager": { "title": 'Course manager', "firstname": 'Sylwia', "lastname": 'Kocyk',
-                                      "gender": '1', "country": 'DE', "birthdate": '1990-01-01', "introduction": '',
-                                      "educational_attainment": '5', "profession": 'Master', "interests": '',
-                                      "email": 'example_course_director@example.com', "password": 'course_manager1234',
-                                      "password_confirmation": 'course_manager1234',
-                                      "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7' } }
+                                     "gender": '1', "country": 'DE', "birthdate": '1990-01-01', "introduction": '',
+                                     "educational_attainment": '5', "profession": 'Master', "interests": '',
+                                     "email": 'example_course_director@example.com', "password": 'course_manager1234',
+                                     "password_confirmation": 'course_manager1234',
+                                     "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7' } }
       do_request(params)
       expect(JSON.parse(response_body).to_s).to include('Course manager', 'Sylwia', 'Kocyk', 'size_256x256_')
       expect(response_status).to be 201
