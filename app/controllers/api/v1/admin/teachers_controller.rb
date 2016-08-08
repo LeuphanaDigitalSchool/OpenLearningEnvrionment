@@ -24,7 +24,7 @@ module Api
         private
 
         def teacher_params
-          params.require(:teacher).permit(:title, :firstname, :lastname, :gender, :country, :age, :profession,
+          params.require(:teacher).permit(:title, :firstname, :lastname, :gender, :country, :birthdate, :profession,
                                           :educational_attainment, :avatar, :interests, :introduction, :email,
                                           :password, :password_confirmation)
         end

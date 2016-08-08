@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-resource 'Api::V1::Admin::Teachers' do
-  before { FactoryGirl.create(:user, :teacher) }
+resource 'Api::V1::Admin::Students' do
+  before { FactoryGirl.create(:user, :student) }
   let!(:user) { FactoryGirl.create(:user, :course_manager) }
 
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
 
-  get '/api/v1/admin/teachers' do
+  get '/api/v1/admin/students' do
     example '#index (request not authorized)', document: false do
       no_doc do
         do_request
@@ -25,13 +25,13 @@ resource 'Api::V1::Admin::Teachers' do
     end
   end
 
-  post '/api/v1/admin/teachers' do
+  post '/api/v1/admin/students' do
     parameter :title, 'Title', required: false
     parameter :firstname, 'Firstname', required: true
     parameter :lastname, 'Lastname', required: true
-    parameter :gender, 'Gender', required: false
-    parameter :country, 'country', required: false
-    parameter :birthdate, 'Date of birth', required: false
+    parameter :gender, 'Gender', required: true
+    parameter :country, 'country', required: true
+    parameter :birthdate, 'Date of birth', required: true
     parameter :educational_attainment, 'Educational attainment', required: false
     parameter :profession, 'Profession', required: false
     parameter :avatar, 'Avatar', required: false
@@ -40,32 +40,36 @@ resource 'Api::V1::Admin::Teachers' do
     parameter :email, 'E-mail', required: false
     parameter :password, 'Password', required: true
     parameter :password_confirmation, 'Password confirmation', required: true
+    parameter :data_privacy, 'Data privacy', required: true
+    parameter :terms_and_conditions, 'Terms and conditions', required: true
+    parameter :honor_code, 'Honor code', required: true
 
     before { login(user) }
     let(:raw_post) { params.to_json }
 
     example '#create (empty parameters)', document: false do
       no_doc do
-        do_request(teacher_empty_params)
+        do_request(student_empty_params)
         expect(response_status).to be 422
       end
     end
 
-    example '#create (teacher created)' do
-      params = { "teacher": { "title": 'Teacher', "firstname": 'Sylwia', "lastname": 'Kocyk', "gender": '1',
-                              "country": 'DE', "birthdate": '1978-09-09', "educational_attainment": '6',
-                              "interests": '', "introduction": '', "email": 'example_teacher@example.com',
-                              "password": 'teacher1234', "password_confirmation": 'teacher1234', "profession": 'Master',
-                              "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7' } }
+    example '#create (student created)' do
+      params = { "student": { "title": 'Student', "firstname": 'Angelika', "lastname": 'Blokers', "gender": '1',
+                              "country": 'PL', "birthdate": '1995-05-05', "educational_attainment": '3',
+                              "interests": '', "introduction": '', "email": 'example_student@example.com',
+                              "password": 'student1234', "password_confirmation": 'student1234', "profession": '',
+                              "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7',
+                              "data_privacy": 'true', "terms_and_conditions": 'true', "honor_code": 'true' } }
       do_request(params)
-      expect(JSON.parse(response_body).to_s).to include('Teacher', 'Sylwia', 'Kocyk', 'size_64x64_')
+      expect(JSON.parse(response_body).to_s).to include('Student', 'Angelika', 'Blokers', 'size_128x128_')
       expect(response_status).to be 201
     end
   end
 
   private
 
-  def teacher_empty_params
-    { 'teacher': { 'title': '' } }
+  def student_empty_params
+    { 'student': { 'firstname': '', 'lastname': '' } }
   end
 end

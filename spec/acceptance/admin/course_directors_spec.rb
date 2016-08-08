@@ -27,11 +27,11 @@ resource 'Api::V1::Admin::CourseDirectors' do
 
   post '/api/v1/admin/course_directors' do
     parameter :title, 'Title', required: false
-    parameter :firstname, 'Firstname', required: false
-    parameter :lastname, 'Lastname', required: false
+    parameter :firstname, 'Firstname', required: true
+    parameter :lastname, 'Lastname', required: true
     parameter :gender, 'Gender', required: false
     parameter :country, 'country', required: false
-    parameter :age, 'Age', required: false
+    parameter :birthdate, 'Date of birth', required: false
     parameter :educational_attainment, 'Educational attainment', required: false
     parameter :profession, 'Profession', required: false
     parameter :avatar, 'Avatar', required: false
@@ -53,8 +53,8 @@ resource 'Api::V1::Admin::CourseDirectors' do
 
     example '#create (course director created)' do
       params = { "course_director": { "title": 'Course director', "firstname": 'Sylwia', "lastname": 'Kocyk',
-                                      "gender": '1', "country": 'DE', "age": '24', "educational_attainment": '5',
-                                      "profession": 'Master', "interests": '', "introduction": '',
+                                      "gender": '1', "country": 'DE', "birthdate": '1900-01-01', "introduction": '',
+                                      "educational_attainment": '5', "profession": 'Master', "interests": '',
                                       "email": 'example_course_director@example.com', "password": 'course_director1234',
                                       "password_confirmation": 'course_director1234',
                                       "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7' } }

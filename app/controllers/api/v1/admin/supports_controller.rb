@@ -24,7 +24,7 @@ module Api
         private
 
         def support_params
-          params.require(:support).permit(:title, :firstname, :lastname, :gender, :country, :age, :profession,
+          params.require(:support).permit(:title, :firstname, :lastname, :gender, :country, :birthdate, :profession,
                                           :educational_attainment, :avatar, :interests, :introduction, :email,
                                           :password, :password_confirmation)
         end
