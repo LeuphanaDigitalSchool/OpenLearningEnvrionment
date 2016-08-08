@@ -3,6 +3,7 @@ require 'rails_helper'
 
 resource 'Api::V1::Admin::Users::Students' do
   before { FactoryGirl.create(:user, :student) }
+  let(:student) { FactoryGirl.create(:user, :student) }
   let!(:user) { FactoryGirl.create(:user, :course_manager) }
 
   header 'Accept', 'application/json'
@@ -64,6 +65,24 @@ resource 'Api::V1::Admin::Users::Students' do
       do_request(params)
       expect(JSON.parse(response_body).to_s).to include('Student', 'Angelika', 'Blokers', 'size_128x128_')
       expect(response_status).to be 201
+    end
+  end
+
+  get '/api/v1/admin/users/students/:id' do
+    parameter :id, 'Student id', required: true
+
+    example '#index (request not authorized)', document: false do
+      no_doc do
+        do_request(id: student.id)
+        expect(response_body).to include('errors')
+        expect(response_status).to be 401
+      end
+    end
+
+    example '#show (request authorized)' do
+      login(user)
+      do_request(id: student.id)
+      expect(response_body).to include('Jola', 'Mis', 'role')
     end
   end
 
