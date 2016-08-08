@@ -27,11 +27,11 @@ resource 'Api::V1::Admin::Students' do
 
   post '/api/v1/admin/students' do
     parameter :title, 'Title', required: false
-    parameter :firstname, 'Firstname', required: false
-    parameter :lastname, 'Lastname', required: false
-    parameter :gender, 'Gender', required: false
-    parameter :country, 'country', required: false
-    parameter :birthdate, 'Date of birth', required: false
+    parameter :firstname, 'Firstname', required: true
+    parameter :lastname, 'Lastname', required: true
+    parameter :gender, 'Gender', required: true
+    parameter :country, 'country', required: true
+    parameter :birthdate, 'Date of birth', required: true
     parameter :educational_attainment, 'Educational attainment', required: false
     parameter :profession, 'Profession', required: false
     parameter :avatar, 'Avatar', required: false

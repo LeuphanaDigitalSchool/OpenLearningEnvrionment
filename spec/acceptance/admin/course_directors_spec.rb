@@ -27,8 +27,8 @@ resource 'Api::V1::Admin::CourseDirectors' do
 
   post '/api/v1/admin/course_directors' do
     parameter :title, 'Title', required: false
-    parameter :firstname, 'Firstname', required: false
-    parameter :lastname, 'Lastname', required: false
+    parameter :firstname, 'Firstname', required: true
+    parameter :lastname, 'Lastname', required: true
     parameter :gender, 'Gender', required: false
     parameter :country, 'country', required: false
     parameter :birthdate, 'Date of birth', required: false
