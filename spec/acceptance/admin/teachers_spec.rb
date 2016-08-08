@@ -31,7 +31,7 @@ resource 'Api::V1::Admin::Teachers' do
     parameter :lastname, 'Lastname', required: false
     parameter :gender, 'Gender', required: false
     parameter :country, 'country', required: false
-    parameter :age, 'Age', required: false
+    parameter :birthdate, 'Date of birth', required: false
     parameter :educational_attainment, 'Educational attainment', required: false
     parameter :profession, 'Profession', required: false
     parameter :avatar, 'Avatar', required: false
@@ -53,9 +53,9 @@ resource 'Api::V1::Admin::Teachers' do
 
     example '#create (teacher created)' do
       params = { "teacher": { "title": 'Teacher', "firstname": 'Sylwia', "lastname": 'Kocyk', "gender": '1',
-                              "country": 'DE', "age": '24', "educational_attainment": '6', "profession": 'Master',
+                              "country": 'DE', "birthdate": '1978-09-09', "educational_attainment": '6',
                               "interests": '', "introduction": '', "email": 'example_teacher@example.com',
-                              "password": 'teacher1234', "password_confirmation": 'teacher1234',
+                              "password": 'teacher1234', "password_confirmation": 'teacher1234', "profession": 'Master',
                               "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7' } }
       do_request(params)
       expect(JSON.parse(response_body).to_s).to include('Teacher', 'Sylwia', 'Kocyk', 'size_64x64_')

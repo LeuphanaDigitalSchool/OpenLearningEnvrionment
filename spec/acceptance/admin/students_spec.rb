@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-resource 'Api::V1::Admin::Teachers' do
+resource 'Api::V1::Admin::Students' do
   before { FactoryGirl.create(:user, :student) }
   let!(:user) { FactoryGirl.create(:user, :course_manager) }
 
@@ -31,7 +31,7 @@ resource 'Api::V1::Admin::Teachers' do
     parameter :lastname, 'Lastname', required: false
     parameter :gender, 'Gender', required: false
     parameter :country, 'country', required: false
-    parameter :age, 'Age', required: false
+    parameter :birthdate, 'Date of birth', required: false
     parameter :educational_attainment, 'Educational attainment', required: false
     parameter :profession, 'Profession', required: false
     parameter :avatar, 'Avatar', required: false
@@ -56,9 +56,9 @@ resource 'Api::V1::Admin::Teachers' do
 
     example '#create (student created)' do
       params = { "student": { "title": 'Student', "firstname": 'Angelika', "lastname": 'Blokers', "gender": '1',
-                              "country": 'PL', "age": '27', "educational_attainment": '3', "profession": '',
+                              "country": 'PL', "birthdate": '1995-05-05', "educational_attainment": '3',
                               "interests": '', "introduction": '', "email": 'example_student@example.com',
-                              "password": 'student1234', "password_confirmation": 'student1234',
+                              "password": 'student1234', "password_confirmation": 'student1234', "profession": '',
                               "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7',
                               "data_privacy": 'true', "terms_and_conditions": 'true', "honor_code": 'true' } }
       do_request(params)

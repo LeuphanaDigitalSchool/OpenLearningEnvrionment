@@ -31,7 +31,7 @@ resource 'Api::V1::Admin::Supports' do
     parameter :lastname, 'Lastname', required: false
     parameter :gender, 'Gender', required: false
     parameter :country, 'country', required: false
-    parameter :age, 'Age', required: false
+    parameter :birthdate, 'Date of birth', required: false
     parameter :educational_attainment, 'Educational attainment', required: false
     parameter :profession, 'Profession', required: false
     parameter :avatar, 'Avatar', required: false
@@ -53,9 +53,9 @@ resource 'Api::V1::Admin::Supports' do
 
     example '#create (support created)' do
       params = { "support": { "title": 'Support', "firstname": 'Sylwia', "lastname": 'Kocyk', "gender": '1',
-                              "country": 'DE', "age": '24', "educational_attainment": '5', "profession": 'Master',
+                              "country": 'DE', "birthdate": '1998-06-06', "educational_attainment": '5',
                               "interests": '', "introduction": '', "email": 'example_support@example.com',
-                              "password": 'support1234', "password_confirmation": 'support1234',
+                              "password": 'support1234', "password_confirmation": 'support1234', "profession": 'Master',
                               "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7' } }
       do_request(params)
       expect(JSON.parse(response_body).to_s).to include('Support', 'Sylwia', 'Kocyk', 'size_128x128_')

@@ -24,7 +24,7 @@ module Api
         private
 
         def student_params
-          params.require(:student).permit(:title, :firstname, :lastname, :gender, :country, :age, :profession,
+          params.require(:student).permit(:title, :firstname, :lastname, :gender, :country, :birthdate, :profession,
                                           :educational_attainment, :avatar, :interests, :introduction, :email,
                                           :password, :password_confirmation, :data_privacy, :terms_and_conditions,
                                           :honor_code)
