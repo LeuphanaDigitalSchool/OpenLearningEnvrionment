@@ -67,7 +67,7 @@ resource 'Api::V1::Admin::Users::Teachers' do
   get '/api/v1/admin/users/teachers/:id' do
     parameter :id, 'Teacher id', required: true
 
-    example '#index (request not authorized)', document: false do
+    example '#show (request not authorized)', document: false do
       no_doc do
         do_request(id: teacher.id)
         expect(response_body).to include('errors')

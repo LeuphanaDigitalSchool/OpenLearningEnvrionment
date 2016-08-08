@@ -71,7 +71,7 @@ resource 'Api::V1::Admin::Users::Students' do
   get '/api/v1/admin/users/students/:id' do
     parameter :id, 'Student id', required: true
 
-    example '#index (request not authorized)', document: false do
+    example '#show (request not authorized)', document: false do
       no_doc do
         do_request(id: student.id)
         expect(response_body).to include('errors')

@@ -29,7 +29,7 @@ resource 'Api::V1::Admin::Users::PublicUsers' do
   get '/api/v1/admin/users/public_users/:id' do
     parameter :id, 'Public User id', required: true
 
-    example '#index (request not authorized)', document: false do
+    example '#show (request not authorized)', document: false do
       no_doc do
         do_request(id: public_user.id)
         expect(response_body).to include('errors')

@@ -68,7 +68,7 @@ resource 'Api::V1::Admin::Users::CourseManager' do
   get '/api/v1/admin/users/course_managers/:id' do
     parameter :id, 'Course manager id', required: true
 
-    example '#index (request not authorized)', document: false do
+    example '#show (request not authorized)', document: false do
       no_doc do
         do_request(id: course_manager.id)
         expect(response_body).to include('errors')
