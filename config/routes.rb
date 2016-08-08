@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
       namespace :admin do
         namespace :users do
-          resources :public_users, :students, :supports, :teachers, :course_directors
+          resources :public_users, :students, :supports, :teachers, :course_directors, :course_managers
           get 'profile_selects' => 'users#profile_selects'
         end
       end

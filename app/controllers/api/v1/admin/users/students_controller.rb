@@ -6,6 +6,7 @@ module Api
         # Api::V1::Admin::Users::StudentsController
         class StudentsController < ApplicationController
           before_action :authenticate_api_v1_user!
+          before_action :set_student, only: [:show]
 
           def index
             students = Student.all
@@ -22,6 +23,10 @@ module Api
             end
           end
 
+          def show
+            render json: @student, status: :ok
+          end
+
           private
 
           def student_params
@@ -29,6 +34,10 @@ module Api
                                             :educational_attainment, :avatar, :interests, :introduction, :email,
                                             :password, :password_confirmation, :data_privacy, :terms_and_conditions,
                                             :honor_code)
+          end
+
+          def set_student
+            @student = Student.find(params[:id])
           end
         end
       end

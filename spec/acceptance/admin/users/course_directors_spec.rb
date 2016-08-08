@@ -3,6 +3,7 @@ require 'rails_helper'
 
 resource 'Api::V1::Admin::Users::CourseDirectors' do
   before { FactoryGirl.create(:user, :course_director) }
+  let(:course_director) { FactoryGirl.create(:user, :course_director) }
   let!(:user) { FactoryGirl.create(:user, :course_manager) }
 
   header 'Accept', 'application/json'
@@ -61,6 +62,24 @@ resource 'Api::V1::Admin::Users::CourseDirectors' do
       do_request(params)
       expect(JSON.parse(response_body).to_s).to include('Course director', 'Sylwia', 'Kocyk', 'size_256x256_')
       expect(response_status).to be 201
+    end
+  end
+
+  get '/api/v1/admin/users/course_directors/:id' do
+    parameter :id, 'Course director id', required: true
+
+    example '#index (request not authorized)', document: false do
+      no_doc do
+        do_request(id: course_director.id)
+        expect(response_body).to include('errors')
+        expect(response_status).to be 401
+      end
+    end
+
+    example '#show (request authorized)' do
+      login(user)
+      do_request(id: course_director.id)
+      expect(response_body).to include('Jola', 'Mis', 'role')
     end
   end
 

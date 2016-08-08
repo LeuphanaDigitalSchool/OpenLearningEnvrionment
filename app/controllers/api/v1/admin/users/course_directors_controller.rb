@@ -6,6 +6,7 @@ module Api
         # Api::V1::Admin::Users::CourseDirectorsController
         class CourseDirectorsController < ApplicationController
           before_action :authenticate_api_v1_user!
+          before_action :set_course_director, only: [:show]
 
           def index
             course_directors = CourseDirector.all
@@ -13,7 +14,7 @@ module Api
           end
 
           def create
-            course_director = CourseDirector.new(scourse_director_params)
+            course_director = CourseDirector.new(course_director_params)
 
             if course_director.save
               render json: course_director, status: :created
@@ -22,12 +23,20 @@ module Api
             end
           end
 
+          def show
+            render json: @course_director, status: :ok
+          end
+
           private
 
-          def scourse_director_params
+          def course_director_params
             params.require(:course_director).permit(:title, :firstname, :lastname, :gender, :country, :birthdate,
                                                     :profession, :educational_attainment, :avatar, :interests,
                                                     :introduction, :email, :password, :password_confirmation)
+          end
+
+          def set_course_director
+            @course_director = CourseDirector.find(params[:id])
           end
         end
       end
