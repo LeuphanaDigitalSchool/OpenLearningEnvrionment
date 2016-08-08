@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
   enum gender_options: [:male, :female]
   enum educational_attainment_options: [:nope, :highschool, :bechelor, :master, :phd, :professor]
+  enum role_options: [:public_user, :student, :support, :teacher, :course_director, :course_manager]
 
   def age
     ((Date.today - birthdate).to_i / 365) if birthdate.present?
