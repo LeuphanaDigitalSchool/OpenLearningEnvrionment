@@ -6,7 +6,7 @@ module Api
         # Api::V1::Admin::Users::SupportsController
         class SupportsController < ApplicationController
           before_action :authenticate_api_v1_user!
-          before_action :set_support, only: [:show]
+          before_action :set_support, only: [:show, :update, :destroy]
 
           def index
             supports = Support.all
@@ -25,6 +25,22 @@ module Api
 
           def show
             render json: @support, status: :ok
+          end
+
+          def update
+            if @support.update(support_params)
+              render json: @support, status: :ok
+            else
+              render json: @support.errors, status: :unprocessable_entity
+            end
+          end
+
+          def destroy
+            if @support.update(deleted: true)
+              render json: nil, status: :no_content
+            else
+              render json: @support.errors, status: :unprocessable_entity
+            end
           end
 
           private

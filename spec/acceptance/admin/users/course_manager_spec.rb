@@ -83,6 +83,65 @@ resource 'Api::V1::Admin::Users::CourseManager' do
     end
   end
 
+  put '/api/v1/admin/users/course_managers/:id' do
+    parameter :id, 'Course manager id', required: true
+    parameter :title, 'Title', required: false
+    parameter :firstname, 'Firstname', required: true
+    parameter :lastname, 'Lastname', required: true
+    parameter :gender, 'Gender', required: false
+    parameter :country, 'country', required: false
+    parameter :birthdate, 'Date of birth', required: false
+    parameter :educational_attainment, 'Educational attainment', required: false
+    parameter :profession, 'Profession', required: false
+    parameter :avatar, 'Avatar', required: false
+    parameter :interests, 'Interests', required: false
+    parameter :introduction, 'Introduction', required: false
+    parameter :email, 'E-mail', required: true
+    parameter :password, 'Password', required: true
+    parameter :password_confirmation, 'Password confirmation', required: true
+
+    let(:raw_post) { params.to_json }
+    let(:course_manager_params) do
+      { 'id': course_manager.id, 'course_manager': { 'firstname': 'Dexter', 'lastname': 'Morgan', 'title': 'Killer',
+                                                     'interests': 'Cut cut cut!' } }
+    end
+
+    example '#update (request not authorized)', document: false do
+      do_request(course_manager_params)
+      expect(response_body).to include('errors')
+      expect(response_status).to be 401
+    end
+
+    example '#update (request authorized)' do
+      login(user)
+      do_request(course_manager_params)
+      expect(response_body).to include('Dexter', 'Morgan')
+      expect(response_status).to be 200
+    end
+  end
+
+  delete '/api/v1/admin/users/course_managers/:id' do
+    parameter :id, 'Course manager id', required: true
+    parameter :deleted, 'Delete/deactivate course manager', required: false
+
+    let(:raw_post) { params.to_json }
+    let(:course_manager_params) do
+      { 'id': course_manager.id, 'course_manager': { 'deleted': 'true' } }
+    end
+
+    example '#delete (request not authorized)', document: false do
+      do_request(course_manager_params)
+      expect(response_body).to include('errors')
+      expect(response_status).to be 401
+    end
+
+    example '#delete (request authorized)' do
+      login(user)
+      do_request(course_manager_params)
+      expect(response_status).to be 204
+    end
+  end
+
   private
 
   def course_manager_empty_params

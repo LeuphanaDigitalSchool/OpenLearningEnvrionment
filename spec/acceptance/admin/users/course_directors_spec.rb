@@ -11,11 +11,9 @@ resource 'Api::V1::Admin::Users::CourseDirectors' do
 
   get '/api/v1/admin/users/course_directors' do
     example '#index (request not authorized)', document: false do
-      no_doc do
-        do_request
-        expect(response_body).to include('errors')
-        expect(response_status).to be 401
-      end
+      do_request
+      expect(response_body).to include('errors')
+      expect(response_status).to be 401
     end
 
     example '#index (request authorized)' do
@@ -46,10 +44,8 @@ resource 'Api::V1::Admin::Users::CourseDirectors' do
     let(:raw_post) { params.to_json }
 
     example '#create (empty parameters)', document: false do
-      no_doc do
-        do_request(course_director_empty_params)
-        expect(response_status).to be 422
-      end
+      do_request(course_director_empty_params)
+      expect(response_status).to be 422
     end
 
     example '#create (course director created)' do
@@ -69,17 +65,75 @@ resource 'Api::V1::Admin::Users::CourseDirectors' do
     parameter :id, 'Course director id', required: true
 
     example '#show (request not authorized)', document: false do
-      no_doc do
-        do_request(id: course_director.id)
-        expect(response_body).to include('errors')
-        expect(response_status).to be 401
-      end
+      do_request(id: course_director.id)
+      expect(response_body).to include('errors')
+      expect(response_status).to be 401
     end
 
     example '#show (request authorized)' do
       login(user)
       do_request(id: course_director.id)
       expect(response_body).to include('Jola', 'Mis', 'role')
+      expect(response_status).to be 200
+    end
+  end
+
+  put '/api/v1/admin/users/course_directors/:id' do
+    parameter :id, 'Course director id', required: true
+    parameter :title, 'Title', required: false
+    parameter :firstname, 'Firstname', required: true
+    parameter :lastname, 'Lastname', required: true
+    parameter :gender, 'Gender', required: false
+    parameter :country, 'country', required: false
+    parameter :birthdate, 'Date of birth', required: false
+    parameter :educational_attainment, 'Educational attainment', required: false
+    parameter :profession, 'Profession', required: false
+    parameter :avatar, 'Avatar', required: false
+    parameter :interests, 'Interests', required: false
+    parameter :introduction, 'Introduction', required: false
+    parameter :email, 'E-mail', required: false
+    parameter :password, 'Password', required: true
+    parameter :password_confirmation, 'Password confirmation', required: true
+
+    let(:raw_post) { params.to_json }
+    let(:course_director_params) do
+      { 'id': course_director.id, 'course_director': { 'firstname': 'Johnny', 'lastname': 'Bravo', 'title': 'Nobody',
+                                                       'interests': 'Interests :)' } }
+    end
+
+    example '#update (request not authorized)', document: false do
+      do_request(course_director_params)
+      expect(response_body).to include('errors')
+      expect(response_status).to be 401
+    end
+
+    example '#update (request authorized)' do
+      login(user)
+      do_request(course_director_params)
+      expect(response_body).to include('Johnny', 'Bravo')
+      expect(response_status).to be 200
+    end
+  end
+
+  delete '/api/v1/admin/users/course_directors/:id' do
+    parameter :id, 'Course director id', required: true
+    parameter :deleted, 'Delete/deactivate course director', required: false
+
+    let(:raw_post) { params.to_json }
+    let(:course_director_params) do
+      { 'id': course_director.id, 'course_director': { 'deleted': 'true' } }
+    end
+
+    example '#delete (request not authorized)', document: false do
+      do_request(course_director_params)
+      expect(response_body).to include('errors')
+      expect(response_status).to be 401
+    end
+
+    example '#delete (request authorized)' do
+      login(user)
+      do_request(course_director_params)
+      expect(response_status).to be 204
     end
   end
 

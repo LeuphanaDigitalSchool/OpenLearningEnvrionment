@@ -6,7 +6,7 @@ module Api
         # Api::V1::Admin::Users::StudentsController
         class StudentsController < ApplicationController
           before_action :authenticate_api_v1_user!
-          before_action :set_student, only: [:show]
+          before_action :set_student, only: [:show, :update, :destroy]
 
           def index
             students = Student.all
@@ -25,6 +25,22 @@ module Api
 
           def show
             render json: @student, status: :ok
+          end
+
+          def update
+            if @student.update(student_params)
+              render json: @student, status: :ok
+            else
+              render json: @student.errors, status: :unprocessable_entity
+            end
+          end
+
+          def destroy
+            if @student.update(deleted: true)
+              render json: nil, status: :no_content
+            else
+              render json: @student.errors, status: :unprocessable_entity
+            end
           end
 
           private

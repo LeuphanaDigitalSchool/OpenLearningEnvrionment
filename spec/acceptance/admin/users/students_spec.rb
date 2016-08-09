@@ -86,6 +86,67 @@ resource 'Api::V1::Admin::Users::Students' do
     end
   end
 
+  put '/api/v1/admin/users/students/:id' do
+    parameter :id, 'Student id', required: true
+    parameter :title, 'Title', required: false
+    parameter :firstname, 'Firstname', required: true
+    parameter :lastname, 'Lastname', required: true
+    parameter :gender, 'Gender', required: true
+    parameter :country, 'country', required: true
+    parameter :birthdate, 'Date of birth', required: true
+    parameter :educational_attainment, 'Educational attainment', required: false
+    parameter :profession, 'Profession', required: false
+    parameter :avatar, 'Avatar', required: false
+    parameter :interests, 'Interests', required: false
+    parameter :introduction, 'Introduction', required: false
+    parameter :email, 'E-mail', required: false
+    parameter :password, 'Password', required: true
+    parameter :password_confirmation, 'Password confirmation', required: true
+    parameter :data_privacy, 'Data privacy', required: true
+    parameter :terms_and_conditions, 'Terms and conditions', required: true
+    parameter :honor_code, 'Honor code', required: true
+
+    let(:raw_post) { params.to_json }
+    let(:student_params) do
+      { 'id': student.id, 'student': { 'firstname': 'Walter', 'lastname': 'White', 'interests': 'Chemistry' } }
+    end
+
+    example '#update (request not authorized)', document: false do
+      do_request(student_params)
+      expect(response_body).to include('errors')
+      expect(response_status).to be 401
+    end
+
+    example '#update (request authorized)' do
+      login(user)
+      do_request(student_params)
+      expect(response_body).to include('White', 'Walter')
+      expect(response_status).to be 200
+    end
+  end
+
+  delete '/api/v1/admin/users/students/:id' do
+    parameter :id, 'Student id', required: true
+    parameter :deleted, 'Delete/deactivate student', required: false
+
+    let(:raw_post) { params.to_json }
+    let(:student_params) do
+      { 'id': student.id, 'student': { 'deleted': 'true' } }
+    end
+
+    example '#delete (request not authorized)', document: false do
+      do_request(student_params)
+      expect(response_body).to include('errors')
+      expect(response_status).to be 401
+    end
+
+    example '#delete (request authorized)' do
+      login(user)
+      do_request(student_params)
+      expect(response_status).to be 204
+    end
+  end
+
   private
 
   def student_empty_params
