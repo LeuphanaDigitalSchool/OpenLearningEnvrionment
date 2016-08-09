@@ -6,7 +6,7 @@ module Api
         # Api::V1::Admin::Users::CourseManagersController
         class CourseManagersController < ApplicationController
           before_action :authenticate_api_v1_user!
-          before_action :set_course_manager, only: [:show]
+          before_action :set_course_manager, only: [:show, :update, :destroy]
 
           def index
             course_managers = CourseManager.all
@@ -25,6 +25,22 @@ module Api
 
           def show
             render json: @course_manager, status: :ok
+          end
+
+          def update
+            if @course_manager.update(course_manager_params)
+              render json: @course_manager, status: :ok
+            else
+              render json: @course_manager.errors, status: :unprocessable_entity
+            end
+          end
+
+          def destroy
+            if @course_manager.update(deleted: true)
+              render json: nil, status: :no_content
+            else
+              render json: @course_manager.errors, status: :unprocessable_entity
+            end
           end
 
           private
