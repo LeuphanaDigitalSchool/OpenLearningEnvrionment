@@ -15,7 +15,6 @@ FactoryGirl.define do
     password_confirmation   'FakePassword123'
     avatar                  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
     language                'en'
-    honor_code              'true'
     terms_and_conditions    'true'
     data_privacy            'true'
   end

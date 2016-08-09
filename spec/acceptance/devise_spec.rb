@@ -13,7 +13,6 @@ resource 'Api::V1::Auth' do
     parameter :title, 'Title', required: false
     parameter :firstname, 'Firstname', required: false
     parameter :lastname, 'Lastname', required: false
-    parameter :honor_code, 'Honor code', required: true
     parameter :terms_and_conditions, 'Terms and conditions', required: true
     parameter :data_privacy, 'Data privacy', required: true
 
@@ -25,14 +24,14 @@ resource 'Api::V1::Auth' do
 
     example '#signup public user without checked terms', document: false do
       params = {  "email": 'jola@mis.com', "password": 'user1234', "title": 'Public user', "firstname": 'Public',
-                  "lastname": 'user', "honor_code": true, "terms_and_conditions": false, "data_privacy": true }
+                  "lastname": 'user', "terms_and_conditions": false, "data_privacy": true }
       do_request(params)
       expect(response_status).to be 422
     end
 
     example '#signup public user with checked terms' do
       params = {  "email": 'jola@mis.com', "password": 'user1234', "title": 'Public user', "firstname": 'Public',
-                  "lastname": 'user', "honor_code": true, "terms_and_conditions": true, "data_privacy": true }
+                  "lastname": 'user', "terms_and_conditions": true, "data_privacy": true }
       do_request(params)
       expect(response_status).to be 200
     end

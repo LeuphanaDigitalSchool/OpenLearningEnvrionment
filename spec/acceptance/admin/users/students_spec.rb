@@ -43,7 +43,6 @@ resource 'Api::V1::Admin::Users::Students' do
     parameter :password_confirmation, 'Password confirmation', required: true
     parameter :data_privacy, 'Data privacy', required: true
     parameter :terms_and_conditions, 'Terms and conditions', required: true
-    parameter :honor_code, 'Honor code', required: true
 
     before { login(user) }
     let(:raw_post) { params.to_json }
@@ -61,7 +60,7 @@ resource 'Api::V1::Admin::Users::Students' do
                               "interests": '', "introduction": '', "email": 'example_student@example.com',
                               "password": 'student1234', "password_confirmation": 'student1234', "profession": '',
                               "avatar": 'data:image/gif;base64,R0lGODlhAQABAIABAAP///yH5BAEAAAAAAEAAAIBRAA7',
-                              "data_privacy": 'true', "terms_and_conditions": 'true', "honor_code": 'true' } }
+                              "data_privacy": 'true', "terms_and_conditions": 'true' } }
       do_request(params)
       expect(JSON.parse(response_body).to_s).to include('Student', 'Angelika', 'Blokers', 'size_128x128_')
       expect(response_status).to be 201
@@ -104,7 +103,6 @@ resource 'Api::V1::Admin::Users::Students' do
     parameter :password_confirmation, 'Password confirmation', required: true
     parameter :data_privacy, 'Data privacy', required: true
     parameter :terms_and_conditions, 'Terms and conditions', required: true
-    parameter :honor_code, 'Honor code', required: true
 
     let(:raw_post) { params.to_json }
     let(:student_params) do
