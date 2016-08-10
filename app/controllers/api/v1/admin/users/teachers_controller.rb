@@ -17,6 +17,7 @@ module Api
             teacher = Teacher.new(teacher_params)
 
             if teacher.save
+              teacher.invite!(current_api_v1_user)
               render json: teacher, status: :created
             else
               render json: teacher.errors, status: :unprocessable_entity
