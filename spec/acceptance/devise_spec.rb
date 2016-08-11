@@ -137,4 +137,12 @@ resource 'Api::V1::Auth' do
       expect(response_status).to be 200
     end
   end
+
+  get '/api/v1/auth/invitation/accept?invitation_token=:token?lang=:lang' do
+    let(:token) { user.raw_invitation_token }
+    example '#accept invitation' do
+      login(user)
+      do_request
+    end
+  end
 end
