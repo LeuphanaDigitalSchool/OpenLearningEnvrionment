@@ -13,6 +13,8 @@ Rails.application.routes.draw do
           get 'profile_selects' => 'users#profile_selects'
         end
       end
+
+      resources :courses
     end
   end
 end
