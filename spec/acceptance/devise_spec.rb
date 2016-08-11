@@ -101,17 +101,40 @@ resource 'Api::V1::Auth' do
     end
   end
 
-  post 'api/v1/auth/password' do
+  post '/api/v1/auth/password' do
     parameter :email, 'Email related to account', required: true
     parameter :redirect_url, 'Url with reset form', required: true
 
     let(:raw_post) { params.to_json }
     example '#create new password' do
       explanation 'send email with token'
-      user.save
       do_request('email': user.email,
                  'redirect_url': 'localhost:8080')
       expect(ActionMailer::Base.deliveries.last.body).to match 'reset_password_token'
+    end
+  end
+
+  get '/api/v1/auth/password/edit?reset_password_token=:token&redirect_url=/:redirect_url' do
+    let(:token) { create_reset_password_token(user) }
+    let(:redirect_url) { 'localhost:8080' }
+    example '#reset_password (get tokens)' do
+      do_request
+      expect(response_body).to match('client_id')
+      expect(response_body).to match('reset_password')
+      expect(response_body).to match('token')
+    end
+  end
+
+  put '/api/v1/auth/password' do
+    parameter :password
+    parameter :password_confirmation
+
+    let(:raw_post) { params.to_json }
+    example '#reset_password (set new password)' do
+      login(user)
+      do_request(password: 'admin1234', password_confirmation: 'admin1234')
+      expect(response_body).to include('Your password has been successfully updated.')
+      expect(response_status).to be 200
     end
   end
 end

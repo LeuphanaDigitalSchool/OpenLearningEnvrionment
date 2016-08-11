@@ -11,3 +11,7 @@ def login(user)
     header header_key, header_value
   end
 end
+
+def create_reset_password_token(user)
+  user.send_reset_password_instructions
+end
