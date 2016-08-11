@@ -17,6 +17,7 @@ module Api
             course_director = CourseDirector.new(course_director_params)
 
             if course_director.save
+              course_director.invite!(current_api_v1_user)
               render json: course_director, status: :created
             else
               render json: course_director.errors, status: :unprocessable_entity

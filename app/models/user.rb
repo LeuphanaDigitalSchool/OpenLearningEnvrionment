@@ -2,9 +2,8 @@
 # User
 class User < ActiveRecord::Base
   # Include default devise modules.
-  devise :database_authenticatable, :registerable, :recoverable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :trackable, :validatable, :invitable
   include DeviseTokenAuth::Concerns::User
-
   mount_base64_uploader :avatar, UserAvatarUploader
 
   validates :email, presence: true

@@ -17,6 +17,7 @@ module Api
             student = Student.new(student_params)
 
             if student.save
+              student.invite!(current_api_v1_user)
               render json: student, status: :created
             else
               render json: student.errors, status: :unprocessable_entity
