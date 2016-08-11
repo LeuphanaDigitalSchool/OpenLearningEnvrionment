@@ -7,6 +7,13 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'User', at: 'auth'
       get 'locales' => 'locales#index'
 
+      resources :conversations, only: [:index, :show] do
+        collection do
+          post :sent
+          post ':id/reply' => 'conversations#reply'
+        end
+      end
+
       namespace :admin do
         namespace :users do
           resources :public_users, :students, :supports, :teachers, :course_directors, :course_managers

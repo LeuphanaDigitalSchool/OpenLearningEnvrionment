@@ -12,6 +12,7 @@ gem 'apitome' # Api docs reader
 gem 'carrierwave'
 gem 'carrierwave-base64'
 gem 'mini_magick'
+gem 'mailboxer'
 
 group :development, :test do
   gem 'pry'
