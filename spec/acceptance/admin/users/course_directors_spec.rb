@@ -19,7 +19,7 @@ resource 'Api::V1::Admin::Users::CourseDirectors' do
     example '#index (request authorized)' do
       login(user)
       do_request
-      expect(response_body).to include('role')
+      expect(response_body).to include('role_id')
       expect(response_status).to be 200
     end
   end
@@ -73,7 +73,7 @@ resource 'Api::V1::Admin::Users::CourseDirectors' do
     example '#show (request authorized)' do
       login(user)
       do_request(id: course_director.id)
-      expect(response_body).to include('Jola', 'Mis', 'role')
+      expect(response_body).to include('Jola', 'Mis', 'role_id')
       expect(response_status).to be 200
     end
   end

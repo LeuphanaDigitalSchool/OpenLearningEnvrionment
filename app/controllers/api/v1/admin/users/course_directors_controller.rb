@@ -6,6 +6,8 @@ module Api
         # Api::V1::Admin::Users::CourseDirectorsController
         class CourseDirectorsController < ApplicationController
           before_action :authenticate_api_v1_user!
+          load_and_authorize_resource
+          before_action :load_permissions
           before_action :set_course_director, only: [:show, :update, :destroy]
 
           def index
