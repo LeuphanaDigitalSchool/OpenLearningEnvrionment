@@ -12,6 +12,7 @@ AllCops:
   Excludes:
     - 'client/**/*'
     - 'db/migrate/*.rb'
+    - 'db/schema.rb'
 
 Style/BracesAroundHashParameters:
   EnforcedStyle: context_dependent

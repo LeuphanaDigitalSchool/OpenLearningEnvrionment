@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   # Include default devise modules.
   devise :database_authenticatable, :registerable, :recoverable, :trackable, :validatable, :invitable
   include DeviseTokenAuth::Concerns::User
+  acts_as_messageable
+
   mount_base64_uploader :avatar, UserAvatarUploader
 
   validates :email, presence: true
@@ -15,6 +17,14 @@ class User < ActiveRecord::Base
 
   def age
     ((Date.today - birthdate).to_i / 365) if birthdate.present?
+  end
+
+  def mailboxer_email(_messageable)
+    email
+  end
+
+  def display_name
+    "#{firstname} #{lastname}" || email
   end
 end
 
