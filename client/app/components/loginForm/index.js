@@ -1,5 +1,5 @@
 import angular from 'angular';
-import ngtokenauth from '../../lib/ng-token-auth.min.js';
+import ngtokenauth from 'ng-token-auth';
 import uirouter from 'angular-ui-router';
 
 import loginForm from './loginForm.component.js';
