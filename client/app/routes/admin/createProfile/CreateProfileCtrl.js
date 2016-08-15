@@ -1,5 +1,5 @@
 export default class CreateProfileCtrl {
-  constructor() {
+  constructor(countryList) {
     "ngInject";
     this.user = null;
     this.genders = [
@@ -7,5 +7,7 @@ export default class CreateProfileCtrl {
       'female',
       'I d rather not say'
     ];
+    this.countries = countryList;
+    console.log(this.countries);
   }
 }
