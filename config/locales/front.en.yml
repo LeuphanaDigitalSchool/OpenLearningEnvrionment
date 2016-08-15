@@ -11,3 +11,7 @@ en:
   dataPrivacy: "Data Privacy"
   logout: "logout"
   adminPanel: "admin panel"
+  createProfile: "create profile"
+  profiles: "profiles"
+  gender: "gender"
+  country: "country"
