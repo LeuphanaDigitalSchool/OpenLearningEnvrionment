@@ -26,5 +26,9 @@ export default function routing($stateProvider) {
               });
           }
       }
+    })
+    .state('home.admin', {
+      url: 'admin',
+      template: require('./routes/admin/admin.html'),
     });
 }
