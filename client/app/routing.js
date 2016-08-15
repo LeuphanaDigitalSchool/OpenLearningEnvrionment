@@ -21,6 +21,8 @@ export default function routing($stateProvider) {
       controllerAs: 'HomeCtrl',
       resolve: {
           auth: function ($auth, $location) {
+             console.log(' $auth.validateUser()',  $auth.validateUser());
+             $auth.validateUser();
               return $auth.validateUser().catch(function(err){
                   $location.path('/login');
               });

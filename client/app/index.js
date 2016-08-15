@@ -3,7 +3,7 @@ import uirouter from 'angular-ui-router';
 
 import 'angular-cookie';
 import ngMessages from 'angular-messages';
-import ngtokenauth from './lib/ng-token-auth.min.js';
+import ngtokenauth from 'ng-token-auth';
 
 import routing from './routing';
 import config from './config';
