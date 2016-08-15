@@ -9,3 +9,5 @@ en:
   honorCode: "Honor Code"
   termsAndConditions: "Terms And Conditions"
   dataPrivacy: "Data Privacy"
+  logout: "logout"
+  adminPanel: "admin panel"
