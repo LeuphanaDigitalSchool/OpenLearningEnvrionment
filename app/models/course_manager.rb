@@ -3,5 +3,5 @@
 class CourseManager < User
   validates :firstname, :lastname, presence: true
 
-  default_scope { where(role: 5, deleted: false) }
+  default_scope { where(role_id: 6, deleted: false) }
 end

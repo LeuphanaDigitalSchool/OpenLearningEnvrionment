@@ -2,5 +2,5 @@
 # PublicUserSerializer
 class PublicUserSerializer < ActiveModel::Serializer
   attributes :id, :firstname, :lastname, :email, :gender, :country, :birthdate, :age, :educational_attainment,
-             :avatar, :role
+             :avatar, :role, :role_id
 end

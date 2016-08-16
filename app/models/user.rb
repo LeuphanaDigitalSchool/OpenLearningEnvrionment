@@ -6,12 +6,14 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   acts_as_messageable
 
+  belongs_to :role
+
   mount_base64_uploader :avatar, UserAvatarUploader
 
   has_many :storages
 
   validates :email, presence: true
-  validates :data_privacy, :terms_and_conditions, acceptance: true, if: proc { |u| u.role.zero? }
+  validates :data_privacy, :terms_and_conditions, acceptance: true, if: proc { |u| u.role_id.zero? }
 
   enum gender_options: [:male, :female]
   enum educational_attainment_options: [:nope, :highschool, :bechelor, :master, :phd, :professor]
@@ -30,9 +32,9 @@ class User < ActiveRecord::Base
   end
 end
 
-# 0 public user
-# 1 student
-# 2 support
-# 3 teacher
-# 4 course director
-# 5 course manager
+# 1 public user
+# 2 student
+# 3 support
+# 4 teacher
+# 5 course director
+# 6 course manager
