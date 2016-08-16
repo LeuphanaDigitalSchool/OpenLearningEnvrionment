@@ -2,36 +2,58 @@
   <md-content class="md-padding">
     <form name="userRegister">
       <div layout="row">
-        <div layout="column" flex="20" ng-show="create.role">
-          Avatar
+        <div layout="column" flex="20" ng-show="create.user.role">
+          <div layout="column"
+               class="addimage layout-margin"
+               flex
+               layout-align="center center"
+               ngf-background="create.avatar || ' '"
+               ngf-size="{width: 200, height: 200, quality: 0.9}">
+
+               <div class="addImage">
+                 <md-button ngf-select="create.uploadImage($file, $invalidFiles, $event)"
+                            accept="image/*"
+                            ngf-max-height="1000"
+                            ng-model="create.user.avatar"
+                            name="avatar"
+                            md-no-ink class="md-primary"
+                            ng-hide="create.avatar">
+                     Dodaj zdjęcie
+                </md-button>
+                 <md-button aria-label="remove pdf"  ng-show="create.user.avatar" class="md-primary" ng-click="create.removeImage()">
+                     Usuń zdjęcie
+                 </md-button>
+               </div>
+               <md-progress-circular ng-show="create.user.uploadingImage" md-mode="indeterminate"></md-progress-circular>
+          </div>
         </div>
-        <div layout="column">
+        <div layout="column" flex>
           <div layout="row">
             <md-input-container flex>
               <label>{{'selectRole' | translate}}</label>
-              <md-select ng-model="create.role">
+              <md-select ng-model="create.user.role">
                 <md-option ng-repeat="role in create.roles" value="{{role}}">
                   {{role}}
                 </md-option>
               </md-select>
             </md-input-container flex>
-            <md-input-container flex ng-show="create.role">
+            <md-input-container flex ng-show="create.user.role">
               <label>{{'title' | translate}}</label>
               <input ng-model="create.user.title" type="text">
             </md-input-container>
-            <md-input-container flex ng-show="create.role">
+            <md-input-container flex ng-show="create.user.role">
               <label>{{'firstname' | translate}}</label>
               <input ng-model="create.user.firstname" type="text">
             </md-input-container >
-            <md-input-container flex ng-show="create.role">
+            <md-input-container flex ng-show="create.user.role">
               <label>{{'lastname' | translate}}</label>
               <input ng-model="create.user.lastname" type="text">
             </md-input-container>
           </div>
-          <div layout="row" ng-show="create.role">
+          <div layout="row" ng-show="create.user.role">
             <md-input-container flex>
               <label>{{'gender' | translate}}</label>
-              <md-select ng-model="create.gender">
+              <md-select ng-model="create.user.gender">
                 <md-option ng-repeat="gender in create.genders" value="{{gender}}">
                   {{gender}}
                 </md-option>
@@ -39,7 +61,7 @@
             </md-input-container>
             <md-input-container flex>
               <label>{{'country' | translate}}</label>
-              <md-select ng-model="create.country">
+              <md-select ng-model="create.user.country">
                 <md-option ng-repeat="country in create.countries" value="{{country.code}}">
                   {{country.name}}
                 </md-option>
@@ -52,10 +74,10 @@
           </div>
         </div>
       </div>
-      <div layout="row" ng-show="create.role">
+      <div layout="row" ng-show="create.user.role">
         <md-input-container flex>
           <label>{{'educationalAttainment' | translate}}</label>
-          <md-select ng-model="create.educational_attainment">
+          <md-select ng-model="create.user.educational_attainment">
             <md-option ng-repeat="attainment in create.educational_attainments" value="{{attainment}}">
               {{attainment}}
             </md-option>
@@ -70,7 +92,7 @@
           <input ng-model="create.user.interests" type="text">
         </md-input-container>
       </div>
-      <div layout="row" ng-show="create.role">
+      <div layout="row" ng-show="create.user.role">
         <md-input-container flex>
           <label>{{'introduction' | translate}}</label>
           <input ng-model="create.user.introduction" type="text">
@@ -80,10 +102,30 @@
           <input ng-model="create.user.password" type="password">
         </md-input-container>
       </div>
-      <div layout="row"  layout-align="end center" flex ng-show="create.role">
+      <div class="">
+        {{create.user | json}}
+      </div>
+      <div layout="row" flex layout-align="space-around center">
+        <md-input-container>
+          <md-checkbox ng-model="create.user.honor_code" aria-label="Checkbox 1" required>
+            {{'honorCode' | translate}}
+          </md-checkbox>
+        </md-input-container>
+        <md-input-container>
+          <md-checkbox ng-model="create.user.terms_and_conditions" aria-label="Checkbox 2" required>
+            {{'termsAndConditions' | translate}}
+          </md-checkbox>
+        </md-input-container>
+        <md-input-container>
+          <md-checkbox ng-model="create.user.data_privacy" aria-label="Checkbox 3" required>
+            {{'dataPrivacy' | translate}}
+          </md-checkbox>
+        </md-input-container>
+      </div>
+      <div layout="row"  layout-align="end center" flex ng-show="create.user.role">
         <md-button type="submit" class="md-raised md-primary" ng-click="create.submit(userRegister, user)">
-           <md-progress-circular class="md-warn" md-mode="indeterminate" ng-hide="create.send"></md-progress-circular>
-           <div ng-show="create.send">{{ 'create' | translate }}</div>
+           <md-progress-circular class="md-warn" md-mode="indeterminate" ng-show="create.user.waiting"></md-progress-circular>
+           <div ng-hide="create.user.waiting">{{ 'create' | translate }}</div>
         </md-button>
       </div>
     </form>

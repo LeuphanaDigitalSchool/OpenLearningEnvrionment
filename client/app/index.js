@@ -1,5 +1,6 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
+import ngFileUpload from 'ng-file-upload';
 
 import 'angular-cookie';
 import ngMessages from 'angular-messages';
@@ -40,6 +41,7 @@ const ngModule = angular
         ipCookie,
         toastr,
         restangular,
+        ngFileUpload,
 
         // Configs
         config,
