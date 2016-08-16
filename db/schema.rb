@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811064438) do
+ActiveRecord::Schema.define(version: 20160812121646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,30 @@ ActiveRecord::Schema.define(version: 20160811064438) do
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
   end
 
+  create_table "permissions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "action"
+    t.string   "subject_class"
+    t.string   "subject_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "permissions_roles", force: :cascade do |t|
+    t.integer  "permission_id"
+    t.integer  "role_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["permission_id"], name: "index_permissions_roles_on_permission_id", using: :btree
+    t.index ["role_id"], name: "index_permissions_roles_on_role_id", using: :btree
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
     t.string   "uid",                    default: "",      null: false
@@ -113,7 +137,7 @@ ActiveRecord::Schema.define(version: 20160811064438) do
     t.boolean  "data_privacy",           default: false
     t.boolean  "terms_and_conditions",   default: false
     t.boolean  "honor_code",             default: false
-    t.integer  "role",                   default: 0
+    t.integer  "role_id",                default: 0
     t.date     "birthdate"
     t.boolean  "deleted",                default: false
     t.string   "invitation_token"
@@ -132,4 +156,6 @@ ActiveRecord::Schema.define(version: 20160811064438) do
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
+  add_foreign_key "permissions_roles", "permissions"
+  add_foreign_key "permissions_roles", "roles"
 end
