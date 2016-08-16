@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811064438) do
+ActiveRecord::Schema.define(version: 20160816082921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "course_materials", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "file",       default: "", null: false
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["user_id"], name: "index_course_materials_on_user_id", using: :btree
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string   "title",       default: "",    null: false
@@ -78,6 +87,21 @@ ActiveRecord::Schema.define(version: 20160811064438) do
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
   end
 
+  create_table "storages", force: :cascade do |t|
+    t.string   "type",        default: "",    null: false
+    t.string   "name"
+    t.string   "file"
+    t.text     "description"
+    t.text     "url"
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.boolean  "deleted",     default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["course_id"], name: "index_storages_on_course_id", using: :btree
+    t.index ["user_id"], name: "index_storages_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
     t.string   "uid",                    default: "",      null: false
@@ -129,7 +153,21 @@ ActiveRecord::Schema.define(version: 20160811064438) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  create_table "workspace_materials", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "file",       default: "",   null: false
+    t.string   "name",       default: "",   null: false
+    t.boolean  "public",     default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["user_id"], name: "index_workspace_materials_on_user_id", using: :btree
+  end
+
+  add_foreign_key "course_materials", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
+  add_foreign_key "storages", "courses"
+  add_foreign_key "storages", "users"
+  add_foreign_key "workspace_materials", "users"
 end

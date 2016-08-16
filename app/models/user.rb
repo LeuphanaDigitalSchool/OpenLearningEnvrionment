@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   mount_base64_uploader :avatar, UserAvatarUploader
 
+  has_many :storages
+
   validates :email, presence: true
   validates :data_privacy, :terms_and_conditions, acceptance: true, if: proc { |u| u.role.zero? }
 
