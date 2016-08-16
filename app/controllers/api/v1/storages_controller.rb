@@ -7,12 +7,15 @@ module Api
       before_action :set_storage, only: [:show, :update, :destroy]
 
       def index
-        storages = Storage.all
+        course = Course.find(params[:course_id])
+        storages = course.storages
         render json: storages, status: :ok
       end
 
       def create
-        storage = Storage.new(storage_params)
+        course = Course.find(params[:course_id])
+        storage = course.storages.build(storage_params)
+        storage.user = current_api_v1_user
 
         if storage.save
           render json: storage, status: :created
@@ -44,7 +47,7 @@ module Api
       private
 
       def storage_params
-        params.require(:storage).permit(:type, :name, :file, :description, :url, :course_id, :user_id, :deleted)
+        params.require(:storage).permit(:source, :name, :file, :description, :url, :user_id, :deleted)
       end
 
       def set_storage
