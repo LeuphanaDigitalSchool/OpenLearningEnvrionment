@@ -2,24 +2,33 @@
 
 puts 'Start seed data'
 puts 'Create permissions'
-Permission.create!(name: 'Manage all (Danger!)', subject_class: 'all', action: 'manage')
-Permission.create!(name: 'Course (for teacher)', subject_class: 'Course', action: 'manage')
-Permission.create!(name: 'Course (for others)',  subject_class: 'Course', action: 'read')
+Permission.create!(name: 'Manage all (Danger!)', subject_class: 'all',      action: 'manage')
+Permission.create!(name: 'Course (for teacher)', subject_class: 'Course',   action: 'manage')
+Permission.create!(name: 'Course (for others)',  subject_class: 'Course',   action: 'read')
+Permission.create!(name: 'Storage',              subject_class: 'Storage',  action: 'manage')
 
 puts 'Create roles'
-public_user = Role.create!(name: 'Public user')
-student = Role.create!(name: 'Student')
-support = Role.create!(name: 'Support')
-teacher = Role.create!(name: 'Teacher')
-course_director = Role.create!(name: 'Course director')
-course_manager = Role.create!(name: 'Course manager')
+Role.create!(name: 'Public user')
+Role.create!(name: 'Student')
+Role.create!(name: 'Support')
+Role.create!(name: 'Teacher')
+Role.create!(name: 'Course director')
+Role.create!(name: 'Course manager')
+public_user     = Role.find_by(name: 'Public user')
+student         = Role.find_by(name: 'Student')
+support         = Role.find_by(name: 'Support')
+teacher         = Role.find_by(name: 'Teacher')
+course_director = Role.find_by(name: 'Course director')
+course_manager  = Role.find_by(name: 'Course manager')
 
 puts 'Assign permissions to roles'
 course_manager.permissions  << Permission.find_by(name: 'Manage all (Danger!)')
 course_director.permissions << Permission.find_by(name: 'Course (for teacher)')
 teacher.permissions         << Permission.find_by(name: 'Course (for teacher)')
+teacher.permissions         << Permission.find_by(name: 'Storage')
 support.permissions         << Permission.find_by(name: 'Course (for others)')
 student.permissions         << Permission.find_by(name: 'Course (for others)')
+student.permissions         << Permission.find_by(name: 'Storage')
 public_user.permissions     << Permission.find_by(name: 'Course (for others)')
 
 puts 'Create users'

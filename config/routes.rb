@@ -21,7 +21,9 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :courses
+      resources :courses do
+        resources :storages
+      end
     end
   end
 end
