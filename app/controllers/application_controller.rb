@@ -24,6 +24,6 @@ class ApplicationController < ActionController::API
   end
 
   def load_permissions
-    @current_permissions = current_api_v1_user.role.permissions.collect { |i| [i.subject_class, i.action]}
+    @current_permissions = current_api_v1_user.role.permissions.collect { |i| [i.subject_class, i.action] }
   end
 end

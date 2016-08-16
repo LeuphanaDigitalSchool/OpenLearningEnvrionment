@@ -3,8 +3,8 @@ require 'rails_helper'
 
 resource 'Api::V1::Admin::Users::CourseDirectors' do
   before { FactoryGirl.create(:user, :course_director) }
-  let(:course_director) { FactoryGirl.create(:user, :course_director) }
   let!(:user) { FactoryGirl.create(:user, :course_manager) }
+  let(:course_director) { FactoryGirl.create(:user, :course_director) }
 
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'

@@ -20,26 +20,26 @@ FactoryGirl.define do
   end
 
   trait :public_user do
-    role_id '1'
+    role_id 1
   end
 
   trait :student do
-    role_id '2'
+    role_id 2
   end
 
   trait :support do
-    role_id '3'
+    role_id 3
   end
 
   trait :teacher do
-    role_id '4'
+    role_id 4
   end
 
   trait :course_director do
-    role_id '5'
+    role_id 5
   end
 
   trait :course_manager do
-    role_id '6'
+    role_id 6
   end
 end
