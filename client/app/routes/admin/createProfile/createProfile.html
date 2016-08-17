@@ -102,11 +102,18 @@
         </md-input-container>
         <md-input-container flex>
           <label>{{'password' | translate}}</label>
-          <input ng-model="create.user.password" type="password" required>
+          <input name="password" ng-model="create.user.password" type="password" minlength="8" required>
+          <div ng-messages="userRegister.password.$error">
+            <div ng-message="minlength">At least 8 characters</div>
+          </div>
         </md-input-container>
         <md-input-container flex>
           <label>{{'password' | translate}}</label>
-          <input ng-model="create.user.password_confirmation" type="password" compare-to="create.user.password" required>
+          <input ng-model="create.user.password_confirmation" type="password" compare-to="create.user.password" minlength="8" required>
+          <div ng-messages="userRegister.password_confirmation.$error">
+            <div ng-message="minlength">At least 8 characters</div>
+          </div>
+        </md-input-cont
         </md-input-container>
       </div>
       <div layout="row" flex layout-align="space-around center" ng-show="create.role === 'student'">

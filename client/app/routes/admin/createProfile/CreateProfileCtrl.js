@@ -43,9 +43,7 @@ export default class CreateProfileCtrl {
         this.send = true;
         console.log(response);
         let status = response.statusText;
-        for (var i = 0; i < status.length; i++) {
-          this.toastr.error(status[i], 'Error');
-        }
+        this.toastr.error(status, 'Error');
       });
     }
   }
