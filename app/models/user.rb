@@ -29,6 +29,12 @@ class User < ActiveRecord::Base
   def display_name
     "#{firstname} #{lastname}" || email
   end
+
+  protected
+
+  def password_required?
+    false
+  end
 end
 
 # 1 public user

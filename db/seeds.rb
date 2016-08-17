@@ -48,14 +48,9 @@ PublicUser.create!(firstname: 'Public', lastname: 'User', email: 'public_user@ex
                    data_privacy: true, terms_and_conditions: true)
 
 puts '-> Create course'
-Course.create!(title: 'First course', description: 'Description', start_date: '2016-08-08',
-               end_date: '2017-02-20')
+course = Course.create!(title: 'First course', description: 'Description', start_date: '2016-08-08',
+                        end_date: '2017-02-20')
+course.course_preferences.create(role_id: 2)
+course.course_preferences.create(role_id: 4)
 
 puts 'End ;)'
-
-# CourseSettings.create(
-#   role: '',
-#   subject: '',
-#   action: '',
-#   active: ''
-# )

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# frozen_string_literal: true
 # ConversationSerializer
 class ConversationSerializer < ActiveModel::Serializer
   attributes :id, :subject, :messages

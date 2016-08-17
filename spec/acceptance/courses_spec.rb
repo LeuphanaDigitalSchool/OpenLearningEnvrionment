@@ -36,10 +36,28 @@ resource 'Api::V1::Courses' do
     let(:raw_post) { params.to_json }
 
     example '#create (course created)' do
-      params = { "course": { "title": 'Pierwszy kurs', "description": 'Opis kursu', "start_date": '2016-01-01',
-                             "end_date": '2017-02-03' } }
+      params = { "course": { "title": 'First course', "description": 'Description', "start_date": '2016-01-01',
+                             "end_date": '2017-02-03',
+                             "course_preferences_attributes": [{ "role_id": '2', "upload_pdf": 'true',
+                                                                 "upload_jpg": 'false', "upload_mp3": 'true',
+                                                                 "upload_mp4": 'false', "resources_del": 'false',
+                                                                 "resource_description_add": 'true',
+                                                                 "resource_description_del": 'false',
+                                                                 "schedule_publishing": 'true',
+                                                                 "embed_external_links": 'true' },
+                                                               { "role_id": '4', "upload_pdf": 'true',
+                                                                 "upload_jpg": 'true', "upload_mp3": 'false',
+                                                                 "upload_mp4": 'true', "resources_del": 'false',
+                                                                 "resource_description_add": 'true',
+                                                                 "resource_description_del": 'false',
+                                                                 "schedule_publishing": 'true',
+                                                                 "embed_external_links": false }] } }
       do_request(params)
-      expect(JSON.parse(response_body).to_s).to include('Pierwszy kurs', 'Opis kursu', '2016-01-01', '2017-02-03')
+      expect(response_body).to include('"title":"First course"', '"description":"Description"',
+                                       '"start_date":"2016-01-01"', '"end_date":"2017-02-03"', '"role":"Student"',
+                                       '"role_id":2', '"upload":true', '"upload_pdf":true', '"upload_jpg":false',
+                                       '"upload_mp3":true', '"upload_mp4":false', '"resource_description_add":true',
+                                       '"resource_description_del":false', '"resources_del":false')
       expect(response_status).to be 201
     end
   end
@@ -67,10 +85,12 @@ resource 'Api::V1::Courses' do
     parameter :start_date, '2016-08-07', required: false
     parameter :end_date, '2017-08-08', required: false
 
+    # current_course = course
     let(:raw_post) { params.to_json }
     let(:course_params) do
-      { "id": course.id, "course": { "title": 'Pierwszy kurs', "description": 'Opis kursu', "start_date": '2016-01-01',
-                                     "end_date": '2017-02-03' } }
+      { "id": '1', "course": { "title": 'First course edit',
+                               "course_preferences_attributes": [{ "id": '1', "upload_pdf": 'true' },
+                                                                 { "id": '2', "upload_mp3": 'true' }] } }
     end
 
     example '#update (request not authorized)', document: false do
@@ -82,7 +102,7 @@ resource 'Api::V1::Courses' do
     example '#update (request authorized)' do
       login(user)
       do_request(course_params)
-      expect(response_body).to include('Pierwszy kurs', 'Opis kursu')
+      expect(response_body).to include('First course', 'Description')
       expect(response_status).to be 200
     end
   end

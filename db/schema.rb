@@ -10,18 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816124733) do
+ActiveRecord::Schema.define(version: 20160817092642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "course_materials", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "file",       default: "", null: false
-    t.string   "name",       default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.index ["user_id"], name: "index_course_materials_on_user_id", using: :btree
+  create_table "course_preferences", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "role_id"
+    t.boolean  "upload_pdf",               default: false
+    t.boolean  "upload_jpg",               default: false
+    t.boolean  "upload_mp3",               default: false
+    t.boolean  "upload_mp4",               default: false
+    t.boolean  "resource_description_add", default: false
+    t.boolean  "resource_description_del", default: false
+    t.boolean  "resources_del",            default: false
+    t.boolean  "schedule_publishing",      default: false
+    t.boolean  "embed_external_links",     default: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.index ["course_id"], name: "index_course_preferences_on_course_id", using: :btree
+    t.index ["role_id"], name: "index_course_preferences_on_role_id", using: :btree
   end
 
   create_table "courses", force: :cascade do |t|
@@ -177,17 +186,8 @@ ActiveRecord::Schema.define(version: 20160816124733) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
-  create_table "workspace_materials", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "file",       default: "",   null: false
-    t.string   "name",       default: "",   null: false
-    t.boolean  "public",     default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["user_id"], name: "index_workspace_materials_on_user_id", using: :btree
-  end
-
-  add_foreign_key "course_materials", "users"
+  add_foreign_key "course_preferences", "courses"
+  add_foreign_key "course_preferences", "roles"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
@@ -195,5 +195,4 @@ ActiveRecord::Schema.define(version: 20160816124733) do
   add_foreign_key "permissions_roles", "roles"
   add_foreign_key "storages", "courses"
   add_foreign_key "storages", "users"
-  add_foreign_key "workspace_materials", "users"
 end
