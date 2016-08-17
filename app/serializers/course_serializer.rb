@@ -24,6 +24,7 @@ class CourseSerializer < ActiveModel::Serializer
     end
   end
 
+  # rubocop:disable Metrics/AbcSize
   def preferences
     object.course_preferences.collect do |p|
       {
@@ -43,4 +44,5 @@ class CourseSerializer < ActiveModel::Serializer
       }
     end
   end
+  # rubocop:enable Metrics/AbcSize
 end
