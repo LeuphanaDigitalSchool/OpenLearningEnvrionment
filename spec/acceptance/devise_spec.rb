@@ -138,11 +138,34 @@ resource 'Api::V1::Auth' do
     end
   end
 
-  get '/api/v1/auth/invitation/accept?invitation_token=:token?lang=:lang' do
-    let(:token) { user.raw_invitation_token }
+  put '/api/v1/auth/invitation' do
     example '#accept invitation' do
+      params =
+        {
+          "invitation_token": 'eY3n1YrcJ_yypn2pf9Py',
+          "user":
+          {
+            "password": 'admin1234',
+            "password_confirmation": 'admin1234',
+            "interests": 'abba',
+            "firstname": 'asda',
+            "lastname": 'password',
+            "gender": '1',
+            "title": 'pdh',
+            "country": 'pl',
+            "educational_attainment": '3',
+            "profession": 'vcx',
+            "introduction": 'asd',
+            "avatar": 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+            "data_privacy": 'true',
+            "terms_and_conditions": 'true',
+            "honor_code": 'true',
+            "birthdate": '1995-05-05'
+          }
+        }
+
       login(user)
-      do_request
+      do_request(params)
     end
   end
 end

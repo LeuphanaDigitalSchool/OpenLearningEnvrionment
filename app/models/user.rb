@@ -43,3 +43,4 @@ end
 # 4 teacher
 # 5 course director
 # 6 course manager
+# avatar example # data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7

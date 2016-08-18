@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1, except: [:new, :edit] do
-      mount_devise_token_auth_for 'User', at: 'auth'
+      mount_devise_token_auth_for 'User', at: 'auth', skip: [:invitations]
+      devise_for :users, path: 'auth', only: [:invitations],
+                         controllers: { invitations: 'api/v1/invitations' }
       get 'locales' => 'locales#index'
 
       resources :conversations, only: [:index, :show] do
