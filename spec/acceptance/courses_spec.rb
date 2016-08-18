@@ -36,6 +36,7 @@ resource 'Api::V1::Courses' do
     let(:raw_post) { params.to_json }
 
     example '#create (course created)' do
+      explanation 'Always add "course_preferences_attributes" with "role_id" 2(student role) and 4(teacher role)'
       params = { "course": { "title": 'First course', "description": 'Description', "start_date": '2016-01-01',
                              "end_date": '2017-02-03',
                              "course_preferences_attributes": [{ "role_id": '2', "upload_pdf": 'true',
@@ -85,7 +86,6 @@ resource 'Api::V1::Courses' do
     parameter :start_date, '2016-08-07', required: false
     parameter :end_date, '2017-08-08', required: false
 
-    # current_course = course
     let(:raw_post) { params.to_json }
     let(:course_params) do
       { "id": '1', "course": { "title": 'First course edit',
@@ -103,6 +103,28 @@ resource 'Api::V1::Courses' do
       login(user)
       do_request(course_params)
       expect(response_body).to include('First course', 'Description')
+      expect(response_status).to be 200
+    end
+  end
+
+  get '/api/v1/courses/:course_id/preferences/:role' do
+    parameter :course_id
+    parameter :role
+
+    let(:raw_post) { params.to_json }
+    example '#preferences for teacher' do
+      explanation 'Role params should be "teacher"'
+      login(user)
+      do_request(course_id: 1, role: 'teacher')
+      expect(response_body).to include('Teacher')
+      expect(response_status).to be 200
+    end
+
+    example '#preferences for student' do
+      explanation 'Role params should be "student"'
+      login(user)
+      do_request(course_id: 1, role: 'student')
+      expect(response_body).to include('Student')
       expect(response_status).to be 200
     end
   end

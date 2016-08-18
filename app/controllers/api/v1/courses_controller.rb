@@ -25,6 +25,11 @@ module Api
         render json: @course, status: :ok
       end
 
+      def preferences
+        course = Course.find(params[:course_id])
+        render json: course, serializer: CoursePreferenceSerializer, role: params[:role], status: :ok
+      end
+
       def update
         if @course.update(course_params)
           render json: @course, status: :ok

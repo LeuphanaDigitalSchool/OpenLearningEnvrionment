@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
       resources :courses do
         resources :storages
+        get 'preferences/:role' => 'courses#preferences'
       end
     end
   end
