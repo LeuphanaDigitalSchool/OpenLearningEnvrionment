@@ -25,6 +25,11 @@ module Api
         render json: @course, status: :ok
       end
 
+      def preferences
+        course = Course.find(params[:course_id])
+        render json: course, serializer: CoursePreferenceSerializer, role: params[:role], status: :ok
+      end
+
       def update
         if @course.update(course_params)
           render json: @course, status: :ok
@@ -44,7 +49,12 @@ module Api
       private
 
       def course_params
-        params.require(:course).permit(:title, :description, :start_date, :end_date)
+        params.require(:course).permit(:title, :description, :start_date, :end_date,
+                                       course_preferences_attributes: [:id, :role_id, :upload_pdf, :upload_jpg,
+                                                                       :upload_mp3, :upload_mp4,
+                                                                       :resource_description_add,
+                                                                       :resource_description_del, :resources_del,
+                                                                       :schedule_publishing, :embed_external_links])
       end
 
       def set_course

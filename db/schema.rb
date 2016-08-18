@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812121646) do
+ActiveRecord::Schema.define(version: 20160817092642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "course_preferences", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "role_id"
+    t.boolean  "upload_pdf",               default: false
+    t.boolean  "upload_jpg",               default: false
+    t.boolean  "upload_mp3",               default: false
+    t.boolean  "upload_mp4",               default: false
+    t.boolean  "resource_description_add", default: false
+    t.boolean  "resource_description_del", default: false
+    t.boolean  "resources_del",            default: false
+    t.boolean  "schedule_publishing",      default: false
+    t.boolean  "embed_external_links",     default: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.index ["course_id"], name: "index_course_preferences_on_course_id", using: :btree
+    t.index ["role_id"], name: "index_course_preferences_on_role_id", using: :btree
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string   "title",       default: "",    null: false
@@ -102,6 +120,21 @@ ActiveRecord::Schema.define(version: 20160812121646) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "storages", force: :cascade do |t|
+    t.string   "source",      default: "",    null: false
+    t.string   "name"
+    t.string   "file"
+    t.text     "description"
+    t.text     "url"
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.boolean  "deleted",     default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["course_id"], name: "index_storages_on_course_id", using: :btree
+    t.index ["user_id"], name: "index_storages_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
     t.string   "uid",                    default: "",      null: false
@@ -153,9 +186,13 @@ ActiveRecord::Schema.define(version: 20160812121646) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  add_foreign_key "course_preferences", "courses"
+  add_foreign_key "course_preferences", "roles"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "permissions_roles", "permissions"
   add_foreign_key "permissions_roles", "roles"
+  add_foreign_key "storages", "courses"
+  add_foreign_key "storages", "users"
 end

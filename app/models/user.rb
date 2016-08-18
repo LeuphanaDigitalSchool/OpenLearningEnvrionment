@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   acts_as_messageable
 
   belongs_to :role
+  has_many :storages
 
   mount_base64_uploader :avatar, UserAvatarUploader
 
@@ -27,6 +28,12 @@ class User < ActiveRecord::Base
 
   def display_name
     "#{firstname} #{lastname}" || email
+  end
+
+  protected
+
+  def password_required?
+    false
   end
 end
 

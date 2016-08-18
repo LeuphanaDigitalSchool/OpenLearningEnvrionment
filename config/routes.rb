@@ -21,7 +21,10 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :courses
+      resources :courses do
+        resources :storages
+        get 'preferences/:role' => 'courses#preferences'
+      end
     end
   end
 end
