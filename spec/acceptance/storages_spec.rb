@@ -32,17 +32,21 @@ resource 'Api::V1::Storages' do
   post '/api/v1/courses/:course_id/storages' do
     parameter :source, 'Youtube', required: true
     parameter :name, 'Yt link', required: false
+    parameter :file, 'File base64', required: false
+    parameter :description, 'File description'
     parameter :url, 'https://www.youtube.com/watch?v=u_tORtmKIjE', required: false
-    parameter :course_id, :course_id, required: false
-    parameter :user_id, 1, required: false
+    parameter :course_id, 'Course id', required: true
+    parameter :user_id, 'User id', required: true
 
     before { login(user) }
     let(:raw_post) { params.to_json }
 
     example '#create (storage created)' do
-      params = { "storage": { "source": 'Youtube', "name": 'Yt link',
-                              "url": 'https://www.youtube.com/watch?v=u_tORtmKIjE', "course_id": :course_id,
-                              "user_id": 1 } }
+      explanation ''
+      params = { "storage": { "source": 'Youtube', "name": 'Yt link', "description": 'description',
+                              "url": 'https://www.youtube.com/watch?v=u_tORtmKIjE', "course_id": '1',
+                              "user_id": '3',
+                              "file": 'data:image/jpg;base64,R0lGODlhAQABAIAAAAA///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' } }
       do_request(params)
       expect(JSON.parse(response_body).to_s).to include('Youtube', 'Yt link',
                                                         'https://www.youtube.com/watch?v=u_tORtmKIjE')
@@ -67,15 +71,17 @@ resource 'Api::V1::Storages' do
   put '/api/v1/courses/:course_id/storages/:storage_id' do
     parameter :source, 'Youtube', required: true
     parameter :name, 'Yt link', required: false
+    parameter :file, 'File base64', required: false
+    parameter :description, 'File description'
     parameter :url, 'https://www.youtube.com/watch?v=u_tORtmKIjE', required: false
-    parameter :course_id, :course_id, required: false
-    parameter :user_id, 1, required: false
+    parameter :course_id, 'Course id', required: true
+    parameter :user_id, 'User id', required: true
 
     let(:raw_post) { params.to_json }
     let(:storage_params) do
       { "id": storage.id, "storage": { "source": 'Youtube', "name": 'Yt link',
                                        "url": 'https://www.youtube.com/watch?v=u_tORtmKIjE',
-                                       "course_id": :course_id, "user_id": 1 } }
+                                       "course_id": :'1', "user_id": '3' } }
     end
 
     example '#update (request not authorized)', document: false do
