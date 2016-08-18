@@ -11,6 +11,10 @@ md-badge{
   border-radius: 25%;
 }
 
+md-datepicker {
+    padding-top: 13px;
+  }
+
 .md-center {
        left: 50%;
        transform: translate3d(-50%, 0, 0);

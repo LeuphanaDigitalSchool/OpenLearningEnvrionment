@@ -6,7 +6,13 @@
     <md-menu-item>
       <md-button ng-click="UserMenuCtrl.logout()">
         <md-icon>exit_to_app</md-icon>
-        <span>wyloguj</span>
+        <span>{{'logout' | translate}}</span>
+      </md-button>
+    </md-menu-item>
+    <md-menu-item>
+      <md-button ng-click="UserMenuCtrl.admin()">
+        <md-icon>settings</md-icon>
+        <span>{{'adminPanel'| translate}}</span>
       </md-button>
     </md-menu-item>
   </md-menu-content>

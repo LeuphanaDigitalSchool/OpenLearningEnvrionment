@@ -21,10 +21,15 @@ export default function routing($stateProvider) {
       controllerAs: 'HomeCtrl',
       resolve: {
           auth: function ($auth, $location) {
+             $auth.validateUser();
               return $auth.validateUser().catch(function(err){
                   $location.path('/login');
               });
           }
       }
+    })
+    .state('home.admin', {
+      url: 'admin',
+      template: require('./routes/admin/admin.html'),
     });
 }

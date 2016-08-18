@@ -1,9 +1,10 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
+import ngFileUpload from 'ng-file-upload';
 
 import 'angular-cookie';
 import ngMessages from 'angular-messages';
-import ngtokenauth from './lib/ng-token-auth.min.js';
+import ngtokenauth from 'ng-token-auth';
 
 import routing from './routing';
 import config from './config';
@@ -18,7 +19,7 @@ import angularMaterial from 'angular-material';
 import angularTranslate from 'angular-translate';
 import angularTranslateLoaderUrl from 'angular-translate-loader-url';
 import angularTranslateStorageCookie from 'angular-translate-storage-cookie';
-import ngCookies from 'angular-cookies';
+import ipCookie from 'angular-cookies';
 import toastr from 'angular-toastr';
 import restangular from 'restangular-umd';
 
@@ -37,9 +38,10 @@ const ngModule = angular
         angularTranslate,
         angularTranslateLoaderUrl,
         angularTranslateStorageCookie,
-        ngCookies,
+        ipCookie,
         toastr,
         restangular,
+        ngFileUpload,
 
         // Configs
         config,
