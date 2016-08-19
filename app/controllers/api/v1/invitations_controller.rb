@@ -33,10 +33,9 @@ module Api
       end
 
       def accept_invitation_params
-        params.require(:user).permit(:password, :password_confirmation, :invitation_token, :interests, :firstname,
-                                     :lastname, :gender, :title, :country, :educational_attainment, :introducion,
-                                     :avatar, :data_privacy, :terms_and_conditions, :honor_code, :birthdate,
-                                     :profession, :introduction)
+        params.require(:user).permit(:password, :password_confirmation, :invitation_token, :interests, :gender, :title,
+                                     :country, :educational_attainment, :introducion, :avatar, :data_privacy,
+                                     :terms_and_conditions, :honor_code, :birthdate, :profession, :introduction)
       end
     end
   end
