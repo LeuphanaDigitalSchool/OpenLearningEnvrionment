@@ -17,6 +17,10 @@ class ApplicationController < ActionController::API
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:title, :firstname, :lastname, :data_privacy,
                                                        :terms_and_conditions, :honor_code])
+    devise_parameter_sanitizer.permit(:accept_invitation) do |u|
+      u.permit(:password, :password_confirmation, :interests, :gender, :title, :country, :educational_attainment,
+               :avatar, :data_privacy, :terms_and_conditions, :honor_code, :birthdate, :profession, :introduction)
+    end
   end
 
   def current_ability
