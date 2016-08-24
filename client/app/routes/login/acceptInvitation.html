@@ -44,8 +44,8 @@
                   <md-input-container flex>
                     <label>{{'gender' | translate}}</label>
                     <md-select ng-model="Accept.user.gender">
-                      <md-option ng-repeat="gender in Accept.genders" value="{{gender}}">
-                        {{$index}}
+                      <md-option ng-repeat="gender in Accept.genders" value="{{gender.value}}">
+                        {{gender.name}}
                       </md-option>
                     </md-select>
                   </md-input-container>
@@ -61,8 +61,8 @@
                   <md-input-container flex>
                     <label>{{'educationalAttainment' | translate}}</label>
                     <md-select ng-model="Accept.user.educational_attainment">
-                      <md-option ng-repeat="attainment in Accept.educational_attainments" value="{{attainment}}">
-                        {{attainment}}
+                      <md-option ng-repeat="attainment in Accept.educational_attainments" value="{{attainment.value}}">
+                        {{attainment.name}}
                       </md-option>
                     </md-select>
                   </md-input-container>
