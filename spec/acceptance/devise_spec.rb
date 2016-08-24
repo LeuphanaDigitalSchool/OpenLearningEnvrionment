@@ -143,6 +143,7 @@ resource 'Api::V1::Auth' do
       "invitation_token": 'eY3n1YrcJ_yypn2pf9Py',
       "user":
       {
+        "invitation_token": 'eY3n1YrcJ_yypn2pf9Py',
         "password": 'admin1234',
         "password_confirmation": 'admin1234',
         "interests": 'abba',
