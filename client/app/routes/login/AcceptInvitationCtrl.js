@@ -13,32 +13,30 @@ export default class AcceptInvitationCtrl {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         };
-    this.genders = [
-      'male',
-      'female',
-      'I d rather not say'
-    ];
-    this.educational_attainments = [
-      'None',
-      'High School',
-      'Bachelor or equivalent',
-      'Master or equivalent',
-      'PhD',
-      'Professor'
-    ];
     this.initialData();
     this.checkIfTokenIsValid();
     this.user.invitation_token = this.invitationToken;
   }
 
   checkIfTokenIsValid() {
-    this.Restangular.oneUrl('accept', '/api/v1/auth/invitation/accept?invitation_token=' + this.invitationToken).get().then((response)=>{
-    },(error)=>{
+    this.Restangular.oneUrl('accept', '/api/v1/auth/invitation/accept?invitation_token=' + this.invitationToken).get().then(
+      (response)=>{
+        this.getSelects();
+      }, (error)=>{
       if(error.status === 406) {
         this.toastr.error('Invalid Token', 'Error');
         this.$state.go('login');
       }
     });
+  }
+
+  getSelects() {
+    this.Restangular.oneUrl('select', '/api/v1/admin/users/profile_selects').get().then(
+      (response)=> {
+        this.genders = response.genders;
+        this.educational_attainments = response.educational_attainments;
+      }
+    );
   }
 
   uploadImage(file, errFiles, $event) {

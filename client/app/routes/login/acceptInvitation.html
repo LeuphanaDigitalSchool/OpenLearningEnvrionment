@@ -45,7 +45,7 @@
                     <label>{{'gender' | translate}}</label>
                     <md-select ng-model="Accept.user.gender">
                       <md-option ng-repeat="gender in Accept.genders" value="{{gender}}">
-                        {{gender}}
+                        {{$index}}
                       </md-option>
                     </md-select>
                   </md-input-container>
