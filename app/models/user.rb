@@ -18,6 +18,24 @@ class User < ActiveRecord::Base
   enum educational_attainment_options: [:nope, :highschool, :bechelor, :master, :phd, :professor]
   enum role_options: [:public_user, :student, :support, :teacher, :course_director, :course_manager]
 
+  def gender_options_json
+    genders = []
+    User.gender_options.each { |k, v| genders.push(name: k, value: v) }
+    genders
+  end
+
+  def educational_attainment_options_json
+    educational_attainments = []
+    User.educational_attainment_options.each { |k, v| educational_attainments.push(name: k, value: v) }
+    educational_attainments
+  end
+
+  def role_options_json
+    roles = []
+    User.role_options.each { |k, v| roles.push(name: k, value: v) }
+    roles
+  end
+
   def age
     ((Date.today - birthdate).to_i / 365) if birthdate.present?
   end

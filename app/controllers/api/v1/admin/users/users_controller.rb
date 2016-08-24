@@ -8,7 +8,8 @@ module Api
           before_action :authenticate_api_v1_user!
 
           def profile_selects
-            json = { genders: User.gender_options, educational_attainments: User.educational_attainment_options }
+            json = { genders: User.new.gender_options_json,
+                     educational_attainments: User.new.educational_attainment_options_json }
             render json: json, status: :ok
           end
         end
