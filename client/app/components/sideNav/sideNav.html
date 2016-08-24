@@ -1,5 +1,19 @@
 <md-list>
-  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('')">
-    <span><md-icon>face</md-icon> Resources</span>
+  <md-list-item aria-controls="childListId">
+    <img ng-src="{{user.size_64x64.url}}" alt="" ng-show="user.size_64x64.url"/>
+    {{user.firstname}} {{user.lastname}}
+    <md-divider></md-divider>
+  </md-list-item>
+  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('settings')">
+    <span><md-icon>settings</md-icon> {{'settings' | translate}}</span>
+  </md-list-item>
+  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')">
+    <span><md-icon>message</md-icon> {{'messages' | translate}}</span>
+  </md-list-item>
+  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')">
+    <span><md-icon>face</md-icon> {{'personalInfo' | translate}}</span>
+  </md-list-item>
+  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')" ng-if="user.role_id === 6">
+    <span><md-icon>people</md-icon> {{'adminPanel' | translate}}</span>
   </md-list-item>
 </md-list>

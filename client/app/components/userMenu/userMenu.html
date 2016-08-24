@@ -1,19 +1,8 @@
 <md-menu>
-  <md-button aria-label="Open phone interactions menu" ng-click="UserMenuCtrl.openMenu($mdOpenMenu, $event)">
-    {{user.email}} <md-icon>keyboard_arrow_down</md-icon>
-  </md-button>
-  <md-menu-content width="3">
-    <md-menu-item>
-      <md-button ng-click="UserMenuCtrl.logout()">
-        <md-icon>exit_to_app</md-icon>
-        <span>{{'logout' | translate}}</span>
-      </md-button>
-    </md-menu-item>
-    <md-menu-item>
-      <md-button ng-click="UserMenuCtrl.admin()">
-        <md-icon>settings</md-icon>
-        <span>{{'adminPanel'| translate}}</span>
-      </md-button>
-    </md-menu-item>
-  </md-menu-content>
+  <md-menu-item>
+    <md-button ng-click="UserMenuCtrl.logout()">
+      <md-icon>exit_to_app</md-icon>
+      <span>{{'logout' | translate}}</span>
+    </md-button>
+  </md-menu-item>
 </md-menu>
