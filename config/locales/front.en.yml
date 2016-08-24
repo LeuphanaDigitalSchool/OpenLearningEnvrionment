@@ -31,3 +31,5 @@ en:
   settings: "settings"
   messages: "messages"
   personalInfo: "personal info"
+  courses: "courses"
+  createCourse: "create course"
