@@ -13,6 +13,12 @@ export default function routing($stateProvider) {
       controller: 'RegisterPublicUserCtrl',
       controllerAs: 'RegisterPublicUserCtrl'
     })
+    .state('acceptInvitation', {
+      url:'/acceptInvitation',
+      template: require('./routes/login/acceptInvitation.html'),
+      controller: 'AcceptInvitationCtrl',
+      controllerAs: 'Accept'
+    })
 
     .state('home', {
       url: '/',

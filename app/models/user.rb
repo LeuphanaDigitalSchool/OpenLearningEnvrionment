@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :data_privacy, :terms_and_conditions, acceptance: true, if: proc { |u| u.role_id.zero? }
 
-  enum gender_options: [:male, :female]
+  enum gender_options: [:male, :female, :not_say]
   enum educational_attainment_options: [:nope, :highschool, :bechelor, :master, :phd, :professor]
   enum role_options: [:public_user, :student, :support, :teacher, :course_director, :course_manager]
 
