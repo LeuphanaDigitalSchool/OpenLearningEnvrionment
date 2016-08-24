@@ -2,32 +2,6 @@
   <md-content class="md-padding l-content-background">
     <form name="userRegister">
       <div layout="row">
-        <div layout="column" flex="20" ng-show="create.role">
-          <div layout="column"
-               class="addimage layout-margin"
-               flex
-               layout-align="center center"
-               ngf-background="create.user.avatar || ' '"
-               style="background-size:cover"
-               ngf-size="{width: 200, height: 200, quality: 0.9}">
-
-               <div class="addImage">
-                 <md-button ngf-select="create.uploadImage($file, $invalidFiles, $event)"
-                            accept="image/*"
-                            ngf-max-height="1000"
-                            ng-model="create.user.avatar"
-                            name="avatar"
-                            md-no-ink class="md-primary"
-                            ng-hide="create.user.avatar">
-                     Dodaj zdjęcie
-                </md-button>
-                 <md-button aria-label="remove pdf"  ng-show="create.user.avatar" class="md-primary" ng-click="create.removeImage()">
-                     Usuń zdjęcie
-                 </md-button>
-               </div>
-               <md-progress-circular ng-show="create.uploading" md-mode="indeterminate"></md-progress-circular>
-          </div>
-        </div>
         <div layout="column" flex>
           <div layout="row">
             <md-input-container flex>
@@ -38,10 +12,6 @@
                 </md-option>
               </md-select>
             </md-input-container flex>
-            <md-input-container flex ng-show="create.role">
-              <label>{{'title' | translate}}</label>
-              <input ng-model="create.user.title" type="text">
-            </md-input-container>
             <md-input-container flex ng-show="create.role">
               <label>{{'firstname' | translate}}</label>
               <input ng-model="create.user.firstname" type="text" required>
@@ -55,83 +25,7 @@
               <input ng-model="create.user.email" type="email" required>
             </md-input-container>
           </div>
-          <div layout="row" ng-show="create.role">
-            <md-input-container flex>
-              <label>{{'gender' | translate}}</label>
-              <md-select ng-model="create.user.gender">
-                <md-option ng-repeat="gender in create.genders" value="{{gender}}">
-                  {{gender}}
-                </md-option>
-              </md-select>
-            </md-input-container>
-            <md-input-container flex class="md-block">
-              <label>{{'country' | translate}}</label>
-              <md-select ng-model="create.user.country">
-                <md-option ng-repeat="country in create.countries" value="{{country.code}}">
-                  {{country.name}}
-                </md-option>
-              </md-select>
-            </md-input-container>
-            <md-datepicker ng-model="create.user.birthdate" md-placeholder="Birth Date">
-            </md-datepicker>
-          </div>
         </div>
-      </div>
-      <div layout="row" ng-show="create.role">
-        <md-input-container flex>
-          <label>{{'educationalAttainment' | translate}}</label>
-          <md-select ng-model="create.user.educational_attainment">
-            <md-option ng-repeat="attainment in create.educational_attainments" value="{{attainment}}">
-              {{attainment}}
-            </md-option>
-          </md-select>
-        </md-input-container>
-        <md-input-container flex>
-          <label>{{'profession' | translate}}</label>
-          <input ng-model="create.user.profession" type="text">
-        </md-input-container>
-        <md-input-container flex>
-          <label>{{'interests' | translate}}</label>
-          <input ng-model="create.user.interests" type="text">
-        </md-input-container>
-      </div>
-      <div layout="row" ng-show="create.role">
-        <md-input-container flex>
-          <label>{{'introduction' | translate}}</label>
-          <input ng-model="create.user.introduction" type="text">
-        </md-input-container>
-        <md-input-container flex>
-          <label>{{'password' | translate}}</label>
-          <input name="password" ng-model="create.user.password" type="password" minlength="8" required>
-          <div ng-messages="userRegister.password.$error">
-            <div ng-message="minlength">At least 8 characters</div>
-          </div>
-        </md-input-container>
-        <md-input-container flex>
-          <label>{{'password' | translate}}</label>
-          <input ng-model="create.user.password_confirmation" type="password" compare-to="create.user.password" minlength="8" required>
-          <div ng-messages="userRegister.password_confirmation.$error">
-            <div ng-message="minlength">At least 8 characters</div>
-          </div>
-        </md-input-cont
-        </md-input-container>
-      </div>
-      <div layout="row" flex layout-align="space-around center" ng-show="create.role === 'student'">
-        <md-input-container>
-          <md-checkbox ng-model="create.user.honor_code" aria-label="Checkbox 1" required>
-            {{'honorCode' | translate}}
-          </md-checkbox>
-        </md-input-container>
-        <md-input-container>
-          <md-checkbox ng-model="create.user.terms_and_conditions" aria-label="Checkbox 2" required>
-            {{'termsAndConditions' | translate}}
-          </md-checkbox>
-        </md-input-container>
-        <md-input-container>
-          <md-checkbox ng-model="create.user.data_privacy" aria-label="Checkbox 3" required>
-            {{'dataPrivacy' | translate}}
-          </md-checkbox>
-        </md-input-container>
       </div>
       <div layout="row"  layout-align="end center" flex ng-show="create.role">
         <md-button type="submit" class="md-raised md-primary" ng-click="create.submit(userRegister, user)">

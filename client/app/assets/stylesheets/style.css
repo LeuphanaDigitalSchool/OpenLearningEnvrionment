@@ -14,6 +14,9 @@ md-badge{
 md-datepicker {
     padding-top: 13px;
   }
+.layout-row{
+  overflow: hidden;
+}
 
 .md-center {
        left: 50%;

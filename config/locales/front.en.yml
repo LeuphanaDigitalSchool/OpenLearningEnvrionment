@@ -23,3 +23,8 @@ en:
   interests: "interests"
   introduction: "introduction"
   password: "password"
+  passwordConfirmation: "password confirmation"
+  acceptInvitation: "Accept Invitation"
+  save: "Save"
+  removePhoto: "remove photo"
+  addPhoto: "add photo"

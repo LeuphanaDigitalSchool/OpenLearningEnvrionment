@@ -1,0 +1,131 @@
+<div layout layout-align="center center" flex class="l-login-background">
+  <div class="md-whiteframe-24dp l-content-background">
+    <div layout="row" layout-align="center center" flex>
+      <div class="md-whiteframe-z2">
+        <md-toolbar class="md-primary">
+          <div flex class="md-toolbar-tools">
+            <h2>{{'acceptInvitation' | translate}}</h2>
+            <div layout="row"  layout-align="end center" flex>
+              <translate-switcher></translate-switcher>
+            </div>
+          </div>
+        </md-toolbar>
+        <div layout-padding="">
+          <form name="userRegister">
+            <div layout="row">
+              <div layout="column" flex="30" >
+                <div layout="column"
+                     class="addimage layout-margin"
+                     flex
+                     layout-align="center center"
+                     ngf-background="Accept.user.avatar || ' '"
+                     style="background-size:cover"
+                     ngf-size="{width: 200, height: 200, quality: 0.9}">
+
+                     <div class="addImage">
+                       <md-button ngf-select="Accept.uploadImage($file, $invalidFiles, $event)"
+                                  accept="image/*"
+                                  ngf-max-height="1000"
+                                  ng-model="Accept.user.avatar"
+                                  name="avatar"
+                                  md-no-ink class="md-primary"
+                                  ng-hide="Accept.user.avatar">
+                           {{'addPhoto' | translate}}
+                      </md-button>
+                       <md-button aria-label="remove pdf"  ng-show="Accept.user.avatar" class="md-primary" ng-click="Accept.removeImage()">
+                           {{'removePhoto' | translate}}
+                       </md-button>
+                     </div>
+                     <md-progress-circular ng-show="Accept.uploading" md-mode="indeterminate"></md-progress-circular>
+                </div>
+              </div>
+              <div layout="column" flex="70">
+                <div layout="row" >
+                  <md-input-container flex>
+                    <label>{{'gender' | translate}}</label>
+                    <md-select ng-model="Accept.user.gender">
+                      <md-option ng-repeat="gender in Accept.genders" value="{{gender}}">
+                        {{gender}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-input-container flex class="md-block">
+                    <label>{{'country' | translate}}</label>
+                    <md-select ng-model="Accept.user.country">
+                      <md-option ng-repeat="country in Accept.countries" value="{{country.code}}">
+                        {{country.name}}
+                      </md-option>
+                    </md-select>
+                </div>
+                <div layout="row" >
+                  <md-input-container flex>
+                    <label>{{'educationalAttainment' | translate}}</label>
+                    <md-select ng-model="Accept.user.educational_attainment">
+                      <md-option ng-repeat="attainment in Accept.educational_attainments" value="{{attainment}}">
+                        {{attainment}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-datepicker ng-model="Accept.user.birthdate" md-placeholder="Birth Date"></md-datepicker>
+                </div>
+              </div>
+            </div>
+            <div layout="row" >
+              <md-input-container flex>
+                <label>{{'profession' | translate}}</label>
+                <input ng-model="Accept.user.profession" type="text">
+              </md-input-container>
+              <md-input-container flex>
+                <label>{{'interests' | translate}}</label>
+                <input ng-model="Accept.user.interests" type="text">
+              </md-input-container>
+            </div>
+            <div layout="row" >
+              <md-input-container flex>
+                <label>{{'introduction' | translate}}</label>
+                <input ng-model="Accept.user.introduction" type="text">
+              </md-input-container>
+              <md-input-container flex>
+                <label>{{'password' | translate}}</label>
+                <input name="password" ng-model="Accept.user.password" type="password" minlength="8" required>
+                <div ng-messages="userRegister.password.$error">
+                  <div ng-message="minlength">At least 8 characters</div>
+                </div>
+              </md-input-container>
+              <md-input-container flex>
+                <label>{{'passwordConfirmation' | translate}}</label>
+                <input ng-model="Accept.user.password_confirmation" type="password" compare-to="Accept.user.password" minlength="8" required>
+                <div ng-messages="userRegister.password_confirmation.$error">
+                  <div ng-message="minlength">At least 8 characters</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div layout="row" flex layout-align="space-around center">
+              <md-input-container>
+                <md-checkbox ng-model="Accept.user.honor_code" aria-label="Checkbox 1" required>
+                  {{'honorCode' | translate}}
+                </md-checkbox>
+              </md-input-container>
+              <md-input-container>
+                <md-checkbox ng-model="Accept.user.terms_and_conditions" aria-label="Checkbox 2" required>
+                  {{'termsAndConditions' | translate}}
+                </md-checkbox>
+              </md-input-container>
+              <md-input-container>
+                <md-checkbox ng-model="Accept.user.data_privacy" aria-label="Checkbox 3" required>
+                  {{'dataPrivacy' | translate}}
+                </md-checkbox>
+              </md-input-container>
+            </div>
+            <div layout="row"  layout-align="end center" flex >
+              <md-button type="submit" class="md-raised md-primary" ng-click="Accept.submit(userRegister, user)">
+                 <md-progress-circular class="md-warn" md-mode="indeterminate" ng-show="Accept.user.waiting"></md-progress-circular>
+                 <div ng-hide="Accept.user.waiting">{{ 'save' | translate }}</div>
+              </md-button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
