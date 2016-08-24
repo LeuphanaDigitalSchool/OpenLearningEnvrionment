@@ -37,5 +37,12 @@ export default function routing($stateProvider) {
     .state('home.admin', {
       url: 'admin',
       template: require('./routes/admin/admin.html'),
+    })
+
+    .state('home.profile', {
+      url: 'profile',
+      template: require('./routes/profile/profile.html'),
+      controller: 'ProfileCtrl',
+      controllerAs: 'ProfileCtrl'
     });
 }

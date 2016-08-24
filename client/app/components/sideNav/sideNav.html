@@ -10,8 +10,8 @@
   <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')">
     <span><md-icon>message</md-icon> {{'messages' | translate}}</span>
   </md-list-item>
-  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')">
-    <span><md-icon>face</md-icon> {{'personalInfo' | translate}}</span>
+  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('profile')">
+    <span><md-icon>face</md-icon> {{'profile' | translate}}</span>
   </md-list-item>
   <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')" ng-if="user.role_id === 6">
     <span><md-icon>people</md-icon> {{'adminPanel' | translate}}</span>
