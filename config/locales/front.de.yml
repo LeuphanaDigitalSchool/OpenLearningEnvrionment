@@ -1,0 +1,83 @@
+de:
+  register: "Registrieren"
+  email: "E-mail"
+  title: "Titel"
+  password: "Passwort"
+  firstname: "Vorname"
+  lastname: "Nachname"
+  thisFieldIsRequired: "Dieses Feld ist obligatorisch"
+  honorCode: "Ehrenkodex"
+  termsAndConditions: "Allgemeinen Geschäftsbedingungen"
+  dataPrivacy: "Datenschutz"
+  logout: "Ausloggen"
+  adminPanel: "Admin panel"
+  createProfile: "Profil erstellen"
+  profiles: "Profile"
+  gender: "Gender"
+  country: "Land"
+  age: "Alter"
+  birthDate: "Geburtsdatum"
+  selectRole: "Wählen Sie Rolle"
+  educationalAttainment: "Das Bildungsniveau"
+  profession: "Beruf"
+  interests: "Interessen"
+  introduction: "Einführung"
+  passwordConfirmation: "Kennwortbestätigung"
+  acceptInvitation: "Einladung annehmen"
+  save: "Speichern"
+  removePhoto: "Entfernen Foto"
+  addPhoto: "Foto hinzufügen"
+  settings: "Einstellungen"
+  messages: "Meldungen"
+  personalInfo: "Persönliche Daten"
+  sideNav:
+    myProfile: "Mein Profil"
+
+  myProfile:
+    personal_details:
+      header: Persönliche Daten
+      firstname: Vorname
+      lastname: Nachname
+      title: Titel
+      gender: Geschlecht
+      country: land
+      birthdate: Geburtstag
+      education: Bildung
+      educationalAttainments: Bildungsabschlüsse
+      professional: Profi
+      interests: Interessen
+      introduction: Einführung
+      email: E-mail
+
+  profile:
+    header: Profil Details
+    firstname: Vorname
+    lastname: Nachname
+    email: E-mail
+    title: Titel
+    gender: Geschlecht
+    country: Land
+    birthdate: Geburtstag
+    education: Bildung
+    educationalAttainments: Bildungsabschlüsse
+    professional: Profi
+    interests: Interessen
+    introduction: Einführung
+
+  admin:
+    users:
+      header: 'Benutzer'
+      selectRole: 'Select rolle'
+      firstname: 'Vorname'
+      lastname: 'Nachname'
+      email: 'E-mail'
+      create: 'Erstellen'
+
+    users_list:
+      header: 'Benutzerliste'
+      role: 'Rolle'
+      firstname: 'Vorname'
+      lastname: 'Nachname'
+      email: 'E-mail'
+      profileStatus: 'Status'
+      actions: 'Action'

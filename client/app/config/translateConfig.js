@@ -4,9 +4,9 @@ export default function translateConfig($translateProvider) {
   "ngInject";
   $translateProvider.useUrlLoader(appConfig.apiUrl+'/locales');
   $translateProvider.useCookieStorage();
-  $translateProvider.registerAvailableLanguageKeys(['en', 'pl'], {
+  $translateProvider.registerAvailableLanguageKeys(['en', 'de'], {
     'en-*': 'en',
-    'pl-*': 'pl'
+    'de-*': 'de'
   });
   $translateProvider.preferredLanguage('en');
 }
