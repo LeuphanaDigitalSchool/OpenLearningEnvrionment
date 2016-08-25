@@ -1,0 +1,38 @@
+<md-tab label="{{'admin.users_list.header' | translate}}" ng-click="ProfileListCtrl.refreshList()">
+  <md-content class="md-padding l-content-background">
+
+    <md-toolbar class="md-table-toolbar md-default">
+      <div class="md-toolbar-tools">
+        <span>{{'admin.users_list.header' | translate}}</span>
+      </div>
+    </md-toolbar>
+    <md-table-container>
+      <table md-table>
+        <thead md-head>
+          <tr md-row>
+            <th md-column>{{'admin.users_list.role' | translate}}</th>
+            <th md-column>{{'admin.users_list.firstname' | translate}}</th>
+            <th md-column>{{'admin.users_list.lastname' | translate}}</th>
+            <th md-column>{{'admin.users_list.email' | translate}}</th>
+            <th md-column>{{'admin.users_list.profileStatus' | translate}}</th>
+            <th md-column>{{'admin.users_list.actions' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-row ng-repeat="user in ProfileListCtrl.usersList">
+            <td md-cell>{{user.role.name}}</td>
+            <td md-cell>{{user.firstname}}</td>
+            <td md-cell>{{user.lastname}}</td>
+            <td md-cell>{{user.email}}</td>
+            <td md-cell>{{user.invitation}}</td>
+            <td md-cell>
+              <md-button aria-label="Show profile" ng-click="ProfileListCtrl.showProfile(user.id)" class="md-icon-button">
+                <md-icon class="">recent_actors</md-icon>
+              </md-button>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+
+  </md-content>
+</md-tab>

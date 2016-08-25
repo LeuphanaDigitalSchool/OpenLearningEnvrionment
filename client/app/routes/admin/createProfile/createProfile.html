@@ -1,11 +1,11 @@
-<md-tab label="{{'profiles' | translate}}" >
+<md-tab label="{{'admin.users.header' | translate}}" >
   <md-content class="md-padding l-content-background">
     <form name="userRegister">
       <div layout="row">
         <div layout="column" flex>
           <div layout="row">
             <md-input-container flex>
-              <label>{{'selectRole' | translate}}</label>
+              <label>{{'admin.users.selectRole' | translate}}</label>
               <md-select ng-model="create.role">
                 <md-option ng-repeat="role in create.roles" value="{{role}}">
                   {{role}}
@@ -13,15 +13,15 @@
               </md-select>
             </md-input-container flex>
             <md-input-container flex ng-show="create.role">
-              <label>{{'firstname' | translate}}*</label>
+              <label>{{'admin.users.firstname' | translate}}*</label>
               <input ng-model="create.user.firstname" type="text" required>
             </md-input-container >
             <md-input-container flex ng-show="create.role">
-              <label>{{'lastname' | translate}}*</label>
+              <label>{{'admin.users.lastname' | translate}}*</label>
               <input ng-model="create.user.lastname" type="text" required>
             </md-input-container>
             <md-input-container flex ng-show="create.role">
-              <label>{{'email' | translate}}*</label>
+              <label>{{'admin.users.email' | translate}}*</label>
               <input ng-model="create.user.email" type="email" required>
             </md-input-container>
           </div>
@@ -30,7 +30,7 @@
       <div layout="row"  layout-align="end center" flex ng-show="create.role">
         <md-button type="submit" class="md-raised md-primary" ng-click="create.submit(userRegister, user)">
            <md-progress-circular class="md-warn" md-mode="indeterminate" ng-show="create.user.waiting"></md-progress-circular>
-           <div ng-hide="create.user.waiting">{{ 'create' | translate }}</div>
+           <div ng-hide="create.user.waiting">{{ 'admin.users.create' | translate }}</div>
         </md-button>
       </div>
     </form>

@@ -1,14 +1,12 @@
-export default class ProfileCtrl {
-  constructor($stateParams, $mdSidenav, Restangular, $state, $scope, countryList) {
+export default class MyProfileCtrl {
+  constructor($location, $mdSidenav, Restangular, $state, $scope, countryList) {
     "ngInject";
-    this.$stateParams = $stateParams;
-    this.userId = $stateParams.id;
+    this.$location = $location;
     this.$state = $state;
     this.$mdSidenav = $mdSidenav;
     this.Restangular = Restangular;
     this.countries = countryList;
     this.getSelects();
-    this.profile = this.Restangular.one('/api/v1/profile/', this.userId).get().$object;
   }
 
   getSelects() {

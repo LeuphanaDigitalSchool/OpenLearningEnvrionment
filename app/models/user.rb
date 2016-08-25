@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   enum educational_attainment_options: [:nope, :highschool, :bechelor, :master, :phd, :professor]
   enum role_options: [:public_user, :student, :support, :teacher, :course_director, :course_manager]
 
+  default_scope { where(deleted: false).order(invitation_token: :asc, role_id: :asc) }
+
   def gender_options_json
     genders = []
     User.gender_options.each { |k, v| genders.push(name: k, value: v) }

@@ -83,3 +83,9 @@ md-datepicker {
 }
 
 /* 4. state*/
+
+.md-card-image {
+  width: 250px;
+  float: left;
+  margin: 10px;
+}

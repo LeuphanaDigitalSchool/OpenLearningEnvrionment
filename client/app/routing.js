@@ -34,13 +34,20 @@ export default function routing($stateProvider) {
           }
       }
     })
+    
     .state('home.admin', {
       url: 'admin',
       template: require('./routes/admin/admin.html'),
     })
 
+    .state('home.myProfile', {
+      url: 'myProfile',
+      template: require('./routes/myProfile/myProfile.html'),
+      controller: 'MyProfileCtrl',
+      controllerAs: 'MyProfileCtrl'
+    })
     .state('home.profile', {
-      url: 'profile',
+      url: 'profile/:id',
       template: require('./routes/profile/profile.html'),
       controller: 'ProfileCtrl',
       controllerAs: 'ProfileCtrl'
