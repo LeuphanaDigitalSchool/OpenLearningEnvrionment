@@ -19,6 +19,15 @@ md-datepicker {
   padding-left: 25px;
   line-height: 15px;
 }
+
+.sub-switch {
+  margin: 0;
+  padding-left: 15px;
+}
+.sub-switch.chlid {
+  padding-left: 30px;
+}
+
 .layout-row{
   overflow: hidden;
 }

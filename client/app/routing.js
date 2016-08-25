@@ -40,7 +40,9 @@ export default function routing($stateProvider) {
     })
     .state('home.create-course', {
       url: 'create-course',
-      template: require('./routes/course/course.html'),
+      template: require('./routes/course/createCourse/createCourse.html'),
+      controller: 'CreateCourseCtrl',
+      controllerAs: 'Create',
       resolve: {
         permission: function ($auth, $location) {
           return $auth.validateUser().then((response) => {
