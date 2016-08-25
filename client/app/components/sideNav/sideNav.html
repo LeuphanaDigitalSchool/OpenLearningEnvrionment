@@ -19,7 +19,7 @@
   <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')" ng-if="user.role_id > 3">
     <span><md-icon>list</md-icon> {{'courses' | translate}}</span>
   </md-list-item>
-  <md-list-item class="sublist" aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')" ng-if="user.role_id > 3">
+  <md-list-item class="sublist" aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('create-course')" ng-if="user.role_id > 3">
     <span>- {{'createCourse' | translate}}</span>
   </md-list-item>
 </md-list>
