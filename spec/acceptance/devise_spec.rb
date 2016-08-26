@@ -110,7 +110,7 @@ resource 'Api::V1::Auth' do
       explanation 'send email with token'
       do_request('email': user.email,
                  'redirect_url': 'localhost:8080')
-      expect(ActionMailer::Base.deliveries.last.body).to match 'reset_password_token'
+      expect(ActionMailer::Base.deliveries.last.body).to match 'resetPassword'
     end
   end
 

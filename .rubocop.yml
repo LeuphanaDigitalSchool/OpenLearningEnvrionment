@@ -13,6 +13,7 @@ AllCops:
     - 'client/**/*'
     - 'db/migrate/*.rb'
     - 'db/schema.rb'
+    - 'app/controllers/api/v1/passwords_controller.rb'
 
 Style/BracesAroundHashParameters:
   EnforcedStyle: context_dependent

@@ -123,3 +123,12 @@ en:
     filterForum: "filter Forum"
     embedExternalLinks: "embed External Links"
     embedInternalLinks: "embed Internal Links"
+
+  forgottenPasswordForm:
+    forgottenPassword: "Reset password"
+    email: "Your e-mail"
+    forgotten: "Send reset password instruction"
+    resetPassword: 'Reset your password'
+    password: 'Password'
+    passwordConfirmation: 'Password confirmation'
+    save: 'Save new password'
