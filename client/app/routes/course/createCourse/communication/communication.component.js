@@ -1,5 +1,5 @@
 class CommunicationCtrl {
-  constructor() {
+  constructor($scope) {
     "ngInject";
   }
 }
@@ -7,6 +7,7 @@ class CommunicationCtrl {
 let communication = {
   template: require('./communication.html'),
   controller: CommunicationCtrl,
+  controllerAs: 'Communication'
 };
 
 export default communication;
