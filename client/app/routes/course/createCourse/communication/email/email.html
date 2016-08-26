@@ -1,7 +1,7 @@
 <md-switch ng-model="Create.emailBox.open" aria-label="Email">
   <h3 class="md-title">{{'email' | translate}}</h3>
 </md-switch>
-<div ng-if="Create.emailBox">
+<div ng-if="Create.emailBox.open">
   <div layout="column">
     <md-switch class="sub-switch" ng-model="Create.emailBox.notificationsByEmail" aria-label="notificationsByEmail">
       <p class="md-body-1">{{'course.notificationsByEmail' | translate}}</p>

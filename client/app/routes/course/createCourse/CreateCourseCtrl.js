@@ -1,16 +1,21 @@
 export default class CreateCourseCtrl {
-  constructor(countryList, $state, toastr, Restangular, Upload) {
+  constructor(countryList, $state, $scope, toastr, Restangular, Upload) {
     "ngInject";
     this.user = {};
     this.toastr = toastr;
     this.$state = $state;
+    this.$scope = $scope;
     this.Restangular = Restangular;
-    // $scope.max = 2;
-    // $scope.selectedIndex = 0;
-    // $scope.nextTab = function() {
-    //   var index = ($scope.selectedIndex == $scope.max) ? 0 : $scope.selectedIndex + 1;
-    //   $scope.selectedIndex = index;
-    // };
+    this.max = 2;
+    this.selectedIndex = 0;
+    this.nextTab = function() {
+      var index = (this.selectedIndex == this.max) ? 0 : this.selectedIndex + 1;
+      this.selectedIndex = index;
+    };
+    this.prevTab = function() {
+      var index = (this.selectedIndex == this.max) ? 0 : this.selectedIndex - 1;
+      this.selectedIndex = index;
+    };
   }
 
   submit(form, data){
