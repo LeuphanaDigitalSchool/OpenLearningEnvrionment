@@ -37,5 +37,29 @@ export default function routing($stateProvider) {
     .state('home.admin', {
       url: 'admin',
       template: require('./routes/admin/admin.html'),
+      resolve: {
+        permission: function ($auth, $location) {
+          return $auth.validateUser().then((response) => {
+            if(response.role_id === 6) {
+              $location.path('/admin');
+            }
+          });
+        }
+      }
+    })
+    .state('home.create-course', {
+      url: 'create-course',
+      template: require('./routes/course/createCourse/createCourse.html'),
+      controller: 'CreateCourseCtrl',
+      controllerAs: 'Create',
+      resolve: {
+        permission: function ($auth, $location) {
+          return $auth.validateUser().then((response) => {
+            if(response.role_id < 4) {
+              $location.path('/admin');
+            }
+          });
+        }
+      }
     });
 }

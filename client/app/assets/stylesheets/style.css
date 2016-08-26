@@ -14,13 +14,31 @@ md-badge{
 md-datepicker {
     padding-top: 13px;
   }
+
+.sublist span {
+  padding-left: 25px;
+  line-height: 15px;
+}
+
+.sub-switch {
+  margin: 0;
+  padding-left: 15px;
+}
+.sub-switch.chlid {
+  padding-left: 30px;
+}
+
+.sub-switch.sub-chlid {
+  padding-left: 45px;
+}
+
 .layout-row{
   overflow: hidden;
 }
 
 .md-center {
-       left: 50%;
-       transform: translate3d(-50%, 0, 0);
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
 }
 
 .toast-top-center {

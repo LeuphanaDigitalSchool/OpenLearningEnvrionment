@@ -1,0 +1,85 @@
+<md-switch ng-model="Create.messaging" aria-label="messaging">
+  <h3 class="md-title">{{'course.messaging' | translate}}</h3>
+</md-switch>
+<div ng-if="Create.messaging">
+  <div layout="column">
+    <md-switch class="sub-switch" ng-model="Create.single" aria-label="single">
+      <p class="md-body-1">{{'course.singleMessaging' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.group" aria-label="group">
+      <p class="md-body-1">{{'course.groupMessaging' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.addingOfIndividualUsers" aria-label="adding Of Individual Users">
+      <p class="md-body-1">{{'course.addingOfIndividualUsersToMessageFeeds' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.postingMessageContent" aria-label="posting Message Content">
+      <p class="md-body-1">{{'course.postingMessageContentToForum' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.notifications" aria-label="Notifications">
+      <p class="md-body-2">{{'course.notifications' | translate}}</p>
+    </md-switch>
+    <div class="column" ng-if="Create.notifications">
+      <md-switch class="sub-switch chlid" ng-model="Create.emailNotifications" aria-label="emailNotifications">
+        <p class="md-body-1">{{'course.emailNotifications' | translate}}
+          <md-tooltip md-direction="right">
+            text of respective message in email
+          </md-tooltip>
+        </p>
+      </md-switch>
+      <md-switch class="sub-switch chlid" ng-model="Create.replyByMail" aria-label="replyByMail">
+        <p class="md-body-1">{{'course.replyByMail ' | translate}}
+          <md-tooltip md-direction="right">
+            Hit answer in email sends message to user on platform
+          </md-tooltip>
+        </p>
+      </md-switch>
+    </div>
+    <md-switch class="sub-switch" ng-model="Create.attachments" aria-label="attachments">
+      <p class="md-body-1">{{'course.attachments' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.embedresources" aria-label="embedresources">
+      <p class="md-body-1">{{'course.embedresources' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.markingAndOrganizingOfMessages" aria-label="markingAndOrganizingOfMessages">
+      <p class="md-body-2">{{'course.markingAndOrganizingOfMessages' | translate}}</p>
+    </md-switch>
+    <div class="column" ng-if="Create.markingAndOrganizingOfMessages">
+      <md-switch class="sub-switch chlid" ng-model="Create.readUnread" aria-label="readUnread" ng-true-value="'read'" ng-false-value="'unread'">
+        <p class="md-body-1">Read/unread: {{Create.readUnread}}</p>
+      </md-switch>
+      <md-switch class="sub-switch chlid" ng-model="Create.tagging" aria-label="tagging">
+        <p class="md-body-1">{{'course.tagging ' | translate}}</p>
+      </md-switch>
+    </div>
+    <md-switch class="sub-switch" ng-model="Create.sendMessagesWithHighPriority" aria-label="sendMessagesWithHighPriority">
+      <p class="md-body-2">{{'course.sendMessagesWithHighPriority' | translate}}</p>
+    </md-switch>
+    <div class="column" ng-if="Create.sendMessagesWithHighPriority">
+      <md-switch class="sub-switch chlid" ng-model="Create.notificationsDependentOnPriorityOfMessage" aria-label="notificationsDependentOnPriorityOfMessage">
+        <p class="md-body-1">{{'course.notificationsDependentOnPriorityOfMessage ' | translate}}</p>
+      </md-switch>
+    </div>
+    <md-switch class="sub-switch" ng-model="Create.setRemindersForMessages" aria-label="setRemindersForMessages">
+      <p class="md-body-1">{{'course.setRemindersForMessages ' | translate}}
+        <md-tooltip md-direction="right">
+          Remind me in 24 hours
+        </md-tooltip>
+      </p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.markAsReadUnread" aria-label="markAsReadUnread">
+      <p class="md-body-1">{{'course.markAsReadUnread ' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.receiveReadReceipts" aria-label="receiveReadReceipts">
+      <p class="md-body-1">{{'course.receiveReadReceipts ' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.sendPlatformInviteToEmailAddress" aria-label="sendPlatformInviteToEmailAddress">
+      <p class="md-body-1">{{'course.sendPlatformInviteToEmailAddress ' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.enterSubjectToMessage" aria-label="enterSubjectToMessage">
+      <p class="md-body-1">{{'course.enterSubjectToMessage  ' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.sortMessages" aria-label="sortMessages">
+      <p class="md-body-1">{{'course.sortMessages' | translate}}</p>
+    </md-switch>
+  </div>
+</div>
