@@ -23,4 +23,20 @@ resource 'Api::V1::Admin::Users::Users' do
       expect(response_status).to be 200
     end
   end
+
+  get '/api/v1/admin/users' do
+    example '#index (request not authorized)', document: false do
+      no_doc do
+        do_request
+        expect(response_body).to include('errors')
+        expect(response_status).to be 401
+      end
+    end
+
+    example '#index (request authorized)' do
+      login(user)
+      do_request
+      expect(response_status).to be 200
+    end
+  end
 end
