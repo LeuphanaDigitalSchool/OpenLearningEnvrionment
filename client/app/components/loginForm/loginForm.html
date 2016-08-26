@@ -3,7 +3,10 @@
   <div class="md-whiteframe-z2">
 
     <md-toolbar>
-      <h2 class="md-toolbar-tools"><span>Login to Leuphana</span></h2>
+      <div flex class="md-toolbar-tools">
+        <h2 class="md-toolbar-tools"><span>Login to Leuphana</span></h2>
+          <translate-switcher></translate-switcher>
+      </div>
     </md-toolbar>
 
     <form layout="column" style="width: 400px" layout-padding name="userForm" ng-submit="$ctrl.login($ctrl.loginForm)">
