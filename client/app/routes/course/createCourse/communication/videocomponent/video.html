@@ -1,0 +1,30 @@
+<md-switch ng-model="Create.video.open" aria-label="Video Chat">
+  <h3 class="md-title">{{'videoChat' | translate}}</h3>
+</md-switch>
+<div ng-if="Create.video.open">
+  <div layout="column">
+    <md-switch class="sub-switch" ng-model="Create.video.scheduleVideoMeetings" aria-label="scheduleVideoMeetings">
+      <p class="md-body-1">{{'course.scheduleVideoMeetings' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.video.sendOutInvitesToVideo" aria-label="sendOutInvitesToVideo">
+      <p class="md-body-1">{{'course.sendOutInvitesToVideo' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.video.defineVisibilityOfVideoMeeting" aria-label="defineVisibilityOfVideoMeeting">
+      <p class="md-body-2">{{'course.defineVisibilityOfVideoMeeting' | translate}}</p>
+    </md-switch>
+    <div class="column" ng-if="Create.video.defineVisibilityOfVideoMeeting">
+      <md-switch class="sub-switch chlid" ng-model="Create.video.public" aria-label="public">
+        <p class="md-body-1">{{'course.public' | translate}}</p>
+      </md-switch>
+      <md-switch class="sub-switch chlid" ng-model="Create.video.privateAmongParticipants" aria-label="privateAmongParticipants">
+        <p class="md-body-1">{{'course.privateAmongParticipants' | translate}}</p>
+      </md-switch>
+    </div>
+    <md-switch class="sub-switch" ng-model="Create.video.recordMeetings" aria-label="recordMeetings">
+      <p class="md-body-1">{{'course.recordMeetings' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch" ng-model="Create.video.shareRecording" aria-label="shareRecording">
+      <p class="md-body-1">{{'course.shareRecording ' | translate}}</p>
+    </md-switch>
+  </div>
+</div>

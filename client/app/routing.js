@@ -53,8 +53,8 @@ export default function routing($stateProvider) {
       resolve: {
         permission: function ($auth, $location) {
           return $auth.validateUser().then((response) => {
-            if(response.role_id === 6) {
-              $location.path('/admin');
+            if(response.role_id !== 6) {
+              $location.path('/');
             }
           });
         }
@@ -83,7 +83,7 @@ export default function routing($stateProvider) {
         permission: function ($auth, $location) {
           return $auth.validateUser().then((response) => {
             if(response.role_id < 4) {
-              $location.path('/admin');
+              $location.path('/');
             }
           });
         }
