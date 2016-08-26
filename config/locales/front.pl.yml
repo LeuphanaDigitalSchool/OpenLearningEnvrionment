@@ -1,0 +1,141 @@
+en:
+  register: "Register"
+  email: "Email"
+  title: "Title"
+  password: "Password"
+  firstname: "Firstname"
+  lastname: "Lastname"
+  thisFieldIsRequired: "This Field Is Required"
+  honorCode: "Honor Code"
+  termsAndConditions: "Terms And Conditions"
+  dataPrivacy: "Data Privacy"
+  logout: "Logout"
+  adminPanel: "Admin panel"
+  createProfile: "Create profile"
+  profiles: "Profiles"
+  gender: "Gender"
+  country: "Country"
+  age: "Age"
+  birthDate: "Birth date"
+  selectRole: "Select role"
+  educationalAttainment: "Educational attainment"
+  profession: "Profession"
+  interests: "Interests"
+  introduction: "Introduction"
+  passwordConfirmation: "Password confirmation"
+  acceptInvitation: "Accept Invitation"
+  save: "Save"
+  removePhoto: "Remove photo"
+  addPhoto: "Add photo"
+  settings: "Settings"
+  messages: "Messages"
+  personalInfo: "Personal info"
+  sideNav:
+    myProfile: "My profile"
+
+  myProfile:
+    personal_details:
+      header: Personal details
+      firstname: Firstname
+      lastname: Lastname
+      title: Title
+      gender: Gender
+      country: Country
+      birthdate: Birthdate
+      education: Education
+      educationalAttainments: Educational attainments
+      professional: Professional
+      interests: Interests
+      introduction: Introduction
+      email: E-mail
+
+  profile:
+    header: Profile details
+    firstname: Firstname
+    lastname: Lastname
+    email: E-mail
+    title: Title
+    gender: Gender
+    country: Country
+    birthdate: Birthdate
+    education: Education
+    educationalAttainments: Educational attainments
+    professional: Professional
+    interests: Interests
+    introduction: Introduction
+
+  admin:
+    users:
+      header: 'Users'
+      selectRole: 'Select role'
+      firstname: 'Firstname'
+      lastname: 'Lastname'
+      email: 'E-mail'
+      create: 'Create'
+
+    users_list:
+      header: 'Users list'
+      role: 'Role'
+      firstname: 'Firstname'
+      lastname: 'Lastname'
+      email: 'E-mail'
+      profileStatus: 'Status'
+      actions: 'Action'
+
+  courses: "courses"
+  createCourse: "create course"
+  course:
+    communication: "communication"
+    messaging: "Messaging"
+    singleMessaging: "single messaging"
+    groupMessaging: "group messaging"
+    addingOfIndividualUsersToMessageFeeds: "adding Of Individual Users To Message Feeds"
+    postingMessageContentToForum: "posting Message Content To Forum"
+    notifications: "notifications"
+    emailNotifications: "email Notifications"
+    replyByMail: "reply By Mail"
+    attachments: "attachments"
+    embedresources: "embed resources"
+    markingAndOrganizingOfMessages: "marking And Organizing Of Messages"
+    tagging: "tagging"
+    sendMessagesWithHighPriority: "send Messages With High Priority"
+    notificationsDependentOnPriorityOfMessage: "notifications Dependent On Priority Of Message"
+    setRemindersForMessages: "set Reminders For Messages"
+    markAsReadUnread: "mark As Read Unread"
+    receiveReadReceipts: "receive Read Receipts"
+    sendPlatformInviteToEmailAddress: "send Platform Invite To Email Address"
+    enterSubjectToMessage: "enter Subject To Message"
+    sortMessages: "sort Messages"
+    forum: "forum"
+    threadedConversations: "threaded Conversations"
+    taggingOfUsers: "tagging Of Users"
+    taggingOfUserGroups: "tagging Of User Groups"
+    teachers: "teachers"
+    students: "students"
+    quoteFromForums: "quoteFromForums"
+    embedContentInForumPost: "embed Content In Forum Post"
+    video: "video"
+    pictures: "pictures"
+    upvotingDownvoting: "Upvoting/downvoting"
+    createTopics: "create Topics"
+    createThreads: "create Threads"
+    sortForum: "sort Forum"
+    filterForum: "filter Forum"
+    embedExternalLinks: "embed External Links"
+    embedInternalLinks: "embed Internal Links"
+
+  forgottenPasswordForm:
+    forgottenPassword: "Reset password"
+    email: "Your e-mail"
+    forgotten: "Send reset password instruction"
+    resetPassword: 'Reset your password'
+    password: 'Password'
+    passwordConfirmation: 'Password confirmation'
+    save: 'Save new password'
+    notificationsByEmail: "notifications By Email"
+    sendUserMessagesAsEmailOptional: "send User Messages As Email Optional"
+    sendMessagesViaEmailWithinPlatform: "send Messages Via Email Within Platform"
+    sendMessagesToSingleUsers: "send Messages To Single Users"
+    sendMessagesToUserGroups: "send Messages To User Groups"
+    replyToForumPostsViaEmail: "reply To Forum Posts Via Email"
+    inviteUserToPlatformByEmail: "invite User To Platform By Email"
