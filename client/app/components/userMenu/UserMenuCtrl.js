@@ -13,6 +13,9 @@ export default class UserMenuCtrl {
   admin() {
     this.$state.go('home.admin');
   }
+  profile() {
+    this.$state.go('home.profile');
+  }
   openMenu($mdOpenMenu, ev) {
     let originatorEv;
     originatorEv = ev;

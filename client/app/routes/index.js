@@ -5,6 +5,8 @@ import login from './login';
 import registerPublicUser from './registerPublicUser';
 import admin from './admin';
 import countryList from '../lib/ng-country-list.js';
+import myProfile from './myProfile';
+import profile from './profile';
 import course from './course';
 
 export default angular.module('app.routes', [
@@ -12,6 +14,8 @@ export default angular.module('app.routes', [
     login,
     registerPublicUser,
     admin,
+    myProfile,
+    profile,
     course
   ])
   .constant('countryList', countryList)

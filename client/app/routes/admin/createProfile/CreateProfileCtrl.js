@@ -28,7 +28,6 @@ export default class CreateProfileCtrl {
         this.initialData();
       }, (response)=> {
         this.send = true;
-        console.log(response);
         let status = response.statusText;
         this.toastr.error(status, 'Error');
       });

@@ -1,36 +1,87 @@
 en:
   register: "Register"
   email: "Email"
-  title: "title"
-  password: "password"
-  firstname: "firstname"
-  lastname: "lastname"
+  title: "Title"
+  password: "Password"
+  firstname: "Firstname"
+  lastname: "Lastname"
   thisFieldIsRequired: "This Field Is Required"
   honorCode: "Honor Code"
   termsAndConditions: "Terms And Conditions"
   dataPrivacy: "Data Privacy"
-  logout: "logout"
-  adminPanel: "admin panel"
-  createProfile: "create profile"
-  profiles: "profiles"
-  gender: "gender"
-  country: "country"
-  age: "age"
-  birthDate: "birth date"
-  selectRole: "select role"
-  educationalAttainment: "educational attainment"
-  profession: "profession"
-  interests: "interests"
-  introduction: "introduction"
-  password: "password"
-  passwordConfirmation: "password confirmation"
+  logout: "Logout"
+  adminPanel: "Admin panel"
+  createProfile: "Create profile"
+  profiles: "Profiles"
+  gender: "Gender"
+  country: "Country"
+  age: "Age"
+  birthDate: "Birth date"
+  selectRole: "Select role"
+  educationalAttainment: "Educational attainment"
+  profession: "Profession"
+  interests: "Interests"
+  introduction: "Introduction"
+  passwordConfirmation: "Password confirmation"
   acceptInvitation: "Accept Invitation"
   save: "Save"
-  removePhoto: "remove photo"
-  addPhoto: "add photo"
-  settings: "settings"
-  messages: "messages"
-  personalInfo: "personal info"
+  removePhoto: "Remove photo"
+  addPhoto: "Add photo"
+  settings: "Settings"
+  messages: "Messages"
+  personalInfo: "Personal info"
+  sideNav:
+    myProfile: "My profile"
+
+  myProfile:
+    personal_details:
+      header: Personal details
+      firstname: Firstname
+      lastname: Lastname
+      title: Title
+      gender: Gender
+      country: Country
+      birthdate: Birthdate
+      education: Education
+      educationalAttainments: Educational attainments
+      professional: Professional
+      interests: Interests
+      introduction: Introduction
+      email: E-mail
+
+  profile:
+    header: Profile details
+    firstname: Firstname
+    lastname: Lastname
+    email: E-mail
+    title: Title
+    gender: Gender
+    country: Country
+    birthdate: Birthdate
+    education: Education
+    educationalAttainments: Educational attainments
+    professional: Professional
+    interests: Interests
+    introduction: Introduction
+
+  admin:
+    users:
+      header: 'Users'
+      selectRole: 'Select role'
+      firstname: 'Firstname'
+      lastname: 'Lastname'
+      email: 'E-mail'
+      create: 'Create'
+
+    users_list:
+      header: 'Users list'
+      role: 'Role'
+      firstname: 'Firstname'
+      lastname: 'Lastname'
+      email: 'E-mail'
+      profileStatus: 'Status'
+      actions: 'Action'
+
   courses: "courses"
   createCourse: "create course"
   course:

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'User', at: 'auth', skip: [:invitations]
       devise_for :users, path: 'auth', only: [:invitations],
                          controllers: { invitations: 'api/v1/invitations' }
+      get 'profile/:id' => 'users#show'
       get 'locales' => 'locales#index'
 
       resources :conversations, only: [:index, :show] do
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
       namespace :admin do
         namespace :users do
           resources :public_users, :students, :supports, :teachers, :course_directors, :course_managers
+          get '/' => 'users#index'
           get 'profile_selects' => 'users#profile_selects'
         end
       end

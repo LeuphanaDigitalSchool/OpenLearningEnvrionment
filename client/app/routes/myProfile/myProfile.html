@@ -1,0 +1,68 @@
+<md-content class="md-padding" layout="row" layout-padding flex>
+  <div flex layout="column" layout-padding>
+    <md-card>
+      <img ng-src="{{user.avatar.url}}" class="md-card-image" alt="{{user.firstname}} {{user.lastname}}" ng-show="isExists(user.avatar)">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{ 'myProfile.personal_details.header' | translate}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <img ng-src="{{user.avatar.avatar.url}}" class="md-card-image" alt="{{user.firstname}} {{user.lastname}}" ng-show="user.avatar.avatar.url">
+        <p><b>{{ 'myProfile.personal_details.firstname' | translate}}: </b>{{user.firstname}}</p>
+        <p><b>{{ 'myProfile.personal_details.lastname' | translate}}: </b>{{user.lastname}}</p>
+        <p><b>{{ 'myProfile.personal_details.title' | translate}}: </b>{{user.title}}</p>
+        <p><b>{{ 'myProfile.personal_details.email' | translate}}: </b>{{user.email}}</p>
+        <p>
+          <b>{{ 'myProfile.personal_details.gender' | translate}}: </b>
+          <span ng-repeat="gender in MyProfileCtrl.genders">
+            <span ng-if="gender.value === user.gender">{{gender.name}}</span>
+          </span>
+        </p>
+        <p>
+          <b>{{ 'myProfile.personal_details.country' | translate}}: </b>
+          <span ng-repeat="country in MyProfileCtrl.countries">
+            <span ng-if="country.code === (user.country | uppercase)">{{country.name}}</span>
+          </span>
+        </p>
+        <p><b>{{ 'myProfile.personal_details.birthdate' | translate}}: </b>{{user.birthdate}}</p>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{ 'myProfile.personal_details.education' | translate}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <p>
+          <b>{{ 'myProfile.personal_details.educationalAttainments' | translate}}: </b> 
+          <span ng-repeat="edu in MyProfileCtrl.educational_attainments">
+            <span ng-if="edu.value === user.educational_attainment">{{edu.name}}</span>
+          </span>
+        </p>
+        <p><b>{{ 'myProfile.personal_details.professional' | translate}}: </b>{{user.professional}}</p>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{ 'myProfile.personal_details.interests' | translate}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <p>{{user.interests}}</p>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{ 'myProfile.personal_details.introduction' | translate}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <p>{{user.introduction}}</p>
+      </md-card-content>
+    </md-card>
+  </div>
+</md-content>
