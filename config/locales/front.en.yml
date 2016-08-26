@@ -132,3 +132,10 @@ en:
     password: 'Password'
     passwordConfirmation: 'Password confirmation'
     save: 'Save new password'
+    notificationsByEmail: "notifications By Email"
+    sendUserMessagesAsEmailOptional: "send User Messages As Email Optional"
+    sendMessagesViaEmailWithinPlatform: "send Messages Via Email Within Platform"
+    sendMessagesToSingleUsers: "send Messages To Single Users"
+    sendMessagesToUserGroups: "send Messages To User Groups"
+    replyToForumPostsViaEmail: "reply To Forum Posts Via Email"
+    inviteUserToPlatformByEmail: "invite User To Platform By Email"
