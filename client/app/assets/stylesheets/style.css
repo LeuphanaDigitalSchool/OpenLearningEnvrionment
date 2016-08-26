@@ -28,6 +28,10 @@ md-datepicker {
   padding-left: 30px;
 }
 
+.sub-switch.sub-chlid {
+  padding-left: 45px;
+}
+
 .layout-row{
   overflow: hidden;
 }
