@@ -7,7 +7,7 @@
   <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('settings')">
     <span><md-icon>settings</md-icon> {{'settings' | translate}}</span>
   </md-list-item>
-  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')">
+  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('')">
     <span><md-icon>message</md-icon> {{'messages' | translate}}</span>
   </md-list-item>
   <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('myProfile')">
@@ -15,5 +15,11 @@
   </md-list-item>
   <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')" ng-if="user.role_id === 6">
     <span><md-icon>people</md-icon> {{'adminPanel' | translate}}</span>
+  </md-list-item>
+  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')" ng-if="user.role_id > 3">
+    <span><md-icon>list</md-icon> {{'courses' | translate}}</span>
+  </md-list-item>
+  <md-list-item class="sublist" aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('create-course')" ng-if="user.role_id > 3">
+    <span>- {{'createCourse' | translate}}</span>
   </md-list-item>
 </md-list>
