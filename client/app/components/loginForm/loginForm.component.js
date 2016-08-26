@@ -24,6 +24,9 @@ class LoginFormCtrl {
   registerAsGuest() {
     this.$state.go('publicRegistration');
   }
+  forgottenPassword() {
+    this.$state.go('forgottenPassword');
+  }
 }
 
 let loginForm = {
