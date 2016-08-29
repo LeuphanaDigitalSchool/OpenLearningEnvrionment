@@ -1,0 +1,74 @@
+<md-switch ng-model="Create.group" aria-label="group">
+  <h3 class="md-title">{{'course.group' | translate}}</h3>
+</md-switch>
+<div ng-if="Create.group">
+  <md-switch class="sub-switch" ng-model="Create.group.defineVisibility" aria-label="defineVisibility">
+    <p class="md-body-1">{{'course.defineVisibility' | translate}}</p>
+  </md-switch>
+  <md-switch class="sub-switch" ng-model="Create.group.shareWorkspaceWithOthers" aria-label="shareWorkspaceWithOthers">
+    <p class="md-body-1">{{'course.shareWorkspaceWithOthers' | translate}}</p>
+  </md-switch>
+  <md-switch class="sub-switch" ng-model="Create.group.fileSharing" aria-label="fileSharing">
+    <p class="md-body-2">{{'course.fileSharing' | translate}}</p>
+  </md-switch>
+  <div class="column" ng-if="Create.group.fileSharing">
+    <md-switch class="sub-switch child" ng-model="Create.group.embedFromExternalWebsites" aria-label="embedFromExternalWebsites">
+      <p class="md-body-1">{{'course.embedFromExternalWebsites ' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.shareOwnMaterialOnPlatform" aria-label="shareOwnMaterialOnPlatform">
+      <p class="md-body-1">{{'course.shareOwnMaterialOnPlatform' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.publishingOfDrafts" aria-label="publishingOfDrafts">
+      <p class="md-body-1">{{'course.publishingOfDrafts ' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.publishingOfFinalSubmission" aria-label="publishingOfFinalSubmission">
+      <p class="md-body-1">{{'course.publishingOfFinalSubmission' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.defineVisibilityOfFiles" aria-label="defineVisibilityOfFiles">
+      <p class="md-body-1">{{'course.defineVisibilityOfFiles' | translate}}</p>
+    </md-switch>
+  </div>
+  <md-switch class="sub-switch" ng-model="Create.group.calendar" aria-label="calendar">
+    <p class="md-body-2">{{'course.calendar' | translate}}</p>
+  </md-switch>
+  <div class="column" ng-if="Create.group.calendar">
+    <md-switch class="sub-switch child" ng-model="Create.group.personalCalendar" aria-label="personalCalendar">
+      <p class="md-body-1">{{'course.personalCalendar' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.groupCalendar" aria-label="groupCalendar">
+      <p class="md-body-1">{{'course.groupCalendar' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.showCoursePhases" aria-label="groupCalendar">
+      <p class="md-body-1">{{'course.showCoursePhases' | translate}}</p>
+    </md-switch>
+  </div>
+  <md-switch class="sub-switch" ng-model="Create.group.coursePhases" aria-label="coursePhases">
+    <p class="md-body-2">{{'course.coursePhases' | translate}}</p>
+  </md-switch>
+  <div class="column" ng-if="Create.group.coursePhases">
+    <md-switch class="sub-switch child" ng-model="Create.group.showCoursePhases" aria-label="groupCalendar">
+      <p class="md-body-1">{{'course.showCoursePhases' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.teacherDefineCourseStartEnd" aria-label="teacherDefineCourseStartEnd">
+      <p class="md-body-1">{{'course.teacherDefineCourseStartEnd ' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.defineCoursePhases" aria-label="defineCoursePhases">
+      <p class="md-body-1">{{'course.defineCoursePhases ' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.defineCoursePhases" aria-label="defineCoursePhases">
+      <p class="md-body-1">{{'course.defineCoursePhases ' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.defineFrozenContent" aria-label="defineFrozenContent">
+      <p class="md-body-1">{{'course.defineFrozenContent' | translate}}</p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.matchPlatformContentWithEespectivePhase" aria-label="matchPlatformContentWithEespectivePhase">
+      <p class="md-body-1">
+        {{'course.matchPlatformContentWithEespectivePhase' | translate}}
+        <md-tooltip md-direction="right">e.g. Colour coding</md-tooltip>
+      </p>
+    </md-switch>
+    <md-switch class="sub-switch child" ng-model="Create.group.defineNewSectionsInEach" aria-label="defineNewSectionsInEach">
+      <p class="md-body-1">{{'course.defineNewSectionsInEach ' | translate}}</p>
+    </md-switch>
+  </div>
+</div>
