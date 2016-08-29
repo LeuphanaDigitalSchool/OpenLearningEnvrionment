@@ -5,12 +5,14 @@ import CreateCourseCtrl from './CreateCourseCtrl';
 import communication from './communication';
 import storage from './storage';
 import productivity from './productivity';
+import publishing from './publishing';
 
 export default angular.module('app.admin.course', [
   angularMaterial,
   communication,
   storage,
-  productivity
+  productivity,
+  publishing
   ])
   .controller('CreateCourseCtrl', CreateCourseCtrl)
   .name;
