@@ -123,6 +123,7 @@ en:
     filterForum: "filter Forum"
     embedExternalLinks: "embed External Links"
     embedInternalLinks: "embed Internal Links"
+    addNewCourse: "add new course"
 
   forgottenPasswordForm:
     forgottenPassword: "Reset password"
