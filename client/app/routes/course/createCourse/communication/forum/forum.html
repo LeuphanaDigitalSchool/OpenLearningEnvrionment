@@ -13,7 +13,7 @@
       <p class="md-body-2">{{'course.notifications' | translate}}</p>
     </md-switch>
     <div class="column" ng-if="Create.forumNotifications">
-      <md-switch class="sub-switch chlid" ng-model="Create.emailNotifications" aria-label="emailNotifications">
+      <md-switch class="sub-switch child" ng-model="Create.emailNotifications" aria-label="emailNotifications">
         <p class="md-body-1">{{'course.emailNotifications' | translate}}
           <md-tooltip md-direction="right">
             text of respective forum post in email
@@ -25,17 +25,17 @@
       <p class="md-body-2">{{'course.taggingOfUserGroups ' | translate}}</p>
     </md-switch>
     <div class="column" ng-if="Create.taggingOfUserGroups">
-      <md-switch class="sub-switch chlid" ng-model="Create.forumTeachers" aria-label="forumTeachers">
+      <md-switch class="sub-switch child" ng-model="Create.forumTeachers" aria-label="forumTeachers">
         <p class="md-body-1">{{'course.teachers' | translate}}</p>
       </md-switch>
-      <md-switch class="sub-switch chlid" ng-model="Create.forumStudents" aria-label="forumStudents">
+      <md-switch class="sub-switch child" ng-model="Create.forumStudents" aria-label="forumStudents">
         <p class="md-body-1">{{'course.students' | translate}}</p>
       </md-switch>
-      <md-switch class="sub-switch chlid" ng-model="Create.TaggingForumNotifications" aria-label="forumNotifications">
+      <md-switch class="sub-switch child" ng-model="Create.TaggingForumNotifications" aria-label="forumNotifications">
         <p class="md-body-2">{{'course.notifications' | translate}}</p>
       </md-switch>
       <div class="column" ng-if="Create.TaggingForumNotifications">
-        <md-switch class="sub-switch sub-chlid" ng-model="Create.emailNotifications" aria-label="emailNotifications">
+        <md-switch class="sub-switch sub-child" ng-model="Create.emailNotifications" aria-label="emailNotifications">
           <p class="md-body-1">{{'course.emailNotifications' | translate}}
             <md-tooltip md-direction="right">
               text of respective forum post in email
@@ -55,10 +55,10 @@
       <p class="md-body-2">{{'course.embedContentInForumPost ' | translate}}</p>
     </md-switch>
     <div class="column" ng-if="Create.embedContentInForumPost">
-      <md-switch class="sub-switch chlid" ng-model="Create.video" aria-label="video">
+      <md-switch class="sub-switch child" ng-model="Create.video" aria-label="video">
         <p class="md-body-1">{{'course.video ' | translate}}</p>
       </md-switch>
-      <md-switch class="sub-switch chlid" ng-model="Create.pictures" aria-label="pictures">
+      <md-switch class="sub-switch child" ng-model="Create.pictures" aria-label="pictures">
         <p class="md-body-1">{{'course.pictures ' | translate}}</p>
       </md-switch>
     </div>

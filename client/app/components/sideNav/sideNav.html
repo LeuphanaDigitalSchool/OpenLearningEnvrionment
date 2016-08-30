@@ -22,4 +22,7 @@
   <md-list-item class="sublist" aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('create-course')" ng-if="user.role_id > 3">
     <span>- {{'createCourse' | translate}}</span>
   </md-list-item>
+  <md-list-item class="sublist" aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('courses-list')" ng-if="user.role_id > 3">
+    <span>- {{'courses' | translate}}</span>
+  </md-list-item>
 </md-list>

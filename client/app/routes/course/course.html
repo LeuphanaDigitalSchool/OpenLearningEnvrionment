@@ -1,6 +1,74 @@
 <div class="course" flex>
-  <md-content layout="column" ms-scroll flex md-whiteframe="2" class="l-content-background">
-    <md-tabs md-dynamic-height="" md-border-bottom="">
-    </md-tabs>
-  </md-content>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-display-1">{{Course.course.title}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <p class="md-title">{{Course.course.description}}</p>
+      <p>
+        <span class="md-body-2">{{'course.startDate' | translate}}: </span>{{Course.course.start_date}}
+      </p>
+      <p>
+        <span class="md-body-2">{{'course.endDate' | translate}}: </span>{{Course.course.end_date}}
+      </p>
+      <p class="md-title">{{'course.preferencesFor' | translate}} {{Course.course.preferences[0].role}}</p>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[0].embed_external_links">
+         {{'course.embed_external_links' | translate}} - {{Course.course.preferences[0].embed_external_links}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[0].schedule_publishing">
+         {{'course.schedulePublishing' | translate}} - {{Course.course.preferences[0].schedule_publishing}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[0].resources_del">
+         {{'course.resourcesDel' | translate}} - {{Course.course.preferences[0].resources_del}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[0].resource_description_del">
+         {{'course.resourceDescriptionDel' | translate}} - {{Course.course.preferences[0].resource_description_del}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[0].resource_description_add">
+         {{'course.resourceDescription_add' | translate}} - {{Course.course.preferences[0].resource_description_add}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[0].upload_mp4">
+         {{'course.uploadMp4' | translate}} - {{Course.course.preferences[0].upload_mp4}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[0].upload_mp3">
+         {{'course.uploadMp3' | translate}} - {{Course.course.preferences[0].upload_mp3}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[0].upload_jpg">
+         {{'course.uploadJpg' | translate}} - {{Course.course.preferences[0].upload_jpg}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[0].upload_pdf">
+         {{'course.uploadPdf' | translate}} - {{Course.course.preferences[0].upload_pdf}}
+      </md-switch>
+      <p class="md-title">{{'course.preferencesFor' | translate}} {{Course.course.preferences[1].role}}</p>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[1].embed_external_links">
+         {{'course.embedExternalLinks' | translate}} - {{Course.course.preferences[1].embed_external_links}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[1].schedule_publishing">
+         {{'course.schedulePublishing' | translate}} - {{Course.course.preferences[1].schedule_publishing}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[1].resources_del">
+         {{'course.resourcesDel' | translate}} - {{Course.course.preferences[1].resources_del}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[1].resource_description_del">
+         {{'course.resourceDescriptionDel' | translate}} - {{Course.course.preferences[1].resource_description_del}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[1].resource_description_add">
+         {{'course.resourceDescriptionAdd' | translate}} - {{Course.course.preferences[1].resource_description_add}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[1].upload_mp4">
+         {{'course.uploadMp4' | translate}} - {{Course.course.preferences[1].upload_mp4}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[1].upload_mp3">
+         {{'course.uploadMp3' | translate}} - {{Course.course.preferences[1].upload_mp3}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[1].upload_jpg">
+         {{'course.uploadJpg' | translate}} - {{Course.course.preferences[1].upload_jpg}}
+      </md-switch>
+      <md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="Course.course.preferences[1].upload_pdf">
+         {{'course.uploadPdf' | translate}} - {{Course.course.preferences[1].upload_pdf}}
+      </md-switch>
+    </md-card-content>
+  </md-card>
 </div>

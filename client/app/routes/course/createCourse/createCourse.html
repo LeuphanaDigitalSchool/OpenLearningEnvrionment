@@ -1,7 +1,8 @@
 <div class="create-course" flex>
   <md-content layout="column" ms-scroll flex md-whiteframe="2" class="l-content-background" layout-padding>
-    <form name="courseForm">
-      <md-tabs md-dynamic-height="" md-border-bottom="" md-selected="Create.selectedIndex">
+    <form name="courseForm" ng-submit="Create.submit()">
+      <md-tabs md-dynamic-height="" md-border-bottom="" md-selected="Create.selectedIndex" >
+        <!-- step 1 -->
         <md-tab label="step 1. main">
           <md-content layout="column" class="md-padding l-content-background">
             <div layout="column">
@@ -26,16 +27,30 @@
             </div>
           </md-content>
         </md-tab>
+
+        <!-- step 2 -->
         <communication></communication>
-        <storage></storage>
+
+        <!-- step 3 -->
+        <storage-directive></storage-directive>
+
+        <!-- step 4 -->
+        <productivity></productivity>
+
+        <!-- step 5 -->
+        <publishing></publishing>
+
+        <!-- step 6 -->
+        <permissions></permissions>
+
       </md-tabs>
-    </form>
     <div layout="row" layout-align="center center">
       <md-button class="md-raised md-primary" ng-click="Create.prevTab()">Back</md-button>
-      <md-button class="md-raised md-primary" ng-click="Create.nextTab()">Next</md-button>
+      <md-button class="md-raised md-primary" ng-click="Create.nextTab()">{{Create.buttonTitle}}</md-button>
     </div>
-    <!-- <div class="">
-      {{Create.course | json}}
-    </div> -->
+    <div layout="row" layout-align="center center">
+      <md-button class="md-raised md-warn"  type="submit">{{'course.addNewCourse' | translate}}</md-button>
+    </div>
+    </form>
   </md-content>
 </div>

@@ -19,14 +19,14 @@
       <p class="md-body-2">{{'course.notifications' | translate}}</p>
     </md-switch>
     <div class="column" ng-if="Create.notifications">
-      <md-switch class="sub-switch chlid" ng-model="Create.emailNotifications" aria-label="emailNotifications">
+      <md-switch class="sub-switch child" ng-model="Create.emailNotifications" aria-label="emailNotifications">
         <p class="md-body-1">{{'course.emailNotifications' | translate}}
           <md-tooltip md-direction="right">
             text of respective message in email
           </md-tooltip>
         </p>
       </md-switch>
-      <md-switch class="sub-switch chlid" ng-model="Create.replyByMail" aria-label="replyByMail">
+      <md-switch class="sub-switch child" ng-model="Create.replyByMail" aria-label="replyByMail">
         <p class="md-body-1">{{'course.replyByMail ' | translate}}
           <md-tooltip md-direction="right">
             Hit answer in email sends message to user on platform
@@ -44,10 +44,10 @@
       <p class="md-body-2">{{'course.markingAndOrganizingOfMessages' | translate}}</p>
     </md-switch>
     <div class="column" ng-if="Create.markingAndOrganizingOfMessages">
-      <md-switch class="sub-switch chlid" ng-model="Create.readUnread" aria-label="readUnread" ng-true-value="'read'" ng-false-value="'unread'">
+      <md-switch class="sub-switch child" ng-model="Create.readUnread" aria-label="readUnread" ng-true-value="'read'" ng-false-value="'unread'">
         <p class="md-body-1">Read/unread: {{Create.readUnread}}</p>
       </md-switch>
-      <md-switch class="sub-switch chlid" ng-model="Create.tagging" aria-label="tagging">
+      <md-switch class="sub-switch child" ng-model="Create.tagging" aria-label="tagging">
         <p class="md-body-1">{{'course.tagging ' | translate}}</p>
       </md-switch>
     </div>
@@ -55,7 +55,7 @@
       <p class="md-body-2">{{'course.sendMessagesWithHighPriority' | translate}}</p>
     </md-switch>
     <div class="column" ng-if="Create.sendMessagesWithHighPriority">
-      <md-switch class="sub-switch chlid" ng-model="Create.notificationsDependentOnPriorityOfMessage" aria-label="notificationsDependentOnPriorityOfMessage">
+      <md-switch class="sub-switch child" ng-model="Create.notificationsDependentOnPriorityOfMessage" aria-label="notificationsDependentOnPriorityOfMessage">
         <p class="md-body-1">{{'course.notificationsDependentOnPriorityOfMessage ' | translate}}</p>
       </md-switch>
     </div>

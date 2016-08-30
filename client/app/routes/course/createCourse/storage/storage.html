@@ -7,76 +7,69 @@
         </md-switch>
         <div ng-if="Create.storage.open">
           <div layout="column">
-            <md-switch class="sub-switch" ng-model="Create.storage.teacherCanUploadFiles" aria-label="teacherCanUploadFiles">
+            <md-switch class="sub-switch" ng-model="Create.teacher.teacherCanUploadFiles" aria-label="teacherCanUploadFiles">
               <p class="md-body-2">{{'course.teacherCanUploadFiles' | translate}}</p>
             </md-switch>
-            <div class="column" ng-if="Create.storage.teacherCanUploadFiles">
-              <md-switch class="sub-switch chlid" ng-model="Create.teacher.uploadPDF" aria-label="uploadPDF">
+            <div class="column" ng-if="Create.teacher.teacherCanUploadFiles">
+              <md-switch class="sub-switch child" ng-model="teacher.uploadPDF" aria-label="uploadPDF">
                 <p class="md-body-1">{{'course.uploadPDF' | translate}}</p>
               </md-switch>
-              <md-switch class="sub-switch chlid" ng-model="Create.teacher.uploadJpg" aria-label="uploadJpg">
+              <md-switch class="sub-switch child" ng-model="teacher.uploadJpg" aria-label="uploadJpg">
                 <p class="md-body-1">{{'course.uploadJpg' | translate}}</p>
               </md-switch>
-              <md-switch class="sub-switch chlid" ng-model="Create.teacher.uploadMp3" aria-label="uploadMp3">
+              <md-switch class="sub-switch child" ng-model="teacher.uploadMp3" aria-label="uploadMp3">
                 <p class="md-body-1">{{'course.uploadMp3 ' | translate}}</p>
               </md-switch>
-              <md-switch class="sub-switch chlid" ng-model="Create.teacher.uploadMp4" aria-label="uploadMp4">
+              <md-switch class="sub-switch child" ng-model="teacher.uploadMp4" aria-label="uploadMp4">
                 <p class="md-body-1">{{'course.uploadMp4 ' | translate}}</p>
               </md-switch>
             </div>
-            <md-switch class="sub-switch" ng-model="Create.storage.replyToForumPostsViaEmail" aria-label="reply To Forum Posts Via Email">
-              <p class="md-body-1">{{'course.replyToForumPostsViaEmail' | translate}}</p>
-            </md-switch>
-            <md-switch class="sub-switch" ng-model="Create.storage.inviteUserToPlatformByEmail" aria-label="invite User To Platform By Email">
-              <p class="md-body-1">{{'course.inviteUserToPlatformByEmail' | translate}}</p>
-            </md-switch>
           </div>
         <div layout="column">
-          <md-switch class="sub-switch" ng-model="Create.storage.student.teacherCanUploadFiles" aria-label="teacherCanUploadFiles">
-            <p class="md-body-2">{{'course.teacherCanUploadFiles' | translate}}</p>
+          <md-switch class="sub-switch" ng-model="Create.storage.student.studentCanUploadFiles" aria-label="studentCanUploadFiles">
+            <p class="md-body-2">{{'course.studentCanUploadFiles' | translate}}</p>
           </md-switch>
-          <div class="column" ng-if="Create.storage.student.teacherCanUploadFiles">
-            <md-switch class="sub-switch chlid" ng-model="Create.storage.student.uploadPDF" aria-label="uploadPDF">
+          <div class="column" ng-if="Create.storage.student.studentCanUploadFiles">
+            <md-switch class="sub-switch child" ng-model="student.uploadPDF" aria-label="uploadPDF">
               <p class="md-body-1">{{'course.uploadPDF' | translate}}</p>
             </md-switch>
-            <md-switch class="sub-switch chlid" ng-model="Create.storage.student.uploadJpg" aria-label="uploadJpg">
+            <md-switch class="sub-switch child" ng-model="student.uploadJpg" aria-label="uploadJpg">
               <p class="md-body-1">{{'course.uploadJpg' | translate}}</p>
             </md-switch>
-            <md-switch class="sub-switch chlid" ng-model="Create.storage.student.uploadMp3" aria-label="uploadMp3">
+            <md-switch class="sub-switch child" ng-model="student.uploadMp3" aria-label="uploadMp3">
               <p class="md-body-1">{{'course.uploadMp3 ' | translate}}</p>
             </md-switch>
-            <md-switch class="sub-switch chlid" ng-model="Create.storage.student.uploadMp4" aria-label="uploadMp4">
+            <md-switch class="sub-switch child" ng-model="student.uploadMp4" aria-label="uploadMp4">
               <p class="md-body-1">{{'course.uploadMp4 ' | translate}}</p>
             </md-switch>
           </div>
-          <md-switch class="sub-switch" ng-model="Create.storage.studentCanAddResourceDescription" aria-label="studentCanAddResourceDescription">
+          <md-switch class="sub-switch" ng-model="student.studentCanAddResourceDescription" aria-label="studentCanAddResourceDescription">
             <p class="md-body-1">{{'course.studentCanAddResourceDescription' | translate}}</p>
           </md-switch>
-          <md-switch class="sub-switch" ng-model="Create.teacher.teacherCanAddResourceDescription" aria-label="teacherCanAddResourceDescription">
+          <md-switch class="sub-switch" ng-model="teacher.teacherCanAddResourceDescription" aria-label="teacherCanAddResourceDescription">
             <p class="md-body-1">{{'course.teacherCanAddResourceDescription' | translate}}</p>
           </md-switch>
-          <md-switch class="sub-switch" ng-model="Create.storage.studentCanDeleteResources" aria-label="studentCanDeleteResources">
-            <p class="md-body-1">{{'course.studentCanDeleteResources ' | translate}}</p>
+          <md-switch class="sub-switch" ng-model="student.studentCanDeleteResources" aria-label="studentCanDeleteResources">
+            <p class="md-body-1">{{'course.studentCanDeleteResources' | translate}}</p>
           </md-switch>
-          <md-switch class="sub-switch" ng-model="Create.teacher.teacherCanDeleteResources" aria-label="teacherCanDeleteResources">
-            <p class="md-body-1">{{'course.teacherCanDeleteResources ' | translate}}</p>
+          <md-switch class="sub-switch" ng-model="teacher.teacherCanDeleteResources" aria-label="teacherCanDeleteResources">
+            <p class="md-body-1">{{'course.teacherCanDeleteResources' | translate}}</p>
           </md-switch>
-          <md-switch class="sub-switch" ng-model="Create.storage.studentCanSchedulePublishing" aria-label="studentCanSchedulePublishing">
+          <md-switch class="sub-switch" ng-model="student.studentCanSchedulePublishing" aria-label="studentCanSchedulePublishing">
             <p class="md-body-1">{{'course.studentCanSchedulePublishing' | translate}}</p>
           </md-switch>
-          <md-switch class="sub-switch" ng-model="Create.teacher.teacherCanSchedulePublishing" aria-label="teacherCanSchedulePublishing">
-            <p class="md-body-1">{{'course.teacherCanSchedulePublishing ' | translate}}</p>
+          <md-switch class="sub-switch" ng-model="teacher.teacherCanSchedulePublishing" aria-label="teacherCanSchedulePublishing">
+            <p class="md-body-1">{{'course.teacherCanSchedulePublishing' | translate}}</p>
           </md-switch>
-          <md-switch class="sub-switch" ng-model="Create.storage.studentEmbedExternalLinks" aria-label="studentEmbedExternalLinks">
-            <p class="md-body-1">{{'course.studentEmbedExternalLinks  ' | translate}}</p>
+          <md-switch class="sub-switch" ng-model="student.studentEmbedExternalLinks" aria-label="studentEmbedExternalLinks">
+            <p class="md-body-1">{{'course.studentEmbedExternalLinks' | translate}}</p>
           </md-switch>
-          <md-switch class="sub-switch" ng-model="Create.teacher.teacherEmbedExternalLinks" aria-label="teacherEmbedExternalLinks">
-            <p class="md-body-1">{{'course.teacherEmbedExternalLinks   ' | translate}}</p>
+          <md-switch class="sub-switch" ng-model="teacher.teacherEmbedExternalLinks" aria-label="teacherEmbedExternalLinks">
+            <p class="md-body-1">{{'course.teacherEmbedExternalLinks' | translate}}</p>
           </md-switch>
         </div>
       </div>
     </div>
   </div>
-  {{Create.storage | json}}
   </md-content>
 </md-tab>
