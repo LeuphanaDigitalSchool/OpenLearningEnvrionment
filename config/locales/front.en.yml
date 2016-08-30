@@ -30,6 +30,7 @@ en:
   settings: "Settings"
   messages: "Messages"
   personalInfo: "Personal info"
+  coursesList: "courses list"
   sideNav:
     myProfile: "My profile"
 
@@ -124,6 +125,17 @@ en:
     embedExternalLinks: "embed External Links"
     embedInternalLinks: "embed Internal Links"
     addNewCourse: "add new course"
+    startDate: "start Date"
+    endDate: "end Date"
+    preferencesFor: "preferences for"
+    schedulePublishing: "schedule publishing"
+    resourcesDel: "resources del"
+    resourceDescriptionDel: "resource description del"
+    resourceDescriptionAdd: "resource description add"
+    uploadMp4: "upload mp4"
+    uploadMp3: "upload mp3"
+    uploadJpg: "upload jpg"
+    uploadPdf: "upload pdf"
 
   forgottenPasswordForm:
     forgottenPassword: "Reset password"

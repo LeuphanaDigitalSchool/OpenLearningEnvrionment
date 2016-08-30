@@ -46,7 +46,7 @@ export default function routing($stateProvider) {
           }
       }
     })
-    
+
     .state('home.admin', {
       url: 'admin',
       template: require('./routes/admin/admin.html'),
@@ -72,7 +72,6 @@ export default function routing($stateProvider) {
       template: require('./routes/profile/profile.html'),
       controller: 'ProfileCtrl',
       controllerAs: 'ProfileCtrl'
-
     })
     .state('home.create-course', {
       url: 'create-course',
@@ -88,5 +87,17 @@ export default function routing($stateProvider) {
           });
         }
       }
+    })
+    .state('home.courses-list', {
+      url: 'courses-list',
+      template: require('./routes/course/coursesList/coursesList.html'),
+      controller: 'CoursesListCtrl',
+      controllerAs: 'Courses'
+    })
+    .state('home.course', {
+      url: 'course:id',
+      template: require('./routes/course/course.html'),
+      controller: 'CourseCrtl',
+      controllerAs: 'Course'
     });
 }
