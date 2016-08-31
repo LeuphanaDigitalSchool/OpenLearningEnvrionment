@@ -6,4 +6,6 @@ class Course < ApplicationRecord
   accepts_nested_attributes_for :course_preferences
 
   validates :title, presence: true
+
+  default_scope { where(deleted: false) }
 end
