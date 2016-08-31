@@ -16,7 +16,6 @@ export default class CoursesListCtrl {
   deleteCourse(courseId){
     this.Restangular.oneUrl('courses', '/api/v1/courses/'+courseId).remove().then(()=> {
       this.getCoursesList();
-    }
-);
+    });
   }
 }

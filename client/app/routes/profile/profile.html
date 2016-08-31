@@ -26,7 +26,7 @@
         </p>
         <p><b>{{ 'profile.birthdate' | translate}}: </b>{{ProfileCtrl.profile.user.birthdate}}</p>
         <p>
-          <b>{{ 'profile.educationalAttainments' | translate}}: </b> 
+          <b>{{ 'profile.educationalAttainments' | translate}}: </b>
           <span ng-repeat="edu in ProfileCtrl.educational_attainments">
             <span ng-if="edu.value === ProfileCtrl.profile.user.educational_attainment">{{edu.name}}</span>
           </span>
