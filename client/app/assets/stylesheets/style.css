@@ -68,13 +68,37 @@ md-datepicker {
 }
 
 /* 3. modules*/
-.course md-input-container {
+.photoBox {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+}
+.course md-input-container, .myprofile md-input-container {
   padding: 0;
   margin: 0;
 }
 
-.course .md-button {
+.course .md-button, .myprofile .md-button {
     height: 36px;
+}
+
+.myprofile md-card-title{
+  margin-bottom: 20px;
+}
+
+.myprofile md-card {
+  background: none;
+  box-shadow: none;
+}
+
+.myprofile md-select{
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.myprofile .md-errors-spacer{
+  height: 0;
+  min-height: inherit;
 }
 
 .candidates, .settings {
