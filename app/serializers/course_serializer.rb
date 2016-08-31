@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 # CourseSerializer
 class CourseSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :start_date, :end_date, :storages, :preferences
+  attributes :id, :title, :description, :start_date, :end_date, :storages,
+             :course_preferences_attributes
 
   def start_date
     object.start_date.strftime('%Y-%m-%d') if object.start_date
@@ -25,7 +26,7 @@ class CourseSerializer < ActiveModel::Serializer
   end
 
   # rubocop:disable Metrics/AbcSize
-  def preferences
+  def course_preferences_attributes
     object.course_preferences.collect do |p|
       {
         id: p.id,
