@@ -101,6 +101,33 @@ resource 'Api::V1::Auth' do
     end
   end
 
+  put '/api/v1/auth' do
+    parameter :interests
+    parameter :gender
+    parameter :title 
+    parameter :country
+    parameter :educational_attainment
+    parameter :avatar
+    parameter :data_privacy
+    parameter :terms_and_conditions
+    parameter :honor_code
+    parameter :birthdate 
+    parameter :profession
+    parameter :introduction
+
+    let(:raw_post) { params.to_json }
+    example '#update account' do
+      explanation 'update current user account'
+      params = {
+        "password": "admin12345", "password_confirmation": "admin12345", "interests": "a", "gender": "2",
+        "title": "c", "country": "uk", "educational_attainment": "2", "profession": "v", "introduction": "d",
+        "data_privacy": "false", "terms_and_conditions": "false", "honor_code": "false", "birthdate": "1995-05-15"
+      }
+      login(user)
+      do_request(params)
+    end
+  end
+
   post '/api/v1/auth/password' do
     parameter :email, 'Email related to account', required: true
     parameter :redirect_url, 'Url with reset form', required: true
