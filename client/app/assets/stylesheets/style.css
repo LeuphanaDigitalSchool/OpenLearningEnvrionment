@@ -68,6 +68,15 @@ md-datepicker {
 }
 
 /* 3. modules*/
+.course md-input-container {
+  padding: 0;
+  margin: 0;
+}
+
+.course .md-button {
+    height: 36px;
+}
+
 .candidates, .settings {
   padding: 24px;
 }
