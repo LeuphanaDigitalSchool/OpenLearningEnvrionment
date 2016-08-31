@@ -14,7 +14,6 @@ export default class CourseCrtl {
   course() {
     this.coursesApi.get().then(
     (response)=>{
-      console.log('response', response);
       this.$scope.courseData = response.course;
     });
   }
