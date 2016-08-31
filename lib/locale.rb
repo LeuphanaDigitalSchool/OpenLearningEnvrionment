@@ -19,7 +19,7 @@ module Locale
   end
 
   def lang_by_user_settings
-    api_v1_user_signed_in? ? current_api_v1_user.language : request.env['HTTP_USER_LANGUAGE']
+    current_api_v1_user.language if api_v1_user_signed_in?
   end
 
   def lang_by_browser_language
