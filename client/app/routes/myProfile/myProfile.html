@@ -11,7 +11,7 @@
       </md-button>
     </md-card-title>
     <md-card-content>
-      <img ng-src="{{user.avatar.avatar.url}}" ng-if="user.avatar.avatar.url">
+      <img ng-src="{{user.avatar.avatar.url}}" ng-if="user.avatar.url">
       <div class="photoBox"
            layout="column"
            layout-align="center center"
@@ -87,8 +87,8 @@
           </span>
         </p>
         <md-input-container class="md-block">
-          <md-select ng-show="MyProfileCtrl.edit" ng-model="user.country">
-            <md-option ng-repeat="country in MyProfileCtrl.countries" value="{{country}}">
+          <md-select ng-show="MyProfileCtrl.edit" ng-model="user.country.code">
+            <md-option ng-repeat="country in MyProfileCtrl.countries" value="{{country.code}}">
               {{country.name}}
             </md-option>
           </md-select>

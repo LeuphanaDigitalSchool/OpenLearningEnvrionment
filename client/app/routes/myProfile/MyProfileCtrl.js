@@ -31,10 +31,10 @@ export default class MyProfileCtrl {
     }
   }
   submit(data){
-    this.baseLephanaUser = this.Restangular.all('/api/v1/courses/');
+    this.baseLephanaUser = this.Restangular.all('/api/v1/auth/');
     this.userData=data;
     this.sending = true;
-    this.baseLephanaUser.customPUT(this.userData, this.courseId).then(()=>{
+    this.baseLephanaUser.customPUT(this.userData).then(()=>{
       this.toastr.success('Thank you for edditing profile', 'Success');
       this.edit = false;
     }, (response)=> {
