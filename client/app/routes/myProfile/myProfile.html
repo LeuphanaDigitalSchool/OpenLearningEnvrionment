@@ -37,28 +37,28 @@
         <b>{{ 'myProfile.personal_details.firstname' | translate}}:</b>
         <span ng-hide="MyProfileCtrl.edit">{{user.firstname}}</span>
         <md-input-container ng-if="user.role_id === 6" ng-show="MyProfileCtrl.edit">
-          <input ng-model="user.firstname">
+          <input ng-model="user.firstname" aria-label="{{user.firstname}}">
         </md-input-container>
       </p>
       <p>
         <b>{{ 'myProfile.personal_details.lastname' | translate}}: </b>
         <span ng-hide="MyProfileCtrl.edit">{{user.lastname}}</span>
         <md-input-container ng-if="user.role_id === 6" ng-show="MyProfileCtrl.edit">
-          <input ng-model="user.lastname">
+          <input ng-model="user.lastname" aria-label="{{user.lastname}}">
         </md-input-container>
       </p>
       <p>
         <b>{{ 'myProfile.personal_details.title' | translate}}: </b>
         <span ng-hide="MyProfileCtrl.edit">{{user.title}}</span>
         <md-input-container ng-show="MyProfileCtrl.edit">
-          <input ng-model="user.title">
+          <input aria-label="{{user.title}}" ng-model="user.title">
         </md-input-container>
       </p>
       <p>
         <b>{{ 'myProfile.personal_details.email' | translate}}: </b>
         <span ng-hide="MyProfileCtrl.edit">{{user.email}}</span>
         <md-input-container ng-if="user.role_id === 6" ng-show="MyProfileCtrl.edit">
-          <input ng-model="user.email">
+          <input ng-model="user.email" aria-label="{{ 'myProfile.personal_details.email' | translate}}">
         </md-input-container>
       </p>
       <div layout="row">
@@ -69,8 +69,8 @@
           </span>
         </p>
         <md-input-container class="md-block">
-          <md-select ng-show="MyProfileCtrl.edit" ng-model="user.gender">
-            <md-option ng-repeat="gender in MyProfileCtrl.genders" value="{{gender}}">
+          <md-select ng-show="MyProfileCtrl.edit" ng-model="user.gender" aria-label="Gender" >
+            <md-option ng-repeat="gender in MyProfileCtrl.genders" value="{{gender}}" aria-label="{{gender}}">
               {{gender.name}}
             </md-option>
           </md-select>
@@ -84,8 +84,8 @@
           </span>
         </p>
         <md-input-container class="md-block">
-          <md-select ng-show="MyProfileCtrl.edit" ng-model="user.country.code">
-            <md-option ng-repeat="country in MyProfileCtrl.countries" value="{{country.code}}">
+          <md-select ng-show="MyProfileCtrl.edit" ng-model="user.country.code" aria-label="{{ 'myProfile.personal_details.country' | translate}}">
+            <md-option ng-repeat="country in MyProfileCtrl.countries" value="{{country.code}}" aria-label="{{country.code}}">
               {{country.name}}
             </md-option>
           </md-select>
@@ -94,8 +94,20 @@
       <p>
         <b>{{ 'myProfile.personal_details.birthdate' | translate}}: </b>
         <span ng-hide="MyProfileCtrl.edit">{{user.birthdate}}</span>
+        <md-input-container ng-show="MyProfileCtrl.edit" aria-label="{{user.birthdate}}">
+          <input ng-model="user.birthdate" aria-label="{{ 'myProfile.personal_details.birthdate' | translate}}">
+        </md-input-container>
+      </p>
+      <p>
+        <b>{{ 'password' | translate}}: </b>
         <md-input-container ng-show="MyProfileCtrl.edit">
-          <input ng-model="user.birthdate">
+          <input type="password" ng-model="user.password" aria-label="{{ 'password' | translate}}">
+        </md-input-container>
+      </p>
+      <p>
+        <b>{{ 'passwordConfirmation' | translate}}: </b>
+        <md-input-container ng-show="MyProfileCtrl.edit">
+          <input type="password" ng-model="user.password_confirmation" aria-label="{{ 'password' | translate}}">
         </md-input-container>
       </p>
       <div ng-if="user.role.id !== 0">
@@ -109,8 +121,8 @@
             </span>
           </p>
           <md-input-container class="md-block">
-            <md-select ng-show="MyProfileCtrl.edit" ng-model="user.educational_attainment">
-              <md-option ng-repeat="edu in MyProfileCtrl.educational_attainments" value="{{edu}}">
+            <md-select ng-show="MyProfileCtrl.edit" ng-model="user.educational_attainment" aria-label="{{ 'myProfile.personal_details.educationalAttainments' | translate}}">
+              <md-option ng-repeat="edu in MyProfileCtrl.educational_attainments" value="{{edu}}" aria-label="{{edu}}">
                 {{edu.name}}
               </md-option>
             </md-select>
@@ -119,8 +131,8 @@
         <p>
           <b>{{ 'myProfile.personal_details.professional' | translate}}: </b>
           <span ng-hide="MyProfileCtrl.edit">{{user.professional}}</span>
-          <md-input-container ng-show="MyProfileCtrl.edit">
-            <input ng-model="user.professional">
+          <md-input-container ng-show="MyProfileCtrl.edit" aria-label="{{ 'myProfile.personal_details.professional' | translate}}">
+            <input ng-model="user.professional" aria-label="{{ 'myProfile.personal_details.professional' | translate}}">
           </md-input-container>
         </p>
         <md-divider></md-divider>
@@ -129,6 +141,23 @@
         <md-divider></md-divider>
         <span class="md-headline">{{ 'myProfile.personal_details.introduction' | translate}}</span>
         <p>{{user.introduction}}</p>
+      </div>
+      <div ng-if="user.role.id == 0" layout="row" flex layout-align="space-around center">
+        <md-input-container>
+          <md-checkbox ng-model="user.honor_code" aria-label="Checkbox 1" required>
+            {{'honorCode' | translate}}
+          </md-checkbox>
+        </md-input-container>
+        <md-input-container>
+          <md-checkbox ng-model="user.terms_and_conditions" aria-label="Checkbox 2" required>
+            {{'termsAndConditions' | translate}}
+          </md-checkbox>
+        </md-input-container>
+        <md-input-container>
+          <md-checkbox ng-model="user.data_privacy" aria-label="Checkbox 3" required>
+            {{'dataPrivacy' | translate}}
+          </md-checkbox>
+        </md-input-container>
       </div>
     </md-card-content>
   </md-card>

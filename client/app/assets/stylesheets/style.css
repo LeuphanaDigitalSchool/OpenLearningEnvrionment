@@ -101,6 +101,10 @@ md-datepicker {
   min-height: inherit;
 }
 
+.myprofile md-divider{
+  margin: 40px 0;
+}
+
 .candidates, .settings {
   padding: 24px;
 }
