@@ -1,15 +1,13 @@
 export default class MyProfileCtrl {
-  constructor($location, $mdSidenav, Restangular, $state, $scope, $mdDialog, countryList, toastr, Upload) {
+  constructor($location, Restangular, $scope, $mdDialog, toastr, Upload) {
     "ngInject";
-    this.$location = $location;
-    this.$state = $state;
-    this.$mdSidenav = $mdSidenav;
     this.$mdDialog = $mdDialog;
     this.Restangular = Restangular;
-    this.countries = countryList;
+    this.$location = $location;
     this.toastr = toastr;
     this.Upload = Upload;
     this.getSelects();
+    this.getBaseUrl();
     this.edit = false;
     this.userData = {};
   }
@@ -55,24 +53,38 @@ export default class MyProfileCtrl {
           }, (response)=> {
               if (response.status > 0)
                   $scope.errorMsg = response.status + ': ' + response.data;
-          }, (evt)=> {
-            file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
           });
       }
       if (errFiles[0]) {
-        this.$mdDialog.show(
-          this.$mdDialog.alert()
-            .clickOutsideToClose(true)
-            .title('Image size')
-            .textContent('Yours file size is wrong (max height & width = 1000 px)')
-            .ariaLabel('file size')
-            .ok('ok')
-            .targetEvent($event)
-        );
+        this.handleError();
       }
   }
 
   removeImage() {
     this.avatar = null;
+  }
+
+  handleError() {
+    this.$mdDialog.show(
+      this.$mdDialog.alert()
+        .clickOutsideToClose(true)
+        .title('Image size')
+        .textContent('Yours file size is wrong (max height & width = 1000 px)')
+        .ariaLabel('file size')
+        .ok('ok')
+        .targetEvent($event)
+    );
+  }
+
+  getBaseUrl(){
+    let BASE_API_PATH;
+    switch(this.$location.host()){
+      case 'localhost':
+        BASE_API_PATH = 'http://localhost:3000';
+      break;
+      default:
+        BASE_API_PATH = 'http://ap2.dev.akra.net';
+    }
+  this.baseUrl = BASE_API_PATH;
   }
 }

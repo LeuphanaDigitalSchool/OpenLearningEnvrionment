@@ -1,6 +1,5 @@
 <md-content flex layout="column" layout-padding class="myprofile l-content-background">
   <md-card>
-    <img ng-src="{{user.avatar.url}}" class="md-card-image" alt="{{user.firstname}} {{user.lastname}}" ng-show="isExists(user.avatar)">
     <md-card-title>
       <md-card-title-text>
         <span class="md-headline">{{ 'myProfile.personal_details.header' | translate}}</span>
@@ -11,16 +10,14 @@
       </md-button>
     </md-card-title>
     <md-card-content>
-      <img ng-src="{{user.avatar.avatar.url}}" ng-if="user.avatar.url">
       <div class="photoBox"
            layout="column"
            layout-align="center center"
-           ng-if="MyProfileCtrl.edit"
-           ngf-background="MyProfileCtrl.avatar || ' '"
+           ngf-background="MyProfileCtrl.baseUrl+user.avatar.url || ' '"
            style="background-size:cover"
            ngf-size="{width: 200, height: 200, quality: 0.9}">
 
-           <div class="addImage">
+           <div class="addImage" ng-show="MyProfileCtrl.edit">
              <md-button ngf-select="MyProfileCtrl.uploadImage($file, $invalidFiles, $event)"
                         accept="image/*"
                         ngf-max-height="1000"
@@ -101,36 +98,38 @@
           <input ng-model="user.birthdate">
         </md-input-container>
       </p>
-      <md-divider></md-divider>
-      <span class="md-headline">{{ 'myProfile.personal_details.education' | translate}}</span>
-      <div layout="row">
+      <div ng-if="user.role.id !== 0">
+        <md-divider></md-divider>
+        <span class="md-headline">{{ 'myProfile.personal_details.education' | translate}}</span>
+        <div layout="row">
+          <p>
+            <b>{{ 'myProfile.personal_details.educationalAttainments' | translate}}: </b>
+            <span ng-hide="MyProfileCtrl.edit" ng-repeat="edu in MyProfileCtrl.educational_attainments">
+              <span ng-if="edu.value === user.educational_attainment">{{edu.name}}</span>
+            </span>
+          </p>
+          <md-input-container class="md-block">
+            <md-select ng-show="MyProfileCtrl.edit" ng-model="user.educational_attainment">
+              <md-option ng-repeat="edu in MyProfileCtrl.educational_attainments" value="{{edu}}">
+                {{edu.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
         <p>
-          <b>{{ 'myProfile.personal_details.educationalAttainments' | translate}}: </b>
-          <span ng-hide="MyProfileCtrl.edit" ng-repeat="edu in MyProfileCtrl.educational_attainments">
-            <span ng-if="edu.value === user.educational_attainment">{{edu.name}}</span>
-          </span>
+          <b>{{ 'myProfile.personal_details.professional' | translate}}: </b>
+          <span ng-hide="MyProfileCtrl.edit">{{user.professional}}</span>
+          <md-input-container ng-show="MyProfileCtrl.edit">
+            <input ng-model="user.professional">
+          </md-input-container>
         </p>
-        <md-input-container class="md-block">
-          <md-select ng-show="MyProfileCtrl.edit" ng-model="user.educational_attainment">
-            <md-option ng-repeat="edu in MyProfileCtrl.educational_attainments" value="{{edu}}">
-              {{edu.name}}
-            </md-option>
-          </md-select>
-        </md-input-container>
+        <md-divider></md-divider>
+        <span class="md-headline">{{ 'myProfile.personal_details.interests' | translate}}</span>
+        <p>{{user.interests}}</p>
+        <md-divider></md-divider>
+        <span class="md-headline">{{ 'myProfile.personal_details.introduction' | translate}}</span>
+        <p>{{user.introduction}}</p>
       </div>
-      <p>
-        <b>{{ 'myProfile.personal_details.professional' | translate}}: </b>
-        <span ng-hide="MyProfileCtrl.edit">{{user.professional}}</span>
-        <md-input-container ng-show="MyProfileCtrl.edit">
-          <input ng-model="user.professional">
-        </md-input-container>
-      </p>
-      <md-divider></md-divider>
-      <span class="md-headline">{{ 'myProfile.personal_details.interests' | translate}}</span>
-      <p>{{user.interests}}</p>
-      <md-divider></md-divider>
-      <span class="md-headline">{{ 'myProfile.personal_details.introduction' | translate}}</span>
-      <p>{{user.introduction}}</p>
     </md-card-content>
   </md-card>
 </md-content>
