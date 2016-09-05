@@ -39,7 +39,12 @@ class User < ActiveRecord::Base
   end
 
   def age
-    ((Date.today - birthdate).to_i / 365) if birthdate.present?
+    today = Date.today
+    unless birthdate.nil?
+      d = Date.new(today.year, birthdate.month, birthdate.day)
+      age = d.year - birthdate.year - (d < today ? 1 : 0)
+    end
+    age
   end
 
   def mailboxer_email(_messageable)
