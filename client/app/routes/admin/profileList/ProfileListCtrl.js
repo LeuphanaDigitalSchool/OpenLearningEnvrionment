@@ -25,4 +25,10 @@ export default class ProfileListCtrl {
   showProfile(userId) {
     this.location.path('/profile/' + userId);
   }
+
+  deleteProfile(userId) {
+    this.Restangular.oneUrl('users', '/api/v1/users/'+userId).remove().then(()=> {
+      this.usersList();
+    });
+  }
 }
