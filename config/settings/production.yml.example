@@ -1,3 +1,4 @@
 secret_token: ''
 default_email: ''
 invitation_url: ''
+name: 'Leuphana Learning Environment'

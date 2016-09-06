@@ -1,6 +1,6 @@
 <p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
 
-<p><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: Settings.invitation_url) %></p>
+<p><%= t("devise.mailer.invitation_instructions.someone_invited_you", text: Settings.name) %></p>
 
 <p><%= link_to t("devise.mailer.invitation_instructions.accept"), "#{Settings.invitation_url}/#/acceptInvitation##{@token}" %></p>
 
