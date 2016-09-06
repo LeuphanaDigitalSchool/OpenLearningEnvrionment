@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       namespace :admin do
         namespace :users do
           resources :public_users, :students, :supports, :teachers, :course_directors, :course_managers
+          resources :users, only: [:destroy]
           get '/' => 'users#index'
           get 'profile_selects' => 'users#profile_selects'
         end
