@@ -1,9 +1,10 @@
 export default class CreateProfileCtrl {
-  constructor(countryList, $state, toastr, Restangular, Upload) {
+  constructor(countryList, $state, $rootScope, toastr, Restangular, Upload) {
     "ngInject";
     this.user = {};
     this.toastr = toastr;
     this.$state = $state;
+    this.$rootScope = $rootScope;
     this.Upload = Upload;
     this.Restangular = Restangular;
     this.roles = [
@@ -26,6 +27,7 @@ export default class CreateProfileCtrl {
       this.baseLephanaUser.post(this.sendData).then(()=>{
         this.toastr.success('Thank you for registering new user', 'Success');
         this.initialData();
+        this.$rootScope.$broadcast('user:deleted');
       }, (response)=> {
         this.send = true;
         let status = response.statusText;
