@@ -39,12 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def age
-    today = Date.today
-    unless birthdate.nil?
-      d = Date.new(today.year, birthdate.month, birthdate.day)
-      age = d.year - birthdate.year - (d < today ? 1 : 0)
-    end
-    age
+    check_age unless birthdate.nil?
   end
 
   def mailboxer_email(_messageable)
@@ -59,6 +54,14 @@ class User < ActiveRecord::Base
 
   def password_required?
     false
+  end
+
+  private
+
+  def check_age
+    today = Date.today
+    d = Date.new(today.year, birthdate.month, birthdate.day)
+    d.year - birthdate.year - (d > today ? 1 : 0)
   end
 end
 
