@@ -1,3 +1,4 @@
 secret_token: '76bb53fb40a13975ce60efcfc6b3f6648292c1c15dd0a2e3efd6a5887032be11d1fef19f19351f47c0ab53039fd97047b66d5c3e370d0e742f8d6664cf8944c7'
 default_email: 'development@example.com'
 invitation_url: 'http://localhost:8080'
+name: 'Leuphana Learning Environment'
