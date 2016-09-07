@@ -16,6 +16,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log',
                                                'tmp/sockets',
                                                'vendor/bundle',
                                                'public/client',
+                                               'public/uploads',
                                                'config/settings')
 
 namespace :deploy do
