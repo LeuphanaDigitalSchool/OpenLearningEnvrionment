@@ -9,7 +9,6 @@ export default class MyProfileCtrl {
     this.Upload = Upload;
     this.edit = false;
     this.getSelects();
-    this.getBaseUrl();
     this.userData = {};
     this.countries = countryList;
     this.baseAvatarUrl = {};
@@ -30,7 +29,7 @@ export default class MyProfileCtrl {
       this.edit = true;
       if(avatarData) {
         this.baseAvatarUrl = avatarData;
-        this.avatar = this.baseUrl + this.baseAvatarUrl;
+        this.avatar = this.baseAvatarUrl;
       } else {
         this.avatar = null;
       }
@@ -89,17 +88,5 @@ export default class MyProfileCtrl {
         .ok('ok')
         .targetEvent($event)
     );
-  }
-
-  getBaseUrl(){
-    let BASE_API_PATH;
-    switch(this.$location.host()){
-      case 'localhost':
-        BASE_API_PATH = 'http://localhost:3000';
-      break;
-      default:
-        BASE_API_PATH = 'http://leuphana.dev.akra.net';
-    }
-  this.baseUrl = BASE_API_PATH;
   }
 }
