@@ -194,7 +194,13 @@ en:
     defineStudentBody: "define Student Body"
     defineTeamMatchingCriteria: "define Team Matching Criteria"
     teacherGivesPermissionsToIndividualUsers: "teacher Gives Permissions To Individual Users"
-
+    public: Public
+    embed: Embed
+    link: Link
+    twitter: Twitter
+    facebook: Facebook
+    googlePlus: Goole Plus
+    instagram: Instagram
 
   forgottenPasswordForm:
     forgottenPassword: "Reset password"
