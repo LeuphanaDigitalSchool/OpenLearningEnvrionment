@@ -4,7 +4,7 @@
       <md-card-title-text>
         <span class="md-headline">{{ 'myProfile.personal_details.header' | translate}}</span>
       </md-card-title-text>
-      <md-button md-no-ink class="md-raised md-primary" ng-click="MyProfileCtrl.editFn(user)">
+      <md-button md-no-ink class="md-raised md-primary" ng-click="MyProfileCtrl.editFn(user, user.avatar.url)">
         <span ng-hide="MyProfileCtrl.edit">{{'edit' | translate}}</span>
         <span ng-show="MyProfileCtrl.edit">{{'save' | translate}}</span>
       </md-button>
@@ -13,7 +13,16 @@
       <div class="photoBox"
            layout="column"
            layout-align="center center"
-           ngf-background="MyProfileCtrl.baseUrl+user.avatar.url || ' '"
+           ngf-background="MyProfileCtrl.avatar || MyProfileCtrl.baseUrl + user.avatar.url"
+           style="background-size:cover"
+           ng-if="!MyProfileCtrl.edit"
+           >
+     </div>
+      <div class="photoBox"
+           layout="column"
+           ng-if="MyProfileCtrl.edit"
+           layout-align="center center"
+           ngf-background="MyProfileCtrl.avatar || ' '"
            style="background-size:cover"
            ngf-size="{width: 200, height: 200, quality: 0.9}">
 
@@ -21,7 +30,7 @@
              <md-button ngf-select="MyProfileCtrl.uploadImage($file, $invalidFiles, $event)"
                         accept="image/*"
                         ngf-max-height="1000"
-                        ng-model="user.avatar"
+                        ng-model="MyProfileCtrl.avatar"
                         name="avatar"
                         md-no-ink class="md-primary"
                         ng-hide="MyProfileCtrl.avatar">

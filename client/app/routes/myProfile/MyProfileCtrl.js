@@ -1,16 +1,18 @@
 export default class MyProfileCtrl {
-  constructor($location, Restangular, $scope, $mdDialog, toastr, Upload, countryList) {
+  constructor($location, Restangular, $scope, $mdDialog, toastr, Upload, countryList, $auth) {
     "ngInject";
     this.$mdDialog = $mdDialog;
     this.Restangular = Restangular;
     this.$location = $location;
     this.toastr = toastr;
+    this.$auth = $auth;
     this.Upload = Upload;
+    this.edit = false;
     this.getSelects();
     this.getBaseUrl();
-    this.edit = false;
     this.userData = {};
     this.countries = countryList;
+    this.baseAvatarUrl = {};
   }
 
   getSelects() {
@@ -21,19 +23,26 @@ export default class MyProfileCtrl {
       }
     );
   }
-  editFn(data) {
+  editFn(data, avatarData) {
     if(this.edit){
       this.submit(data);
     } else {
       this.edit = true;
-      this.avatar = data.avatar.url;
+      if(avatarData) {
+        this.baseAvatarUrl = avatarData;
+        this.avatar = this.baseUrl + this.baseAvatarUrl;
+      } else {
+        this.avatar = null;
+      }
     }
   }
   submit(data){
     this.baseLephanaUser = this.Restangular.all('/api/v1/auth/');
     this.userData=data;
+    this.userData.avatar = this.avatar;
+    this.checkIfAvatarExist(this.userData);
     this.sending = true;
-    this.baseLephanaUser.customPUT(this.userData).then(()=>{
+    this.$auth.updateAccount(this.userData).then(()=>{
       this.toastr.success('Thank you for edditing profile', 'Success');
       this.edit = false;
     }, (response)=> {
@@ -64,7 +73,12 @@ export default class MyProfileCtrl {
   removeImage() {
     this.avatar = null;
   }
-
+  checkIfAvatarExist(data) {
+    if(data.avatar === null){
+      console.log('data avatar');
+      this.userData.remove_avatar =  true;
+    }
+  }
   handleError($event) {
     this.$mdDialog.show(
       this.$mdDialog.alert()
