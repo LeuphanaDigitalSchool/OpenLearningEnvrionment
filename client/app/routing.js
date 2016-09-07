@@ -14,7 +14,7 @@ export default function routing($stateProvider) {
       controllerAs: 'RegisterPublicUserCtrl'
     })
     .state('acceptInvitation', {
-      url:'/acceptInvitation',
+      url:'/acceptInvitation/:id',
       template: require('./routes/login/acceptInvitation.html'),
       controller: 'AcceptInvitationCtrl',
       controllerAs: 'Accept'
