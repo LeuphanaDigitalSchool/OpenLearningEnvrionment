@@ -1,11 +1,12 @@
 export default class ResetPasswordCtrl {
-  constructor($location, Restangular, toastr, $state){
+  constructor($location, $stateParams, Restangular, toastr, $state){
     "ngInject";
     this.$location = $location;
     this.Restangular = Restangular;
     this.toastr = toastr;
     this.$state = $state;
-    this.resetPasswordToken = $location.hash();
+    this.$stateParams= $stateParams;
+    this.resetPasswordToken = this.$stateParams.token;
     this.baseResetPasswordUrl = this.Restangular.all('/api/v1/auth/password');
     this.initialData();
     this.checkIfTokenIsValid();
@@ -52,7 +53,7 @@ export default class ResetPasswordCtrl {
     };
 
     this.resetData = {
-      'password': this.user.password, 
+      'password': this.user.password,
       'password_confirmation': this.user.password_confirmation
     }
 

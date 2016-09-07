@@ -1,12 +1,13 @@
 export default class AcceptInvitationCtrl {
-  constructor($location, Restangular, toastr, countryList, Upload, $state){
+  constructor($location, $stateParams, Restangular, toastr, countryList, Upload, $state){
     "ngInject";
     this.$location = $location;
     this.Restangular = Restangular;
     this.toastr = toastr;
     this.$state = $state;
     this.Upload = Upload;
-    this.invitationToken = $location.hash();
+    this.$stateParams = $stateParams;
+    this.invitationToken = this.$stateParams.token;
     this.countries = countryList;
     this.baseAcceptInvitationUrl = this.Restangular.all('/api/v1/auth/invitation');
     this.head = {

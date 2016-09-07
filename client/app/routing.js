@@ -14,7 +14,7 @@ export default function routing($stateProvider) {
       controllerAs: 'RegisterPublicUserCtrl'
     })
     .state('acceptInvitation', {
-      url:'/acceptInvitation',
+      url:'/acceptInvitation/:token',
       template: require('./routes/login/acceptInvitation.html'),
       controller: 'AcceptInvitationCtrl',
       controllerAs: 'Accept'
@@ -26,7 +26,7 @@ export default function routing($stateProvider) {
       controllerAs: 'ForgottenPasswordCtrl'
     })
     .state('resetPassword', {
-      url:'/resetPassword',
+      url:'/resetPassword/:token',
       template: require('./routes/forgottenPassword/resetPassword.html'),
       controller: 'ResetPasswordCtrl',
       controllerAs: 'ResetPassword'
