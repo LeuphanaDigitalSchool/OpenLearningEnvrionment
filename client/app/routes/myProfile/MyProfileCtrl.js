@@ -98,7 +98,7 @@ export default class MyProfileCtrl {
         BASE_API_PATH = 'http://localhost:3000';
       break;
       default:
-        BASE_API_PATH = 'http://ap2.dev.akra.net';
+        BASE_API_PATH = 'http://leuphana.dev.akra.net';
     }
   this.baseUrl = BASE_API_PATH;
   }
