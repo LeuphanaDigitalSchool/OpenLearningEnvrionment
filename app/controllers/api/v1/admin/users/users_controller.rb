@@ -14,7 +14,8 @@ module Api
           end
 
           def destroy
-            if @user.update(deleted: true)
+            timestamp = Time.now.strftime('%Y%m%d%H%M%S')
+            if @user.update(deleted: true, provider: "disable_#{timestamp}")
               render json: nil, status: :no_content
             else
               render json: @user.errors, status: :unprocessable_entity
