@@ -30,7 +30,12 @@ export default class CreateProfileCtrl {
         this.$rootScope.$broadcast('user:deleted');
       }, (response)=> {
         this.send = true;
-        let status = response.statusText;
+        let status = null;
+        if (response.data.email) {
+          status = 'E-mail already in use!';
+        } else {
+          status = response.statusText;
+        }
         this.toastr.error(status, 'Error');
       });
     }
