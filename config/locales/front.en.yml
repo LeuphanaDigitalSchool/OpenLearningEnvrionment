@@ -31,6 +31,7 @@ en:
   messages: "Messages"
   personalInfo: "Personal info"
   coursesList: "courses list"
+  publishPlatformContentOutsideOfPlatform: "publish Platform Content Outside Of Platform"
   sideNav:
     myProfile: "My profile"
 
@@ -178,6 +179,22 @@ en:
     defineFrozenContent: "define Frozen Content"
     matchPlatformContentWithEespectivePhase: "match Platform Content With Eespective Phase"
     defineNewSectionsInEach: "define New Sections In Each"
+    groupWorkspace: "group Workspace"
+    personalWorkspace: "personal Workspace"
+    publishForumPostsOutsideOfPlatform: "publish Forum Posts Outside Of Platform"
+    publishResourcesOutsideOfPlatform: "publish Resources Outside Of Platform"
+    publishMessagesOutsideOfPlatform: "publish Messages Outside Of Platform"
+    publishNewsPostsAsWordpressPostsOutsideOfPlatform: "publish News Posts As Wordpress Posts Outside Of Platform"
+    publishNewsPostsAsAsSocialMediaPosts: "publish News Posts As As Social Media Posts"
+    permission: "permission"
+    permissionToPublishContentOutsideOfPlatform: "permission To Publish Content Outside Of Platform"
+    permissionToOverrideStandardNotificationSettings: "permission To Override Standard Notification Settings"
+    permissionToInviteAdditionalUsersToPlatform: "permission To Invite Additional Users To Platform"
+    permissionToBuildTeams: "permission To Build Teams"
+    defineStudentBody: "define Student Body"
+    defineTeamMatchingCriteria: "define Team Matching Criteria"
+    teacherGivesPermissionsToIndividualUsers: "teacher Gives Permissions To Individual Users"
+
 
   forgottenPasswordForm:
     forgottenPassword: "Reset password"
