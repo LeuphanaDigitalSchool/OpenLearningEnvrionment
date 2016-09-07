@@ -4,7 +4,7 @@
       <md-card-title-text>
         <span class="md-headline">{{ 'myProfile.personal_details.header' | translate}}</span>
       </md-card-title-text>
-      <md-button md-no-ink class="md-raised md-primary" ng-click="MyProfileCtrl.editFn(user)">
+      <md-button md-no-ink class="md-raised md-primary" ng-click="MyProfileCtrl.editFn(user, user.avatar.url)">
         <span ng-hide="MyProfileCtrl.edit">{{'edit' | translate}}</span>
         <span ng-show="MyProfileCtrl.edit">{{'save' | translate}}</span>
       </md-button>
@@ -13,7 +13,16 @@
       <div class="photoBox"
            layout="column"
            layout-align="center center"
-           ngf-background="MyProfileCtrl.baseUrl+user.avatar.url || ' '"
+           ngf-background="MyProfileCtrl.avatar || user.avatar.url"
+           style="background-size:cover"
+           ng-if="!MyProfileCtrl.edit"
+           >
+     </div>
+      <div class="photoBox"
+           layout="column"
+           ng-if="MyProfileCtrl.edit"
+           layout-align="center center"
+           ngf-background="MyProfileCtrl.avatar || ' '"
            style="background-size:cover"
            ngf-size="{width: 200, height: 200, quality: 0.9}">
 
@@ -21,7 +30,7 @@
              <md-button ngf-select="MyProfileCtrl.uploadImage($file, $invalidFiles, $event)"
                         accept="image/*"
                         ngf-max-height="1000"
-                        ng-model="user.avatar"
+                        ng-model="MyProfileCtrl.avatar"
                         name="avatar"
                         md-no-ink class="md-primary"
                         ng-hide="MyProfileCtrl.avatar">
@@ -65,12 +74,12 @@
         <p>
           <b>{{ 'myProfile.personal_details.gender' | translate}}: </b>
           <span ng-hide="MyProfileCtrl.edit" ng-repeat="gender in MyProfileCtrl.genders">
-            <span ng-if="gender.value === user.gender">{{gender.name}}</span>
+            <span ng-if="gender.value == user.gender">{{gender.name}}</span>
           </span>
         </p>
         <md-input-container class="md-block">
-          <md-select ng-show="MyProfileCtrl.edit" ng-model="user.gender" aria-label="Gender" >
-            <md-option ng-repeat="gender in MyProfileCtrl.genders" value="{{gender}}" aria-label="{{gender}}">
+          <md-select ng-show="MyProfileCtrl.edit" ng-model="user.gender" aria-label="{{ 'myProfile.personal_details.gender' | translate}}" >
+            <md-option ng-repeat="gender in MyProfileCtrl.genders" value="{{gender.value}}" aria-label="{{gender.value}}">
               {{gender.name}}
             </md-option>
           </md-select>
@@ -80,11 +89,11 @@
         <p>
           <b>{{ 'myProfile.personal_details.country' | translate}}: </b>
           <span ng-hide="MyProfileCtrl.edit" ng-repeat="country in MyProfileCtrl.countries">
-            <span ng-if="country.code === (user.country | uppercase)">{{country.name}}</span>
+            <span ng-if="country.code == (user.country | uppercase)">{{country.name}}</span>
           </span>
         </p>
         <md-input-container class="md-block">
-          <md-select ng-show="MyProfileCtrl.edit" ng-model="user.country.code" aria-label="{{ 'myProfile.personal_details.country' | translate}}">
+          <md-select ng-show="MyProfileCtrl.edit" ng-model="user.country" aria-label="{{ 'myProfile.personal_details.country' | translate}}">
             <md-option ng-repeat="country in MyProfileCtrl.countries" value="{{country.code}}" aria-label="{{country.code}}">
               {{country.name}}
             </md-option>
@@ -117,12 +126,12 @@
           <p>
             <b>{{ 'myProfile.personal_details.educationalAttainments' | translate}}: </b>
             <span ng-hide="MyProfileCtrl.edit" ng-repeat="edu in MyProfileCtrl.educational_attainments">
-              <span ng-if="edu.value === user.educational_attainment">{{edu.name}}</span>
+              <span ng-if="edu.value == user.educational_attainment">{{edu.name}}</span>
             </span>
           </p>
           <md-input-container class="md-block">
             <md-select ng-show="MyProfileCtrl.edit" ng-model="user.educational_attainment" aria-label="{{ 'myProfile.personal_details.educationalAttainments' | translate}}">
-              <md-option ng-repeat="edu in MyProfileCtrl.educational_attainments" value="{{edu}}" aria-label="{{edu}}">
+              <md-option ng-repeat="edu in MyProfileCtrl.educational_attainments" value="{{edu.value}}" aria-label="{{edu.value}}">
                 {{edu.name}}
               </md-option>
             </md-select>
@@ -137,10 +146,22 @@
         </p>
         <md-divider></md-divider>
         <span class="md-headline">{{ 'myProfile.personal_details.interests' | translate}}</span>
-        <p>{{user.interests}}</p>
+        <p>
+          <b>{{ 'myProfile.personal_details.interests' | translate}}: </b>
+          <span ng-hide="MyProfileCtrl.edit">{{user.interests}}</span>
+          <md-input-container ng-show="MyProfileCtrl.edit" aria-label="{{ 'myProfile.personal_details.interests' | translate}}">
+            <input ng-model="user.interests" aria-label="{{ 'myProfile.personal_details.interests' | translate}}">
+          </md-input-container>
+        </p>
         <md-divider></md-divider>
         <span class="md-headline">{{ 'myProfile.personal_details.introduction' | translate}}</span>
-        <p>{{user.introduction}}</p>
+        <p>
+          <b>{{ 'myProfile.personal_details.introduction' | translate}}: </b>
+          <span ng-hide="MyProfileCtrl.edit">{{user.introduction}}</span>
+          <md-input-container ng-show="MyProfileCtrl.edit" aria-label="{{ 'myProfile.personal_details.introduction' | translate}}">
+            <input ng-model="user.introduction" aria-label="{{ 'myProfile.personal_details.introduction' | translate}}">
+          </md-input-container>
+        </p>
       </div>
       <div ng-if="user.role.id == 0" layout="row" flex layout-align="space-around center">
         <md-input-container>

@@ -5,7 +5,7 @@ module Api
       module Users
         # Api::V1::Admin::Users::UsersController
         class UsersController < ApplicationController
-          before_action :authenticate_api_v1_user!
+          before_action :authenticate_api_v1_user!, except: [:profile_selects]
           before_action :set_user, only: [:destroy]
 
           def index
@@ -14,7 +14,8 @@ module Api
           end
 
           def destroy
-            if @user.update(deleted: true)
+            timestamp = Time.now.strftime('%Y%m%d%H%M%S')
+            if @user.update(deleted: true, provider: "disable_#{timestamp}")
               render json: nil, status: :no_content
             else
               render json: @user.errors, status: :unprocessable_entity

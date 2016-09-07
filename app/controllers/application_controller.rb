@@ -23,8 +23,8 @@ class ApplicationController < ActionController::API
     end
     devise_parameter_sanitizer.permit(:account_update, keys: [:password, :password_confirmation, :interests, :gender,
                                                               :title, :country, :educational_attainment, :avatar,
-                                                              :data_privacy, :terms_and_conditions, :honor_code,
-                                                              :birthdate, :profession, :introduction])
+                                                              :remove_avatar, :data_privacy, :terms_and_conditions,
+                                                              :honor_code, :birthdate, :profession, :introduction])
   end
 
   def current_ability
