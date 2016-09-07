@@ -7,7 +7,7 @@ export default class AcceptInvitationCtrl {
     this.$state = $state;
     this.Upload = Upload;
     this.$stateParams = $stateParams;
-    this.invitationToken = this.$stateParams.id;
+    this.invitationToken = this.$stateParams.token;
     this.countries = countryList;
     this.baseAcceptInvitationUrl = this.Restangular.all('/api/v1/auth/invitation');
     this.head = {
