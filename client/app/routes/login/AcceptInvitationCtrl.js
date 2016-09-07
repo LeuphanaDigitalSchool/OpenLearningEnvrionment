@@ -1,10 +1,11 @@
 export default class AcceptInvitationCtrl {
-  constructor($location, $stateParams, Restangular, toastr, countryList, Upload, $state){
+  constructor($location, $stateParams, Restangular, toastr, countryList, Upload, $state, $mdDialog){
     "ngInject";
     this.$location = $location;
     this.Restangular = Restangular;
     this.toastr = toastr;
     this.$state = $state;
+    this.$mdDialog = $mdDialog;
     this.Upload = Upload;
     this.$stateParams = $stateParams;
     this.invitationToken = this.$stateParams.token;
