@@ -1,5 +1,5 @@
 export default class MyProfileCtrl {
-  constructor($location, Restangular, $scope, $mdDialog, toastr, Upload) {
+  constructor($location, Restangular, $scope, $mdDialog, toastr, Upload, countryList) {
     "ngInject";
     this.$mdDialog = $mdDialog;
     this.Restangular = Restangular;
@@ -10,6 +10,7 @@ export default class MyProfileCtrl {
     this.getBaseUrl();
     this.edit = false;
     this.userData = {};
+    this.countries = countryList;
   }
 
   getSelects() {
@@ -56,7 +57,7 @@ export default class MyProfileCtrl {
           });
       }
       if (errFiles[0]) {
-        this.handleError();
+        this.handleError($event);
       }
   }
 
@@ -64,7 +65,7 @@ export default class MyProfileCtrl {
     this.avatar = null;
   }
 
-  handleError() {
+  handleError($event) {
     this.$mdDialog.show(
       this.$mdDialog.alert()
         .clickOutsideToClose(true)
