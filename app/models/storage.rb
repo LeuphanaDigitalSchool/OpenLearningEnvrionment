@@ -2,7 +2,7 @@
 # Storage
 class Storage < ApplicationRecord
   belongs_to :user
-  belongs_to :course
+  belongs_to :course_phase
 
   mount_base64_uploader :file, StorageUploader
 
@@ -11,7 +11,7 @@ class Storage < ApplicationRecord
   default_scope { where(deleted: false) }
 
   def upload_whitelist
-    allow = course.course_preferences.find_by(role_id: user.role_id)
+    allow = course_phase.course_phase_preferences.find_by(role_id: user.role_id)
     whitelist = []
     whitelist.push('pdf') if allow.upload_pdf
     whitelist.push('jpg') if allow.upload_jpg

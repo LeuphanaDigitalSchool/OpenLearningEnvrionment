@@ -2,8 +2,8 @@
 # Course
 class Course < ApplicationRecord
   has_many :storages
-  has_many :course_preferences
-  accepts_nested_attributes_for :course_preferences
+  has_many :course_phases
+  accepts_nested_attributes_for :course_phases, limit: 6
 
   validates :title, presence: true
 
