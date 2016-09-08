@@ -137,6 +137,16 @@ md-datepicker {
   border: 1px solid #ccc;
 }
 
+
+.sidenav md-list-item .md-no-style.md-button{
+  margin: 0;
+  font-weight: 400;
+}
+
+.course-view .md-title,
+.course-view .md-subhead {
+  margin: 0;
+}
 /* 4. state*/
 
 .md-card-image {

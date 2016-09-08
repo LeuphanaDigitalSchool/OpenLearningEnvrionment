@@ -32,6 +32,8 @@ en:
   personalInfo: "Personal info"
   coursesList: "courses list"
   publishPlatformContentOutsideOfPlatform: "publish Platform Content Outside Of Platform"
+  startDate: "start date"
+  endDate: "end date"
   sideNav:
     myProfile: "My profile"
 

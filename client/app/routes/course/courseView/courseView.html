@@ -1,0 +1,25 @@
+<div class="course-view" flex>
+  <md-content layout="column" ms-scroll flex md-whiteframe="2" class="l-content-background" layout-padding>
+    <md-toolbar class="md-table-toolbar md-default">
+      <div layout="row">
+        <div layout="column">
+          <p class="md-title">{{SideNavCtrl.coursesList[CourseView.courseId].title}}</p>
+          <p class="md-subhead">{{SideNavCtrl.coursesList[CourseView.courseId].description}}</p>
+        </div>
+        <div flex layout="column" layout-align="end end">
+          <p class="md-subhead">
+            {{'startDate'| translate}}: {{SideNavCtrl.coursesList[CourseView.courseId].start_date}}
+          </p>
+          <p class="md-subhead">
+            {{'endDate'| translate}}: {{SideNavCtrl.coursesList[CourseView.courseId].end_date}}
+          </p>
+        </div>
+      </div>
+    </md-toolbar>
+    <md-divider></md-divider>
+    <div>
+      {{'storage' | translate}}
+    </div>
+
+  </md-content>
+</div>
