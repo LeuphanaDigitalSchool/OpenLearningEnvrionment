@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# Teacher
+# CourseDirector
 class CourseDirector < User
   validates :firstname, :lastname, presence: true
 

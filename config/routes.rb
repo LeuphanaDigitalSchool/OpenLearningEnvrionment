@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       end
 
       resources :courses do
-        resources :course_phases, only: [:show, :update], path: 'phases' do
+        resources :course_phases, only: [:index, :show, :update], path: 'phases' do
           resources :storages
           get 'preferences/:role' => 'course_phases#preferences'
         end

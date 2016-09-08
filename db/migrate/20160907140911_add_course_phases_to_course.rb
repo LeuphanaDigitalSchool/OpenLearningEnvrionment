@@ -6,7 +6,6 @@ class AddCoursePhasesToCourse < ActiveRecord::Migration[5.0]
       t.string     :title, :null => false, :default => ""
       t.datetime   :start_date
       t.datetime   :end_date
-      t.boolean    :finished, default: false
 
       t.timestamps
     end

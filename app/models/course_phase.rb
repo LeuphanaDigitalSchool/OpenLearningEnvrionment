@@ -2,7 +2,7 @@
 # CoursePhase
 class CoursePhase < ApplicationRecord
   belongs_to :course
-  has_many :storages
+  has_and_belongs_to_many :storages
   has_many :course_phase_preferences
   accepts_nested_attributes_for :course_phase_preferences
 

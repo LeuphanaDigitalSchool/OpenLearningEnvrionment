@@ -54,9 +54,11 @@ resource 'Api::V1::Storages' do
     example '#create (storage created)' do
       explanation ''
       params = { "storage": { "source": 'Youtube', "name": 'Yt link', "description": 'description',
-                              "url": 'https://www.youtube.com/watch?v=u_tORtmKIjE', "course_phase_id": '1',
+                              "url": 'https://www.youtube.com/watch?v=u_tORtmKIjE',
                               "user_id": '3',
-                              "file": 'data:image/jpg;base64,R0lGODlhAQABAIAAAAA///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' } }
+                              "file": 'data:image/jpg;base64,R0lGODlhAQABAIAAAAA///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+                              "course_phase_ids": %w(1 2 3) } }
+
       do_request(params)
       expect(JSON.parse(response_body).to_s).to include('Youtube', 'Yt link',
                                                         'https://www.youtube.com/watch?v=u_tORtmKIjE')

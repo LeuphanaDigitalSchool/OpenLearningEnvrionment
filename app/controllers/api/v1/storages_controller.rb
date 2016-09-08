@@ -47,7 +47,8 @@ module Api
       private
 
       def storage_params
-        params.require(:storage).permit(:user_id, :course_phase_id, :source, :name, :file, :description, :url, :deleted)
+        params.require(:storage).permit(:user_id, :source, :name, :file, :description, :url, :deleted,
+                                        course_phase_ids: [])
       end
 
       def set_storage

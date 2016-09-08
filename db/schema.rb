@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907140911) do
+ActiveRecord::Schema.define(version: 20160908101919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(version: 20160907140911) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["course_id"], name: "index_course_phases_on_course_id", using: :btree
+  end
+
+  create_table "course_phases_storages", id: false, force: :cascade do |t|
+    t.integer "course_phase_id", null: false
+    t.integer "storage_id",      null: false
   end
 
   create_table "courses", force: :cascade do |t|

@@ -6,6 +6,11 @@ module Api
       before_action :authenticate_api_v1_user!
       before_action :set_course_phase, only: [:show, :update]
 
+      def index
+        course = Course.find(params[:course_id])
+        render json: course.course_phases, status: :ok
+      end
+
       def show
         render json: @course_phase, status: :ok
       end
