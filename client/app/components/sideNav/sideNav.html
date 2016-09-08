@@ -13,20 +13,20 @@
   <md-list-item aria-controls="childListId" ui-sref="home.myProfile">
     <span><md-icon>face</md-icon> {{'sideNav.myProfile' | translate}}</span>
   </md-list-item>
-  <md-list-item aria-controls="childListId" ui-sref="home.admin" ng-if="user.role_id === 6">
+  <md-list-item aria-controls="childListId" ui-sref="home.admin" ng-if="::user.role_id === 6">
     <span><md-icon>people</md-icon> {{'adminPanel' | translate}}</span>
   </md-list-item>
-  <md-list-item aria-controls="childListId" ng-click="null" ng-if="user.role_id > 3">
+  <md-list-item aria-controls="childListId" ng-click="null" ng-if="::user.role_id > 3">
     <span><md-icon>list</md-icon> {{'courses' | translate}}</span>
   </md-list-item>
   <md-list-item ng-repeat="course in SideNavCtrl.coursesList" class="sublist" aria-controls="childListId" ui-sref="home.course-view({id: course.id})">
     <span>- {{course.title}}</span>
   </md-list-item>
   <md-divider></md-divider>
-  <md-list-item class="sublist" aria-controls="childListId" ui-sref="home.create-course" ng-if="user.role_id > 3">
+  <md-list-item class="sublist" aria-controls="childListId" ui-sref="home.create-course" ng-if="::user.role_id > 3">
     <span>- {{'createCourse' | translate}}</span>
   </md-list-item>
-  <md-list-item class="sublist" aria-controls="childListId" ui-sref="home.courses-list" ng-if="user.role_id > 3">
+  <md-list-item class="sublist" aria-controls="childListId" ui-sref="home.courses-list" ng-if="::user.role_id > 3">
     <span>- {{'coursesList' | translate}}</span>
   </md-list-item>
 </md-list>
