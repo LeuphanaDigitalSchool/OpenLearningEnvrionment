@@ -219,3 +219,6 @@ en:
     sendMessagesToUserGroups: "send Messages To User Groups"
     replyToForumPostsViaEmail: "reply To Forum Posts Via Email"
     inviteUserToPlatformByEmail: "invite User To Platform By Email"
+
+  storage:
+    addNewFile: "add new file"
