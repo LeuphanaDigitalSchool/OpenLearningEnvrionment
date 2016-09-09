@@ -222,3 +222,4 @@ en:
 
   storage:
     addNewFile: "add new file"
+    fileDescription: "file description"

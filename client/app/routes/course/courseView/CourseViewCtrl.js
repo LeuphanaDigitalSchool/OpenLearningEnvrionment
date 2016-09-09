@@ -8,7 +8,9 @@ export default class CourseViewCtrl {
 
   addNewFile(ev){
     this.$mdDialog.show({
-      template: require('./addNewFile.html'),
+      template: require('./fileUpload/fileUpload.html'),
+      controller: 'FileUploadCtrl',
+      controllerAs: 'FileUpload',
       targetEvent: ev,
       clickOutsideToClose: false
     });
