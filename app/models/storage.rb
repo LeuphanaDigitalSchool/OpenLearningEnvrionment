@@ -11,7 +11,6 @@ class Storage < ApplicationRecord
   default_scope { where(deleted: false) }
 
   def upload_whitelist
-    # binding.pry
     # allow = course_phase.find(course_phase_id).course_phase_preferences.find_by(role_id: user.role_id)
     # whitelist = []
     # whitelist.push('pdf') if allow.upload_pdf
