@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # CoursePhaseSerializer
 class CoursePhaseSerializer < ActiveModel::Serializer
-  attributes :id, :title, :start_date, :end_date, :storages, :course_phase_preferences_attributes
+  attributes :id, :title, :start_date, :end_date, :active, :storages, :course_phase_preferences_attributes
 
   def start_date
     object.start_date.strftime('%Y-%m-%d') if object.start_date
@@ -9,6 +9,10 @@ class CoursePhaseSerializer < ActiveModel::Serializer
 
   def end_date
     object.end_date.strftime('%Y-%m-%d') if object.end_date
+  end
+
+  def active
+    Time.now > start_date && end_date > Time.now
   end
 
   def storages

@@ -15,7 +15,7 @@ module Api
       def create
         storage = Storage.new(storage_params)
 
-        if storage.save
+        if storage.save && storage.assign_storage(params[:storage][:course_phase_ids])
           render json: storage, status: :created
         else
           render json: storage.errors, status: :unprocessable_entity
@@ -45,8 +45,7 @@ module Api
       private
 
       def storage_params
-        params.require(:storage).permit(:user_id, :source, :name, :file, :description, :url, :deleted,
-                                        course_phase_ids: [])
+        params.require(:storage).permit(:user_id, :source, :name, :file, :description, :url, :deleted)
       end
 
       def set_storage
