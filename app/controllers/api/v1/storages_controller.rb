@@ -13,9 +13,7 @@ module Api
       end
 
       def create
-        course_phase = CoursePhase.find(params[:course_phase_id])
-        storage = course_phase.storages.build(storage_params)
-        storage.user = current_api_v1_user
+        storage = Storage.new(storage_params)
 
         if storage.save
           render json: storage, status: :created
