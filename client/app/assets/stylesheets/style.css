@@ -148,6 +148,11 @@ md-datepicker {
   margin: 0;
 }
 
+.course-view md-card {
+    width: 32%;
+    float: left;
+}
+
 .file-uploader md-dialog {
   max-width: 100%;
 }

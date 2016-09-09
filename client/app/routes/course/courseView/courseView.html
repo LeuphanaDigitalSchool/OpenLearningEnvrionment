@@ -25,21 +25,18 @@
         <md-button class="md-raised md-primary" ng-if="::user.role_id > 3" ng-click="::CourseView.addNewFile($event, user.id)">{{ 'storage.addNewFile' | translate }}</md-button>
       </div>
     </div>
-    <div layout="column">
-      <md-card ng-repeat="storage in SideNavCtrl.coursesList[CourseView.courseId]">
+    <div>
+      <md-card ng-repeat="file in CourseView.files">
         <md-card-title>
           <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Large</span>
+            <span class="md-headline">{{ ::file.description }}</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button>Download</md-button>
-          <md-button ng-if="::user.role_id > 3">Remove</md-button>
+          <a href="{{ ::file.file }}" class="md-button">download</a>
+          <md-button ng-if="::user.role_id > 3" ng-disabled="true">Remove</md-button>
         </md-card-actions>
       </md-card>
     </div>
-
-
   </md-content>
 </div>
