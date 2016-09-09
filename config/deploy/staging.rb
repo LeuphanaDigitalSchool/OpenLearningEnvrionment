@@ -31,7 +31,10 @@ namespace :angular do
         with rails_env: :production do
           execute 'cd ./client && npm run build'
         end
-        execute "rsync -av --delete -e 'ssh -p 5001' ./public/ leuphana@dev.akra.net:#{shared_path}/public/client/"
+        execute "rsync -e 'ssh -p 5001' -av --delete --exclude 'uploads'\
+                 ./public/ leuphana@dev.akra.net:#{shared_path}/public/client/"
+        # execute "ssh -p 5001 leuphana@dev.akra.net 'cd #{shared_path}/public/client;\
+        # ln -s #{shared_path}/public/uploads'"
       end
     end
   end

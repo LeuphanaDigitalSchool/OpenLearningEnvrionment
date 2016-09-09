@@ -36,29 +36,37 @@ resource 'Api::V1::Courses' do
     let(:raw_post) { params.to_json }
 
     example '#create (course created)' do
-      explanation 'Always add "course_preferences_attributes" with "role_id" 2(student role) and 4(teacher role)'
+      explanation 'Always add "course_phases_preferences_attributes" with "role_id" 2(student role) and 4(teacher role)'
+      course_phase_preferences_attributes = [{ "role_id": '2', "upload_pdf": 'true', "upload_jpg": 'false',
+                                               "upload_mp3": 'true', "upload_mp4": 'false', "resources_del": 'false',
+                                               "resource_description_add": 'true', "resource_description_del": 'false',
+                                               "schedule_publishing": 'true', "embed_external_links": 'true' },
+                                             { "role_id": '4', "upload_pdf": 'true', "upload_jpg": 'true',
+                                               "upload_mp3": 'false', "upload_mp4": 'true', "resources_del": 'false',
+                                               "resource_description_add": 'true', "resource_description_del": 'false',
+                                               "schedule_publishing": 'true', "embed_external_links": false }]
+      course_phases_attributes = [{ "title": 'Phase 1', "start_date": '2016-09-01', "end_date": '2016-09-31',
+                                    "course_phase_preferences_attributes": course_phase_preferences_attributes },
+                                  { "title": 'Phase 2', "start_date": '2016-09-01', "end_date": '2016-09-31',
+                                    "course_phase_preferences_attributes": course_phase_preferences_attributes },
+                                  { "title": 'Phase 3', "start_date": '2016-10-01', "end_date": '2016-10-31',
+                                    "course_phase_preferences_attributes": course_phase_preferences_attributes },
+                                  { "title": 'Phase 4', "start_date": '2016-11-01', "end_date": '2016-11-31',
+                                    "course_phase_preferences_attributes": course_phase_preferences_attributes },
+                                  { "title": 'Phase 5', "start_date": '2016-12-01', "end_date": '2016-12-31',
+                                    "course_phase_preferences_attributes": course_phase_preferences_attributes },
+                                  { "title": 'Phase 6', "start_date": '2017-01-01', "end_date": '2017-01-31',
+                                    "course_phase_preferences_attributes": course_phase_preferences_attributes }]
       params = { "course": { "title": 'First course', "description": 'Description', "start_date": '2016-01-01',
-                             "end_date": '2017-02-03',
-                             "course_preferences_attributes": [{ "role_id": '2', "upload_pdf": 'true',
-                                                                 "upload_jpg": 'false', "upload_mp3": 'true',
-                                                                 "upload_mp4": 'false', "resources_del": 'false',
-                                                                 "resource_description_add": 'true',
-                                                                 "resource_description_del": 'false',
-                                                                 "schedule_publishing": 'true',
-                                                                 "embed_external_links": 'true' },
-                                                               { "role_id": '4', "upload_pdf": 'true',
-                                                                 "upload_jpg": 'true', "upload_mp3": 'false',
-                                                                 "upload_mp4": 'true', "resources_del": 'false',
-                                                                 "resource_description_add": 'true',
-                                                                 "resource_description_del": 'false',
-                                                                 "schedule_publishing": 'true',
-                                                                 "embed_external_links": false }] } }
+                             "end_date": '2017-02-03', "course_phases_attributes": course_phases_attributes } }
+
       do_request(params)
       expect(response_body).to include('"title":"First course"', '"description":"Description"',
                                        '"start_date":"2016-01-01"', '"end_date":"2017-02-03"', '"role":"Student"',
-                                       '"role_id":2', '"upload":true', '"upload_pdf":true', '"upload_jpg":false',
-                                       '"upload_mp3":true', '"upload_mp4":false', '"resource_description_add":true',
-                                       '"resource_description_del":false', '"resources_del":false')
+                                       '"title":"Phase 1"', '"role_id":2', '"upload":true', '"upload_pdf":true',
+                                       '"upload_jpg":false', '"upload_mp3":true', '"upload_mp4":false',
+                                       '"resource_description_add":true', '"resource_description_del":false',
+                                       '"resources_del":false')
       expect(response_status).to be 201
     end
   end
@@ -107,15 +115,16 @@ resource 'Api::V1::Courses' do
     end
   end
 
-  get '/api/v1/courses/:course_id/preferences/:role' do
+  get '/api/v1/courses/:course_id/phases/:course_phase_id/preferences/:role' do
     parameter :course_id
+    parameter :course_phase_id
     parameter :role
 
     let(:raw_post) { params.to_json }
     example '#preferences for teacher' do
       explanation 'Role params should be "teacher"'
       login(user)
-      do_request(course_id: 1, role: 'teacher')
+      do_request(course_id: 1, course_phase_id: 1, role: 'teacher')
       expect(response_body).to include('Teacher')
       expect(response_status).to be 200
     end
@@ -123,7 +132,7 @@ resource 'Api::V1::Courses' do
     example '#preferences for student' do
       explanation 'Role params should be "student"'
       login(user)
-      do_request(course_id: 1, role: 'student')
+      do_request(course_id: 1, course_phase_id: 1, role: 'student')
       expect(response_body).to include('Student')
       expect(response_status).to be 200
     end

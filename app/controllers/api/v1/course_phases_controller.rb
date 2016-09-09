@@ -1,49 +1,36 @@
 # frozen_string_literal: true
 module Api
   module V1
-    # Api::V1::CoursesController
-    class CoursesController < ApplicationController
+    # Api::V1::CoursesPhasesController
+    class CoursePhasesController < ApplicationController
       before_action :authenticate_api_v1_user!
-      before_action :set_course, only: [:show, :update, :destroy]
+      before_action :set_course_phase, only: [:show, :update]
 
       def index
-        courses = Course.all
-        render json: courses, status: :ok
-      end
-
-      def create
-        course = Course.new(course_params)
-
-        if course.save
-          render json: course, status: :created
-        else
-          render json: course.errors, status: :unprocessable_entity
-        end
+        course = Course.find(params[:course_id])
+        render json: course.course_phases, status: :ok
       end
 
       def show
-        render json: @course, status: :ok
+        render json: @course_phase, status: :ok
+      end
+
+      def preferences
+        course_phase = CoursePhase.find(params[:course_phase_id])
+        render json: course_phase, serializer: CoursePhasePreferenceSerializer, role: params[:role], status: :ok
       end
 
       def update
-        if @course.update(course_params)
-          render json: @course, status: :ok
+        if @course_phase.update(course_phase_params)
+          render json: @course_phase, status: :ok
         else
-          render json: @course.errors, status: :unprocessable_entity
-        end
-      end
-
-      def destroy
-        if @course.update(deleted: true)
-          render json: nil, status: :no_content
-        else
-          render json: @course.errors, status: :unprocessable_entity
+          render json: @course_phase.errors, status: :unprocessable_entity
         end
       end
 
       private
 
-      def course_params
+      def course_phase_params
         params.require(:course).permit(:title, :description, :start_date, :end_date, course_phases_attributes: [
                                          :id, :title, :start_date, :end_date, :finished,
                                          course_phase_preferences_attributes: [:id, :role_id, :upload_pdf, :upload_jpg,
@@ -56,8 +43,8 @@ module Api
                                        ])
       end
 
-      def set_course
-        @course = Course.find(params[:id])
+      def set_course_phase
+        @course_phase = CoursePhase.find(params[:id])
       end
     end
   end
