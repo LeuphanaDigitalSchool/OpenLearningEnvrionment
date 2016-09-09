@@ -1,0 +1,54 @@
+<md-dialog aria-label="Add new file">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{ 'storage.addNewFile' | translate }}</h2>
+        <md-button class="md-icon-button" ng-click="::$ctrl.cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <md-tabs flex md-dynamic-height md-border-bottom>
+        <md-tab label="add file">
+          <md-content layout="column" flex layout-align="center center">
+            <span>{{ $ctrl.fileName }}</span>
+            <md-button ngf-select="::$ctrl.upload($file, $invalidFiles, $event)"
+                       accept="{{::$ctrl.acceptFile}}"
+                       ng-model="$ctrl.file"
+                       name="avatar"
+                       md-no-ink class="md-primary"
+                       ng-hide="$ctrl.storage.file">
+                {{'addFile' | translate}}
+           </md-button>
+            <md-button aria-label="remove pdf"  ng-show="$ctrl.storage.file" class="md-primary" ng-click="::$ctrl.clear()">
+                {{'removeFile' | translate}}
+            </md-button>
+            <md-progress-circular ng-show="MyProfileCtrl.uploading" md-mode="indeterminate"></md-progress-circular>
+          </md-content>
+        </md-tab>
+        <md-tab label="add link">
+          <md-content layout="column" flex layout-align="center center">
+            <md-input-container>
+              <label>{{ 'storage.link' | translate}}</label>
+              <input ng-model="$ctrl.storage.link" type="text">
+            </md-input-container>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+        <div layout="column" flex layout-align="center center" layout-padding>
+        <md-input-container>
+          <label>{{ 'storage.Description' | translate}}</label>
+          <input ng-model="$ctrl.storage.description" type="text">
+        </md-input-container>
+        <div layout="column">
+          <md-checkbox ng-repeat="phase in $ctrl.phases" ng-model="$ctrl.phaseData[phase.id]" aria-label="Checkbox 1">
+            {{phase.title}} [{{phase.start_date}} - {{phase.end_date}}] {{phase.id}} {{state}}
+          </md-checkbox>
+        </div>
+        <md-button class="md-raised md-primary" ng-click="::$ctrl.submit(user.id)">upload</md-button>
+        {{$ctrl.phaseData}}
+        {{$ctrl.user.role_id}}
+      </div>
+    </md-dialog-content>
+  </md-dialog>

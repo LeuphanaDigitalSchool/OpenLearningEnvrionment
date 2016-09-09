@@ -147,6 +147,10 @@ md-datepicker {
 .course-view .md-subhead {
   margin: 0;
 }
+
+.file-uploader md-dialog {
+  max-width: 100%;
+}
 /* 4. state*/
 
 .md-card-image {

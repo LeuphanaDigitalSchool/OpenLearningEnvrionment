@@ -9,7 +9,6 @@ export default class SideNavCtrl {
   getCoursesList() {
     this.coursesApi.get().then(
       (response)=>{
-        console.log('response', response);
         this.coursesList = response.courses;
     });
   }

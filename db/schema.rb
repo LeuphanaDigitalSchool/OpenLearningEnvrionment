@@ -35,12 +35,11 @@ ActiveRecord::Schema.define(version: 20160908101919) do
 
   create_table "course_phases", force: :cascade do |t|
     t.integer  "course_id"
-    t.string   "title",      default: "",    null: false
+    t.string   "title",      default: "", null: false
     t.datetime "start_date"
     t.datetime "end_date"
-    t.boolean  "finished",   default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["course_id"], name: "index_course_phases_on_course_id", using: :btree
   end
 
