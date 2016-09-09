@@ -19,4 +19,12 @@ class Storage < ApplicationRecord
     # whitelist.push('mp4') if allow.upload_mp4
     %w(pdf jpg mp3 mp4)
   end
+
+  def assign_storage(course_phase_ids)
+    course_phase_ids.each do |phase|
+      phase = CoursePhase.find(phase)
+      allow = phase.course_phase_preferences.where(role_id: user.role_id).first
+      course_phases << phase if allow && allow.public_send("upload_#{file.file.extension}")
+    end
+  end
 end
