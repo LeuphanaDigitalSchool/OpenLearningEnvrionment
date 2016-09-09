@@ -51,7 +51,7 @@ resource 'Api::V1::Storages' do
     before { login(user) }
     let(:raw_post) { params.to_json }
 
-    example '#create (storage created)' do
+    example '#create in course (storage created)' do
       explanation ''
       params = { "storage": { "source": 'Youtube', "name": 'Yt link', "description": 'description',
                               "url": 'https://www.youtube.com/watch?v=u_tORtmKIjE',
@@ -82,7 +82,7 @@ resource 'Api::V1::Storages' do
     before { login(user) }
     let(:raw_post) { params.to_json }
 
-    example '#create (storage created)' do
+    example '#create in phase (storage created)' do
       explanation ''
       params = { "storage": { "source": 'Youtube', "name": 'Yt link', "description": 'description',
                               "url": 'https://www.youtube.com/watch?v=u_tORtmKIjE',
