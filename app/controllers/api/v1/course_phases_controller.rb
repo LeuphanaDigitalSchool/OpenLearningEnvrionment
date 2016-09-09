@@ -15,6 +15,11 @@ module Api
         render json: @course_phase, status: :ok
       end
 
+      def active
+        active_phase = Course.find(params[:course_id]).course_phases.active
+        render json: active_phase, serializer: CoursePhaseActiveSerializer, status: :ok
+      end
+
       def preferences
         course_phase = CoursePhase.find(params[:course_phase_id])
         render json: course_phase, serializer: CoursePhasePreferenceSerializer, role: params[:role], status: :ok

@@ -33,6 +33,7 @@ Rails.application.routes.draw do
           resources :storages
           get 'preferences/:role' => 'course_phases#preferences'
         end
+        get 'phase/active' => 'course_phases#active'
       end
     end
   end
