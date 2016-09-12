@@ -32,6 +32,11 @@ en:
   personalInfo: Personal info
   coursesList: Courses list
   publishPlatformContentOutsideOfPlatform: Publish platform content outside of platform
+  forum: Forum
+  workspace: Workspace
+  assignment: Assignment
+  courseMaterial: Course material
+
   sideNav:
     myProfile: My profile
 
