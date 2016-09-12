@@ -99,5 +99,11 @@ export default function routing($stateProvider) {
       template: require('./routes/course/course.html'),
       controller: 'CourseCrtl',
       controllerAs: 'Course'
+    })
+    .state('home.course-participants', {
+      url: 'course/:id/participants',
+      template: require('./routes/course/courseParticipants/courseParticipants.html'),
+      controller: 'CourseParticipantsCtrl',
+      controllerAs: 'CourseParticipants'
     });
 }

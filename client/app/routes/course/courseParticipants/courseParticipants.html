@@ -1,0 +1,36 @@
+<div class="create-course" flex>
+  <md-content layout="column" ms-scroll flex md-whiteframe="2" class="l-content-background" layout-padding>
+    <md-toolbar class="md-table-toolbar md-default">
+      <div class="md-toolbar-tools">
+        <span>{{'course.participants' | translate}}</span>
+      </div>
+    </md-toolbar>
+    <md-table-container>
+      <table md-table>
+        <thead md-head>
+          <tr md-row>
+            <th md-column>{{'course.firstname' | translate}}</th>
+            <th md-column>{{'course.lastname' | translate}}</th>
+            <th md-column>{{'course.role' | translate}}</th>
+            <th md-column></th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-row ng-repeat="participant in CourseParticipants.participants">
+            <td md-cell>{{participant.firstname}}</td>
+            <td md-cell>{{participant.lastname}}</td>
+            <td md-cell>{{participant.role}}</td>
+            <td md-cell>
+              <md-button aria-label="Show course" ui-sref="home.profile({id: participant.id})" class="md-icon-button">
+                <md-icon class="">face</md-icon>
+                <md-tooltip md-direction="right">
+                  show participant
+                </md-tooltip>
+              </md-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+  </md-content>
+</div>
