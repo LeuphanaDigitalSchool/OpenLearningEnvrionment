@@ -193,7 +193,7 @@
     </md-card-title>
     <md-card-content>
       <md-list>
-        <md-list-item ng-repeat="course in MyProfileCtrl.myCourses" ui-sref="home.course({id: course.id})">
+        <md-list-item ng-repeat="course in MyProfileCtrl.myCourses" ui-sref="home.course-view({id: course.id})">
           - {{::course.title}} ({{::course.start_date}} - {{::course.end_date}})
         </md-list-item>
       </md-list>

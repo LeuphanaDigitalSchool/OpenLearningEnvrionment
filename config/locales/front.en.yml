@@ -34,9 +34,16 @@ en:
   publishPlatformContentOutsideOfPlatform: "publish Platform Content Outside Of Platform"
   startDate: "start date"
   endDate: "end date"
+  forum: Forum
+  workspace: Workspace
+  assignment: Assignment
+  courseMaterial: Course material
 
   sideNav:
     myProfile: My profile
+    participants: Participants
+    courses: Courses
+    coursesList: Courses list
 
   myProfile:
     personal_details:
@@ -130,6 +137,7 @@ en:
     sortForum: Sort forum
     filterForum: Filter forum
     embedExternalLinks: Embed external links
+    embed_external_links: Embed external links
     embedInternalLinks: Embed internal links
     addNewCourse: Add new course
     startDate: Start Date
@@ -139,10 +147,12 @@ en:
     resourcesDel: Delete resources
     resourceDescriptionDel: Delete resource description
     resourceDescriptionAdd: Add resource description
+    resourceDescription_add: Add resource description
     uploadMp4: Upload mp4
     uploadMp3: Upload mp3
     uploadJpg: Upload jpg
     uploadPDF: Upload pdf
+    uploadPdf: Upload pdf
     notificationsByEmail: Notifications by email
     sendUserMessagesAsEmailOptional: Send user messages as email optional
     sendMessagesViaEmailWithinPlatform: Send messages via Email within platform
@@ -211,6 +221,13 @@ en:
     storage: Storage
     email: E-mail
     publishPlatformContentOutsideOfPlatform: Publish platform content outside of platform
+    participants: Course participants
+    firstname: Firstname
+    lastname: Lastname
+    role: Role
+    title: Title
+    description: Description
+    actions: 'Actions'
 
   forgottenPasswordForm:
     forgottenPassword: "Reset password"
@@ -231,6 +248,7 @@ en:
   storage:
     addNewFile: "add new file"
     fileDescription: "file description"
+    Description: "file description"
     forgottenPassword: Reset password
     email: Your e-mail
     forgotten: Send reset password instruction

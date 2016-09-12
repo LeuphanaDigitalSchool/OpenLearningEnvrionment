@@ -43,12 +43,13 @@
         </md-input-container>
         <div layout="column">
           <md-checkbox ng-repeat="phase in $ctrl.phases" ng-model="$ctrl.phaseData[phase.id]" aria-label="Checkbox 1">
-            {{phase.title}} [{{phase.start_date}} - {{phase.end_date}}] {{phase.id}} {{state}}
+            {{phase.title}} [{{phase.start_date}} - {{phase.end_date}}]
+            <!-- {{phase.id}} {{state}} -->
           </md-checkbox>
         </div>
         <md-button class="md-raised md-primary" ng-click="::$ctrl.submit(user.id)">upload</md-button>
-        {{$ctrl.phaseData}}
-        {{$ctrl.user.role_id}}
+        <!-- {{$ctrl.phaseData}} -->
+        <!-- {{$ctrl.user.role_id}} -->
       </div>
     </md-dialog-content>
   </md-dialog>

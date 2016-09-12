@@ -49,7 +49,7 @@ PublicUser.create!(firstname: 'Public', lastname: 'User', email: 'public_user@ex
 
 puts '-> Create course'
 course = Course.create!(title: 'First course', description: 'Description', start_date: '2016-06-01',
-                        end_date: '2016-12-31')
+                        end_date: '2017-02-28')
 student_preferences = { role_id: 2, upload_jpg: true }
 teacher_preferences = { role_id: 4, upload_pdf: true, upload_jpg: true, upload_mp3: true, upload_mp4: true }
 manager_preferences = { role_id: 6, upload_pdf: true, upload_jpg: true, upload_mp3: true, upload_mp4: true,

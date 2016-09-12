@@ -26,10 +26,16 @@
               <md-button aria-label="Show course" ui-sref="home.course({id: course.id})" class="md-icon-button">
                 <md-icon class="">assignment</md-icon>
                 <md-tooltip md-direction="right">
-                  show single course
+                  show course
                 </md-tooltip>
               </md-button>
-              <md-button aria-label="Show course" ng-click="Courses.deleteCourse(course.id)" class="md-icon-button">
+              <md-button aria-label="Show participants" ui-sref="home.course-participants({id: course.id})" class="md-icon-button">
+                <md-icon class="">assignment_ind</md-icon>
+                <md-tooltip md-direction="right">
+                  show participants
+                </md-tooltip>
+              </md-button>
+              <md-button aria-label="Delete course" ng-click="Courses.deleteCourse(course.id)" class="md-icon-button">
                 <md-icon class="">delete</md-icon>
                 <md-tooltip md-direction="right">
                   delete course
