@@ -14,7 +14,13 @@ resource 'Api::V1::Storages' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
 
-  get '/api/v1/courses/:course_id/storages' do
+  get '/api/v1/courses/:course_id/phases/:course_phase_id/storages' do
+    parameter :course_id, 'Course id', required: true
+    parameter :course_phase_id, 'Course phase id', required: true
+
+    let(:course_id) { 1 }
+    let(:course_phase_id) { 1 }
+
     example '#index (request not authorized)', document: false do
       do_request
       expect(response_body).to include('errors')
@@ -36,17 +42,23 @@ resource 'Api::V1::Storages' do
     parameter :description, 'File description'
     parameter :url, 'https://www.youtube.com/watch?v=u_tORtmKIjE', required: false
     parameter :course_id, 'Course id', required: true
+    parameter :course_phase_id, 'Course phase id', required: true
     parameter :user_id, 'User id', required: true
+
+    let(:course_id) { 1 }
+    let(:course_phase_id) { 1 }
 
     before { login(user) }
     let(:raw_post) { params.to_json }
 
-    example '#create (storage created)' do
+    example '#create in course (storage created)' do
       explanation ''
       params = { "storage": { "source": 'Youtube', "name": 'Yt link', "description": 'description',
-                              "url": 'https://www.youtube.com/watch?v=u_tORtmKIjE', "course_id": '1',
+                              "url": 'https://www.youtube.com/watch?v=u_tORtmKIjE',
                               "user_id": '3',
-                              "file": 'data:image/jpg;base64,R0lGODlhAQABAIAAAAA///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' } }
+                              "file": 'data:image/jpg;base64,R0lGODlhAQABAIAAAAA///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+                              "course_phase_ids": %w(1 2 3) } }
+
       do_request(params)
       expect(JSON.parse(response_body).to_s).to include('Youtube', 'Yt link',
                                                         'https://www.youtube.com/watch?v=u_tORtmKIjE')
@@ -54,7 +66,44 @@ resource 'Api::V1::Storages' do
     end
   end
 
-  get '/api/v1/courses/:course_id/storages/:storage_id' do
+  post '/api/v1/courses/:course_id/phases/:course_phase_id/storages' do
+    parameter :source, 'Youtube', required: true
+    parameter :name, 'Yt link', required: false
+    parameter :file, 'File base64', required: false
+    parameter :description, 'File description'
+    parameter :url, 'https://www.youtube.com/watch?v=u_tORtmKIjE', required: false
+    parameter :course_id, 'Course id', required: true
+    parameter :course_phase_id, 'Course phase id', required: true
+    parameter :user_id, 'User id', required: true
+
+    let(:course_id) { 1 }
+    let(:course_phase_id) { 1 }
+
+    before { login(user) }
+    let(:raw_post) { params.to_json }
+
+    example '#create in phase (storage created)' do
+      explanation ''
+      params = { "storage": { "source": 'Youtube', "name": 'Yt link', "description": 'description',
+                              "url": 'https://www.youtube.com/watch?v=u_tORtmKIjE',
+                              "user_id": '3',
+                              "file": 'data:image/jpg;base64,R0lGODlhAQABAIAAAAA///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+                              "course_phase_ids": %w(1 2 3) } }
+
+      do_request(params)
+      expect(JSON.parse(response_body).to_s).to include('Youtube', 'Yt link',
+                                                        'https://www.youtube.com/watch?v=u_tORtmKIjE')
+      expect(response_status).to be 201
+    end
+  end
+
+  get '/api/v1/courses/:course_id/phases/:course_phase_id/storages/:storage_id' do
+    parameter :course_id, 'Course id', required: true
+    parameter :course_phase_id, 'Course phase id', required: true
+
+    let(:course_id) { 1 }
+    let(:course_phase_id) { 1 }
+
     example '#show (request not authorized)', document: false do
       do_request
       expect(response_body).to include('errors')
@@ -68,14 +117,18 @@ resource 'Api::V1::Storages' do
     end
   end
 
-  put '/api/v1/courses/:course_id/storages/:storage_id' do
+  put '/api/v1/courses/:course_id/phases/:course_phase_id/storages/:storage_id' do
     parameter :source, 'Youtube', required: true
     parameter :name, 'Yt link', required: false
     parameter :file, 'File base64', required: false
     parameter :description, 'File description'
     parameter :url, 'https://www.youtube.com/watch?v=u_tORtmKIjE', required: false
-    parameter :course_id, 'Course id', required: true
     parameter :user_id, 'User id', required: true
+    parameter :course_id, 'Course id', required: true
+    parameter :course_phase_id, 'Course phase id', required: true
+
+    let(:course_id) { 1 }
+    let(:course_phase_id) { 1 }
 
     let(:raw_post) { params.to_json }
     let(:storage_params) do
@@ -97,8 +150,13 @@ resource 'Api::V1::Storages' do
     end
   end
 
-  delete '/api/v1/courses/:course_id/storages/:storage_id' do
-    parameter :deleted, 'Delete/deactivate storage', required: false
+  delete '/api/v1/courses/:course_id/phases/:course_phase_id/storages/:storage_id' do
+    parameter :deleted, 'Delete storage', required: false
+    parameter :course_id, 'Course id', required: true
+    parameter :course_phase_id, 'Course phase id', required: true
+
+    let(:course_id) { 1 }
+    let(:course_phase_id) { 1 }
 
     let(:raw_post) { params.to_json }
     let(:storage_params) do

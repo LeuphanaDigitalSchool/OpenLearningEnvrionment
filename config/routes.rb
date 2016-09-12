@@ -28,8 +28,12 @@ Rails.application.routes.draw do
       end
 
       resources :courses do
-        resources :storages
-        get 'preferences/:role' => 'courses#preferences'
+        resources :storages, only: [:create]
+        resources :course_phases, only: [:index, :show, :update], path: 'phases' do
+          resources :storages
+          get 'preferences/:role' => 'course_phases#preferences'
+        end
+        get 'phase/active' => 'course_phases#active'
       end
     end
   end

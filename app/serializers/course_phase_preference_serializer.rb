@@ -1,12 +1,12 @@
 # frozen_string_literal: true
-# CourseSerializer
-class CoursePreferenceSerializer < ActiveModel::Serializer
+# CoursePhasePreferenceSerializer
+class CoursePhasePreferenceSerializer < ActiveModel::Serializer
   attributes :id, :preferences
 
   # rubocop:disable Metrics/AbcSize
   def preferences
     role_id = instance_options[:role] == 'teacher' ? 4 : 2
-    preference = object.course_preferences.find_by(role_id: role_id)
+    preference = object.course_phase_preferences.find_by(role_id: role_id)
     {
       role: preference.role.name,
       upload: preference.upload_preferences,

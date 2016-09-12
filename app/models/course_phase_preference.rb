@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # CoursePreference
-class CoursePreference < ApplicationRecord
-  belongs_to :course
+class CoursePhasePreference < ApplicationRecord
+  belongs_to :course_phase
   belongs_to :role
 
   def upload_preferences

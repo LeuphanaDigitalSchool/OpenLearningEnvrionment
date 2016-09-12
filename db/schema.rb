@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817092642) do
+ActiveRecord::Schema.define(version: 20160908101919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "course_preferences", force: :cascade do |t|
-    t.integer  "course_id"
+  create_table "course_phase_preferences", force: :cascade do |t|
     t.integer  "role_id"
     t.boolean  "upload_pdf",               default: false
     t.boolean  "upload_jpg",               default: false
@@ -29,8 +28,25 @@ ActiveRecord::Schema.define(version: 20160817092642) do
     t.boolean  "embed_external_links",     default: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-    t.index ["course_id"], name: "index_course_preferences_on_course_id", using: :btree
-    t.index ["role_id"], name: "index_course_preferences_on_role_id", using: :btree
+    t.integer  "course_phase_id"
+    t.index ["course_phase_id"], name: "index_course_phase_preferences_on_course_phase_id", using: :btree
+    t.index ["role_id"], name: "index_course_phase_preferences_on_role_id", using: :btree
+  end
+
+  create_table "course_phases", force: :cascade do |t|
+    t.integer  "course_id"
+    t.string   "title",      default: "",    null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.boolean  "finished",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["course_id"], name: "index_course_phases_on_course_id", using: :btree
+  end
+
+  create_table "course_phases_storages", id: false, force: :cascade do |t|
+    t.integer "course_phase_id", null: false
+    t.integer "storage_id",      null: false
   end
 
   create_table "courses", force: :cascade do |t|
@@ -121,17 +137,17 @@ ActiveRecord::Schema.define(version: 20160817092642) do
   end
 
   create_table "storages", force: :cascade do |t|
-    t.string   "source",      default: "",    null: false
+    t.string   "source",          default: "",    null: false
     t.string   "name"
     t.string   "file"
     t.text     "description"
     t.text     "url"
-    t.integer  "course_id"
     t.integer  "user_id"
-    t.boolean  "deleted",     default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.index ["course_id"], name: "index_storages_on_course_id", using: :btree
+    t.boolean  "deleted",         default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "course_phase_id"
+    t.index ["course_phase_id"], name: "index_storages_on_course_phase_id", using: :btree
     t.index ["user_id"], name: "index_storages_on_user_id", using: :btree
   end
 
@@ -186,13 +202,14 @@ ActiveRecord::Schema.define(version: 20160817092642) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
-  add_foreign_key "course_preferences", "courses"
-  add_foreign_key "course_preferences", "roles"
+  add_foreign_key "course_phase_preferences", "course_phases"
+  add_foreign_key "course_phase_preferences", "roles"
+  add_foreign_key "course_phases", "courses"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "permissions_roles", "permissions"
   add_foreign_key "permissions_roles", "roles"
-  add_foreign_key "storages", "courses"
+  add_foreign_key "storages", "course_phases"
   add_foreign_key "storages", "users"
 end
