@@ -5,8 +5,11 @@
         <md-card-title-text>
           <span class="md-headline">{{ 'profile.header' | translate}}</span>
         </md-card-title-text>
+        <md-button md-no-ink class="md-raised md-primary" ng-click="null">
+          <span>{{'profile.sendMessage' | translate}}</span>
+        </md-button>
       </md-card-title>
-      <md-card-content>{{}}
+      <md-card-content>
         <img ng-src="{{ProfileCtrl.profile.user.avatar.avatar.url}}" class="md-card-image" alt="{{ProfileCtrl.profile.user.firstname}} {{ProfileCtrl.profile.user.lastname}}" ng-show="ProfileCtrl.profile.user.avatar.avatar.url">
         <p><b>{{ 'profile.firstname' | translate}}: </b>{{ProfileCtrl.profile.user.firstname}}</p>
         <p><b>{{ 'profile.lastname' | translate}}: </b>{{ProfileCtrl.profile.user.lastname}}</p>
@@ -36,5 +39,22 @@
         <p><b>{{ 'profile.introduction' | translate}}: </b>{{ProfileCtrl.profile.user.introduction}}</p>
       </md-card-content>
     </md-card>
+  </div>
+
+  <div flex layout="column" layout-padding>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{ 'profile.courses' | translate}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <md-list>
+        <md-list-item ng-repeat="course in ProfileCtrl.userCourses" ui-sref="home.course({id: course.id})">
+          - {{::course.title}} ({{::course.start_date}} - {{::course.end_date}})
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
   </div>
 </md-content>
