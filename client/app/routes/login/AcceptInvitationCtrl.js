@@ -77,18 +77,6 @@ export default class AcceptInvitationCtrl {
       this.toastr.error('Password Must Match', 'Error');
       this.errors += 1;
     }
-    if(!this.user.gender) {
-      this.toastr.error('You need to select gender', 'Error');
-      this.errors += 1;
-    }
-    if(!this.user.country) {
-      this.toastr.error('You need to select country', 'Error');
-      this.errors += 1;
-    }
-    if(!this.user.birthdate) {
-      this.toastr.error('You need to fill birth date', 'Error');
-      this.errors += 1;
-    }
     if(!this.user.honor_code) {
       this.toastr.error('You need to accept honor code', 'Error');
       this.errors += 1;
