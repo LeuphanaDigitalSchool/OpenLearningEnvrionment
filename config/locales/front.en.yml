@@ -50,6 +50,7 @@ en:
       interests: Interests
       introduction: Introduction
       email: E-mail
+    myCourses: My courses
 
   profile:
     header: Profile details
