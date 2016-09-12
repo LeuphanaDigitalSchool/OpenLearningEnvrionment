@@ -88,6 +88,22 @@ resource 'Api::V1::Courses' do
     end
   end
 
+  get '/api/v1/courses/:id/participants' do
+    parameter :id, 'Course id', required: true
+
+    example '#participants (request not authorized)', document: false do
+      do_request(id: course.id)
+      expect(response_body).to include('errors')
+      expect(response_status).to be 401
+    end
+
+    example '#participants (request authorized)' do
+      login(user)
+      do_request(id: course.id)
+      expect(response_status).to be 200
+    end
+  end
+
   put '/api/v1/courses/:id' do
     parameter :title, 'Title', required: true
     parameter :description, 'Description', required: false

@@ -34,6 +34,9 @@ Rails.application.routes.draw do
           get 'preferences/:role' => 'course_phases#preferences'
         end
         get 'phase/active' => 'course_phases#active'
+        collection do
+          get ':id/participants' => 'courses#participants'
+        end
       end
     end
   end

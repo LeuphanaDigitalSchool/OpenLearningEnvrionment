@@ -4,7 +4,7 @@ module Api
     # Api::V1::CoursesController
     class CoursesController < ApplicationController
       before_action :authenticate_api_v1_user!
-      before_action :set_course, only: [:show, :update, :destroy]
+      before_action :set_course, only: [:show, :participants, :update, :destroy]
 
       def index
         courses = Course.all
@@ -23,6 +23,11 @@ module Api
 
       def show
         render json: @course, status: :ok
+      end
+
+      def participants
+        participants = User.all
+        render json: participants, each_serializer: CourseParticipantSerializer, status: :ok
       end
 
       def update
