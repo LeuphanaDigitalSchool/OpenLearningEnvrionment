@@ -1,9 +1,10 @@
 class FileUploaderCtrl {
-  constructor($mdDialog, $stateParams, $rootScope, Upload, Restangular) {
+  constructor($mdDialog, $stateParams, $rootScope, Upload, Restangular, toastr) {
     "ngInject";
     this.$rootScope = $rootScope;
     this.$mdDialog = $mdDialog;
     this.Upload = Upload;
+    this.toastr = toastr;
     this.$stateParams = $stateParams;
     this.Restangular = Restangular;
     this.courseId = $stateParams.id;
@@ -50,6 +51,8 @@ class FileUploaderCtrl {
     .then((response)=>{
         this.clear();
         this.cancel();
+        this.toastr.success('You have successfully added new file', 'Success');
+        this.$rootScope.$broadcast('storage:created');
     })
     .catch((err)=>{
        this.toastr.error(err, 'Error');
