@@ -12,8 +12,16 @@ export default class MyProfileCtrl {
     this.userData = {};
     this.countries = countryList;
     this.baseAvatarUrl = {};
+    this.getMyCourses();
   }
 
+  getMyCourses() {
+    this.Restangular.oneUrl('courses', '/api/v1/courses').get().then(
+      (response)=> {
+        this.myCourses = response.courses;
+      }
+    );
+  }
   getSelects() {
     this.Restangular.oneUrl('select', '/api/v1/admin/users/profile_selects').get().then(
       (response)=> {

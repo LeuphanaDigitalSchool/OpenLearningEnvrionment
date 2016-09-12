@@ -53,6 +53,7 @@ en:
       interests: Interests
       introduction: Introduction
       email: E-mail
+    myCourses: My courses
 
   profile:
     header: Profile details
@@ -68,6 +69,8 @@ en:
     professional: Professional
     interests: Interests
     introduction: Introduction
+    courses: Course participants
+    sendMessage: Send message
 
   admin:
     users:

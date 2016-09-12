@@ -95,7 +95,7 @@ export default function routing($stateProvider) {
       controllerAs: 'Courses'
     })
     .state('home.course', {
-      url: 'course:id',
+      url: 'course/:id',
       template: require('./routes/course/course.html'),
       controller: 'CourseCrtl',
       controllerAs: 'Course'

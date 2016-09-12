@@ -107,13 +107,13 @@
           <input ng-model="user.birthdate" aria-label="{{ 'myProfile.personal_details.birthdate' | translate}}">
         </md-input-container>
       </p>
-      <p>
+      <p ng-show="MyProfileCtrl.edit">
         <b>{{ 'password' | translate}}: </b>
         <md-input-container ng-show="MyProfileCtrl.edit">
           <input type="password" ng-model="user.password" aria-label="{{ 'password' | translate}}">
         </md-input-container>
       </p>
-      <p>
+      <p ng-show="MyProfileCtrl.edit">
         <b>{{ 'passwordConfirmation' | translate}}: </b>
         <md-input-container ng-show="MyProfileCtrl.edit">
           <input type="password" ng-model="user.password_confirmation" aria-label="{{ 'password' | translate}}">
@@ -180,6 +180,23 @@
           </md-checkbox>
         </md-input-container>
       </div>
+    </md-card-content>
+  </md-card>
+</md-content>
+
+<md-content flex layout="column" layout-padding class="myprofile l-content-background">
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{ 'myProfile.myCourses' | translate}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <md-list>
+        <md-list-item ng-repeat="course in MyProfileCtrl.myCourses" ui-sref="home.course({id: course.id})">
+          - {{::course.title}} ({{::course.start_date}} - {{::course.end_date}})
+        </md-list-item>
+      </md-list>
     </md-card-content>
   </md-card>
 </md-content>
