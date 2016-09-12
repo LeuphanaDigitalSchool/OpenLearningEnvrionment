@@ -16,7 +16,7 @@ class StorageUploader < CarrierWave::Uploader::Base
     if original_filename
       timestamp = Time.now.strftime('%Y%m%d%H%M%S')
       extension = File.extname(file.file)
-      "#{model.id}_#{timestamp}#{extension}"
+      "#{timestamp}#{extension}"
     end
   end
 end
