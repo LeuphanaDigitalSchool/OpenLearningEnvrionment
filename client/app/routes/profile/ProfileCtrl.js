@@ -9,6 +9,7 @@ export default class ProfileCtrl {
     this.countries = countryList;
     this.getSelects();
     this.profile = this.Restangular.one('/api/v1/profile/', this.userId).get().$object;
+    this.getUserCourses();
   }
 
   getSelects() {
@@ -16,6 +17,14 @@ export default class ProfileCtrl {
       (response)=> {
         this.genders = response.genders;
         this.educational_attainments = response.educational_attainments;
+      }
+    );
+  }
+
+  getUserCourses() {
+    this.Restangular.oneUrl('courses', '/api/v1/courses').get().then(
+      (response)=> {
+        this.userCourses = response.courses;
       }
     );
   }

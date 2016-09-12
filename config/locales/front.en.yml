@@ -66,6 +66,8 @@ en:
     professional: Professional
     interests: Interests
     introduction: Introduction
+    courses: Course participants
+    sendMessage: Send message
 
   admin:
     users:
