@@ -22,7 +22,7 @@
     <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('')">
     <span><md-icon>assignment</md-icon> {{'assignment' | translate}}</span>
   </md-list-item>
-  <md-list-item aria-controls="childListId" ng-click="null" ng-if="::user.role_id > 3">
+  <md-list-item aria-controls="childListId" ng-click="null">
     <span><md-icon>list</md-icon> {{'sideNav.courses' | translate}}</span>
   </md-list-item>
   <md-list-item ng-repeat="course in SideNavCtrl.coursesList" class="sublist" aria-controls="childListId">
