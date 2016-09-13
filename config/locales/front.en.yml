@@ -247,6 +247,7 @@ en:
 
   storage:
     addNewFile: "add new file"
+    remove: 'Remove'
     fileDescription: "file description"
     Description: "file description"
     forgottenPassword: Reset password
