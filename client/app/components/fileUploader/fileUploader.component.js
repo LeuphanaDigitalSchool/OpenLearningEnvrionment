@@ -12,6 +12,10 @@ class FileUploaderCtrl {
     this.initialData();
     this.checkCoursePermission();
     this.getCourse();
+    this.storageTypes = [
+      'File',
+      'Link'
+    ];
   }
 
   checkCoursePermission(){
@@ -51,7 +55,7 @@ class FileUploaderCtrl {
     .then((response)=>{
         this.clear();
         this.cancel();
-        this.toastr.success('You have successfully added new file', 'Success');
+        this.toastr.success('You have successfully added new storage', 'Success');
         this.$rootScope.$broadcast('storage:created');
     })
     .catch((err)=>{

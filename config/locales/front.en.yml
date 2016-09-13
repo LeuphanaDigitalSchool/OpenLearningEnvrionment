@@ -246,10 +246,10 @@ en:
     inviteUserToPlatformByEmail: "invite User To Platform By Email"
 
   storage:
-    addNewFile: "add new file"
-    remove: 'Remove'
-    fileDescription: "file description"
-    Description: "file description"
+    addNewFile: Add new storage
+    remove: Remove
+    fileDescription: "Description"
+    Description: "Description"
     forgottenPassword: Reset password
     email: Your e-mail
     forgotten: Send reset password instruction
@@ -264,3 +264,5 @@ en:
     sendMessagesToUserGroups: Send messages to user groups
     replyToForumPostsViaEmail: Reply to forum posts via email
     inviteUserToPlatformByEmail: Invite user to platform by email
+    selectStorage: Select storage type
+    link: Link
