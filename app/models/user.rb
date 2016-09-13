@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   mount_base64_uploader :avatar, UserAvatarUploader
 
   validates :email, presence: true
-  validates :data_privacy, :terms_and_conditions, acceptance: true, if: proc { |u| u.role_id.zero? }
+  validates :data_privacy, :terms_and_conditions, acceptance: true, if: proc { |u| u.role_id == 1 }
 
   enum gender_options: [:male, :female, :not_say]
   enum educational_attainment_options: [:nope, :highschool, :bechelor, :master, :phd, :professor]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908101919) do
+ActiveRecord::Schema.define(version: 20160913085459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,7 +185,7 @@ ActiveRecord::Schema.define(version: 20160908101919) do
     t.boolean  "data_privacy",           default: false
     t.boolean  "terms_and_conditions",   default: false
     t.boolean  "honor_code",             default: false
-    t.integer  "role_id",                default: 0
+    t.integer  "role_id",                default: 1
     t.date     "birthdate"
     t.boolean  "deleted",                default: false
     t.string   "invitation_token"
