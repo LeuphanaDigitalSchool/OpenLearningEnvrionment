@@ -1,9 +1,15 @@
 export default class SideNavCtrl {
-  constructor($location) {
+  constructor(Restangular) {
     "ngInject";
-    this.location = $location;
-  }
-  goToUrl(path) {
-    this.location.path(path);
+    this.Restangular = Restangular;
+    this.coursesApi = this.Restangular.oneUrl('courses', '/api/v1/courses');
+    this.getCoursesList();
+}
+
+  getCoursesList() {
+    this.coursesApi.get().then(
+      (response)=>{
+        this.coursesList = response.courses;
+    });
   }
 }

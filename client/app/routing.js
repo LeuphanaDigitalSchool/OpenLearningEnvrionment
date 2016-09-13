@@ -100,6 +100,12 @@ export default function routing($stateProvider) {
       controller: 'CourseCrtl',
       controllerAs: 'Course'
     })
+    .state('home.course-view', {
+      url: 'view/course/:id',
+      template: require('./routes/course/courseView/courseView.html'),
+      controller: 'CourseViewCtrl',
+      controllerAs: 'CourseView'
+    })
     .state('home.course-participants', {
       url: 'course/:id/participants',
       template: require('./routes/course/courseParticipants/courseParticipants.html'),

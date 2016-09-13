@@ -66,6 +66,10 @@ export default class CreateCourseCtrl {
     });
   }
 
+  addNewStorage(){
+    this.course.course_phases_attributes.push({});
+  }
+
   initialData() {
     this.course = {};
     this.$scope.teacher = {};
@@ -73,6 +77,7 @@ export default class CreateCourseCtrl {
     this.data= {};
     this.sending = false;
     this.course.course_preferences_attributes = [];
+    this.course.course_phases_attributes = [];
     this.buttonTitle = 'Next';
     this.max = 6;
     this.selectedIndex = 0;

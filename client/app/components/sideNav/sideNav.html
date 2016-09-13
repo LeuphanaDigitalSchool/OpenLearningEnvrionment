@@ -1,4 +1,4 @@
-<md-list>
+<md-list class="sidenav">
   <md-list-item aria-controls="childListId">
     <img ng-src="{{user.size_64x64.url}}" alt="" ng-show="user.size_64x64.url"/>
     {{user.firstname}} {{user.lastname}}
@@ -7,13 +7,13 @@
   <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('')">
     <span><md-icon>forum</md-icon> {{'forum' | translate}}</span>
   </md-list-item>
-  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('')">
+  <md-list-item aria-controls="childListId" ui-sref="home">
     <span><md-icon>message</md-icon> {{'messages' | translate}}</span>
   </md-list-item>
-  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('myProfile')">
+  <md-list-item aria-controls="childListId" ui-sref="home.myProfile">
     <span><md-icon>face</md-icon> {{'sideNav.myProfile' | translate}}</span>
   </md-list-item>
-  <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('admin')" ng-if="user.role_id === 6">
+  <md-list-item aria-controls="childListId" ui-sref="home.admin" ng-if="::user.role_id === 6">
     <span><md-icon>people</md-icon> {{'adminPanel' | translate}}</span>
   </md-list-item>
   <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('')">
@@ -22,13 +22,20 @@
     <md-list-item aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('')">
     <span><md-icon>assignment</md-icon> {{'assignment' | translate}}</span>
   </md-list-item>
-  <md-list-item aria-controls="childListId" ng-click="null" ng-if="user.role_id > 3">
-    <span><md-icon>list</md-icon> {{'courses' | translate}}</span>
+  <md-list-item aria-controls="childListId" ng-click="null" ng-if="::user.role_id > 3">
+    <span><md-icon>list</md-icon> {{'sideNav.courses' | translate}}</span>
   </md-list-item>
-  <md-list-item class="sublist" aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('create-course')" ng-if="user.role_id > 3">
-    <span>- {{'createCourse' | translate}}</span>
+  <md-list-item ng-repeat="course in SideNavCtrl.coursesList" class="sublist" aria-controls="childListId">
+    <md-list>
+      <md-list-item ui-sref="home.course-view({id: course.id})">- {{course.title}}</md-list-item>
+      <md-list-item ui-sref="home.course-participants({id: course.id})""><span>- {{'sideNav.participants' | translate}}</span></md-list-item>
+    </md-list>
   </md-list-item>
-  <md-list-item class="sublist" aria-controls="childListId" ng-click="SideNavCtrl.goToUrl('courses-list')" ng-if="user.role_id > 3">
-    <span>- {{'courses' | translate}}</span>
+  <md-divider></md-divider>
+  <md-list-item class="sublist" aria-controls="childListId" ui-sref="home.create-course" ng-if="::user.role_id > 3">
+    - {{'createCourse' | translate}}
+  </md-list-item>
+  <md-list-item class="sublist" aria-controls="childListId" ui-sref="home.courses-list" ng-if="::user.role_id > 3">
+    - {{'sideNav.coursesList' | translate}}
   </md-list-item>
 </md-list>

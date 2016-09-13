@@ -20,7 +20,7 @@ class CoursePhaseSerializer < ActiveModel::Serializer
       {
         id: storage.id,
         source: storage.source,
-        file: storage.file.file.file,
+        file: storage.file.url,
         description: storage.description,
         url: storage.url,
         user: storage.user.display_name

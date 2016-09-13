@@ -19,7 +19,7 @@ import angularMaterial from 'angular-material';
 import angularTranslate from 'angular-translate';
 import angularTranslateLoaderUrl from 'angular-translate-loader-url';
 import angularTranslateStorageCookie from 'angular-translate-storage-cookie';
-import ipCookie from 'angular-cookies';
+import ngCookies from 'angular-cookies';
 import toastr from 'angular-toastr';
 import restangular from 'restangular-umd';
 
@@ -38,7 +38,7 @@ const ngModule = angular
         angularTranslate,
         angularTranslateLoaderUrl,
         angularTranslateStorageCookie,
-        ipCookie,
+        ngCookies,
         toastr,
         restangular,
         ngFileUpload,

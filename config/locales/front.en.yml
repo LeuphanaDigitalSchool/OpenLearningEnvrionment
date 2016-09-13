@@ -1,37 +1,39 @@
 en:
-  register: Register
-  email: Email
-  title: Title
-  password: Password
-  firstname: Firstname
-  lastname: Lastname
-  thisFieldIsRequired: This Field Is Required
-  honorCode: Honor Code
-  termsAndConditions: Terms And Conditions
-  dataPrivacy: Data Privacy
-  logout: Logout
-  adminPanel: Admin panel
-  createProfile: Create profile
-  profiles: Profiles
-  gender: Gender
-  country: Country
-  age: Age
-  birthDate: Birth date
-  selectRole: Select role
-  educationalAttainment: Educational attainment
-  profession: Profession
-  interests: Interests
-  introduction: Introduction
-  passwordConfirmation: Password confirmation
-  acceptInvitation: Accept Invitation
-  save: Save
-  removePhoto: Remove photo
-  addPhoto: Add photo
-  settings: Settings
-  messages: Messages
-  personalInfo: Personal info
-  coursesList: Courses list
-  publishPlatformContentOutsideOfPlatform: Publish platform content outside of platform
+  register: "Register"
+  email: "Email"
+  title: "Title"
+  password: "Password"
+  firstname: "Firstname"
+  lastname: "Lastname"
+  thisFieldIsRequired: "This Field Is Required"
+  honorCode: "Honor Code"
+  termsAndConditions: "Terms And Conditions"
+  dataPrivacy: "Data Privacy"
+  logout: "Logout"
+  adminPanel: "Admin panel"
+  createProfile: "Create profile"
+  profiles: "Profiles"
+  gender: "Gender"
+  country: "Country"
+  age: "Age"
+  birthDate: "Birth date"
+  selectRole: "Select role"
+  educationalAttainment: "Educational attainment"
+  profession: "Profession"
+  interests: "Interests"
+  introduction: "Introduction"
+  passwordConfirmation: "Password confirmation"
+  acceptInvitation: "Accept Invitation"
+  save: "Save"
+  removePhoto: "Remove photo"
+  addPhoto: "Add photo"
+  settings: "Settings"
+  messages: "Messages"
+  personalInfo: "Personal info"
+  coursesList: "courses list"
+  publishPlatformContentOutsideOfPlatform: "publish Platform Content Outside Of Platform"
+  startDate: "start date"
+  endDate: "end date"
   forum: Forum
   workspace: Workspace
   assignment: Assignment
@@ -39,6 +41,9 @@ en:
 
   sideNav:
     myProfile: My profile
+    participants: Participants
+    courses: Courses
+    coursesList: Courses list
 
   myProfile:
     personal_details:
@@ -225,6 +230,25 @@ en:
     actions: 'Actions'
 
   forgottenPasswordForm:
+    forgottenPassword: "Reset password"
+    email: "Your e-mail"
+    forgotten: "Send reset password instruction"
+    resetPassword: 'Reset your password'
+    password: 'Password'
+    passwordConfirmation: 'Password confirmation'
+    save: 'Save new password'
+    notificationsByEmail: "notifications By Email"
+    sendUserMessagesAsEmailOptional: "send User Messages As Email Optional"
+    sendMessagesViaEmailWithinPlatform: "send Messages Via Email Within Platform"
+    sendMessagesToSingleUsers: "send Messages To Single Users"
+    sendMessagesToUserGroups: "send Messages To User Groups"
+    replyToForumPostsViaEmail: "reply To Forum Posts Via Email"
+    inviteUserToPlatformByEmail: "invite User To Platform By Email"
+
+  storage:
+    addNewFile: "add new file"
+    fileDescription: "file description"
+    Description: "file description"
     forgottenPassword: Reset password
     email: Your e-mail
     forgotten: Send reset password instruction
