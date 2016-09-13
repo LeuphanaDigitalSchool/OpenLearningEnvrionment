@@ -72,11 +72,7 @@ class FileUploaderCtrl {
 
   pushPhase() {
     this.storage.course_phase_ids = [];
-    for (var i = 1; i <= 6; i++) {
-      if(this.phaseData[i]){
-        this.storage.course_phase_ids.push(i);
-      }
-    }
+    for (var k in this.phaseData) this.storage.course_phase_ids.push(k);
   }
   initialData() {
     this.phaseData = null;
