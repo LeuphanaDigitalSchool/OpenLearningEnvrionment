@@ -34,7 +34,7 @@
                   </md-tooltip>
                 </md-button>
               </div>
-                <div class="column" ng-repeat="phase in Create.course.course_phases_attributes">
+                <div class="column" ng-repeat="phase in phases">
                   <md-input-container>
                     <label>phase {{$index +1}} title</label>
                     <input ng-model="phase.title">
