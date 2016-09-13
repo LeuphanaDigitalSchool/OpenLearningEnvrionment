@@ -1,54 +1,58 @@
 <md-tab label="step 5. publishing">
   <md-content layout="column" class="md-padding">
-    <div layout="row">
-      <div flex= layout-margin layout-padding class="md-whiteframe-1dp l-content-background">
-        <md-switch ng-model="Create.publishing.publishPlatformContentOutsideOfPlatform" aria-label="publishPlatformContentOutsideOfPlatform">
-          <h3 class="md-title">{{'course.publishPlatformContentOutsideOfPlatform' | translate}}</h3>
-        </md-switch>
-        <div ng-if="Create.publishing.publishPlatformContentOutsideOfPlatform">
-          <div layout="column">
-            <md-switch class="sub-switch" ng-model="Create.publishing.publishForumPostsOutsideOfPlatform" aria-label="publishForumPostsOutsideOfPlatform">
-              <p class="md-body-1">{{'course.publishForumPostsOutsideOfPlatform' | translate}}</p>
+    <md-tabs>
+      <md-tab ng-repeat="phase in phases" label="phase {{$index+1}}">
+        <div layout="row">
+          <div flex= layout-margin layout-padding class="md-whiteframe-1dp l-content-background">
+            <md-switch ng-model="Create.publishing.publishPlatformContentOutsideOfPlatform" aria-label="publishPlatformContentOutsideOfPlatform">
+              <h3 class="md-title">{{'course.publishPlatformContentOutsideOfPlatform' | translate}}</h3>
             </md-switch>
-            <md-switch class="sub-switch" ng-model="Create.publishing.publishResourcesOutsideOfPlatform" aria-label="publishResourcesOutsideOfPlatform">
-              <p class="md-body-2">{{'course.publishResourcesOutsideOfPlatform' | translate}}</p>
-            </md-switch>
-            <div class="column" ng-if="Create.publishing.publishResourcesOutsideOfPlatform">
-              <md-switch class="sub-switch child" ng-model="Create.publishing.embed" aria-label="embed">
-                <p class="md-body-1">{{'course.embed' | translate}}</p>
-              </md-switch>
-              <md-switch class="sub-switch child" ng-model="Create.publishing.link" aria-label="link">
-                <p class="md-body-1">{{'course.link' | translate}}</p>
-              </md-switch>
-            </div>
-            <md-switch class="sub-switch" ng-model="Create.publishing.publishMessagesOutsideOfPlatform" aria-label="publishMessagesOutsideOfPlatform">
-              <p class="md-body-1">{{'course.publishMessagesOutsideOfPlatform' | translate}}</p>
-            </md-switch>
-            <md-switch class="sub-switch" ng-model="Create.publishing.publishNewsPostsAsWordpressPostsOutsideOfPlatform" aria-label="publishNewsPostsAsWordpressPostsOutsideOfPlatform">
-              <p class="md-body-1">{{'course.publishNewsPostsAsWordpressPostsOutsideOfPlatform' | translate}}</p>
-            </md-switch>
-            <md-switch class="sub-switch" ng-model="Create.publishing.publishNewsPostsAsAsSocialMediaPosts" aria-label="publishNewsPostsAsAsSocialMediaPosts">
-              <p class="md-body-2">{{'course.publishNewsPostsAsAsSocialMediaPosts ' | translate}}</p>
-            </md-switch>
-            <div ng-if="Create.publishing.publishNewsPostsAsAsSocialMediaPosts">
+            <div ng-if="Create.publishing.publishPlatformContentOutsideOfPlatform">
               <div layout="column">
-                <md-switch class="sub-switch child" ng-model="Create.publishing.twitter" aria-label="twitter">
-                  <p class="md-body-1">{{'course.twitter' | translate}}</p>
+                <md-switch class="sub-switch" ng-model="Create.publishing.publishForumPostsOutsideOfPlatform" aria-label="publishForumPostsOutsideOfPlatform">
+                  <p class="md-body-1">{{'course.publishForumPostsOutsideOfPlatform' | translate}}</p>
                 </md-switch>
-                <md-switch class="sub-switch child" ng-model="Create.publishing.facebook" aria-label="facebook">
-                  <p class="md-body-1">{{'course.facebook' | translate}}</p>
+                <md-switch class="sub-switch" ng-model="Create.publishing.publishResourcesOutsideOfPlatform" aria-label="publishResourcesOutsideOfPlatform">
+                  <p class="md-body-2">{{'course.publishResourcesOutsideOfPlatform' | translate}}</p>
                 </md-switch>
-                <md-switch class="sub-switch child" ng-model="Create.publishing.googlePlus" aria-label="googlePlus">
-                  <p class="md-body-1">{{'course.googlePlus' | translate}}</p>
+                <div class="column" ng-if="Create.publishing.publishResourcesOutsideOfPlatform">
+                  <md-switch class="sub-switch child" ng-model="Create.publishing.embed" aria-label="embed">
+                    <p class="md-body-1">{{'course.embed' | translate}}</p>
+                  </md-switch>
+                  <md-switch class="sub-switch child" ng-model="Create.publishing.link" aria-label="link">
+                    <p class="md-body-1">{{'course.link' | translate}}</p>
+                  </md-switch>
+                </div>
+                <md-switch class="sub-switch" ng-model="Create.publishing.publishMessagesOutsideOfPlatform" aria-label="publishMessagesOutsideOfPlatform">
+                  <p class="md-body-1">{{'course.publishMessagesOutsideOfPlatform' | translate}}</p>
                 </md-switch>
-                <md-switch class="sub-switch child" ng-model="Create.publishing.instagram" aria-label="instagram">
-                  <p class="md-body-1">{{'course.instagram' | translate}}</p>
+                <md-switch class="sub-switch" ng-model="Create.publishing.publishNewsPostsAsWordpressPostsOutsideOfPlatform" aria-label="publishNewsPostsAsWordpressPostsOutsideOfPlatform">
+                  <p class="md-body-1">{{'course.publishNewsPostsAsWordpressPostsOutsideOfPlatform' | translate}}</p>
                 </md-switch>
+                <md-switch class="sub-switch" ng-model="Create.publishing.publishNewsPostsAsAsSocialMediaPosts" aria-label="publishNewsPostsAsAsSocialMediaPosts">
+                  <p class="md-body-2">{{'course.publishNewsPostsAsAsSocialMediaPosts ' | translate}}</p>
+                </md-switch>
+                <div ng-if="Create.publishing.publishNewsPostsAsAsSocialMediaPosts">
+                  <div layout="column">
+                    <md-switch class="sub-switch child" ng-model="Create.publishing.twitter" aria-label="twitter">
+                      <p class="md-body-1">{{'course.twitter' | translate}}</p>
+                    </md-switch>
+                    <md-switch class="sub-switch child" ng-model="Create.publishing.facebook" aria-label="facebook">
+                      <p class="md-body-1">{{'course.facebook' | translate}}</p>
+                    </md-switch>
+                    <md-switch class="sub-switch child" ng-model="Create.publishing.googlePlus" aria-label="googlePlus">
+                      <p class="md-body-1">{{'course.googlePlus' | translate}}</p>
+                    </md-switch>
+                    <md-switch class="sub-switch child" ng-model="Create.publishing.instagram" aria-label="instagram">
+                      <p class="md-body-1">{{'course.instagram' | translate}}</p>
+                    </md-switch>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-      </div>
-    </div>
-  </div>
+        </div>
+      </md-tab>
+    </md-tabs>
   </md-content>
 </md-tab>

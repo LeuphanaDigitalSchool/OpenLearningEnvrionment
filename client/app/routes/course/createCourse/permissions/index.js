@@ -1,8 +1,8 @@
 import angular from 'angular';
 import angularMaterial from 'angular-material';
 
-import permissions from './permissions.component';
+import permissionsDirective from './permissions.directive';
 
 export default angular.module('app.admin.course.permissions', [angularMaterial])
-  .component('permissions', permissions)
+  .directive('permissionsDirective', permissionsDirective)
   .name;
