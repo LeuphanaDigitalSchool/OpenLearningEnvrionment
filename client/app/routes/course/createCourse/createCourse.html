@@ -69,11 +69,11 @@
 
       </md-tabs>
     <div layout="row" layout-align="center center">
-      <md-button class="md-raised md-primary" ng-click="Create.prevTab()">Back</md-button>
-      <md-button class="md-raised md-primary" ng-click="Create.nextTab()">{{Create.buttonTitle}}</md-button>
+      <md-button class="md-raised md-primary" ng-click="Create.prevTab()" ng-disabled="phases.length == 0">Back</md-button>
+      <md-button class="md-raised md-primary" ng-click="Create.nextTab()" ng-disabled="phases.length == 0">{{Create.buttonTitle}}</md-button>
     </div>
     <div layout="row" layout-align="center center">
-      <md-button class="md-raised md-warn"  type="submit">{{'course.addNewCourse' | translate}}</md-button>
+      <md-button class="md-raised md-warn" type="submit" ng-disabled="phases.length == 0">{{'course.addNewCourse' | translate}}</md-button>
     </div>
     </form>
   </md-content>
