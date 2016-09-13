@@ -10,9 +10,8 @@ export default class CreateCourseCtrl {
   }
 
   submit(){
-    this.course.course_preferences_attributes = [];
+    this.course.course_phases_attributes = [];
     this.teacherPermission();
-    this.studentPermission();
     this.baseLephanaUser = this.Restangular.all('/api/v1/courses/');
     this.data.course=this.course;
     this.sending = true;
@@ -37,47 +36,52 @@ export default class CreateCourseCtrl {
   }
 
   teacherPermission(){
-    this.course.course_preferences_attributes.push({
-      "role_id": 4,
-      "upload_pdf": this.$scope.teacher.uploadPDF,
-      "upload_jpg": this.$scope.teacher.uploadJpg,
-      "upload_mp3": this.$scope.teacher.uploadMp3,
-      "upload_mp4": this.$scope.teacher.uploadMp4,
-      "resources_del": this.$scope.teacher.teacherCanDeleteResources,
-      "resource_description_add": this.$scope.teacher.teacherCanAddResourceDescription,
-      "resource_description_del": "false",
-      "schedule_publishing": this.$scope.teacher.teacherCanSchedulePublishing,
-      "embed_external_links": this.$scope.teacher.teacherEmbedExternalLinks
-    });
-  }
-
-  studentPermission(){
-    this.course.course_preferences_attributes.push({
-      "role_id": 2,
-      "upload_pdf": this.$scope.student.uploadPDF,
-      "upload_jpg": this.$scope.student.uploadJpg,
-      "upload_mp3": this.$scope.student.uploadMp3,
-      "upload_mp4": this.$scope.student.uploadMp4,
-      "resources_del": this.$scope.student.teacherCanDeleteResources,
-      "resource_description_add": this.$scope.student.teacherCanAddResourceDescription,
-      "resource_description_del": "false",
-      "schedule_publishing": this.$scope.student.teacherCanSchedulePublishing,
-      "embed_external_links": this.$scope.student.studentEmbedExternalLinks
-    });
+    for (let i = 0; i < this.$scope.phases.length; i++) {
+      this.course.course_phases_attributes.push({
+        "title": this.$scope.phases[i].title,
+        "start_date": this.$scope.phases[i].start_date,
+        "end_date": this.$scope.phases[i].end_date,
+        "course_phase_preferences_attributes" : [
+          {
+            "role_id": 4,
+            "upload_pdf": this.$scope.phases[i].teacherUploadPDF,
+            "upload_jpg": this.$scope.phases[i].teacherUploadJpg,
+            "upload_mp3": this.$scope.phases[i].teacherUploadMp3,
+            "upload_mp4": this.$scope.phases[i].teacherUploadMp4,
+            "resources_del": this.$scope.phases[i].teacherCanDeleteResources,
+            "resource_description_add": this.$scope.phases[i].teacherCanAddResourceDescription,
+            "resource_description_del": "false",
+            "schedule_publishing": this.$scope.phases[i].teacherCanSchedulePublishing,
+            "embed_external_links": this.$scope.phases[i].teacherEmbedExternalLinks
+          },
+          {
+            "role_id": 2,
+            "upload_pdf": this.$scope.phases[i].studentUploadPDF,
+            "upload_jpg": this.$scope.phases[i].studentUploadJpg,
+            "upload_mp3": this.$scope.phases[i].studentUploadMp3,
+            "upload_mp4": this.$scope.phases[i].studentUploadMp4,
+            "resources_del": this.$scope.phases[i].studentCanDeleteResources,
+            "resource_description_add": this.$scope.phases[i].studentCanAddResourceDescription,
+            "resource_description_del": "false",
+            "schedule_publishing": this.$scope.phases[i].studentCanSchedulePublishing,
+            "embed_external_links": this.$scope.phases[i].studentEmbedExternalLinks
+          }
+        ]
+      });
+    }
   }
 
   addNewStorage(){
-    this.course.course_phases_attributes.push({});
+    this.$scope.phases.push({});
   }
 
   initialData() {
     this.course = {};
-    this.$scope.teacher = {};
+    this.$scope.teacher = [];
     this.$scope.student = {};
     this.data= {};
     this.sending = false;
-    this.course.course_preferences_attributes = [];
-    this.course.course_phases_attributes = [];
+    this.$scope.phases = [];
     this.buttonTitle = 'Next';
     this.max = 6;
     this.selectedIndex = 0;
