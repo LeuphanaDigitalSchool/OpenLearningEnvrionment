@@ -24,13 +24,16 @@ class Storage < ApplicationRecord
     course_phase_ids.each do |phase|
       phase = CoursePhase.find(phase)
       allow = phase.course_phase_preferences.where(role_id: user.role_id).first
-      course_phases << phase if allow && allow.public_send(proper_extension(file.file.extension))
+      course_phases << phase if allow && allow.public_send(storage_permission(file))
     end
   end
 
   private
 
-  def proper_extension(extension)
-    extension == 'jpeg' ? 'upload_jpg' : "upload_#{extension}"
+  def storage_permission(file)
+    if file.present?
+      return file.file.extension == 'jpeg' ? 'upload_jpg' : "upload_#{file.file.extension}"
+    end
+    'embed_external_links'
   end
 end

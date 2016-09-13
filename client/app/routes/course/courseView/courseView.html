@@ -34,11 +34,12 @@
       <md-card ng-repeat="file in CourseView.files">
         <md-card-title>
           <md-card-title-text>
-            <span class="md-headline">{{ ::file.description }}</span>
+            <span class="md-headline" ng-if="::file.url != null"><a href="{{::file.url}}" target="blank">{{ ::file.description }}</a></span>
+            <span class="md-headline" ng-if="::file.url == null">{{ ::file.description }}</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-          <a href="{{ ::file.file }}" class="md-button">download</a>
+          <a href="{{ ::file.file }}" class="md-button" ng-if="::file.file != null">download</a>
           <md-button
             ng-if="::user.role_id > 3"
             ng-click="::CourseView.removeFile(CourseView.courseId, file.id)">
