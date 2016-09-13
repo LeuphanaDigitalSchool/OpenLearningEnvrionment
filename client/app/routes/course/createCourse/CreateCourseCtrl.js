@@ -43,6 +43,18 @@ export default class CreateCourseCtrl {
         "end_date": this.$scope.phases[i].end_date,
         "course_phase_preferences_attributes" : [
           {
+            "role_id": 2,
+            "upload_pdf": this.$scope.phases[i].studentUploadPDF,
+            "upload_jpg": this.$scope.phases[i].studentUploadJpg,
+            "upload_mp3": this.$scope.phases[i].studentUploadMp3,
+            "upload_mp4": this.$scope.phases[i].studentUploadMp4,
+            "resources_del": this.$scope.phases[i].studentCanDeleteResources,
+            "resource_description_add": this.$scope.phases[i].studentCanAddResourceDescription,
+            "resource_description_del": "false",
+            "schedule_publishing": this.$scope.phases[i].studentCanSchedulePublishing,
+            "embed_external_links": this.$scope.phases[i].studentEmbedExternalLinks
+          },
+          {
             "role_id": 4,
             "upload_pdf": this.$scope.phases[i].teacherUploadPDF,
             "upload_jpg": this.$scope.phases[i].teacherUploadJpg,
@@ -55,16 +67,16 @@ export default class CreateCourseCtrl {
             "embed_external_links": this.$scope.phases[i].teacherEmbedExternalLinks
           },
           {
-            "role_id": 2,
-            "upload_pdf": this.$scope.phases[i].studentUploadPDF,
-            "upload_jpg": this.$scope.phases[i].studentUploadJpg,
-            "upload_mp3": this.$scope.phases[i].studentUploadMp3,
-            "upload_mp4": this.$scope.phases[i].studentUploadMp4,
-            "resources_del": this.$scope.phases[i].studentCanDeleteResources,
-            "resource_description_add": this.$scope.phases[i].studentCanAddResourceDescription,
-            "resource_description_del": "false",
-            "schedule_publishing": this.$scope.phases[i].studentCanSchedulePublishing,
-            "embed_external_links": this.$scope.phases[i].studentEmbedExternalLinks
+            "role_id": 6,
+            "upload_pdf": "true",
+            "upload_jpg": "true",
+            "upload_mp3": "true",
+            "upload_mp4": "true",
+            "resources_del": "true",
+            "resource_description_add": "true",
+            "resource_description_del": "true",
+            "schedule_publishing": "true",
+            "embed_external_links": "true"
           }
         ]
       });
