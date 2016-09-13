@@ -54,7 +54,7 @@ student_preferences = { role_id: 2, upload_jpg: true }
 teacher_preferences = { role_id: 4, upload_pdf: true, upload_jpg: true, upload_mp3: true, upload_mp4: true }
 manager_preferences = { role_id: 6, upload_pdf: true, upload_jpg: true, upload_mp3: true, upload_mp4: true,
                         resource_description_add: true, resource_description_del: true, resources_del: true,
-                        embed_external_links: true }
+                        schedule_publishing: true, embed_external_links: true }
 
 # phase 1
 course_phase = course.course_phases.create(title: 'Phase 1', start_date: '2016-09-01', end_date: '2016-09-30')
