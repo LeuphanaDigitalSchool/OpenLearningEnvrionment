@@ -4,11 +4,12 @@ export default class CourseViewCtrl {
     this.$stateParams = $stateParams;
     this.Restangular = Restangular;
     this.toastr = toastr;
-    this.courseId = this.$stateParams.id - 1;
+    this.courseId = this.$stateParams.id;
     this.$mdDialog = $mdDialog;
     this.courseData = {};
     this.$rootScope = $rootScope;
-    this.phasesApi = this.Restangular.oneUrl('courses', '/api/v1/courses/'+this.$stateParams.id);
+    this.phasesApi = this.Restangular.oneUrl('course', '/api/v1/courses/'+this.courseId);
+    this.getCourse();
     this.getPhases();
     this.addListeners();
   }
@@ -23,6 +24,12 @@ export default class CourseViewCtrl {
   getPhases(){
     this.phasesApi.customGET('phase/active').then((response)=>{
       this.files = response.course_phase.storages;
+    });
+  }
+  getCourse(){
+    this.phasesApi.get().then((response)=>{
+      this.course = response.course;
+      console.log(this.course);
     });
   }
 

@@ -12,7 +12,7 @@ class CoursePhaseActiveSerializer < ActiveModel::Serializer
   end
 
   def active
-    Time.now > start_date && end_date > Time.now
+    Time.now > object.start_date && object.end_date > Time.now
   end
 
   def storages
