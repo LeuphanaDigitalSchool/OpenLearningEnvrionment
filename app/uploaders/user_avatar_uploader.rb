@@ -24,11 +24,11 @@ class UserAvatarUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  def filename
-    if original_filename
-      timestamp = Time.now.strftime('%Y%m%d%H%M%S')
-      extension = File.extname(file.file)
-      "#{model.id}_#{timestamp}#{extension}"
-    end
-  end
+  # def filename
+  #   if original_filename
+  #     timestamp = Time.now.strftime('%Y%m%d%H%M%S')
+  #     extension = File.extname(file.file)
+  #     "#{model.id}_#{timestamp}#{extension}"
+  #   end
+  # end
 end
