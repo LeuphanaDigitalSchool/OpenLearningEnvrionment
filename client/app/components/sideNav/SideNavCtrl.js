@@ -4,6 +4,7 @@ export default class SideNavCtrl {
     this.Restangular = Restangular;
     this.coursesApi = this.Restangular.oneUrl('courses', '/api/v1/courses');
     this.$interval = $interval;
+    this.coursesList= [];
 
     this.getCoursesList();
     this.startCourseInterval();
@@ -12,7 +13,8 @@ export default class SideNavCtrl {
   getCoursesList() {
     this.coursesApi.get().then(
       (response)=>{
-        this.coursesList = response.courses;
+        if(this.coursesList.length !== response.courses.length)
+          this.coursesList = response.courses;
     });
   }
 

@@ -25,13 +25,20 @@
   <md-list-item aria-controls="childListId" ng-click="null">
     <span><md-icon>list</md-icon> {{'sideNav.courses' | translate}}</span>
   </md-list-item>
-  <md-list-item ng-repeat="course in SideNavCtrl.coursesList" class="sublist" aria-controls="childListId">
-    <md-list>
-      <md-list-item ui-sref="home.course-view({id: course.id})">- {{course.title}}</md-list-item>
-      <md-list-item ui-sref="home.course-participants({id: course.id})""><span>- {{'sideNav.participants' | translate}}</span></md-list-item>
-    </md-list>
+
+  <md-list-item
+    ng-repeat="course in SideNavCtrl.coursesList"
+    class="sublist courses-list-item"
+    aria-controls="childListId"
+  >
+    <div>
+      <div class="courses-list-item-title" ui-sref="home.course-view({id: course.id})">{{course.title}}{{course.title}}</div>
+      <div class="courses-list-item-participants" ui-sref="home.course-participants({id: course.id})">- {{'sideNav.participants' | translate}}</div>
+    </div>
   </md-list-item>
+
   <md-divider></md-divider>
+
   <md-list-item class="sublist" aria-controls="childListId" ui-sref="home.create-course" ng-if="::user.role_id > 3">
     - {{'createCourse' | translate}}
   </md-list-item>

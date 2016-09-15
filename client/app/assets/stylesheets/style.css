@@ -181,3 +181,32 @@ md-datepicker {
 .link:hover {
   text-decoration: underline;
 }
+
+.courses-list-item {
+  padding: 0;
+  margin: 10px 0;
+  background-color: #eee;
+}
+
+.courses-list-item-title {
+  text-transform: capitalize;
+  cursor: pointer;
+  width: 90%;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.courses-list-item-participants {
+  cursor: pointer;
+  padding-left: 5px;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.courses-list-item-title:hover,
+.courses-list-item-participants:hover {
+  transform: scale(1.1);
+  text-decoration: underline;
+}
