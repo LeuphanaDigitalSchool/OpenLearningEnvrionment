@@ -48,10 +48,14 @@ PublicUser.create!(firstname: 'Public', lastname: 'User', email: 'public_user@ex
                    data_privacy: true, terms_and_conditions: true)
 
 puts '-> Create course'
-course = Course.create!(title: 'First course', description: 'Description', start_date: '2016-06-01',
+course = Course.create!(title: 'Sample course', description: 'Sample description', start_date: '2016-09-01',
                         end_date: '2017-02-28')
-student_preferences = { role_id: 2, upload_jpg: true }
-teacher_preferences = { role_id: 4, upload_pdf: true, upload_jpg: true, upload_mp3: true, upload_mp4: true }
+student_preferences = { role_id: 2, upload_pdf: true, upload_jpg: true, upload_mp3: true, upload_mp4: true,
+                        resource_description_add: true, resource_description_del: true, resources_del: true,
+                        schedule_publishing: true, embed_external_links: true }
+teacher_preferences = { role_id: 4, upload_pdf: true, upload_jpg: true, upload_mp3: true, upload_mp4: true,
+                        resource_description_add: true, resource_description_del: true, resources_del: true,
+                        schedule_publishing: true, embed_external_links: true }
 manager_preferences = { role_id: 6, upload_pdf: true, upload_jpg: true, upload_mp3: true, upload_mp4: true,
                         resource_description_add: true, resource_description_del: true, resources_del: true,
                         schedule_publishing: true, embed_external_links: true }

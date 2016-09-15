@@ -57,11 +57,11 @@ resource 'Api::V1::Courses' do
                                     "course_phase_preferences_attributes": course_phase_preferences_attributes },
                                   { "title": 'Phase 6', "start_date": '2017-01-01', "end_date": '2017-01-30',
                                     "course_phase_preferences_attributes": course_phase_preferences_attributes }]
-      params = { "course": { "title": 'First course', "description": 'Description', "start_date": '2016-01-01',
+      params = { "course": { "title": 'Sample course', "description": 'Description', "start_date": '2016-01-01',
                              "end_date": '2017-02-03', "course_phases_attributes": course_phases_attributes } }
 
       do_request(params)
-      expect(response_body).to include('"title":"First course"', '"description":"Description"',
+      expect(response_body).to include('"title":"Sample course"', '"description":"Description"',
                                        '"start_date":"2016-01-01"', '"end_date":"2017-02-03"', '"role":"Student"',
                                        '"title":"Phase 1"', '"role_id":2', '"upload":true', '"upload_pdf":true',
                                        '"upload_jpg":false', '"upload_mp3":true', '"upload_mp4":false',
@@ -112,7 +112,7 @@ resource 'Api::V1::Courses' do
 
     let(:raw_post) { params.to_json }
     let(:course_params) do
-      { "id": '1', "course": { "title": 'First course edit',
+      { "id": '1', "course": { "title": 'Sample course edit',
                                "course_preferences_attributes": [{ "id": '1', "upload_pdf": 'true' },
                                                                  { "id": '2', "upload_mp3": 'true' }] } }
     end
@@ -126,7 +126,7 @@ resource 'Api::V1::Courses' do
     example '#update (request authorized)' do
       login(user)
       do_request(course_params)
-      expect(response_body).to include('First course', 'Description')
+      expect(response_body).to include('Sample course', 'Sample description')
       expect(response_status).to be 200
     end
   end
