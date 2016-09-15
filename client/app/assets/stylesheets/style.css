@@ -186,13 +186,13 @@ md-datepicker {
   padding: 0;
   margin: 10px 0;
   background-color: #eee;
+  font-size: 14px;
 }
 
 .courses-list-item-title {
   text-transform: capitalize;
   cursor: pointer;
   width: 90%;
-  font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -201,7 +201,6 @@ md-datepicker {
 .courses-list-item-participants {
   cursor: pointer;
   padding-left: 5px;
-  font-size: 14px;
   margin-top: 5px;
 }
 
