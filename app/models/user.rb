@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :data_privacy, :terms_and_conditions, acceptance: true, if: proc { |u| u.role_id == 1 }
 
   enum gender_options: [:male, :female, :not_say]
-  enum educational_attainment_options: [:nope, :highschool, :bechelor, :master, :phd, :professor]
+  enum educational_attainment_options: [:notsay, :highschool, :bechelor, :master, :phd, :professor]
   enum role_options: [:public_user, :student, :support, :teacher, :course_director, :course_manager]
 
   default_scope { where(deleted: false).order(invitation_token: :asc, role_id: :asc) }
