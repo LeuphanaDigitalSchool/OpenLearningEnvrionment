@@ -163,3 +163,11 @@ md-datepicker {
   float: left;
   margin: 10px;
 }
+
+
+.validation-messages {
+  color: #dd2c00;
+  padding-left: 65px;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
