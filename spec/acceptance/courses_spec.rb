@@ -45,17 +45,17 @@ resource 'Api::V1::Courses' do
                                                "upload_mp3": 'false', "upload_mp4": 'true', "resources_del": 'false',
                                                "resource_description_add": 'true', "resource_description_del": 'false',
                                                "schedule_publishing": 'true', "embed_external_links": false }]
-      course_phases_attributes = [{ "title": 'Phase 1', "start_date": '2016-09-01', "end_date": '2016-09-31',
+      course_phases_attributes = [{ "title": 'Phase 1', "start_date": '2016-09-01', "end_date": '2016-09-30',
                                     "course_phase_preferences_attributes": course_phase_preferences_attributes },
-                                  { "title": 'Phase 2', "start_date": '2016-09-01', "end_date": '2016-09-31',
+                                  { "title": 'Phase 2', "start_date": '2016-09-01', "end_date": '2016-09-30',
                                     "course_phase_preferences_attributes": course_phase_preferences_attributes },
-                                  { "title": 'Phase 3', "start_date": '2016-10-01', "end_date": '2016-10-31',
+                                  { "title": 'Phase 3', "start_date": '2016-10-01', "end_date": '2016-10-30',
                                     "course_phase_preferences_attributes": course_phase_preferences_attributes },
-                                  { "title": 'Phase 4', "start_date": '2016-11-01', "end_date": '2016-11-31',
+                                  { "title": 'Phase 4', "start_date": '2016-11-01', "end_date": '2016-11-30',
                                     "course_phase_preferences_attributes": course_phase_preferences_attributes },
-                                  { "title": 'Phase 5', "start_date": '2016-12-01', "end_date": '2016-12-31',
+                                  { "title": 'Phase 5', "start_date": '2016-12-01', "end_date": '2016-12-30',
                                     "course_phase_preferences_attributes": course_phase_preferences_attributes },
-                                  { "title": 'Phase 6', "start_date": '2017-01-01', "end_date": '2017-01-31',
+                                  { "title": 'Phase 6', "start_date": '2017-01-01', "end_date": '2017-01-30',
                                     "course_phase_preferences_attributes": course_phase_preferences_attributes }]
       params = { "course": { "title": 'First course', "description": 'Description', "start_date": '2016-01-01',
                              "end_date": '2017-02-03', "course_phases_attributes": course_phases_attributes } }
