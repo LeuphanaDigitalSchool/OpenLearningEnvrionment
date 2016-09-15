@@ -3,15 +3,15 @@
     <md-toolbar class="md-table-toolbar md-default">
       <div layout="row">
         <div layout="column">
-          <p class="md-title">{{::SideNavCtrl.coursesList[CourseView.courseId].title}}</p>
-          <p class="md-subhead">{{::SideNavCtrl.coursesList[CourseView.courseId].description}}</p>
+          <p class="md-title">{{::CourseView.course.title}}</p>
+          <p class="md-subhead">{{::CourseView.course.description}}</p>
         </div>
         <div flex layout="column" layout-align="end end">
           <p class="md-subhead">
-            {{'startDate'| translate}}: {{::SideNavCtrl.coursesList[CourseView.courseId].start_date}}
+            {{'startDate'| translate}}: {{::CourseView.course.start_date}}
           </p>
           <p class="md-subhead">
-            {{'endDate'| translate}}: {{::SideNavCtrl.coursesList[CourseView.courseId].end_date}}
+            {{'endDate'| translate}}: {{::CourseView.course.end_date}}
           </p>
         </div>
       </div>
