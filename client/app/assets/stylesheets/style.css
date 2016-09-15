@@ -192,7 +192,7 @@ md-datepicker {
 .courses-list-item-title {
   text-transform: capitalize;
   cursor: pointer;
-  width: 98%;
+  width: 97%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
