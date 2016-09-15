@@ -42,15 +42,16 @@
         <md-progress-circular ng-show="MyProfileCtrl.uploading" md-mode="indeterminate"></md-progress-circular>
       </md-content>
       <md-content layout="column" flex layout-align="center center" ng-show="$ctrl.storage.storageType === 'url'">
-        <md-input-container>
+        <md-input-container style="width:90%">
           <label>{{ 'storage.link' | translate}}</label>
           <input ng-model="$ctrl.storage.url" type="url">
         </md-input-container>
       </md-content>
       <div layout="column" flex layout-align="center center" layout-padding>
-        <md-input-container>
+        <md-input-container style="width:90%">
           <label>{{ 'storage.Description' | translate}}</label>
-          <input ng-model="$ctrl.storage.description" type="text">
+          <textarea ng-model="$ctrl.storage.description" type="text" rows="2">
+          </textarea>
         </md-input-container>
 
         <div layout="column"
