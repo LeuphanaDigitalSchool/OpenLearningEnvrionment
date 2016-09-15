@@ -7,7 +7,7 @@ class CoursePhase < ApplicationRecord
   accepts_nested_attributes_for :course_phase_preferences
 
   default_scope { order(id: :asc, start_date: :asc) }
-  scope :active, -> { where('? > start_date AND end_date > ?', Time.now, Time.now).first }
+  scope :active, -> { where('? >= start_date AND end_date >= ?', DateTime.now.to_date, DateTime.now.to_date).first }
 
   validates :title, presence: true
   validates :start_date, :end_date, presence: true
