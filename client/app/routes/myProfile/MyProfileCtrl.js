@@ -43,6 +43,7 @@ export default class MyProfileCtrl {
       }
     }
   }
+
   submit(data){
     this.baseLephanaUser = this.Restangular.all('/api/v1/auth/');
     this.userData=data;
@@ -59,6 +60,7 @@ export default class MyProfileCtrl {
       this.toastr.error(status, 'Error');
     });
   }
+
   uploadImage(file, errFiles, $event) {
       if (file) {
           this.uploading = true;
@@ -81,10 +83,7 @@ export default class MyProfileCtrl {
     this.avatar = null;
   }
   checkIfAvatarExist(data) {
-    if(data.avatar === null){
-      console.log('data avatar');
-      this.userData.remove_avatar =  true;
-    }
+    this.userData.remove_avatar = data.avatar === null;
   }
   handleError($event) {
     this.$mdDialog.show(
