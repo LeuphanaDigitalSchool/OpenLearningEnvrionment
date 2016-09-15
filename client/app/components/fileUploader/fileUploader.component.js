@@ -1,5 +1,5 @@
 class FileUploaderCtrl {
-  constructor($mdDialog, $stateParams, $rootScope, Upload, Restangular, toastr) {
+  constructor($mdDialog, $stateParams, $rootScope, Upload, Restangular, toastr, $auth) {
     "ngInject";
     this.$rootScope = $rootScope;
     this.$mdDialog = $mdDialog;
@@ -7,15 +7,20 @@ class FileUploaderCtrl {
     this.toastr = toastr;
     this.$stateParams = $stateParams;
     this.Restangular = Restangular;
+    this.$auth = $auth;
+    this.CurrentUser = null;
     this.courseId = $stateParams.id;
     this.coursesApi = this.Restangular.oneUrl('courses', '/api/v1/courses/'+this.$stateParams.id);
-    this.initialData();
-    this.checkCoursePermission();
-    this.getCourse();
+
     this.storageTypes = [
       'File',
       'Link'
     ];
+
+    this.initialData();
+    this.checkCoursePermission();
+    this.getCourse();
+    this.getCurrentUser();
   }
 
   checkCoursePermission(){
@@ -30,6 +35,7 @@ class FileUploaderCtrl {
       file.upload.then( (response) => {
         this.uploading = false;
         this.storage.file = response;
+        this.checkWhatCanBeAddedToSpecificPhase();
       }, (response)=> {
         console.log('response', response);
       });
@@ -80,6 +86,64 @@ class FileUploaderCtrl {
     this.storage = {};
     this.storage.course_phase_ids = {};
   }
+
+  getCurrentUser() {
+    this.$auth.validateUser().then((data) => {
+      this.CurrentUser = data;
+    });
+  }
+
+  checkWhatCanBeAddedToSpecificPhase() {
+    if(this.storage.storageType === 'url')
+      this.checkToWhichPhaseUserCanAddUrl();
+    else if(this.storage.storageType === 'file')
+      this.checkToWhichPhaseUserCanAddFile();
+  }
+
+  checkToWhichPhaseUserCanAddUrl() {
+    this.phases.forEach((phase) => {
+      phase.course_phase_preferences_attributes.forEach((attr) => {
+        if( attr.role_id === this.CurrentUser.role_id )
+          phase.disabled = !attr.embed_external_links;
+      });
+    });
+  }
+
+  checkToWhichPhaseUserCanAddFile() {
+    this.phases.forEach((phase) => {
+      phase.course_phase_preferences_attributes.forEach((attr) => {
+        if( attr.role_id === this.CurrentUser.role_id ) {
+          phase.disabled = this.compareFileTypeWithAttrField(this.file.type, attr);
+        }
+      });
+    });
+  }
+
+  compareFileTypeWithAttrField(type, attr) {
+    console.log('type',type);
+    console.log('attr',attr);
+
+    let output;
+    switch(type) {
+      case 'image/jpeg':
+        output = !attr.upload_jpg;
+        break;
+      case 'application/pdf':
+        output = !attr.upload_pdf;
+        break;
+      case 'video/mp4':
+        output = !attr.upload_mp4;
+        break;
+      case 'audio/mp3':
+        output = !attr.upload_mp3;
+        break;
+      default:
+        output = false;
+    }
+    return output;
+  }
+
+
 }
 
 let fileUploader = {
