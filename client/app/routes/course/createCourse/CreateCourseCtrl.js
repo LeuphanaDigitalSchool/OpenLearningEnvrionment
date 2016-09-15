@@ -9,20 +9,22 @@ export default class CreateCourseCtrl {
     this.initialData();
   }
 
-  submit(){
-    this.course.course_phases_attributes = [];
-    this.teacherPermission();
-    this.baseLephanaUser = this.Restangular.all('/api/v1/courses/');
-    this.data.course=this.course;
-    this.sending = true;
-    this.baseLephanaUser.post(this.data).then(()=>{
-      this.toastr.success('Thank you for addding new course', 'Success');
-      this.initialData();
-    }, (response)=> {
-      this.sending = false;
-      let status = response.statusText;
-      this.toastr.error(status, 'Error');
-    });
+  submit(form){
+    if(form.$valid){
+      this.course.course_phases_attributes = [];
+      this.teacherPermission();
+      this.baseLephanaUser = this.Restangular.all('/api/v1/courses/');
+      this.data.course=this.course;
+      this.sending = true;
+      this.baseLephanaUser.post(this.data).then(()=>{
+        this.toastr.success('Thank you for addding new course', 'Success');
+        this.initialData();
+      }, (response)=> {
+        this.sending = false;
+        let status = response.statusText;
+        this.toastr.error(status, 'Error');
+      });
+    }
   }
 
   prevTab() {

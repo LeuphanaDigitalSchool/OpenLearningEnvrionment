@@ -32,10 +32,10 @@
     </div>
     <div>
       <md-card ng-repeat="file in CourseView.files">
-        <md-card-title>
+        <md-card-title style="word-break: break-all">
           <md-card-title-text>
-            <span class="md-headline" ng-if="::file.url != null"><a href="{{::file.url}}" target="blank">{{ ::file.description }}</a></span>
-            <span class="md-headline" ng-if="::file.url == null">{{ ::file.description }}</span>
+            <span class="" ng-if="::file.url != null"><a href="{{::file.url}}" target="blank">{{ ::file.description }}</a></span>
+            <span class="" ng-if="::file.url == null">{{ ::file.description }}</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">

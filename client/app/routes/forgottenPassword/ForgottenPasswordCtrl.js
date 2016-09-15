@@ -22,12 +22,9 @@ export default class RegisterPublicUserCtrl {
         this.send = true;
         this.toastr.success('Reset password instruction was send', 'Success');
         this.loginPage();
-      }, (response)=> {
+      }, (reject)=> {
         this.send = true;
-        let status = response.data.errors.full_messages;
-        for (var i = 0; i < status.length; i++) {
-          this.toastr.error(status[i], 'Error');
-        }
+        this.toastr.error('The account that you tried to reach does not exist', 'Error');
       });
     }
   }

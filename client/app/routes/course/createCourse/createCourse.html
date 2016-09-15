@@ -1,6 +1,6 @@
 <div class="create-course" flex>
   <md-content layout="column" ms-scroll flex md-whiteframe="2" class="l-content-background" layout-padding>
-    <form name="courseForm" ng-submit="Create.submit()">
+    <form name="courseForm" ng-submit="Create.submit(courseForm)" novalidate>
       <md-tabs md-dynamic-height="" md-border-bottom="" md-selected="Create.selectedIndex" >
         <!-- step 1 -->
         <md-tab label="step 1. main">
@@ -8,23 +8,45 @@
             <div layout="column">
               <md-input-container>
                 <label>Title</label>
-                <input ng-model="Create.course.title" required>
+                <input ng-model="Create.course.title" name="title" required>
+                <div ng-messages="courseForm.title.$error">
+                  <div ng-message="required">Title is required!</div>
+                </div>
               </md-input-container>
               <md-input-container>
                 <label>Description</label>
-                <input ng-model="Create.course.description" required>
+                <input ng-model="Create.course.description" name="description" required>
+                <div ng-messages="courseForm.description.$error">
+                  <div ng-message="required">Descriptioin is required!</div>
+                </div>
               </md-input-container>
               <div layout="column">
                 <div class="">
-                  <label>Enter start date</label>
-                  <md-datepicker ng-model="Create.course.start_date"></md-datepicker>
+
+                  <md-datepicker
+                    name="start_date"
+                    ng-model="Create.course.start_date"
+                    required
+                    md-placeholder="Start date"
+                  >
+                  </md-datepicker>
+                  <div class="validation-messages" ng-show="courseForm.$submitted" ng-messages="courseForm.start_date.$error">
+                    <div ng-message="required">Start date is required!</div>
+                  </div>
                 </div>
                 <div>
-                  <label>Enter end date</label>
-                  <md-datepicker ng-model="Create.course.end_date"></md-datepicker>
+                  <md-datepicker
+                    name="end_date"
+                    ng-model="Create.course.end_date"
+                    required
+                    md-placeholder="End date">
+                  </md-datepicker>
+                  <div class="validation-messages" ng-show="courseForm.$submitted" ng-messages="courseForm.end_date.$error">
+                    <div ng-message="required">End date is required!</div>
+                  </div>
                 </div>
               </div>
-              <md-divider></md-divider>
+              <md-divider style="margin: 20px 0;"></md-divider>
               <div layout="row">
                 <span class="md-title">Add new phase</span>
                 <md-button aria-label="add language" class="md-icon-button" ng-click="Create.addNewStorage()">
@@ -36,16 +58,36 @@
               </div>
                 <div class="column" ng-repeat="phase in phases">
                   <md-input-container>
-                    <label>phase {{$index +1}} title</label>
+                    <label>Phase {{$index +1}} title</label>
                     <input ng-model="phase.title" required>
                   </md-input-container>
                   <div class="">
-                    <label>Enter phase {{$index +1}} start date</label>
-                    <md-datepicker ng-model="phase.start_date"></md-datepicker>
+                    <md-datepicker
+                      name="phase_start_date-{{$index}}"
+                      ng-model="phase.start_date"
+                      md-placeholder="Phase start date"
+                      required
+                    ></md-datepicker>
+                    <div class="validation-messages"
+                      ng-show="courseForm.$submitted"
+                      ng-messages="courseForm['phase_start_date-' + $index].$error"
+                    >
+                      <div ng-message="required">Phase start date is required!</div>
+                    </div>
                   </div>
                   <div>
-                    <label>Enter phase {{$index +1}} end date</label>
-                    <md-datepicker ng-model="phase.end_date"></md-datepicker>
+                    <md-datepicker
+                    name="phase_end_date-{{$index}}"
+                    ng-model="phase.end_date"
+                    md-placeholder="Phase end date"
+                    required
+                    ></md-datepicker>
+                    <div class="validation-messages"
+                      ng-show="courseForm.$submitted"
+                      ng-messages="courseForm['phase_end_date-' + $index].$error"
+                    >
+                      <div ng-message="required">Phase start date is required!</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -69,8 +111,8 @@
 
       </md-tabs>
     <div layout="row" layout-align="center center">
-      <md-button class="md-raised md-primary" ng-click="Create.prevTab()" ng-disabled="phases.length == 0">Back</md-button>
-      <md-button class="md-raised md-primary" ng-click="Create.nextTab()" ng-disabled="phases.length == 0">{{Create.buttonTitle}}</md-button>
+      <md-button class="md-raised md-primary" ng-click="Create.prevTab()" ng-disabled="phases.length == 0 || courseForm.$invalid">Back</md-button>
+      <md-button class="md-raised md-primary" ng-click="Create.nextTab()" ng-disabled="phases.length == 0 || courseForm.$invalid">{{Create.buttonTitle}}</md-button>
     </div>
     <div layout="row" layout-align="center center">
       <md-button class="md-raised md-warn" type="submit" ng-disabled="phases.length == 0">{{'course.addNewCourse' | translate}}</md-button>

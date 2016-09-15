@@ -120,8 +120,6 @@ class FileUploaderCtrl {
   }
 
   compareFileTypeWithAttrField(type, attr) {
-    console.log('type',type);
-    console.log('attr',attr);
 
     let output;
     switch(type) {
@@ -141,6 +139,13 @@ class FileUploaderCtrl {
         output = false;
     }
     return output;
+  }
+
+  checkIfUserSelectAtLeatOnePhase() {
+    this.UserSelectAtLeatOnePhase = false;
+    for(let phase in this.phaseData) {
+      this.UserSelectAtLeatOnePhase = this.UserSelectAtLeatOnePhase || this.phaseData[phase];
+    }
   }
 
 

@@ -1,4 +1,4 @@
-<md-tab label="step 6. permissions" ng-disabled="phases.length == 0">
+<md-tab label="step 6. permissions" ng-disabled="phases.length == 0 || courseForm.$invalid">
   <md-content layout="column" class="md-padding">
     <md-tabs>
       <md-tab ng-repeat="phase in phases" label="phase {{$index+1}}">
