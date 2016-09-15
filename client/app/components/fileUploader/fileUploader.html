@@ -61,12 +61,17 @@
             ng-model="$ctrl.phaseData[phase.id]"
             aria-label="Checkbox 1"
             ng-disabled="phase.disabled"
+            ng-change="$ctrl.checkIfUserSelectAtLeatOnePhase()"
           >
             {{::phase.title}} [{{::phase.start_date}} - {{::phase.end_date}}]
           </md-checkbox>
         </div>
 
-        <md-button class="md-raised md-primary" ng-click="::$ctrl.submit(user.id)">upload</md-button>
+        <md-button
+          class="md-raised md-primary"
+          ng-click="::$ctrl.submit(user.id)"
+          ng-disabled="!$ctrl.UserSelectAtLeatOnePhase"
+        >upload</md-button>
       </div>
     </md-dialog-content>
   </md-dialog>

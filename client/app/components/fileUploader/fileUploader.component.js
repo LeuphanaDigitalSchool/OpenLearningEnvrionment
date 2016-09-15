@@ -141,6 +141,13 @@ class FileUploaderCtrl {
     return output;
   }
 
+  checkIfUserSelectAtLeatOnePhase() {
+    this.UserSelectAtLeatOnePhase = false;
+    for(let phase in this.phaseData) {
+      this.UserSelectAtLeatOnePhase = this.UserSelectAtLeatOnePhase || this.phaseData[phase];
+    }
+  }
+
 
 }
 

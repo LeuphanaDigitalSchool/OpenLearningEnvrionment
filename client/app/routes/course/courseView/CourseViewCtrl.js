@@ -29,7 +29,6 @@ export default class CourseViewCtrl {
   getCourse(){
     this.phasesApi.get().then((response)=>{
       this.course = response.course;
-      console.log(this.course);
     });
   }
 
