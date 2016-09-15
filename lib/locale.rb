@@ -8,8 +8,9 @@ module Locale
   end
 
   def language
-    I18n.locale = lang_by_params || lang_by_user_settings || lang_by_browser_language || I18n.default_locale
-    response.headers['User-Language'] = I18n.locale
+    # I18n.locale = lang_by_params || lang_by_user_settings || lang_by_browser_language || I18n.default_locale
+    # response.headers['User-Language'] = I18n.locale
+    response.headers['User-Language'] = I18n.default_locale
   end
 
   private

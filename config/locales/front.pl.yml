@@ -30,8 +30,20 @@ en:
   settings: "Settings"
   messages: "Messages"
   personalInfo: "Personal info"
+  coursesList: "courses list"
+  publishPlatformContentOutsideOfPlatform: "publish Platform Content Outside Of Platform"
+  startDate: "start date"
+  endDate: "end date"
+  forum: Forum
+  workspace: Workspace
+  assignment: Assignment
+  courseMaterial: Course material
+
   sideNav:
-    myProfile: "My profile"
+    myProfile: My profile
+    participants: Participants
+    courses: Courses
+    coursesList: Courses list
 
   myProfile:
     personal_details:
@@ -48,6 +60,7 @@ en:
       interests: Interests
       introduction: Introduction
       email: E-mail
+    myCourses: My courses
 
   profile:
     header: Profile details
@@ -63,66 +76,158 @@ en:
     professional: Professional
     interests: Interests
     introduction: Introduction
+    courses: Course participants
+    sendMessage: Send message
 
   admin:
     users:
-      header: 'Users'
-      selectRole: 'Select role'
-      firstname: 'Firstname'
-      lastname: 'Lastname'
-      email: 'E-mail'
-      create: 'Create'
+      header: Users
+      selectRole: Select role
+      firstname: Firstname
+      lastname: Lastname
+      email: E-mail
+      create: Create
 
     users_list:
-      header: 'Users list'
-      role: 'Role'
-      firstname: 'Firstname'
-      lastname: 'Lastname'
-      email: 'E-mail'
-      profileStatus: 'Status'
-      actions: 'Action'
+      header: Users list
+      role: Role
+      firstname: Firstname
+      lastname: Lastname
+      email: E-mail
+      profileStatus: Status
+      actions: Action
 
-  courses: "courses"
-  createCourse: "create course"
+  courses: Courses
+  createCourse: Create course
   course:
-    communication: "communication"
-    messaging: "Messaging"
-    singleMessaging: "single messaging"
-    groupMessaging: "group messaging"
-    addingOfIndividualUsersToMessageFeeds: "adding Of Individual Users To Message Feeds"
-    postingMessageContentToForum: "posting Message Content To Forum"
-    notifications: "notifications"
-    emailNotifications: "email Notifications"
-    replyByMail: "reply By Mail"
-    attachments: "attachments"
-    embedresources: "embed resources"
-    markingAndOrganizingOfMessages: "marking And Organizing Of Messages"
-    tagging: "tagging"
-    sendMessagesWithHighPriority: "send Messages With High Priority"
-    notificationsDependentOnPriorityOfMessage: "notifications Dependent On Priority Of Message"
-    setRemindersForMessages: "set Reminders For Messages"
-    markAsReadUnread: "mark As Read Unread"
-    receiveReadReceipts: "receive Read Receipts"
-    sendPlatformInviteToEmailAddress: "send Platform Invite To Email Address"
-    enterSubjectToMessage: "enter Subject To Message"
-    sortMessages: "sort Messages"
-    forum: "forum"
-    threadedConversations: "threaded Conversations"
-    taggingOfUsers: "tagging Of Users"
-    taggingOfUserGroups: "tagging Of User Groups"
-    teachers: "teachers"
-    students: "students"
-    quoteFromForums: "quoteFromForums"
-    embedContentInForumPost: "embed Content In Forum Post"
-    video: "video"
-    pictures: "pictures"
-    upvotingDownvoting: "Upvoting/downvoting"
-    createTopics: "create Topics"
-    createThreads: "create Threads"
-    sortForum: "sort Forum"
-    filterForum: "filter Forum"
-    embedExternalLinks: "embed External Links"
-    embedInternalLinks: "embed Internal Links"
+    communication: Communication
+    messaging: Messaging
+    singleMessaging: Single messaging
+    groupMessaging: Group messaging
+    addingOfIndividualUsersToMessageFeeds: Adding of individual users to message feeds
+    postingMessageContentToForum: Posting message content to forum
+    notifications: Notifications
+    emailNotifications: Email notifications
+    replyByMail: Reply by mail
+    attachments: Attachments
+    embedresources: Embed resources
+    markingAndOrganizingOfMessages: Marking and organizing of messages
+    tagging: Tagging
+    sendMessagesWithHighPriority: Send messages with high priority
+    notificationsDependentOnPriorityOfMessage: Notifications dependent on priority of message
+    setRemindersForMessages: Set reminders for messages
+    markAsReadUnread: Mark as read unread
+    receiveReadReceipts: Receive read receipts
+    sendPlatformInviteToEmailAddress: Send platform invite to email address
+    enterSubjectToMessage: Enter subject to message
+    sortMessages: Sort messages
+    forum: Forum
+    threadedConversations: Threaded conversations
+    taggingOfUsers: Tagging of users
+    taggingOfUserGroups: Tagging of user groups
+    teachers: Teachers
+    students: Students
+    quoteFromForums: Quote from forums
+    embedContentInForumPost: Embed content in forum post
+    video: Video
+    pictures: Pictures
+    upvotingDownvoting: Upvoting/Downvoting
+    createTopics: Create topics
+    createThreads: Create threads
+    sortForum: Sort forum
+    filterForum: Filter forum
+    embedExternalLinks: Embed external links
+    embed_external_links: Embed external links
+    embedInternalLinks: Embed internal links
+    addNewCourse: Add new course
+    startDate: Start Date
+    endDate: End Date
+    preferencesFor: Preferences for
+    schedulePublishing: Schedule publishing
+    resourcesDel: Delete resources
+    resourceDescriptionDel: Delete resource description
+    resourceDescriptionAdd: Add resource description
+    resourceDescription_add: Add resource description
+    uploadMp4: Upload mp4
+    uploadMp3: Upload mp3
+    uploadJpg: Upload jpg
+    uploadPDF: Upload pdf
+    uploadPdf: Upload pdf
+    notificationsByEmail: Notifications by email
+    sendUserMessagesAsEmailOptional: Send user messages as email optional
+    sendMessagesViaEmailWithinPlatform: Send messages via Email within platform
+    sendMessagesToSingleUsers: Send messages to single users
+    sendMessagesToUserGroups: Send messages to user groups
+    replyToForumPostsViaEmail: Reply to forum posts via email
+    inviteUserToPlatformByEmail: Invite user to platform by email
+    scheduleVideoMeetings: Schedule video meetings
+    sendOutInvitesToVideo: Send out invites to video
+    defineVisibilityOfVideoMeeting: Define visibility of video meeting
+    privateAmongParticipants: Private among participants
+    recordMeetings: Record meetings
+    shareRecording: Share recording
+    teacherCanUploadFiles: Teacher can upload files
+    studentCanUploadFiles: Student can upload files
+    studentCanAddResourceDescription: Student can add resource description
+    teacherCanAddResourceDescription: Teacher can add resource description
+    studentCanDeleteResources: Student can delete resources
+    teacherCanDeleteResources: Teacher can delete resources
+    studentCanSchedulePublishing: Student can schedule publishing
+    teacherCanSchedulePublishing: Teacher can schedule publishing
+    studentEmbedExternalLinks: Student embed external links
+    teacherEmbedExternalLinks: Teacher embed external links
+    group: Group
+    defineVisibility: Define visibility
+    shareWorkspaceWithOthers: Share workspace with others
+    fileSharing: File sharing
+    embedFromExternalWebsites: Embed from external websites
+    shareOwnMaterialOnPlatform: Share own material on platform
+    publishingOfDrafts: Publishing of drafts
+    publishingOfFinalSubmission: Publishing of final submission
+    defineVisibilityOfFiles: Define visibility of files
+    calendar: Calendar
+    personalCalendar: Personal calendar
+    groupCalendar: Group calendar
+    showCoursePhases: Show course phases
+    coursePhases: Course phases
+    teacherDefineCourseStartEnd: Teacher define course start end
+    defineCoursePhases: Define course phases
+    defineFrozenContent: Define frozen content
+    matchPlatformContentWithEespectivePhase: Match platform content with eespective phase
+    defineNewSectionsInEach: Define new sections in each
+    groupWorkspace: Group workspace
+    personalWorkspace: Personal workspace
+    publishForumPostsOutsideOfPlatform: Publish forum posts outside of platform
+    publishResourcesOutsideOfPlatform: Publish resources outside of platform
+    publishMessagesOutsideOfPlatform: Publish messages outside of platform
+    publishNewsPostsAsWordpressPostsOutsideOfPlatform: Publish news posts as Wordpress posts outside of platform
+    publishNewsPostsAsAsSocialMediaPosts: Publish news posts as social media posts
+    permission: Permission
+    permissionToPublishContentOutsideOfPlatform: Permission to publish content outside of platform
+    permissionToOverrideStandardNotificationSettings: Permission to override standard notification settings
+    permissionToInviteAdditionalUsersToPlatform: Permission to invite additional users to platform
+    permissionToBuildTeams: Permission to build teams
+    defineStudentBody: Define student body
+    defineTeamMatchingCriteria: Define team matching criteria
+    teacherGivesPermissionsToIndividualUsers: Teacher gives permissions to individual users
+    public: Public
+    embed: Embed
+    link: Link
+    twitter: Twitter
+    facebook: Facebook
+    googlePlus: Goole Plus
+    instagram: Instagram
+    videoChat: Video Chat
+    storage: Storage
+    email: E-mail
+    publishPlatformContentOutsideOfPlatform: Publish platform content outside of platform
+    participants: Course participants
+    firstname: Firstname
+    lastname: Lastname
+    role: Role
+    title: Title
+    description: Description
+    actions: 'Actions'
 
   forgottenPasswordForm:
     forgottenPassword: "Reset password"
@@ -139,3 +244,25 @@ en:
     sendMessagesToUserGroups: "send Messages To User Groups"
     replyToForumPostsViaEmail: "reply To Forum Posts Via Email"
     inviteUserToPlatformByEmail: "invite User To Platform By Email"
+
+  storage:
+    addNewFile: Add new storage
+    remove: Remove
+    fileDescription: "Description"
+    Description: "Description"
+    forgottenPassword: Reset password
+    email: Your e-mail
+    forgotten: Send reset password instruction
+    resetPassword: Reset your password
+    password: Password
+    passwordConfirmation: Password confirmation
+    save: Save new password
+    notificationsByEmail: Notifications by email
+    sendUserMessagesAsEmailOptional: Send user messages as email optional
+    sendMessagesViaEmailWithinPlatform: Send messages via email within platform
+    sendMessagesToSingleUsers: Send messages to single users
+    sendMessagesToUserGroups: Send messages to user groups
+    replyToForumPostsViaEmail: Reply to forum posts via email
+    inviteUserToPlatformByEmail: Invite user to platform by email
+    selectStorage: Select storage type
+    link: Link
