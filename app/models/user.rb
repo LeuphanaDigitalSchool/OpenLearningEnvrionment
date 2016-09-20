@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   enum role_options: [:public_user, :student, :support, :teacher, :course_director, :course_manager]
 
   default_scope { where(deleted: false).order(invitation_token: :asc, role_id: :asc) }
+  scope :participants, -> { where(invitation_token: nil) }
 
   def gender_options_json
     genders = []
