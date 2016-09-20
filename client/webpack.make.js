@@ -150,7 +150,7 @@ module.exports = function makeWebpackConfig (options) {
    */
 
   config.plugins = [ extractCSS ];
-  
+
 
 
   // ISPARTA LOADER
