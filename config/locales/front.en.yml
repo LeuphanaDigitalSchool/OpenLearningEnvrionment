@@ -64,8 +64,8 @@ en:
 
   profile:
     header: Profile details
-    firstname: Firstname
-    lastname: Lastname
+    firstname: First name
+    lastname: Last name
     email: E-mail
     title: Title
     gender: Gender
@@ -78,6 +78,8 @@ en:
     introduction: Introduction
     courses: Courses
     sendMessage: Send message
+
+  notsay: 'aaaaa'
 
   admin:
     users:
@@ -131,7 +133,7 @@ en:
     embedContentInForumPost: Embed content in forum post
     video: Video
     pictures: Pictures
-    upvotingDownvoting: Upvoting/Downvoting
+    upvotingDownvoting: Upvoting and Downvoting
     createTopics: Create topics
     createThreads: Create threads
     sortForum: Sort forum
@@ -174,8 +176,8 @@ en:
     teacherCanDeleteResources: Teacher can delete resources
     studentCanSchedulePublishing: Student can schedule publishing
     teacherCanSchedulePublishing: Teacher can schedule publishing
-    studentEmbedExternalLinks: Student embed external links
-    teacherEmbedExternalLinks: Teacher embed external links
+    studentEmbedExternalLinks: Student can embed external links
+    teacherEmbedExternalLinks: Teacher can embed external links
     group: Group
     defineVisibility: Define visibility
     shareWorkspaceWithOthers: Share workspace with others
@@ -193,21 +195,21 @@ en:
     teacherDefineCourseStartEnd: Teacher define course start end
     defineCoursePhases: Define course phases
     defineFrozenContent: Define frozen content
-    matchPlatformContentWithEespectivePhase: Match platform content with eespective phase
-    defineNewSectionsInEach: Define new sections in each
+    matchPlatformContentWithEespectivePhase: Match platform content with respective phase
+    defineNewSectionsInEach: Define new sections in each phase
     groupWorkspace: Group workspace
     personalWorkspace: Personal workspace
     publishForumPostsOutsideOfPlatform: Publish forum posts outside of platform
     publishResourcesOutsideOfPlatform: Publish resources outside of platform
     publishMessagesOutsideOfPlatform: Publish messages outside of platform
     publishNewsPostsAsWordpressPostsOutsideOfPlatform: Publish news posts as Wordpress posts outside of platform
-    publishNewsPostsAsAsSocialMediaPosts: Publish news posts as social media posts
+    publishNewsPostsAsAsSocialMediaPosts: Publish news post as social media posts
     permission: Permission
     permissionToPublishContentOutsideOfPlatform: Permission to publish content outside of platform
     permissionToOverrideStandardNotificationSettings: Permission to override standard notification settings
     permissionToInviteAdditionalUsersToPlatform: Permission to invite additional users to platform
     permissionToBuildTeams: Permission to build teams
-    defineStudentBody: Define student body
+    defineStudentBody: Define Student body
     defineTeamMatchingCriteria: Define team matching criteria
     teacherGivesPermissionsToIndividualUsers: Teacher gives permissions to individual users
     public: Public
@@ -215,7 +217,7 @@ en:
     link: Link
     twitter: Twitter
     facebook: Facebook
-    googlePlus: Goole Plus
+    googlePlus: Google +
     instagram: Instagram
     videoChat: Video Chat
     storage: Storage

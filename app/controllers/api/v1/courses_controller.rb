@@ -26,7 +26,7 @@ module Api
       end
 
       def participants
-        participants = User.all
+        participants = User.participants
         render json: participants, each_serializer: CourseParticipantSerializer, status: :ok
       end
 
