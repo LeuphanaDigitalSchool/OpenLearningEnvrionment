@@ -54,6 +54,6 @@
     </md-tabs>
   </md-content>
   <div layout="row" layout-align="center center">
-    <md-button class="md-raised md-warn" type="submit" ng-disabled="phases.length == 0">{{'course.addNewCourse' | translate}}</md-button>
+    <md-button class="md-raised md-warn" type="submit" ng-disabled="phases.length == 0 || courseForm.$invalid">{{'course.addNewCourse' | translate}}</md-button>
   </div>
 </md-tab>
