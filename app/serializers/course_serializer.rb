@@ -14,7 +14,7 @@ class CourseSerializer < ActiveModel::Serializer
 
   def short_title
     if object.title.size > 21
-      object.title[0,20] + "..." 
+      object.title[0, 20] + '...'
     else
       object.title
     end
