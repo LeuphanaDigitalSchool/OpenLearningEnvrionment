@@ -19,6 +19,8 @@ export default class CreateCourseCtrl {
       this.baseLephanaUser.post(this.data).then(()=>{
         this.toastr.success('Thank you for addding new course', 'Success');
         this.initialData();
+        this.$scope.courseForm.$setUntouched();
+        this.$scope.courseForm.$setPristine();
       }, (response)=> {
         this.sending = false;
         let status = response.statusText;
