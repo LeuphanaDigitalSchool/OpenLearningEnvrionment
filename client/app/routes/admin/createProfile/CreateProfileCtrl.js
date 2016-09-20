@@ -8,10 +8,10 @@ export default class CreateProfileCtrl {
     this.Upload = Upload;
     this.Restangular = Restangular;
     this.roles = [
-      'student',
-      'teacher',
-      'course director',
-      'support'
+      'Student',
+      'Teacher',
+      'Course Director',
+      'Support'
     ];
     this.countries = countryList;
     this.waiting = false;
@@ -41,22 +41,22 @@ export default class CreateProfileCtrl {
     }
   }
   checkUserType(){
-    if(this.role === 'student'){
+    if(this.role === 'Student'){
       this.userType = 'students';
       this.sendData = {'student':{ }};
       this.sendData.student = this.user;
     }
-    if(this.role === 'teacher'){
+    if(this.role === 'Teacher'){
       this.userType = 'teachers';
       this.sendData = {'teacher':{ }};
       this.sendData.teacher = this.user;
     }
-    if(this.role === 'course director'){
+    if(this.role === 'Course director'){
       this.userType = 'course_directors';
       this.sendData = {'course_director':{ }};
       this.sendData.course_director = this.user;
     }
-    if(this.role === 'support'){
+    if(this.role === 'Support'){
       this.userType = 'supports';
       this.sendData = {'support':{ }};
       this.sendData.support = this.user;
