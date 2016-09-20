@@ -10,6 +10,7 @@ module Api
         # sending emails
         def create
           return render_create_error_missing_email unless resource_params[:email]
+          return render_create_error_not_accepted_invitation unless accept_invitation(resource_params[:email])
 
           # give redirect value from params priority
           @redirect_url = params[:redirect_url]
@@ -144,6 +145,13 @@ module Api
           }, status: 401
         end
 
+        def render_create_error_not_accepted_invitation
+          render json: {
+            success: false,
+            errors: [I18n.t('devise_token_auth.passwords.not_accept_invitation')]
+          }, status: 401
+        end
+
         def render_create_error_missing_redirect_url
           render json: {
             success: false,
@@ -222,6 +230,10 @@ module Api
 
         def password_resource_params
           params.permit(*params_for_resource(:account_update))
+        end
+
+        def accept_invitation(email)
+          User.find_by(email: email).invitation_token == nil
         end
       end
     end

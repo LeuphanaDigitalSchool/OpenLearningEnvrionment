@@ -17,6 +17,7 @@ module Api
             support = Support.new(support_params)
 
             if support.save
+              support.invite!(current_api_v1_user)
               render json: support, status: :created
             else
               render json: support.errors, status: :unprocessable_entity

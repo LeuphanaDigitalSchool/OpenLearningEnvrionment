@@ -45,14 +45,14 @@
       <p>
         <b>{{ 'myProfile.personal_details.firstname' | translate}}:</b>
         <span ng-hide="MyProfileCtrl.edit">{{user.firstname}}</span>
-        <md-input-container ng-if="user.role_id === 6" ng-show="MyProfileCtrl.edit">
+        <md-input-container ng-show="MyProfileCtrl.edit">
           <input ng-model="user.firstname" aria-label="{{user.firstname}}">
         </md-input-container>
       </p>
       <p>
         <b>{{ 'myProfile.personal_details.lastname' | translate}}: </b>
         <span ng-hide="MyProfileCtrl.edit">{{user.lastname}}</span>
-        <md-input-container ng-if="user.role_id === 6" ng-show="MyProfileCtrl.edit">
+        <md-input-container ng-show="MyProfileCtrl.edit">
           <input ng-model="user.lastname" aria-label="{{user.lastname}}">
         </md-input-container>
       </p>
