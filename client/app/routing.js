@@ -111,5 +111,11 @@ export default function routing($stateProvider) {
       template: require('./routes/course/courseParticipants/courseParticipants.html'),
       controller: 'CourseParticipantsCtrl',
       controllerAs: 'CourseParticipants'
+    })
+    .state('home.soon-page', {
+      url: 'soon',
+      template: require('./routes/soon/soon.html'),
+      controller: 'SoonCtrl',
+      controllerAs: 'Soon'
     });
 }
