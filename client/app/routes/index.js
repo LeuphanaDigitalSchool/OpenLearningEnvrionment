@@ -10,6 +10,7 @@ import countryList from '../lib/ng-country-list.js';
 import myProfile from './myProfile';
 import profile from './profile';
 import course from './course';
+import soon from './soon';
 
 export default angular.module('app.routes', [
     home,
@@ -20,7 +21,8 @@ export default angular.module('app.routes', [
     admin,
     myProfile,
     profile,
-    course
+    course,
+    soon
   ])
   .constant('countryList', countryList)
   .name;

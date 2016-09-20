@@ -30,10 +30,10 @@ en:
   settings: "Settings"
   messages: "Messages"
   personalInfo: "Personal info"
-  coursesList: "courses list"
+  coursesList: "Courses list"
   publishPlatformContentOutsideOfPlatform: "publish Platform Content Outside Of Platform"
-  startDate: "start date"
-  endDate: "end date"
+  startDate: "Start date"
+  endDate: "End date"
   forum: Forum
   workspace: Workspace
   assignment: Assignment
@@ -43,7 +43,7 @@ en:
     myProfile: My profile
     participants: Participants
     courses: Courses
-    coursesList: Courses list
+    coursesList: Your Courses
 
   myProfile:
     personal_details:
@@ -100,7 +100,7 @@ en:
       actions: Action
 
   courses: Courses
-  createCourse: Create course
+  createCourse: Create Course
   course:
     communication: Communication
     messaging: Messaging
@@ -268,3 +268,6 @@ en:
     inviteUserToPlatformByEmail: Invite user to platform by email
     selectStorage: Select storage type
     link: Link
+
+  soon:
+    information: Please be patient, this will be there soon
