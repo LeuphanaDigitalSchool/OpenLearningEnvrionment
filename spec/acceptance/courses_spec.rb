@@ -62,7 +62,6 @@ resource 'Api::V1::Courses' do
 
       do_request(params)
       expect(response_body).to include('"title":"Sample course"', '"description":"Description"',
-                                       '"start_date":"2016-01-01"', '"end_date":"2017-02-03"',
                                        '"role":"Student"', '"title":"Phase 1"', '"role_id":2', '"upload":true',
                                        '"upload_pdf":true', '"upload_jpg":false', '"upload_mp3":true',
                                        '"upload_mp4":false', '"resource_description_add":true',
@@ -83,7 +82,7 @@ resource 'Api::V1::Courses' do
     example '#show (request authorized)' do
       login(user)
       do_request(id: course.id)
-      expect(response_body).to include('Example course', 'Course description', '2016-08-11', '2017-08-11')
+      expect(response_body).to include('Example course', 'Course description')
       expect(response_status).to be 200
     end
   end
