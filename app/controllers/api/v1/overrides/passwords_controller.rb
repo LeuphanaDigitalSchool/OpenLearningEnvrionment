@@ -10,7 +10,6 @@ module Api
         # sending emails
         def create
           return render_create_error_missing_email unless resource_params[:email]
-          return render_create_error_not_accepted_invitation unless accept_invitation(resource_params[:email])
 
           # give redirect value from params priority
           @redirect_url = params[:redirect_url]
@@ -47,16 +46,21 @@ module Api
           @error_status = 400
 
           if @resource
-            yield @resource if block_given?
-            @resource.send_reset_password_instructions(email: @email,
-                                                       provider: 'email',
-                                                       redirect_url: @redirect_url,
-                                                       client_config: params[:config_name])
-
-            if @resource.errors.empty?
-              return render_create_success
+            if @resource.invitation_token.present?
+              @errors = [I18n.t('devise_token_auth.passwords.not_accepted_invitation')]
+              @error_status = 401
             else
-              @errors = @resource.errors
+              yield @resource if block_given?
+              @resource.send_reset_password_instructions(email: @email,
+                                                         provider: 'email',
+                                                         redirect_url: @redirect_url,
+                                                         client_config: params[:config_name])
+
+              if @resource.errors.empty?
+                return render_create_success
+              else
+                @errors = @resource.errors
+              end
             end
           else
             @errors = [I18n.t('devise_token_auth.passwords.user_not_found', email: @email)]
@@ -89,13 +93,6 @@ module Api
 
             @resource.save!
             yield @resource if block_given?
-
-            # redirect_to(@resource.build_auth_url(params[:redirect_url], {
-            #   token:          token,
-            #   client_id:      client_id,
-            #   reset_password: true,
-            #   config:         params[:config]
-            # }))
             render json: { client_id: client_id, token: token, uid: @resource.uid,
                            reset_password: true, config: params[:config] }, status: :ok
           else
@@ -142,13 +139,6 @@ module Api
           render json: {
             success: false,
             errors: [I18n.t('devise_token_auth.passwords.missing_email')]
-          }, status: 401
-        end
-
-        def render_create_error_not_accepted_invitation
-          render json: {
-            success: false,
-            errors: [I18n.t('devise_token_auth.passwords.not_accept_invitation')]
           }, status: 401
         end
 
@@ -230,10 +220,6 @@ module Api
 
         def password_resource_params
           params.permit(*params_for_resource(:account_update))
-        end
-
-        def accept_invitation(email)
-          User.find_by(email: email).invitation_token == nil
         end
       end
     end

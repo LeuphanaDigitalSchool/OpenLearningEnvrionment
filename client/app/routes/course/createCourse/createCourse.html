@@ -47,9 +47,9 @@
                 </div>
               </div>
               <md-divider style="margin: 20px 0;"></md-divider>
-              <div layout="row">
+              <div layout="row" ng-if="Create.course.title && Create.course.start_date && Create.course.end_date">
                 <span class="md-title">Add new phase</span>
-                <md-button aria-label="add language" class="md-icon-button" ng-click="Create.addNewStorage()">
+                <md-button aria-label="add phase" class="md-icon-button" ng-click="Create.addNewPhase()">
                   <md-icon>add</md-icon>
                   <md-tooltip md-direction="right">
                     Add new phase

@@ -1,4 +1,5 @@
 en:
+  permissionDenied: Permission Denied
   register: "Register"
   email: "Email"
   title: "Title"
@@ -102,6 +103,7 @@ en:
   courses: Courses
   createCourse: Create Course
   course:
+    unauthorized: Permission denied
     communication: Communication
     messaging: Messaging
     singleMessaging: Single messaging

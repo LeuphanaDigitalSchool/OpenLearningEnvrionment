@@ -87,7 +87,7 @@ export default class CreateCourseCtrl {
     }
   }
 
-  addNewStorage(){
+  addNewPhase(){
     this.$scope.phases.push({});
   }
 
