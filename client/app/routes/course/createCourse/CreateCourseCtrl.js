@@ -91,6 +91,10 @@ export default class CreateCourseCtrl {
     this.$scope.phases.push({});
   }
 
+  removePhase(idx) {
+    this.$scope.phases.splice(idx, 1);
+  }
+
   initialData() {
     this.course = {};
     this.$scope.teacher = [];
