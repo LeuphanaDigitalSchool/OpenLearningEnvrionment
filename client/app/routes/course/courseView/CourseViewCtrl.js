@@ -1,5 +1,5 @@
 export default class CourseViewCtrl {
-  constructor($mdDialog, $stateParams, $rootScope, Restangular, toastr) {
+  constructor($mdDialog, $stateParams, Restangular, toastr, $scope) {
     "ngInject";
     this.$stateParams = $stateParams;
     this.Restangular = Restangular;
@@ -7,10 +7,9 @@ export default class CourseViewCtrl {
     this.courseId = this.$stateParams.id;
     this.$mdDialog = $mdDialog;
     this.courseData = {};
-    this.$rootScope = $rootScope;
+    this.$scope = $scope;
     this.phasesApi = this.Restangular.oneUrl('course', '/api/v1/courses/'+this.courseId);
     this.getCourse();
-    this.getPhases();
     this.addListeners();
   }
 
@@ -21,13 +20,10 @@ export default class CourseViewCtrl {
       clickOutsideToClose: false
     });
   }
-  getPhases(){
-    this.phasesApi.customGET('phase/active').then((response)=>{
-      this.files = response.course_phase.storages;
-    });
-  }
+
   getCourse(){
     this.phasesApi.get().then((response)=>{
+      console.log(response.course);
       this.course = response.course;
     });
   }
@@ -35,12 +31,12 @@ export default class CourseViewCtrl {
   removeFile(courseId, storageId) {
     this.phasesApi.one('storages', storageId).remove().then(()=>{
       this.toastr.success('You have successfully removed this file', 'Success');
-      this.$rootScope.$broadcast('storage:deleted');
+      this.$scope.$broadcast('storage:deleted');
     });
   }
 
   addListeners() {
-      this.$rootScope.$on('storage:created', this.getPhases.bind(this));
-      this.$rootScope.$on('storage:deleted', this.getPhases.bind(this));
-    }
+    this.$scope.$on('storage:created', this.getCourse.bind(this));
+    this.$scope.$on('storage:deleted', this.getCourse.bind(this));
+  }
 }

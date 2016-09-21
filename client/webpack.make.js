@@ -31,7 +31,7 @@ module.exports = function makeWebpackConfig (options) {
    */
   var config = {};
   config.context = __dirname + '/';
-  
+
 
 
   /**
@@ -47,7 +47,7 @@ module.exports = function makeWebpackConfig (options) {
       app: './app/index.js'
     };
   }
-  
+
 
 
   /**
@@ -87,7 +87,7 @@ module.exports = function makeWebpackConfig (options) {
   if (TEST) {
     config.devtool = 'inline-source-map';
   } else if (BUILD) {
-    
+
   } else {
     config.devtool = 'eval';
   }
@@ -107,9 +107,9 @@ module.exports = function makeWebpackConfig (options) {
     loaders: [
         { test: /\.js$/, loader: 'ng-annotate!babel', exclude: /node_modules/ },
         { test: /\.html$/, loader: 'html-loader', exclude: /node_modules/ },
-        { 
-          test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, 
-          loader: 'url-loader?limit=10000&name=[hash]-[name].[ext]' 
+        {
+          test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+          loader: 'url-loader?limit=10000&name=[hash]-[name].[ext]'
         },
     ]
   };
@@ -120,15 +120,15 @@ module.exports = function makeWebpackConfig (options) {
   //
   // Reference: https://github.com/postcss/postcss-loader
   // Postprocess your css with PostCSS plugins
-  
+
   var cssLoader = {
     test: /\.css$/,
     loader: extractCSS.extract('style-loader','css-loader')
   };
-  
+
   var sassLoader = {
     test: /\.scss$/,
-    loader: extractCSS.extract('style-loader','css-loader','resolve-url','sass','sourceMap')
+    loader: extractCSS.extract('style', 'css?sourceMap!resolve-url!sass?sourceMap')
   };
 
   // Skip loading css in test mode
