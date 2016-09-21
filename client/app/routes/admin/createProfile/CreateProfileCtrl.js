@@ -1,9 +1,10 @@
 export default class CreateProfileCtrl {
-  constructor(countryList, $state, $rootScope, toastr, Restangular, Upload) {
+  constructor(countryList, $state, $scope, $rootScope, toastr, Restangular, Upload) {
     "ngInject";
     this.user = {};
     this.toastr = toastr;
     this.$state = $state;
+    this.$scope = $scope;
     this.$rootScope = $rootScope;
     this.Upload = Upload;
     this.Restangular = Restangular;
@@ -28,6 +29,8 @@ export default class CreateProfileCtrl {
         this.toastr.success('Thank you for registering new user', 'Success');
         this.initialData();
         this.$rootScope.$broadcast('user:deleted');
+        this.$scope.userRegister.$setUntouched();
+        this.$scope.userRegister.$setPristine();
       }, (response)=> {
         this.send = true;
         let status = null;
@@ -51,7 +54,7 @@ export default class CreateProfileCtrl {
       this.sendData = {'teacher':{ }};
       this.sendData.teacher = this.user;
     }
-    if(this.role === 'Course director'){
+    if(this.role === 'Course Director'){
       this.userType = 'course_directors';
       this.sendData = {'course_director':{ }};
       this.sendData.course_director = this.user;

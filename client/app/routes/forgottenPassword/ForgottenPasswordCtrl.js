@@ -18,13 +18,14 @@ export default class RegisterPublicUserCtrl {
     if(this.errors === 0) {
       this.send = false;
       this.user.redirect_url = 'http://localhost:8080';
-      this.baseForgottenPassword.post(this.user).then(()=>{
+      this.baseForgottenPassword.post(this.user).then((response)=>{
         this.send = true;
-        this.toastr.success('Reset password instruction was send', 'Success');
+        this.toastr.success(response.message, 'Success');
         this.loginPage();
-      }, (reject)=> {
-        this.send = true;
-        this.toastr.error('The account that you tried to reach does not exist', 'Error');
+      }, (response)=> {
+        this.send = false;
+        let status = response.data.errors;
+        for (var i = 0; i < status.length; i++) this.toastr.error(status[i], 'Error');
       });
     }
   }
