@@ -53,9 +53,7 @@ export default function routing($stateProvider) {
       resolve: {
         permission: function ($auth, $location) {
           return $auth.validateUser().then((response) => {
-            if(response.role_id !== 6) {
-              $location.path('/');
-            }
+            if(response.role_id !== 6) $location.path('permission-denied');
           });
         }
       }
@@ -81,9 +79,7 @@ export default function routing($stateProvider) {
       resolve: {
         permission: function ($auth, $location) {
           return $auth.validateUser().then((response) => {
-            if(response.role_id < 4) {
-              $location.path('/');
-            }
+            if(response.role_id < 4) $location.path('permission-denied');
           });
         }
       }
@@ -92,13 +88,27 @@ export default function routing($stateProvider) {
       url: 'courses-list',
       template: require('./routes/course/coursesList/coursesList.html'),
       controller: 'CoursesListCtrl',
-      controllerAs: 'Courses'
+      controllerAs: 'Courses',
+      resolve: {
+        permission: function ($auth, $location) {
+          return $auth.validateUser().then((response) => {
+            if(response.role_id < 4) $location.path('permission-denied');
+          });
+        }
+      }
     })
     .state('home.course', {
       url: 'course/:id',
       template: require('./routes/course/course.html'),
       controller: 'CourseCrtl',
-      controllerAs: 'Course'
+      controllerAs: 'Course',
+      resolve: {
+        permission: function ($auth, $location) {
+          return $auth.validateUser().then((response) => {
+            if(response.role_id < 4) $location.path('permission-denied');
+          });
+        }
+      }
     })
     .state('home.course-view', {
       url: 'view/course/:id',
@@ -117,5 +127,11 @@ export default function routing($stateProvider) {
       template: require('./routes/soon/soon.html'),
       controller: 'SoonCtrl',
       controllerAs: 'Soon'
+    })
+    .state('home.permission-denied', {
+      url: 'permission-denied',
+      template: require('./routes/permissionDenied/permissionDenied.html'),
+      controller: 'PermissionDeniedCtrl',
+      controllerAs: 'permissionDenied'
     });
 }

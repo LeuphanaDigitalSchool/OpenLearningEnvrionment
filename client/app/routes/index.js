@@ -11,6 +11,7 @@ import myProfile from './myProfile';
 import profile from './profile';
 import course from './course';
 import soon from './soon';
+import permissionDenied from './permissionDenied';
 
 export default angular.module('app.routes', [
     home,
@@ -22,7 +23,8 @@ export default angular.module('app.routes', [
     myProfile,
     profile,
     course,
-    soon
+    soon,
+    permissionDenied
   ])
   .constant('countryList', countryList)
   .name;
