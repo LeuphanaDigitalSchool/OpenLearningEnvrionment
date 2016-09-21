@@ -49,7 +49,7 @@
               <md-divider style="margin: 20px 0;"></md-divider>
               <div layout="row" ng-if="Create.course.title && Create.course.start_date && Create.course.end_date">
                 <span class="md-title">Add new phase</span>
-                <md-button aria-label="add phase" class="md-icon-button" ng-click="Create.addNewPhase()">
+                <md-button aria-label="add phase" class="md-icon-button" ng-click="Create.addNewPhase()" ng-if="phases.length < 6">
                   <md-icon>add</md-icon>
                   <md-tooltip md-direction="right">
                     Add new phase
@@ -61,11 +61,17 @@
                     <label>Phase {{$index +1}} title</label>
                     <input ng-model="phase.title" required>
                   </md-input-container>
+                  <md-button aria-label="remove phase" class="icon-button remove-button" ng-click="Create.removePhase($index)">
+                    <md-icon>clear</md-icon>
+                    <md-tooltip md-direction="right">
+                      Destroy phase
+                    </md-tooltip>
+                  </md-button>
                   <div class="">
                     <md-datepicker
                       name="phase_start_date-{{$index}}"
                       ng-model="phase.start_date"
-                      md-placeholder="Phase start date"
+                      md-placeholder="Phase {{$index +1}} start date"
                       md-min-date="Create.course.start_date" 
                       md-max-date="Create.course.end_date"
                       required
@@ -81,7 +87,7 @@
                     <md-datepicker
                     name="phase_end_date-{{$index}}"
                     ng-model="phase.end_date"
-                    md-placeholder="Phase end date"
+                    md-placeholder="Phase {{$index +1}} end date"
                     md-min-date="Create.course.start_date" 
                     md-max-date="Create.course.end_date"
                     required
