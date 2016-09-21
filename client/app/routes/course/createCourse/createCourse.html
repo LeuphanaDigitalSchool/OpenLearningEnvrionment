@@ -66,6 +66,8 @@
                       name="phase_start_date-{{$index}}"
                       ng-model="phase.start_date"
                       md-placeholder="Phase start date"
+                      md-min-date="Create.course.start_date" 
+                      md-max-date="Create.course.end_date"
                       required
                     ></md-datepicker>
                     <div class="validation-messages"
@@ -80,13 +82,15 @@
                     name="phase_end_date-{{$index}}"
                     ng-model="phase.end_date"
                     md-placeholder="Phase end date"
+                    md-min-date="Create.course.start_date" 
+                    md-max-date="Create.course.end_date"
                     required
                     ></md-datepicker>
                     <div class="validation-messages"
                       ng-show="courseForm.$submitted"
                       ng-messages="courseForm['phase_end_date-' + $index].$error"
                     >
-                      <div ng-message="required">Phase start date is required!</div>
+                      <div ng-message="required">Phase end date is required!</div>
                     </div>
                   </div>
                 </div>
