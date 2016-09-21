@@ -62,11 +62,11 @@ resource 'Api::V1::Courses' do
 
       do_request(params)
       expect(response_body).to include('"title":"Sample course"', '"description":"Description"',
-                                       '"start_date":"2016-01-01"', '"end_date":"2017-02-03"', '"role":"Student"',
-                                       '"title":"Phase 1"', '"role_id":2', '"upload":true', '"upload_pdf":true',
-                                       '"upload_jpg":false', '"upload_mp3":true', '"upload_mp4":false',
-                                       '"resource_description_add":true', '"resource_description_del":false',
-                                       '"resources_del":false')
+                                       '"start_date":"2016-01-01"', '"end_date":"2017-02-03"',
+                                       '"role":"Student"', '"title":"Phase 1"', '"role_id":2', '"upload":true',
+                                       '"upload_pdf":true', '"upload_jpg":false', '"upload_mp3":true',
+                                       '"upload_mp4":false', '"resource_description_add":true',
+                                       '"resource_description_del":false', '"resources_del":false')
       expect(response_status).to be 201
     end
   end
