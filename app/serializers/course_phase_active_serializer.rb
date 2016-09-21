@@ -4,15 +4,15 @@ class CoursePhaseActiveSerializer < ActiveModel::Serializer
   attributes :id, :title, :start_date, :end_date, :active, :storages, :course_phase_preferences_attributes
 
   def start_date
-    object.start_date.to_date if object.start_date
+    object.start_date if object.start_date
   end
 
   def end_date
-    object.end_date.to_date if object.end_date
+    object.end_date if object.end_date
   end
 
   def active
-    DateTime.now.to_date >= object.start_date.to_date && object.end_date.to_date >= DateTime.now.to_date
+    DateTime.now >= object.start_date && object.end_date >= DateTime.now
   end
 
   def storages

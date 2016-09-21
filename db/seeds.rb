@@ -48,8 +48,8 @@ PublicUser.create!(firstname: 'Public', lastname: 'User', email: 'public_user@ex
                    data_privacy: true, terms_and_conditions: true)
 
 puts '-> Create course'
-course = Course.create!(title: 'Sample course', description: 'Sample description', start_date: '2016-09-01',
-                        end_date: '2017-02-28')
+course = Course.create!(title: 'Sample course', description: 'Sample description', start_date: '2016-09-01 16:00:00',
+                        end_date: '2017-02-28 15:59:59')
 student_preferences = { role_id: 2, upload_pdf: true, upload_jpg: true, upload_mp3: true, upload_mp4: true,
                         resource_description_add: true, resource_description_del: true, resources_del: true,
                         schedule_publishing: true, embed_external_links: true }
@@ -61,37 +61,43 @@ manager_preferences = { role_id: 6, upload_pdf: true, upload_jpg: true, upload_m
                         schedule_publishing: true, embed_external_links: true }
 
 # phase 1
-course_phase = course.course_phases.create(title: 'Phase 1', start_date: '2016-09-01', end_date: '2016-09-30')
+course_phase = course.course_phases.create(title: 'Phase 1', start_date: '2016-09-01 16:00:00',
+                                           end_date: '2016-09-30 15:59:59')
 course_phase.course_phase_preferences.create(student_preferences)
 course_phase.course_phase_preferences.create(teacher_preferences)
 course_phase.course_phase_preferences.create(manager_preferences)
 
 # phase 2
-course_phase = course.course_phases.create(title: 'Phase 2', start_date: '2016-10-01', end_date: '2016-10-30')
+course_phase = course.course_phases.create(title: 'Phase 2', start_date: '2016-10-01 16:00:00',
+                                           end_date: '2016-10-30 15:59:59')
 course_phase.course_phase_preferences.create(student_preferences)
 course_phase.course_phase_preferences.create(teacher_preferences)
 course_phase.course_phase_preferences.create(manager_preferences)
 
 # phase 3
-course_phase = course.course_phases.create(title: 'Phase 3', start_date: '2016-11-01', end_date: '2016-11-30')
+course_phase = course.course_phases.create(title: 'Phase 3', start_date: '2016-11-01 16:00:00',
+                                           end_date: '2016-11-30 15:59:59')
 course_phase.course_phase_preferences.create(student_preferences)
 course_phase.course_phase_preferences.create(teacher_preferences)
 course_phase.course_phase_preferences.create(manager_preferences)
 
 # phase 4
-course_phase = course.course_phases.create(title: 'Phase 4', start_date: '2016-12-01', end_date: '2016-12-30')
+course_phase = course.course_phases.create(title: 'Phase 4', start_date: '2016-12-01 16:00:00',
+                                           end_date: '2016-12-30 15:59:59')
 course_phase.course_phase_preferences.create(student_preferences)
 course_phase.course_phase_preferences.create(teacher_preferences)
 course_phase.course_phase_preferences.create(manager_preferences)
 
 # phase 5
-course_phase = course.course_phases.create(title: 'Phase 5', start_date: '2017-01-01', end_date: '2016-01-30')
+course_phase = course.course_phases.create(title: 'Phase 5', start_date: '2017-01-01 16:00:00',
+                                           end_date: '2016-01-30 15:59:59')
 course_phase.course_phase_preferences.create(student_preferences)
 course_phase.course_phase_preferences.create(teacher_preferences)
 course_phase.course_phase_preferences.create(manager_preferences)
 
 # phase 6
-course_phase = course.course_phases.create(title: 'Phase 6', start_date: '2017-02-01', end_date: '2017-02-28')
+course_phase = course.course_phases.create(title: 'Phase 6', start_date: '2017-02-01 16:00:00',
+                                           end_date: '2017-02-28 15:59:59')
 course_phase.course_phase_preferences.create(student_preferences)
 course_phase.course_phase_preferences.create(teacher_preferences)
 course_phase.course_phase_preferences.create(manager_preferences)
