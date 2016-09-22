@@ -37,7 +37,7 @@ module Api
 
       def course_phase_params
         params.require(:course).permit(:title, :description, :start_date, :end_date, course_phases_attributes: [
-                                         :id, :title, :start_date, :end_date, :finished,
+                                         :id, :title, :start_date, :end_date, :finished, :description,
                                          course_phase_preferences_attributes: [:id, :role_id, :upload_pdf, :upload_jpg,
                                                                                :upload_mp3, :upload_mp4,
                                                                                :resource_description_add,

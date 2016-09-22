@@ -9,6 +9,7 @@ export default class CourseViewCtrl {
     this.courseData = {};
     this.$scope = $scope;
     this.phasesApi = this.Restangular.oneUrl('course', '/api/v1/courses/'+this.courseId);
+
     this.getCourse();
     this.addListeners();
   }
@@ -23,9 +24,13 @@ export default class CourseViewCtrl {
 
   getCourse(){
     this.phasesApi.get().then((response)=>{
-      console.log(response.course);
       this.course = response.course;
+      this.findActiveTabIndex();
     });
+  }
+
+  findActiveTabIndex() {
+    this.activeTabIndex = _.findIndex(this.course.course_phases, { active: true});
   }
 
   removeFile(courseId, storageId) {
