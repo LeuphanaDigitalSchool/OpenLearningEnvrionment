@@ -2,7 +2,7 @@
 # CoursePhaseSerializer
 class CoursePhaseSerializer < ActiveModel::Serializer
   attributes  :id, :title, :start_date, :end_date, :active, :storages, :course_phase_preferences_attributes,
-              :archived, :future
+              :archived, :future, :description
 
   def start_date
     object.start_date.strftime('%Y-%m-%d') if object.start_date

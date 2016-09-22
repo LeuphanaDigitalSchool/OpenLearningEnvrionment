@@ -16,7 +16,7 @@
               </md-input-container>
               <md-input-container>
                 <label>Description</label>
-                <input ng-model="Create.course.description" name="description" required>
+                <textarea ng-model="Create.course.description" name="description" rows="2" required></textarea>
                 <div ng-messages="courseForm.description.$error">
                   <div ng-message="required">Descriptioin is required!</div>
                 </div>

@@ -34,6 +34,9 @@
         <div class="tab{{$index%4}} rcv-tab-content">
           <div class="rcv-tab-header">
             <h2 class="md-title rcv-tab-headline">{{::phase.title}}</h2>
+            <p>
+              {{::phase.description}}
+            </p>
             <div class="rcv-date">
               <span class="rcv-date-label" translate>startDate</span>
               {{::phase.start_date | date:'dd MMM yyyy'}}, 4pm
