@@ -85,7 +85,7 @@ course_phase.course_phase_preferences.create(teacher_preferences)
 course_phase.course_phase_preferences.create(manager_preferences)
 
 # phase 5
-course_phase = course.course_phases.create(title: 'Phase 5', start_date: '2017-01-01', end_date: '2016-01-30')
+course_phase = course.course_phases.create(title: 'Phase 5', start_date: '2017-01-01', end_date: '2017-01-30')
 course_phase.course_phase_preferences.create(student_preferences)
 course_phase.course_phase_preferences.create(teacher_preferences)
 course_phase.course_phase_preferences.create(manager_preferences)
