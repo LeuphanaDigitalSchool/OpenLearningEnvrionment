@@ -34,4 +34,12 @@ $secondary-text: rgba(0,0,0,0.54);
   .rcv-files-header {
     padding: 0 15px;
   }
+
+  .rcv-active {
+    color: green;
+  }
+
+  .rcv-archived {
+    color: rgba(0,0,0,0.22);
+  }
 }
