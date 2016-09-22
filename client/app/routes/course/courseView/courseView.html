@@ -1,12 +1,10 @@
 <div class="course-view r-course-view" flex>
   <md-content layout="column" ms-scroll flex md-whiteframe="2" class="l-content-background" layout-padding>
     <md-toolbar class="md-table-toolbar md-default">
-      <div layout="row">
-        <div flex layout="column">
-          <p class="md-title">{{::CourseView.course.title}}</p>
-          <p class="md-subhead">{{::CourseView.course.description}}</p>
-        </div>
-        <div flex="20" layout="column" layout-align="center start">
+      <div layout-padding>
+        <h2 class="md-title">{{::CourseView.course.title}}</h2>
+        <p class="md-subhead">{{::CourseView.course.description}}</p>
+        <div layout="column" layout-align="start start">
           <div class="rcv-date">
             <span class="rcv-date-label" translate>startDate</span>
             {{::CourseView.course.start_date | date:'dd MMM yyyy'}}, 4pm
@@ -61,18 +59,22 @@
             </div>
           </div>
           <div layout layout-wrap>
-            <md-card ng-repeat="phase in phase.storages">
+            <md-card ng-repeat="storage in phase.storages">
               <md-card-title style="word-break: break-all">
                 <md-card-title-text>
-                  <span ng-if="::phase.url != null"><a href="{{::phase.url}}" target="blank">{{ ::phase.description }}</a></span>
-                  <span ng-if="::phase.url == null">{{ ::phase.description }}</span>
+                  <span ng-if="::storage.url != null">
+                    <a href="{{::storage.url}}" target="blank">
+                      {{ ::storage.description }}
+                    </a>
+                  </span>
+                  <span ng-if="::storage.url == null">{{ ::storage.description }}</span>
                 </md-card-title-text>
               </md-card-title>
               <md-card-actions layout="row" layout-align="end center">
-                <a href="{{ ::phase.file }}" class="md-button" ng-if="::phase.file != null">download</a>
+                <a href="{{ ::storage.file }}" class="md-button" ng-if="::storage.file != null">download</a>
                 <md-button
-                  ng-if="::user.role_id > 3"
-                  ng-click="::CourseView.removeFile(CourseView.courseId, phase.id)">
+                  ng-if="::user.role_id > 3 && !phase.archived"
+                  ng-click="::CourseView.removeFile(CourseView.courseId, storage.id)">
                   {{ 'storage.remove' | translate}}
                 </md-button>
               </md-card-actions>
