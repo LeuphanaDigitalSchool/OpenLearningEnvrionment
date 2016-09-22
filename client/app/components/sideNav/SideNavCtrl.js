@@ -7,7 +7,7 @@ export default class SideNavCtrl {
     this.coursesList= [];
 
     this.getCoursesList();
-    // this.startCourseInterval();
+    this.startCourseInterval();
 }
 
   getCoursesList() {
