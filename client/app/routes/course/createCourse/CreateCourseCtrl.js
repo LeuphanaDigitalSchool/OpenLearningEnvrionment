@@ -43,6 +43,7 @@ export default class CreateCourseCtrl {
     for (let i = 0; i < this.$scope.phases.length; i++) {
       this.course.course_phases_attributes.push({
         "title": this.$scope.phases[i].title,
+        "description": this.$scope.phases[i].description,
         "start_date": this.$scope.phases[i].start_date,
         "end_date": this.$scope.phases[i].end_date,
         "course_phase_preferences_attributes" : [

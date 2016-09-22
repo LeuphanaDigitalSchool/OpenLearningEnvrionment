@@ -1,52 +1,106 @@
-<div class="course-view" flex>
+<div class="course-view r-course-view" flex>
   <md-content layout="column" ms-scroll flex md-whiteframe="2" class="l-content-background" layout-padding>
     <md-toolbar class="md-table-toolbar md-default">
-      <div layout="row">
-        <div layout="column">
-          <p class="md-title">{{::CourseView.course.title}}</p>
-          <p class="md-subhead">{{::CourseView.course.description}}</p>
-        </div>
-        <div flex layout="column" layout-align="end end">
-          <p class="md-subhead">
-            {{'startDate'| translate}}: {{::CourseView.course.start_date}}
-          </p>
-          <p class="md-subhead">
-            {{'endDate'| translate}}: {{::CourseView.course.end_date}}
-          </p>
+      <div layout-padding>
+        <h2 class="md-title">{{::CourseView.course.title}}</h2>
+        <p class="md-subhead">{{::CourseView.course.description}}</p>
+        <div layout="column" layout-align="start start">
+          <div class="rcv-date">
+            <span class="rcv-date-label" translate>startDate</span>
+            {{::CourseView.course.start_date | date:'dd MMM yyyy'}}, 4pm
+          </div>
+          <div class="rcv-date">
+            <span class="rcv-date-label" translate>endDate</span>
+            {{::CourseView.course.end_date | date:'dd MMM yyyy'}}, 4pm
+          </div>
         </div>
       </div>
     </md-toolbar>
+
     <md-divider></md-divider>
-    <div layout="row">
-      <div>
-        {{'Files' | translate}}
-      </div>
-      <div flex layout="row" layout-align="end end">
-        <md-button
-          class="md-raised md-primary"
-          ng-if="::user.role_id >= 2"
-          ng-click="::CourseView.addNewFile($event, user.id)">
-        {{ 'storage.addNewFile' | translate }}
-      </md-button>
-      </div>
-    </div>
-    <div>
-      <md-card ng-repeat="file in CourseView.files">
-        <md-card-title style="word-break: break-all">
-          <md-card-title-text>
-            <span class="" ng-if="::file.url != null"><a href="{{::file.url}}" target="blank">{{ ::file.description }}</a></span>
-            <span class="" ng-if="::file.url == null">{{ ::file.description }}</span>
-          </md-card-title-text>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <a href="{{ ::file.file }}" class="md-button" ng-if="::file.file != null">download</a>
-          <md-button
-            ng-if="::user.role_id > 3"
-            ng-click="::CourseView.removeFile(CourseView.courseId, file.id)">
-            {{ 'storage.remove' | translate}}
-          </md-button>
-        </md-card-actions>
-      </md-card>
-    </div>
+
+    <md-tabs
+      md-selected="CourseView.activeTabIndex"
+      md-border-bottom md-autoselect
+      md-dynamic-height
+    >
+      <md-tab
+        ng-repeat="phase in CourseView.course.course_phases"
+        ng-disabled="phase.future && user.role_id <= 2"
+      >
+        <md-tab-label>
+          <span  ng-class="{
+                  'rcv-archived': phase.archived,
+                  'rcv-active': phase.active,
+                  'rcv-future': phase.future
+                }"
+          >
+            {{phase.title}}
+
+        </md-tab-label>
+        <md-tab-body>
+          <div class="tab{{$index%4}} rcv-tab-content">
+            <div class="rcv-tab-header">
+              <h2 class="md-title rcv-tab-headline">{{::phase.title}}</h2>
+              <p>
+                {{::phase.description}}
+              </p>
+              <div class="rcv-date">
+                <span class="rcv-date-label" translate>startDate</span>
+                {{::phase.start_date | date:'dd MMM yyyy'}}, 4pm
+              </div>
+              <div class="rcv-date">
+                <span class="rcv-date-label" translate>endDate</span>
+                {{::phase.end_date | date:'dd MMM yyyy'}}, 4pm
+              </div>
+            </div>
+
+            <div layout="row" layout-align="center center" class="rcv-files-header">
+              <h2 class="md-title">
+                {{'Files' | translate}}
+              </h2>
+              <div flex layout="row" layout-align="end end">
+                <md-button
+                  class="md-raised md-primary"
+                  ng-if="::user.role_id >= 2"
+                  ng-click="::CourseView.addNewFile($event, user.id)">
+                {{ 'storage.addNewFile' | translate }}
+              </md-button>
+              </div>
+            </div>
+            <div layout layout-wrap>
+              <md-card ng-repeat="storage in phase.storages">
+                <md-card-title style="word-break: break-all">
+                  <md-card-title-text>
+                    <span ng-if="::storage.url != null">
+                      <a href="{{::storage.url}}" target="blank">
+                        {{ ::storage.description }}
+                      </a>
+                    </span>
+                    <span ng-if="::storage.url == null">{{ ::storage.description }}</span>
+                  </md-card-title-text>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                  <a href="{{ ::storage.file }}" class="md-button" ng-if="::storage.file != null">download</a>
+                  <md-button
+                    ng-disabled="::user.role_id <= 2 || phase.archived"
+                    ng-click="CourseView.editStorage(CourseView.courseId, phase.id, storage)"
+                  >
+                    <span translate>storage.edit</span>
+                  </md-button>
+                  <md-button
+                    ng-disabled="::user.role_id <= 2 || phase.archived"
+                    ng-click="CourseView.removeFile(CourseView.courseId, storage.id)"
+                  >
+                    <span translate>storage.remove</span>
+                  </md-button>
+                </md-card-actions>
+              </md-card>
+            </div>
+          </div>
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+
   </md-content>
 </div>

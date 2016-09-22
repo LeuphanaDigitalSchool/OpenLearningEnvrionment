@@ -6,6 +6,7 @@
         <md-tab label="step 1. main">
           <md-content layout="column" class="md-padding l-content-background">
             <div layout="column">
+              <h2>Course parameters</h2>
               <md-input-container>
                 <label>Title</label>
                 <input ng-model="Create.course.title" name="title" required>
@@ -15,7 +16,7 @@
               </md-input-container>
               <md-input-container>
                 <label>Description</label>
-                <input ng-model="Create.course.description" name="description" required>
+                <textarea ng-model="Create.course.description" name="description" rows="2" required></textarea>
                 <div ng-messages="courseForm.description.$error">
                   <div ng-message="required">Descriptioin is required!</div>
                 </div>
@@ -46,17 +47,11 @@
                   </div>
                 </div>
               </div>
-              <md-divider style="margin: 20px 0;"></md-divider>
-              <div layout="row" ng-if="Create.course.title && Create.course.start_date && Create.course.end_date">
-                <span class="md-title">Add new phase</span>
-                <md-button aria-label="add phase" class="md-icon-button" ng-click="Create.addNewPhase()" ng-if="phases.length < 6">
-                  <md-icon>add</md-icon>
-                  <md-tooltip md-direction="right">
-                    Add new phase
-                  </md-tooltip>
-                </md-button>
-              </div>
-                <div class="column" ng-repeat="phase in phases">
+              <md-divider style="margin: 20px 0; border-top-width: 3px"></md-divider>
+
+                <h2>Course Phases</h2>
+
+                <div layout="column" class="column" ng-repeat="phase in phases">
                   <md-input-container>
                     <label>Phase {{$index +1}} title</label>
                     <input ng-model="phase.title" required>
@@ -72,7 +67,7 @@
                       name="phase_start_date-{{$index}}"
                       ng-model="phase.start_date"
                       md-placeholder="Phase {{$index +1}} start date"
-                      md-min-date="Create.course.start_date" 
+                      md-min-date="Create.course.start_date"
                       md-max-date="Create.course.end_date"
                       required
                     ></md-datepicker>
@@ -88,7 +83,7 @@
                     name="phase_end_date-{{$index}}"
                     ng-model="phase.end_date"
                     md-placeholder="Phase {{$index +1}} end date"
-                    md-min-date="Create.course.start_date" 
+                    md-min-date="Create.course.start_date"
                     md-max-date="Create.course.end_date"
                     required
                     ></md-datepicker>
@@ -99,8 +94,29 @@
                       <div ng-message="required">Phase end date is required!</div>
                     </div>
                   </div>
+
+                  <md-input-container>
+                    <label>Description</label>
+                    <textarea ng-model="phase.description" type="text" rows="2"> </textarea>
+                  </md-input-container>
+
                 </div>
+
               </div>
+
+              <div layout
+                ng-if="Create.course.title && Create.course.start_date && Create.course.end_date"
+              >
+                <md-button
+                  aria-label="add language"
+                  class="md-raised"
+                  ng-click="Create.addNewPhase()"
+                  ng-if="phases.length < 6"
+                >
+                  Add new phase
+                </md-button>
+              </div>
+
           </md-content>
         </md-tab>
 
@@ -120,6 +136,9 @@
         <permissions-directive></permissions-directive>
 
       </md-tabs>
+
+    <md-divider style="border-top-width: 3px"></md-divider>
+
     <div layout="row" layout-align="center center">
       <md-button class="md-raised md-primary" ng-click="Create.prevTab()" ng-disabled="phases.length == 0 || courseForm.$invalid">Back</md-button>
       <md-button class="md-raised md-primary" ng-click="Create.nextTab()" ng-disabled="phases.length == 0 || courseForm.$invalid">{{Create.buttonTitle}}</md-button>

@@ -7,6 +7,7 @@ import loginForm from './loginForm';
 import userMenu from './userMenu';
 import translateSwitcher from './translateSwitcher';
 import fileUploader from './fileUploader';
+import editStorage from './editStorage';
 
 export default angular.module('app.components', [
     mainNavbar,
@@ -15,5 +16,6 @@ export default angular.module('app.components', [
     translateSwitcher,
     loginForm,
     userMenu,
-    fileUploader
+    fileUploader,
+    editStorage
   ]).name;
