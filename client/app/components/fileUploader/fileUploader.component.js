@@ -156,7 +156,7 @@ let fileUploader = {
   controller: FileUploaderCtrl,
   bindings: {
     images: '=',
-    userId: '=',
+    userId: '='
   }
 };
 

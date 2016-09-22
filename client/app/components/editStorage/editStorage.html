@@ -1,0 +1,42 @@
+<div class="c-edit-storage">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2 flex translate>storage.edit</h2>
+      <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+        <md-icon>close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <form
+    name="storageForm"
+    ng-submit="$ctrl.submit(storageForm)"
+    class="ces-form"
+    novalidate
+    layout="column"
+    layout-align="center center"
+  >
+
+    <md-input-container class="ces-input-container">
+      <label>Description</label>
+      <textarea
+        name="description"
+        ng-model="$ctrl.storage.description"
+        rows="2"
+        required
+      >
+      </textarea>
+      <div ng-messages="storageForm.description.$error">
+        <div ng-message="required">Descriptioin is required!</div>
+      </div>
+    </md-input-container>
+
+    <md-button type="submit" class="md-raised md-primary" ng-disabled="storageForm.$invalid">
+      Save
+    </md-button>
+
+  </form>
+</div>
+
+
+

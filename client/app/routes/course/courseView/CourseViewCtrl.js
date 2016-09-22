@@ -40,6 +40,26 @@ export default class CourseViewCtrl {
     });
   }
 
+  editStorage(courseId, phaseId, storage) {
+    function DialogCtrl($scope, storage) {
+      "ngInject";
+      $scope.storage = storage;
+      $scope.courseId = +courseId;
+      $scope.phaseId = +phaseId;
+    }
+
+    this.$mdDialog.show({
+      template: `<edit-storage storage="storage" course-id="courseId", phase-id="phaseId"><edit-storage>`,
+      clickOutsideToClose: false,
+      controller: DialogCtrl,
+      locals: {
+        storage: storage,
+        courseId: courseId,
+        pahseId: phaseId
+      }
+    });
+  }
+
   addListeners() {
     this.$scope.$on('storage:created', this.getCourse.bind(this));
     this.$scope.$on('storage:deleted', this.getCourse.bind(this));

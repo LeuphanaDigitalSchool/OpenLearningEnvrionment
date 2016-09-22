@@ -83,9 +83,16 @@
                 <md-card-actions layout="row" layout-align="end center">
                   <a href="{{ ::storage.file }}" class="md-button" ng-if="::storage.file != null">download</a>
                   <md-button
-                    ng-if="::user.role_id > 3 && !phase.archived"
-                    ng-click="::CourseView.removeFile(CourseView.courseId, storage.id)">
-                    {{ 'storage.remove' | translate}}
+                    ng-disabled="::user.role_id <= 2 || phase.archived"
+                    ng-click="CourseView.editStorage(CourseView.courseId, phase.id, storage)"
+                  >
+                    <span translate>storage.edit</span>
+                  </md-button>
+                  <md-button
+                    ng-disabled="::user.role_id <= 2 || phase.archived"
+                    ng-click="CourseView.removeFile(CourseView.courseId, storage.id)"
+                  >
+                    <span translate>storage.remove</span>
                   </md-button>
                 </md-card-actions>
               </md-card>
