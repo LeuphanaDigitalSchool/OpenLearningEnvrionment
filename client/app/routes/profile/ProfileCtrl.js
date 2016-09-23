@@ -15,8 +15,19 @@ export default class ProfileCtrl {
   getSelects() {
     this.Restangular.oneUrl('select', '/api/v1/admin/users/profile_selects').get().then(
       (response)=> {
-        this.genders = response.genders;
-        this.educational_attainments = response.educational_attainments;
+        this.genders = [
+          { 'value': '0', 'name': "Male"}, 
+          { 'value': '1', 'name': "Female"}, 
+          { 'value': '2', 'name': "I'd rather not say"} 
+        ];
+        this.educational_attainments = [
+          { 'value': '0', 'name': "I'd rather not say" }, 
+          { 'value': '1', 'name': "High School" }, 
+          { 'value': '2', 'name': "Bachelor's Degree" }, 
+          { 'value': '3', 'name': "Master's Degree" }, 
+          { 'value': '4', 'name': "PhD" }, 
+          { 'value': '5', 'name': "Professor" }
+        ];
       }
     );
   }

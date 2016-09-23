@@ -18,20 +18,20 @@
         <p>
           <b>{{ 'profile.gender' | translate}}: </b>
           <span ng-repeat="gender in ProfileCtrl.genders">
-            <span ng-if="gender.value === user.gender">{{gender.name}}</span>
+            <span ng-if="gender.value == user.gender">{{gender.name}}</span>
           </span>
         </p>
         <p>
           <b>{{ 'profile.country' | translate}}: </b>
           <span ng-repeat="country in ProfileCtrl.countries">
-            <span ng-if="country.code === (ProfileCtrl.profile.user.country | uppercase)">{{country.name}}</span>
+            <span ng-if="country.code == (ProfileCtrl.profile.user.country | uppercase)">{{country.name}}</span>
           </span>
         </p>
         <p><b>{{ 'profile.birthdate' | translate}}: </b>{{ProfileCtrl.profile.user.birthdate}}</p>
         <p>
           <b>{{ 'profile.educationalAttainments' | translate}}: </b>
           <span ng-repeat="edu in ProfileCtrl.educational_attainments">
-            <span ng-if="edu.value === ProfileCtrl.profile.user.educational_attainment">{{edu.name}}</span>
+            <span ng-if="edu.value == ProfileCtrl.profile.user.educational_attainment">{{edu.name}}</span>
           </span>
         </p>
         <p><b>{{ 'profile.professional' | translate}}: </b>{{ProfileCtrl.profile.user.professional}}</p>

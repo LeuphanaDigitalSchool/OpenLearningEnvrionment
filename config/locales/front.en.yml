@@ -4,8 +4,8 @@ en:
   email: "Email"
   title: "Title"
   password: "Password"
-  firstname: "Firstname"
-  lastname: "Lastname"
+  firstname: "First name"
+  lastname: "Last name"
   thisFieldIsRequired: "This Field Is Required"
   honorCode: "Honor Code"
   termsAndConditions: "Terms And Conditions"
@@ -49,8 +49,8 @@ en:
   myProfile:
     personal_details:
       header: Personal details
-      firstname: Firstname
-      lastname: Lastname
+      firstname: First name
+      lastname: Last name
       title: Title
       gender: Gender
       country: Country
@@ -80,6 +80,7 @@ en:
     courses: Courses
     sendMessage: Send message
 
+
   notsay: 'aaaaa'
 
   admin:
@@ -94,8 +95,8 @@ en:
     users_list:
       header: Users list
       role: Role
-      firstname: Firstname
-      lastname: Lastname
+      firstname: First name
+      lastname: Last name
       email: E-mail
       profileStatus: Status
       actions: Action
@@ -226,8 +227,8 @@ en:
     email: E-mail
     publishPlatformContentOutsideOfPlatform: Publish platform content outside of platform
     participants: Course participants
-    firstname: Firstname
-    lastname: Lastname
+    firstname: First name
+    lastname: Last name
     role: Role
     title: Title
     description: Description
