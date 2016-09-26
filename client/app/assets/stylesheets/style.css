@@ -15,6 +15,14 @@ md-datepicker {
     padding-top: 13px;
   }
 
+.mainlist.active .sublist {
+  display: block;
+}
+
+.mainlist .sublist {
+  display: none;
+}
+
 .sublist span {
   padding-left: 25px;
   line-height: 15px;

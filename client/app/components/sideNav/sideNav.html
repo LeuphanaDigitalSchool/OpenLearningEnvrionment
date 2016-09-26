@@ -19,21 +19,21 @@
     <md-list-item aria-controls="childListId" ui-sref="home.soon-page">
     <span><md-icon>assignment</md-icon> {{'assignment' | translate}}</span>
   </md-list-item>
-  <md-list-item aria-controls="childListId" ng-click="null">
-    <span><md-icon>list</md-icon> {{'sideNav.courses' | translate}}</span>
-  </md-list-item>
-
-  <md-list-item
-    ng-repeat="course in SideNavCtrl.coursesList"
-    class="sublist courses-list-item"
-    aria-controls="childListId"
-  >
-    <div>
-      <div class="courses-list-item-title" ui-sref="home.course-view({id: course.id})">{{course.title_in_side_nav}}</div>
-      <div class="courses-list-item-participants" ui-sref="home.course-participants({id: course.id})">- {{'sideNav.participants' | translate}}</div>
-    </div>
-  </md-list-item>
-
+  <div ng-class="SideNavCtrl.subMenuClass" class="mainlist" ng-click="SideNavCtrl.changeClass()">
+    <md-list-item aria-controls="childListId" ng-click="null">
+      <span><md-icon>list</md-icon> {{'sideNav.courses' | translate}}</span>
+    </md-list-item>
+    <md-list-item
+      ng-repeat="course in SideNavCtrl.coursesList"
+      class="sublist courses-list-item"
+      aria-controls="childListId"
+    >
+      <div>
+        <div class="courses-list-item-title" ui-sref="home.course-view({id: course.id})">{{course.title_in_side_nav}}</div>
+        <div class="courses-list-item-participants" ui-sref="home.course-participants({id: course.id})">- {{'sideNav.participants' | translate}}</div>
+      </div>
+    </md-list-item>
+  </div>
   <md-divider></md-divider>
 
   <md-list-item class="sublist" aria-controls="childListId" ui-sref="home.create-course" ng-if="::user.role_id > 3">

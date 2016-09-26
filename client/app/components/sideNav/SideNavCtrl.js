@@ -5,6 +5,7 @@ export default class SideNavCtrl {
     this.coursesApi = this.Restangular.oneUrl('courses', '/api/v1/courses');
     this.$interval = $interval;
     this.coursesList= [];
+    this.subMenuClass = '';
 
     this.getCoursesList();
     this.startCourseInterval();
@@ -23,5 +24,13 @@ export default class SideNavCtrl {
     this.$onDestroy = () => {
       this.$interval.cancel(courseInterval);
     };
+  }
+
+  changeClass() {
+    if (this.subMenuClass === 'active') {
+      this.subMenuClass = '';
+    } else {
+      this.subMenuClass = 'active';
+    }
   }
 }
