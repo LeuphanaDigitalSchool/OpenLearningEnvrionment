@@ -1,19 +1,20 @@
-<md-switch ng-model="Create.forum" aria-label="forum">
+<md-switch ng-model="$ctrl.forum" aria-label="forum">
   <h3 class="md-title">{{'course.forum' | translate}}</h3>
 </md-switch>
-<div ng-if="Create.forum">
+<div ng-if="$ctrl.forum">
+  <md-button ng-click="$ctrl.chooseAllForum()">choose all</md-button>
   <div layout="column">
-    <md-switch class="sub-switch" ng-model="Create.threadedConversations" aria-label="threadedConversations">
+    <md-switch class="sub-switch" ng-model="$ctrl.threadedConversations" aria-label="threadedConversations">
       <p class="md-body-1">{{'course.threadedConversations' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.taggingOfUsers" aria-label="taggingOfUsers">
+    <md-switch class="sub-switch" ng-model="$ctrl.taggingOfUsers" aria-label="taggingOfUsers">
       <p class="md-body-1">{{'course.taggingOfUsers' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.forumNotifications" aria-label="forumNotifications">
+    <md-switch class="sub-switch" ng-model="$ctrl.forumNotifications" aria-label="forumNotifications">
       <p class="md-body-2">{{'course.notifications' | translate}}</p>
     </md-switch>
     <div class="column" ng-if="Create.forumNotifications">
-      <md-switch class="sub-switch child" ng-model="Create.emailNotifications" aria-label="emailNotifications">
+      <md-switch class="sub-switch child" ng-model="$ctrl.emailNotifications" aria-label="emailNotifications">
         <p class="md-body-1">{{'course.emailNotifications' | translate}}
           <md-tooltip md-direction="right">
             text of respective forum post in email
@@ -21,21 +22,21 @@
         </p>
       </md-switch>
     </div>
-    <md-switch class="sub-switch" ng-model="Create.taggingOfUserGroups" aria-label="taggingOfUserGroups">
+    <md-switch class="sub-switch" ng-model="$ctrl.taggingOfUserGroups" aria-label="taggingOfUserGroups">
       <p class="md-body-2">{{'course.taggingOfUserGroups ' | translate}}</p>
     </md-switch>
     <div class="column" ng-if="Create.taggingOfUserGroups">
-      <md-switch class="sub-switch child" ng-model="Create.forumTeachers" aria-label="forumTeachers">
+      <md-switch class="sub-switch child" ng-model="$ctrl.forumTeachers" aria-label="forumTeachers">
         <p class="md-body-1">{{'course.teachers' | translate}}</p>
       </md-switch>
-      <md-switch class="sub-switch child" ng-model="Create.forumStudents" aria-label="forumStudents">
+      <md-switch class="sub-switch child" ng-model="$ctrl.forumStudents" aria-label="forumStudents">
         <p class="md-body-1">{{'course.students' | translate}}</p>
       </md-switch>
-      <md-switch class="sub-switch child" ng-model="Create.TaggingForumNotifications" aria-label="forumNotifications">
+      <md-switch class="sub-switch child" ng-model="$ctrl.TaggingForumNotifications" aria-label="forumNotifications">
         <p class="md-body-2">{{'course.notifications' | translate}}</p>
       </md-switch>
       <div class="column" ng-if="Create.TaggingForumNotifications">
-        <md-switch class="sub-switch sub-child" ng-model="Create.emailNotifications" aria-label="emailNotifications">
+        <md-switch class="sub-switch sub-child" ng-model="$ctrl.emailNotifications" aria-label="emailNotifications">
           <p class="md-body-1">{{'course.emailNotifications' | translate}}
             <md-tooltip md-direction="right">
               text of respective forum post in email
@@ -44,43 +45,43 @@
         </md-switch>
       </div>
     </div>
-    <md-switch class="sub-switch" ng-model="Create.quoteFromForums" aria-label="quoteFromForums">
+    <md-switch class="sub-switch" ng-model="$ctrl.quoteFromForums" aria-label="quoteFromForums">
       <p class="md-body-1">{{'course.quoteFromForums ' | translate}}
         <md-tooltip md-direction="right">
           include forum post elsewhere, link to original post
         </md-tooltip>
       </p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.embedContentInForumPost" aria-label="embedContentInForumPost">
+    <md-switch class="sub-switch" ng-model="$ctrl.embedContentInForumPost" aria-label="embedContentInForumPost">
       <p class="md-body-2">{{'course.embedContentInForumPost ' | translate}}</p>
     </md-switch>
     <div class="column" ng-if="Create.embedContentInForumPost">
-      <md-switch class="sub-switch child" ng-model="Create.video" aria-label="video">
+      <md-switch class="sub-switch child" ng-model="$ctrl.video" aria-label="video">
         <p class="md-body-1">{{'course.video ' | translate}}</p>
       </md-switch>
-      <md-switch class="sub-switch child" ng-model="Create.pictures" aria-label="pictures">
+      <md-switch class="sub-switch child" ng-model="$ctrl.pictures" aria-label="pictures">
         <p class="md-body-1">{{'course.pictures ' | translate}}</p>
       </md-switch>
     </div>
-    <md-switch class="sub-switch" ng-model="Create.upvotingDownvoting" aria-label="upvotingDownvoting" ng-true-value="'upvoting'" ng-false-value="'downvoting'">
+    <md-switch class="sub-switch" ng-model="$ctrl.upvotingDownvoting" aria-label="upvotingDownvoting">
       <p class="md-body-1">{{'course.upvotingDownvoting' | translate}}: {{Create.upvotingDownvoting}}</p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.createTopics" aria-label="createTopics">
+    <md-switch class="sub-switch" ng-model="$ctrl.createTopics" aria-label="createTopics">
       <p class="md-body-1">{{'course.createTopics' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.createThreads" aria-label="createThreads">
+    <md-switch class="sub-switch" ng-model="$ctrl.createThreads" aria-label="createThreads">
       <p class="md-body-1">{{'course.createThreads' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.sortForum" aria-label="sortForum">
+    <md-switch class="sub-switch" ng-model="$ctrl.sortForum" aria-label="sortForum">
       <p class="md-body-1">{{'course.sortForum' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.filterForum" aria-label="filterForum">
+    <md-switch class="sub-switch" ng-model="$ctrl.filterForum" aria-label="filterForum">
       <p class="md-body-1">{{'course.filterForum' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.embedExternalLinks" aria-label="embedExternalLinks">
+    <md-switch class="sub-switch" ng-model="$ctrl.embedExternalLinks" aria-label="embedExternalLinks">
       <p class="md-body-1">{{'course.embedExternalLinks' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.embedInternalLinks" aria-label="embedInternalLinks">
+    <md-switch class="sub-switch" ng-model="$ctrl.embedInternalLinks" aria-label="embedInternalLinks">
       <p class="md-body-1">{{'course.embedInternalLinks' | translate}}</p>
     </md-switch>
   </div>
