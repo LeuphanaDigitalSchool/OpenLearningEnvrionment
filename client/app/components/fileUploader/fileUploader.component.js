@@ -44,7 +44,7 @@ class FileUploaderCtrl {
 
   clear() {
     this.fileName = null;
-    this.storage.file = {};
+    this.storage.file = null;
   }
   cancel(){
     this.$mdDialog.cancel();

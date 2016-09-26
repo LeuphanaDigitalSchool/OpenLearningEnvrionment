@@ -10,7 +10,7 @@
         </div>
       </div>
     </md-toolbar>
-    <md-input-container flex>
+    <md-input-container flex layout-padding>
       <label>{{'storage.selectStorage' | translate}}</label>
         <md-select
           ng-model="$ctrl.storage.storageType"
@@ -24,7 +24,7 @@
       </md-select>
     </md-input-container flex>
 
-    <md-dialog-content ng-show="::$ctrl.storage.storageType">
+    <md-dialog-content ng-show="::$ctrl.storage.storageType" layout-padding>
       <md-content layout="column" flex layout-align="center center" ng-if="$ctrl.storage.storageType === 'file'">
         <span>{{ $ctrl.fileName }}</span>
         <md-button ngf-select="::$ctrl.upload($file, $invalidFiles, $event)"
