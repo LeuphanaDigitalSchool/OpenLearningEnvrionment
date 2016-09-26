@@ -13,7 +13,7 @@ class CoursePhaseSerializer < ActiveModel::Serializer
   end
 
   def active
-    Time.now > start_date && end_date > Time.now
+    DateTime.now >= object.start_date && object.end_date >= DateTime.now
   end
 
   def archived
