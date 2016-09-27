@@ -4,46 +4,47 @@
       <md-tab ng-repeat="phase in phases" label="phase {{$index+1}}">
         <div layout="row">
           <div flex= layout-margin layout-padding class="md-whiteframe-1dp l-content-background">
-            <md-switch ng-model="Create.permission.open" aria-label=".permission ">
+            <md-switch ng-model="Permission.open" aria-label=".permission ">
               <h3 class="md-title">{{'course.permission' | translate}}</h3>
             </md-switch>
-            <div ng-if="Create.permission.open">
-              <md-switch class="sub-switch" ng-model="Create.permission.permissionToPublishContentOutsideOfPlatform" aria-label="permissionToPublishContentOutsideOfPlatform">
+            <div ng-if="Permission.open">
+              <md-button ng-click="Permission.chooseAllPermissions()">choose all</md-button>
+              <md-switch class="sub-switch" ng-model="Permission.permissionToPublishContentOutsideOfPlatform" aria-label="permissionToPublishContentOutsideOfPlatform">
                 <p class="md-body-2">{{'course.permissionToPublishContentOutsideOfPlatform' | translate}}</p>
               </md-switch>
-              <div ng-if="Create.permission.permissionToPublishContentOutsideOfPlatform">
-                <md-switch class="sub-switch child" ng-model="Create.permission.permissionToOverrideStandardNotificationSettings" aria-label="permissionToOverrideStandardNotificationSettings">
+              <div ng-if="Permission.permissionToPublishContentOutsideOfPlatform">
+                <md-switch class="sub-switch child" ng-model="Permission.permissionToOverrideStandardNotificationSettings" aria-label="permissionToOverrideStandardNotificationSettings">
                   <p class="md-body-1">{{'course.permissionToOverrideStandardNotificationSettings' | translate}}</p>
                 </md-switch>
-                <md-switch class="sub-switch child" ng-model="Create.permission.permissionToInviteAdditionalUsersToPlatform" aria-label="permissionToInviteAdditionalUsersToPlatform">
+                <md-switch class="sub-switch child" ng-model="Permission.permissionToInviteAdditionalUsersToPlatform" aria-label="permissionToInviteAdditionalUsersToPlatform">
                   <p class="md-body-1">{{'course.permissionToInviteAdditionalUsersToPlatform ' | translate}}</p>
                 </md-switch>
-                <md-switch class="sub-switch child" ng-model="Create.permission.permissionToBuildTeams" aria-label="permissionToBuildTeams">
+                <md-switch class="sub-switch child" ng-model="Permission.permissionToBuildTeams" aria-label="permissionToBuildTeams">
                   <p class="md-body-1">{{'course.permissionToBuildTeams' | translate}}</p>
                 </md-switch>
               </div>
-              <md-switch class="sub-switch" ng-model="Create.permission.teacherGivesPermissionsToIndividualUsers" aria-label="teacherGivesPermissionsToIndividualUsers">
+              <md-switch class="sub-switch" ng-model="Permission.teacherGivesPermissionsToIndividualUsers" aria-label="teacherGivesPermissionsToIndividualUsers">
                 <p class="md-body-2">{{'course.teacherGivesPermissionsToIndividualUsers' | translate}}</p>
               </md-switch>
-              <div ng-if="Create.permission.teacherGivesPermissionsToIndividualUsers">
-                <md-switch class="sub-switch child" ng-model="Create.permission.teacher.permissionToPublishContentOutsideOfPlatform" aria-label="permissionToPublishContentOutsideOfPlatform">
+              <div ng-if="Permission.teacherGivesPermissionsToIndividualUsers">
+                <md-switch class="sub-switch child" ng-model="Permission.teacherPermissionToPublishContentOutsideOfPlatform" aria-label="permissionToPublishContentOutsideOfPlatform">
                   <p class="md-body-1">{{'course.permissionToPublishContentOutsideOfPlatform' | translate}}</p>
                 </md-switch>
-                <md-switch class="sub-switch child" ng-model="Create.permission.teacher.permissionToOverrideStandardNotificationSettings" aria-label="permissionToOverrideStandardNotificationSettings">
+                <md-switch class="sub-switch child" ng-model="Permission.teacherPermissionToOverrideStandardNotificationSettings" aria-label="permissionToOverrideStandardNotificationSettings">
                   <p class="md-body-1">{{'course.permissionToOverrideStandardNotificationSettings' | translate}}</p>
                 </md-switch>
-                <md-switch class="sub-switch child" ng-model="Create.permission.teacher.permissionToInviteAdditionalUsersToPlatform" aria-label="permissionToOverrideStandardNotificationSettings">
+                <md-switch class="sub-switch child" ng-model="Permission.teacherPermissionToInviteAdditionalUsersToPlatform" aria-label="permissionToOverrideStandardNotificationSettings">
                   <p class="md-body-1">{{'course.permissionToInviteAdditionalUsersToPlatform ' | translate}}</p>
                 </md-switch>
-                <md-switch class="sub-switch child" ng-model="Create.permission.teacher.permissionToBuildTeams" aria-label="permissionToBuildTeams">
+                <md-switch class="sub-switch child" ng-model="Permission.teacherPermissionToBuildTeams" aria-label="permissionToBuildTeams">
                   <p class="md-body-1">{{'course.permissionToBuildTeams' | translate}}</p>
                 </md-switch>
               </div>
-              <md-switch class="sub-switch" ng-model="Create.permission.defineStudentBody" aria-label="defineStudentBody">
+              <md-switch class="sub-switch" ng-model="Permission.defineStudentBody" aria-label="defineStudentBody">
                 <p class="md-body-2">{{'course.defineStudentBody' | translate}}</p>
               </md-switch>
-              <div ng-if="Create.permission.defineStudentBody">
-                <md-switch class="sub-switch child" ng-model="Create.permission.defineTeamMatchingCriteria" aria-label="defineTeamMatchingCriteria">
+              <div ng-if="Permission.defineStudentBody">
+                <md-switch class="sub-switch child" ng-model="Permission.defineTeamMatchingCriteria" aria-label="defineTeamMatchingCriteria">
                   <p class="md-body-1">{{'course.defineTeamMatchingCriteria' | translate}}</p>
                 </md-switch>
               </div>
