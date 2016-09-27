@@ -79,7 +79,5 @@ export default class CourseViewCtrl {
     this.userPermission = {};
     this.userPermission[phaseId] = _.findIndex(this.course.course_phases[phaseId].course_phase_preferences_attributes, {'role_id': this.CurrentUser.role_id});
     this.canDeleteResources[phaseId] = this.course.course_phases[phaseId].course_phase_preferences_attributes[this.userPermission[phaseId]].resources_del;
-    console.log('phaseid', phaseId);
-    console.log('this.canDeleteResources[phaseId]', this.canDeleteResources[phaseId]);
   }
 }
