@@ -52,16 +52,18 @@
                 <h2>Course Phases</h2>
 
                 <div layout="column" class="column" ng-repeat="phase in phases">
-                  <md-input-container>
-                    <label>Phase {{$index +1}} title</label>
-                    <input ng-model="phase.title" required>
-                  </md-input-container>
-                  <md-button aria-label="remove phase" class="icon-button remove-button" ng-click="Create.removePhase($index)">
-                    <md-icon>clear</md-icon>
-                    <md-tooltip md-direction="right">
-                      Destroy phase
-                    </md-tooltip>
-                  </md-button>
+                  <div layout="row">
+                    <md-input-container>
+                      <label>Phase {{$index +1}} title</label>
+                      <input ng-model="phase.title" required>
+                    </md-input-container>
+                    <md-button aria-label="remove phase" class="icon-button remove-button" ng-click="Create.removePhase($index)">
+                      <md-icon>clear</md-icon>
+                      <md-tooltip md-direction="right">
+                        Destroy phase
+                      </md-tooltip>
+                    </md-button>
+                  </div>
                   <div class="">
                     <md-datepicker
                       name="phase_start_date-{{$index}}"
