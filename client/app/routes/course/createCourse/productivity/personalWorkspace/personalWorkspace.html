@@ -1,67 +1,68 @@
-<md-switch ng-model="Create.personalWorkspace" aria-label="personalWorkspace">
+<md-switch ng-model="$ctrl.personalWorkspace" aria-label="personalWorkspace">
   <h3 class="md-title">{{'course.personalWorkspace' | translate}}</h3>
 </md-switch>
-<div ng-if="Create.personalWorkspace">
-  <md-switch class="sub-switch" ng-model="Create.personal.defineVisibility" aria-label="defineVisibility">
+<div ng-if="$ctrl.personalWorkspace">
+  <md-button ng-click="$ctrl.chooseAllWorkspace()">choose all</md-button>
+  <md-switch class="sub-switch" ng-model="$ctrl.personalDefineVisibility" aria-label="defineVisibility">
     <p class="md-body-1">{{'course.defineVisibility' | translate}}</p>
   </md-switch>
-  <md-switch class="sub-switch" ng-model="Create.personal.shareWorkspaceWithOthers" aria-label="shareWorkspaceWithOthers">
+  <md-switch class="sub-switch" ng-model="$ctrl.personalShareWorkspaceWithOthers" aria-label="shareWorkspaceWithOthers">
     <p class="md-body-1">{{'course.shareWorkspaceWithOthers' | translate}}</p>
   </md-switch>
-  <md-switch class="sub-switch" ng-model="Create.personal.fileSharing" aria-label="fileSharing">
+  <md-switch class="sub-switch" ng-model="$ctrl.personalFileSharing" aria-label="fileSharing">
     <p class="md-body-2">{{'course.fileSharing' | translate}}</p>
   </md-switch>
-  <div class="column" ng-if="Create.personal.fileSharing">
-    <md-switch class="sub-switch child" ng-model="Create.personal.embedFromExternalWebsites" aria-label="embedFromExternalWebsites">
+  <div class="column" ng-if="$ctrl.personalFileSharing">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalEmbedFromExternalWebsites" aria-label="embedFromExternalWebsites">
       <p class="md-body-1">{{'course.embedFromExternalWebsites ' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch child" ng-model="Create.personal.shareOwnMaterialOnPlatform" aria-label="shareOwnMaterialOnPlatform">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalShareOwnMaterialOnPlatform" aria-label="shareOwnMaterialOnPlatform">
       <p class="md-body-1">{{'course.shareOwnMaterialOnPlatform' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch child" ng-model="Create.personal.publishingOfDrafts" aria-label="publishingOfDrafts">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalPublishingOfDrafts" aria-label="publishingOfDrafts">
       <p class="md-body-1">{{'course.publishingOfDrafts ' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch child" ng-model="Create.personal.publishingOfFinalSubmission" aria-label="publishingOfFinalSubmission">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalPublishingOfFinalSubmission" aria-label="publishingOfFinalSubmission">
       <p class="md-body-1">{{'course.publishingOfFinalSubmission' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch child" ng-model="Create.personal.defineVisibilityOfFiles" aria-label="defineVisibilityOfFiles">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalDefineVisibilityOfFiles" aria-label="defineVisibilityOfFiles">
       <p class="md-body-1">{{'course.defineVisibilityOfFiles' | translate}}</p>
     </md-switch>
   </div>
-  <md-switch class="sub-switch" ng-model="Create.personal.calendar" aria-label="calendar">
+  <md-switch class="sub-switch" ng-model="$ctrl.personalCalendar" aria-label="calendar">
     <p class="md-body-2">{{'course.calendar' | translate}}</p>
   </md-switch>
-  <div class="column" ng-if="Create.personal.calendar">
-    <md-switch class="sub-switch child" ng-model="Create.personal.personalCalendar" aria-label="personalCalendar">
+  <div class="column" ng-if="$ctrl.personalCalendar">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalPersonalCalendar" aria-label="personalCalendar">
       <p class="md-body-1">{{'course.personalCalendar' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch child" ng-model="Create.personal.groupCalendar" aria-label="groupCalendar">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalGroupCalendar" aria-label="groupCalendar">
       <p class="md-body-1">{{'course.groupCalendar' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch child" ng-model="Create.personal.showCoursePhases" aria-label="groupCalendar">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalShowCoursePhases" aria-label="groupCalendar">
       <p class="md-body-1">{{'course.showCoursePhases' | translate}}</p>
     </md-switch>
   </div>
-  <md-switch class="sub-switch" ng-model="Create.personal.coursePhases" aria-label="coursePhases">
+  <md-switch class="sub-switch" ng-model="$ctrl.personalCoursePhases" aria-label="coursePhases">
     <p class="md-body-2">{{'course.coursePhases' | translate}}</p>
   </md-switch>
-  <div class="column" ng-if="Create.personal.coursePhases">
-    <md-switch class="sub-switch child" ng-model="Create.personal.showCoursePhases" aria-label="groupCalendar">
+  <div class="column" ng-if="$ctrl.personalCoursePhases">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalShowCoursePhases" aria-label="groupCalendar">
       <p class="md-body-1">{{'course.showCoursePhases' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch child" ng-model="Create.personal.teacherDefineCourseStartEnd" aria-label="teacherDefineCourseStartEnd">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalTeacherDefineCourseStartEnd" aria-label="teacherDefineCourseStartEnd">
       <p class="md-body-1">{{'course.teacherDefineCourseStartEnd ' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch child" ng-model="Create.personal.defineCoursePhases" aria-label="defineCoursePhases">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalDefineCoursePhases" aria-label="defineCoursePhases">
       <p class="md-body-1">{{'course.defineCoursePhases ' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch child" ng-model="Create.personal.defineFrozenContent" aria-label="defineFrozenContent">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalDefineFrozenContent" aria-label="defineFrozenContent">
       <p class="md-body-1">{{'course.defineFrozenContent' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch child" ng-model="Create.personal.matchPlatformContentWithEespectivePhase" aria-label="matchPlatformContentWithEespectivePhase">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalMatchPlatformContentWithEespectivePhase" aria-label="matchPlatformContentWithEespectivePhase">
       <p class="md-body-1">{{'course.matchPlatformContentWithEespectivePhase' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch child" ng-model="Create.personal.defineNewSectionsInEach" aria-label="defineNewSectionsInEach">
+    <md-switch class="sub-switch child" ng-model="$ctrl.personalDefineNewSectionsInEach" aria-label="defineNewSectionsInEach">
       <p class="md-body-1">{{'course.defineNewSectionsInEach ' | translate}}</p>
     </md-switch>
   </div>
