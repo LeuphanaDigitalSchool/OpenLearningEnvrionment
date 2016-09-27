@@ -1,17 +1,20 @@
 export default class CourseViewCtrl {
-  constructor($mdDialog, $stateParams, Restangular, toastr, $scope) {
+  constructor($mdDialog, $stateParams, Restangular, toastr, $scope, $auth) {
     "ngInject";
     this.$stateParams = $stateParams;
     this.Restangular = Restangular;
     this.toastr = toastr;
+    this.$auth = $auth;
     this.courseId = this.$stateParams.id;
     this.$mdDialog = $mdDialog;
     this.courseData = {};
+    this.canDeleteResources ={};
     this.$scope = $scope;
     this.phasesApi = this.Restangular.oneUrl('course', '/api/v1/courses/'+this.courseId);
 
     this.getCourse();
     this.addListeners();
+    this.getCurrentUser();
   }
 
   addNewFile(ev){
@@ -25,6 +28,7 @@ export default class CourseViewCtrl {
   getCourse(){
     this.phasesApi.get().then((response)=>{
       this.course = response.course;
+      console.log('this.course', this.course);
       this.findActiveTabIndex();
     });
   }
@@ -63,5 +67,19 @@ export default class CourseViewCtrl {
   addListeners() {
     this.$scope.$on('storage:created', this.getCourse.bind(this));
     this.$scope.$on('storage:deleted', this.getCourse.bind(this));
+  }
+
+  getCurrentUser() {
+    this.$auth.validateUser().then((data) => {
+      this.CurrentUser = data;
+    });
+  }
+
+  checkUserPermission(phaseId){
+    this.userPermission = {};
+    this.userPermission[phaseId] = _.findIndex(this.course.course_phases[phaseId].course_phase_preferences_attributes, {'role_id': this.CurrentUser.role_id});
+    this.canDeleteResources[phaseId] = this.course.course_phases[phaseId].course_phase_preferences_attributes[this.userPermission[phaseId]].resources_del;
+    console.log('phaseid', phaseId);
+    console.log('this.canDeleteResources[phaseId]', this.canDeleteResources[phaseId]);
   }
 }

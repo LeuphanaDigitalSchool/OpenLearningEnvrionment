@@ -27,6 +27,7 @@
       <md-tab
         ng-repeat="phase in CourseView.course.course_phases"
         ng-disabled="phase.future && user.role_id <= 2"
+        ng-click="CourseView.checkUserPermission($index)"
       >
         <md-tab-label>
           <span  ng-class="{
@@ -89,7 +90,7 @@
                     <span translate>storage.edit</span>
                   </md-button>
                   <md-button
-                    ng-disabled="::user.role_id <= 2 || phase.archived"
+                    ng-disabled="!CourseView.canDeleteResources[$parent.$index] || phase.archived"
                     ng-click="CourseView.removeFile(CourseView.courseId, storage.id)"
                   >
                     <span translate>storage.remove</span>
