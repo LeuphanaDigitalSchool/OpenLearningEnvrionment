@@ -54,7 +54,6 @@
           <textarea ng-model="$ctrl.storage.description" type="text" rows="2">
           </textarea>
         </md-input-container>
-
         <div layout="column"
           ng-show="$ctrl.storage.storageType === 'url' || $ctrl.file"
         >
@@ -64,6 +63,17 @@
             aria-label="Checkbox 1"
             ng-disabled="phase.disabled"
             ng-change="$ctrl.checkIfUserSelectAtLeatOnePhase()"
+            ng-if="::$ctrl.CurrentUser.role_id >= 4"
+          >
+            {{::phase.title}} [{{::phase.start_date}} - {{::phase.end_date}}]
+          </md-checkbox>
+          <md-checkbox
+            ng-repeat="phase in $ctrl.phases"
+            ng-model="$ctrl.phaseData[phase.id]"
+            aria-label="Checkbox 1"
+            ng-disabled="phase.disabled"
+            ng-change="$ctrl.checkIfUserSelectAtLeatOnePhase()"
+            ng-show="::$ctrl.CurrentUser.role_id === 2 && phase.active"
           >
             {{::phase.title}} [{{::phase.start_date}} - {{::phase.end_date}}]
           </md-checkbox>
