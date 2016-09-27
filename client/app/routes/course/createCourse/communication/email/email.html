@@ -1,29 +1,30 @@
-<md-switch ng-model="Create.emailBox.open" aria-label="Email">
+<md-switch ng-model="$ctrl.open" aria-label="Email">
   <h3 class="md-title">{{'course.email' | translate}}</h3>
 </md-switch>
-<div ng-if="Create.emailBox.open">
+<div ng-if="$ctrl.open">
+  <md-button ng-click="$ctrl.chooseAllEmail()">choose all</md-button>
   <div layout="column">
-    <md-switch class="sub-switch" ng-model="Create.emailBox.notificationsByEmail" aria-label="notificationsByEmail">
+    <md-switch class="sub-switch" ng-model="$ctrl.notificationsByEmail" aria-label="notificationsByEmail">
       <p class="md-body-1">{{'course.notificationsByEmail' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.emailBox.sendUserMessagesAsEmailOptional" aria-label="Send user messages as email optional">
+    <md-switch class="sub-switch" ng-model="$ctrl.sendUserMessagesAsEmailOptional" aria-label="Send user messages as email optional">
       <p class="md-body-1">{{'course.sendUserMessagesAsEmailOptional' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.emailBox.sendMessagesViaEmailWithinPlatform" aria-label="Send messages via email within platform">
+    <md-switch class="sub-switch" ng-model="$ctrl.sendMessagesViaEmailWithinPlatform" aria-label="Send messages via email within platform">
       <p class="md-body-2">{{'course.sendMessagesViaEmailWithinPlatform' | translate}}</p>
     </md-switch>
-    <div class="column" ng-if="Create.emailBox.sendMessagesViaEmailWithinPlatform">
-      <md-switch class="sub-switch child" ng-model="Create.emailBox.emailNotifications" aria-label="Send messages to single users ">
+    <div class="column" ng-if="$ctrl.sendMessagesViaEmailWithinPlatform">
+      <md-switch class="sub-switch child" ng-model="$ctrl.emailNotifications" aria-label="Send messages to single users ">
         <p class="md-body-1">{{'course.sendMessagesToSingleUsers' | translate}}</p>
       </md-switch>
-      <md-switch class="sub-switch child" ng-model="Create.semailBox.endMessagesToUserGroups" aria-label="Send messages to user groups ">
+      <md-switch class="sub-switch child" ng-model="$ctrl.sendMessagesToUserGroups" aria-label="Send messages to user groups ">
         <p class="md-body-1">{{'course.sendMessagesToUserGroups' | translate}}</p>
       </md-switch>
     </div>
-    <md-switch class="sub-switch" ng-model="Create.emailBox.replyToForumPostsViaEmail" aria-label="reply To Forum Posts Via Email">
+    <md-switch class="sub-switch" ng-model="$ctrl.replyToForumPostsViaEmail" aria-label="reply To Forum Posts Via Email">
       <p class="md-body-1">{{'course.replyToForumPostsViaEmail' | translate}}</p>
     </md-switch>
-    <md-switch class="sub-switch" ng-model="Create.emailBox.inviteUserToPlatformByEmail" aria-label="invite User To Platform By Email">
+    <md-switch class="sub-switch" ng-model="$ctrl.inviteUserToPlatformByEmail" aria-label="invite User To Platform By Email">
       <p class="md-body-1">{{'course.inviteUserToPlatformByEmail' | translate}}</p>
     </md-switch>
   </div>
