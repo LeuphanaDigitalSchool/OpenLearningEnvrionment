@@ -6,6 +6,7 @@ export default class CreateCourseCtrl {
     this.$state = $state;
     this.$scope = $scope;
     this.Restangular = Restangular;
+    this.status = false;
     this.initialData();
   }
 
@@ -100,11 +101,39 @@ export default class CreateCourseCtrl {
     this.course = {};
     this.$scope.teacher = [];
     this.$scope.student = {};
+    this.teacher = [];
+    this.student = [];
     this.data= {};
     this.sending = false;
     this.$scope.phases = [];
     this.buttonTitle = 'Next';
     this.max = 6;
     this.selectedIndex = 0;
+  }
+
+  chooseAllStorage(){
+    this.status = !this.status;
+    for (let i = 0; i < this.$scope.phases.length; i++) {
+      this.teacher.push({});
+      this.student.push({});
+      this.teacher[i].teacherCanUploadFiles = this.status;
+      this.student[i].studentCanUploadFiles = this.status;
+      this.$scope.phases[i].studentUploadPDF = this.status;
+      this.$scope.phases[i].studentUploadJpg = this.status;
+      this.$scope.phases[i].studentUploadMp3 = this.status;
+      this.$scope.phases[i].studentUploadMp4 = this.status;
+      this.$scope.phases[i].studentCanDeleteResources = this.status;
+      this.$scope.phases[i].studentCanAddResourceDescription = this.status;
+      this.$scope.phases[i].studentCanSchedulePublishing = this.status;
+      this.$scope.phases[i].studentEmbedExternalLinks = this.status;
+      this.$scope.phases[i].teacherUploadPDF = this.status;
+      this.$scope.phases[i].teacherUploadJpg = this.status;
+      this.$scope.phases[i].teacherUploadMp3 = this.status;
+      this.$scope.phases[i].teacherUploadMp4 = this.status;
+      this.$scope.phases[i].teacherCanDeleteResources = this.status;
+      this.$scope.phases[i].teacherCanAddResourceDescription = this.status;
+      this.$scope.phases[i].teacherCanSchedulePublishing = this.status;
+      this.$scope.phases[i].teacherEmbedExternalLinks = this.status;
+    }
   }
 }

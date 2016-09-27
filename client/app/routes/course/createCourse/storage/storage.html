@@ -8,6 +8,7 @@
               <h3 class="md-title">{{'course.storage' | translate}}</h3>
             </md-switch>
             <div ng-if="Create.storage[$index].open">
+              <md-button ng-click="Create.chooseAllStorage()">choose all</md-button>
               <div layout="column">
                 <md-switch class="sub-switch" ng-model="Create.teacher[$index].teacherCanUploadFiles" aria-label="teacherCanUploadFiles">
                   <p class="md-body-2">{{'course.teacherCanUploadFiles' | translate}}</p>
