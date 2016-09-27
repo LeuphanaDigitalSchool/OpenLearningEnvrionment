@@ -45,6 +45,7 @@ class FileUploaderCtrl {
   clear() {
     this.fileName = null;
     this.storage.file = null;
+    for (var k in this.phaseData) this.phaseData[k] = null;
   }
   cancel(){
     this.$mdDialog.cancel();
@@ -63,9 +64,11 @@ class FileUploaderCtrl {
         this.cancel();
         this.toastr.success('You have successfully added new storage', 'Success');
         this.$rootScope.$broadcast('storage:created');
+        this.sending = false;
     })
     .catch((err)=>{
        this.toastr.error(err, 'Error');
+       this.sending = false;
     });
   }
 
@@ -85,6 +88,7 @@ class FileUploaderCtrl {
     this.data = {};
     this.storage = {};
     this.storage.course_phase_ids = {};
+    this.sending = false;
   }
 
   getCurrentUser() {

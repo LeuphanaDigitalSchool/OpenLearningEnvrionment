@@ -17,6 +17,7 @@
           placeholder="{{'storage.selectStorage' | translate}}"
           class="md-no-underline"
           ng-change="$ctrl.storage.storageType === 'url' && $ctrl.checkWhatCanBeAddedToSpecificPhase()"
+          ng-click="$ctrl.clear()"
         >
           <md-option value="file">File</md-option>
           <md-option value="url">Url</md-option>
@@ -72,7 +73,13 @@
           class="md-raised md-primary"
           ng-click="::$ctrl.submit(user.id)"
           ng-disabled="!$ctrl.UserSelectAtLeatOnePhase"
-        >upload</md-button>
+          ng-hide="$ctrl.sending"
+        >upload
+        </md-button>
+        <md-progress-circular
+          ng-show="$ctrl.sending"
+          md-mode="indeterminate"
+        ></md-progress-circular>
       </div>
     </md-dialog-content>
   </md-dialog>
