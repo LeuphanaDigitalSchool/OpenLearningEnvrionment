@@ -9,24 +9,21 @@ resource 'Api::V1::Admin::Regulations' do
   let(:regulation) { FactoryGirl.create(:regulation) }
   let(:id) { regulation.id }
 
-  header 'Accept', 'application/json'
-  header 'Content-Type', 'application/json'
-
-  post '/api/v1/admin/regulations' do
+  get '/api/v1/admin/regulations' do
     parameter :name, 'Regulation name', required: false
     parameter :file, 'File base64', required: true
 
-    before { login(course_director) }
-    let(:raw_post) { params.to_json }
+    example '#index (request not authorized)', document: false do
+      do_request
+      expect(response_body).to include('errors')
+      expect(response_status).to be 401
+    end
 
-    example '#create regulation' do
-      explanation ''
-      params = { "regulation": { "name": 'Term',
-                                 "file": 'data:image/pdf;base64,R0lGODlhAQABAIAAAAA///yH5BAEAAAAALAAAAA' } }
-
-      do_request(params)
-      expect(JSON.parse(response_body).to_s).to include('Term')
-      expect(response_status).to be 201
+    example '#index (request authorized)' do
+      login(user)
+      do_request
+      expect(response_body).to include('regulations')
+      expect(response_status).to be 200
     end
   end
 
@@ -46,8 +43,7 @@ resource 'Api::V1::Admin::Regulations' do
 
     let(:raw_post) { params.to_json }
     let(:regulation_params) do
-      { "id": regulation.id, "regulation": { "name": 'Terms',
-                                             "file": 'data:image/pdf;base64,R0lGODlhAQABAIAAAAA///yH5BAEAAAAALAAAAA' } }
+      { "name": 'Terms2', "file": 'data:image/pdf;base64,R0lGODlhAQABAIAAAAA///yH5BAEAAAAALAAAAA' }
     end
 
     example '#update (request not authorized)', document: false do

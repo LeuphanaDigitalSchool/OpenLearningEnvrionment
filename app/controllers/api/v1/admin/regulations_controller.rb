@@ -4,17 +4,12 @@ module Api
     module Admin
       # Api::V1::RegulationsController
       class RegulationsController < ApplicationController
-        before_action :authenticate_api_v1_user!, only: [:create, :update]
+        before_action :authenticate_api_v1_user!, only: [:index, :update]
         before_action :set_regulations, only: [:show, :update]
 
-        def create
-          regulation = Regulation.new(regulation_params)
-
-          if regulation.save
-            render json: regulation, status: :created
-          else
-            render json: regulation.errors, status: :unprocessable_entity
-          end
+        def index
+          regulations = Regulation.all
+          render json: regulations, status: :ok
         end
 
         def show
@@ -32,7 +27,7 @@ module Api
         private
 
         def regulation_params
-          params.require(:regulation).permit(:name, :file)
+          params.permit(:name, :file)
         end
 
         def set_regulations

@@ -21,6 +21,14 @@ teacher         = Role.find_by(name: 'Teacher')
 course_director = Role.find_by(name: 'Course director')
 course_manager  = Role.find_by(name: 'Course manager')
 
+puts '-> Create regulations'
+Regulation.create!(name: 'Terms of use',
+                   file: 'data:image/pdf;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')
+Regulation.create!(name: 'Privacy Statement',
+                   file: 'data:image/pdf;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')
+Regulation.create!(name: 'Honor Code',
+                   file: 'data:image/pdf;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')
+
 puts '-> Assign permissions to roles'
 course_manager.permissions  << Permission.find_by(name: 'Manage all (Danger!)')
 course_director.permissions << Permission.find_by(name: 'Course (for teacher)')
