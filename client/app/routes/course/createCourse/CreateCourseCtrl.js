@@ -1,10 +1,11 @@
 export default class CreateCourseCtrl {
-  constructor(countryList, $state, $scope, toastr, Restangular, Upload) {
+  constructor(countryList, $state, $scope, toastr, Restangular, Upload, $rootScope) {
     "ngInject";
     this.user = {};
     this.toastr = toastr;
     this.$state = $state;
     this.$scope = $scope;
+    this.$rootScope = $rootScope;
     this.Restangular = Restangular;
     this.status = false;
     this.initialData();
@@ -19,6 +20,7 @@ export default class CreateCourseCtrl {
       this.sending = true;
       this.baseLephanaUser.post(this.data).then(()=>{
         this.toastr.success('Thank you for addding new course', 'Success');
+        this.$rootScope.$broadcast('course:created');
         this.initialData();
         this.$scope.courseForm.$setUntouched();
         this.$scope.courseForm.$setPristine();

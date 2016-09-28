@@ -1,14 +1,15 @@
 export default class SideNavCtrl {
-  constructor(Restangular, $interval) {
+  constructor(Restangular, $rootScope) {
     "ngInject";
     this.Restangular = Restangular;
     this.coursesApi = this.Restangular.oneUrl('courses', '/api/v1/courses');
-    this.$interval = $interval;
+    this.$rootScope = $rootScope;
     this.coursesList= [];
     this.subMenuClass = '';
 
     this.getCoursesList();
-    this.startCourseInterval();
+    this.addListeners();
+    // this.startCourseInterval();
 }
 
   getCoursesList() {
@@ -18,6 +19,10 @@ export default class SideNavCtrl {
           this.coursesList = response.courses;
     });
   }
+
+  addListeners() {
+      this.$rootScope.$on('course:created', this.getCoursesList.bind(this));
+    }
 
   startCourseInterval() {
     let courseInterval = this.$interval(this.getCoursesList.bind(this), 1000);
