@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # RegulationSerializer
 class RegulationSerializer < ActiveModel::Serializer
-  attributes :name, :file
+  attributes :id, :name, :file
 
   def regulations
     object.collect do |regulation|

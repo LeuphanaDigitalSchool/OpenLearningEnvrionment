@@ -4,7 +4,7 @@ module Api
     module Admin
       # Api::V1::RegulationsController
       class RegulationsController < ApplicationController
-        before_action :authenticate_api_v1_user!, only: [:index, :update]
+        before_action :authenticate_api_v1_user!, only: [:update]
         before_action :set_regulations, only: [:show, :update]
 
         def index

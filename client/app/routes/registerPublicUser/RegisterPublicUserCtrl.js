@@ -10,10 +10,14 @@ export default class RegisterPublicUserCtrl {
     this.Restangular = Restangular;
     this.user = null;
     this.send = true;
+    this.regulationId = {};
     this.basePublicUser = this.Restangular.all('/api/v1/auth');
+    this.coursesApi = this.Restangular.oneUrl('files', '/api/v1/admin/regulations');
+    this.getRegulations();
   }
 
   submit(form, data){
+    this.checkUserRegulations();
     this.errors = 0;
     this.handleError(form, data);
     if(this.errors === 0) {
@@ -53,5 +57,18 @@ export default class RegisterPublicUserCtrl {
 
   loginPage(){
     this.$state.go('login');
+  }
+
+  getRegulations() {
+    this.coursesApi.get().then(
+      (response)=>{
+        this.regulations = response.regulations;
+        console.log('response', this.regulations);
+    });
+  }
+  checkUserRegulations() {
+    this.user.terms_and_conditions = this.regulationId[1];
+    this.user.data_privacy = this.regulationId[2];
+    this.user.honor_code = this.regulationId[3];
   }
 }

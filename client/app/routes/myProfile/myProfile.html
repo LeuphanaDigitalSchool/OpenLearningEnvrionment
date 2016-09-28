@@ -164,20 +164,10 @@
         </p>
       </div>
       <div ng-if="user.role.id == 0" layout="row" flex layout-align="space-around center">
-        <md-input-container>
-          <md-checkbox ng-model="user.honor_code" aria-label="Checkbox 1" required>
-            {{'honorCode' | translate}}
+        <md-input-container class="regulation" ng-repeat="regulation in MyProfileCtrl.regulations">
+          <md-checkbox ng-model="MyProfileCtrl.regulationId[regulation.id]" aria-label="Checkbox 1" required>
           </md-checkbox>
-        </md-input-container>
-        <md-input-container>
-          <md-checkbox ng-model="user.terms_and_conditions" aria-label="Checkbox 2" required>
-            {{'termsAndConditions' | translate}}
-          </md-checkbox>
-        </md-input-container>
-        <md-input-container>
-          <md-checkbox ng-model="user.data_privacy" aria-label="Checkbox 3" required>
-            {{'dataPrivacy' | translate}}
-          </md-checkbox>
+          <a ng-href="{{regulation.file.file.url}}" target="_blank">{{regulation.name}}</a>
         </md-input-container>
       </div>
     </md-card-content>
