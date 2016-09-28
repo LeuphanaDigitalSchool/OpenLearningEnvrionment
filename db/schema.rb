@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921121517) do
+ActiveRecord::Schema.define(version: 20160928065056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,11 @@ ActiveRecord::Schema.define(version: 20160921121517) do
     t.datetime "updated_at",    null: false
     t.index ["permission_id"], name: "index_permissions_roles_on_permission_id", using: :btree
     t.index ["role_id"], name: "index_permissions_roles_on_role_id", using: :btree
+  end
+
+  create_table "regulations", force: :cascade do |t|
+    t.string "name"
+    t.string "file"
   end
 
   create_table "roles", force: :cascade do |t|

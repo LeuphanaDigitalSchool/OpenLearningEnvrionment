@@ -25,6 +25,7 @@ Rails.application.routes.draw do
           get '/' => 'users#index'
           get 'profile_selects' => 'users#profile_selects'
         end
+        resources :regulations, only: [:index, :show, :update]
       end
 
       resources :courses do

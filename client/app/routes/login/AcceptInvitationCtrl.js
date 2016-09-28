@@ -11,6 +11,7 @@ export default class AcceptInvitationCtrl {
     this.invitationToken = this.$stateParams.token;
     this.countries = countryList;
     this.baseAcceptInvitationUrl = this.Restangular.all('/api/v1/auth/invitation');
+    this.regulationsApi = this.Restangular.oneUrl('files', '/api/v1/admin/regulations');
     this.head = {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -18,6 +19,7 @@ export default class AcceptInvitationCtrl {
     this.initialData();
     this.checkIfTokenIsValid();
     this.user.invitation_token = this.invitationToken;
+    this.getRegulations();
   }
 
   checkIfTokenIsValid() {
@@ -36,16 +38,16 @@ export default class AcceptInvitationCtrl {
     this.Restangular.oneUrl('select', '/api/v1/admin/users/profile_selects').get().then(
       (response)=> {
         this.genders = [
-          { 'value': '0', 'name': "Male"}, 
-          { 'value': '1', 'name': "Female"}, 
+          { 'value': '0', 'name': "Male"},
+          { 'value': '1', 'name': "Female"},
           { 'value': '2', 'name': "I'd rather not say"}
         ];
         this.educational_attainments = [
-          { 'value': '0', 'name': "I'd rather not say" }, 
-          { 'value': '1', 'name': "High School" }, 
-          { 'value': '2', 'name': "Bachelor's Degree" }, 
-          { 'value': '3', 'name': "Master's Degree" }, 
-          { 'value': '4', 'name': "PhD" }, 
+          { 'value': '0', 'name': "I'd rather not say" },
+          { 'value': '1', 'name': "High School" },
+          { 'value': '2', 'name': "Bachelor's Degree" },
+          { 'value': '3', 'name': "Master's Degree" },
+          { 'value': '4', 'name': "PhD" },
           { 'value': '5', 'name': "Professor" }
         ];
       }
@@ -108,6 +110,7 @@ export default class AcceptInvitationCtrl {
   }
 
   submit(form, data){
+    this.checkUserRegulations();
     this.errors = 0;
     this.handleError(form, data);
     if(this.errors === 0) {
@@ -123,5 +126,17 @@ export default class AcceptInvitationCtrl {
         this.toastr.error(status, 'Error');
       });
     }
+  }
+
+  getRegulations() {
+    this.regulationsApi.get().then(
+      (response)=>{
+        this.regulations = response.regulations;
+    });
+  }
+  checkUserRegulations() {
+    this.user.terms_and_conditions = this.regulationId[1];
+    this.user.data_privacy = this.regulationId[2];
+    this.user.honor_code = this.regulationId[3];
   }
 }

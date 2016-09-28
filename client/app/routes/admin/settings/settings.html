@@ -1,0 +1,15 @@
+<md-tab label="{{'settings' | translate}}" ng-click="ProfileListCtrl.refreshList()">
+  <md-content class="md-padding l-content-background settings" layout="column" flex>
+    <div layout="row" ng-repeat="regulation in SettingsCtrl.regulations">
+      <a ng-href="{{regulation.file.file.url}}" target="_blank">{{ regulation.name }}</a>
+      <md-button ngf-select="::SettingsCtrl.upload($file, $invalidFiles, $event, regulation.id, regulation.name)"
+                 accept=".pdf"
+                 ng-model="SettingsCtrl.file"
+                 name="file"
+                 md-no-ink class="md-primary"
+                 >
+          {{'changeFile' | translate}}
+     </md-button>
+    </div>
+  </md-content>
+</md-tab>

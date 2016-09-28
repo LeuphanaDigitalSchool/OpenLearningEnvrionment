@@ -56,7 +56,7 @@
         </md-input-container>
         <div layout="column"
           ng-show="$ctrl.storage.storageType === 'url' || $ctrl.file"
-        >{{$ctrl.phaseData | json}}
+        >
           <md-checkbox
             ng-repeat="phase in $ctrl.phases"
             ng-model="$ctrl.phaseData[phase.id]"

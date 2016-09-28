@@ -13,6 +13,8 @@ export default class MyProfileCtrl {
     this.countries = countryList;
     this.baseAvatarUrl = {};
     this.getMyCourses();
+    this.regulationsApi = this.Restangular.oneUrl('files', '/api/v1/admin/regulations');
+    this.getRegulations();
   }
 
   getMyCourses() {
@@ -27,16 +29,16 @@ export default class MyProfileCtrl {
     this.Restangular.oneUrl('select', '/api/v1/admin/users/profile_selects').get().then(
       (response)=> {
         this.genders = [
-          { 'value': '0', 'name': "Male"}, 
-          { 'value': '1', 'name': "Female"}, 
-          { 'value': '2', 'name': "I'd rather not say"} 
+          { 'value': '0', 'name': "Male"},
+          { 'value': '1', 'name': "Female"},
+          { 'value': '2', 'name': "I'd rather not say"}
         ];
         this.educational_attainments = [
-          { 'value': '0', 'name': "I'd rather not say" }, 
-          { 'value': '1', 'name': "High School" }, 
-          { 'value': '2', 'name': "Bachelor's Degree" }, 
-          { 'value': '3', 'name': "Master's Degree" }, 
-          { 'value': '4', 'name': "PhD" }, 
+          { 'value': '0', 'name': "I'd rather not say" },
+          { 'value': '1', 'name': "High School" },
+          { 'value': '2', 'name': "Bachelor's Degree" },
+          { 'value': '3', 'name': "Master's Degree" },
+          { 'value': '4', 'name': "PhD" },
           { 'value': '5', 'name': "Professor" }
         ];
       }
@@ -57,6 +59,7 @@ export default class MyProfileCtrl {
   }
 
   submit(data){
+    this.checkUserRegulations();
     this.baseLephanaUser = this.Restangular.all('/api/v1/auth/');
     this.userData=data;
     this.userData.avatar = this.avatar;
@@ -107,5 +110,17 @@ export default class MyProfileCtrl {
         .ok('ok')
         .targetEvent($event)
     );
+  }
+
+  getRegulations() {
+    this.regulationsApi.get().then(
+      (response)=>{
+        this.regulations = response.regulations;
+    });
+  }
+  checkUserRegulations() {
+    this.userData.terms_and_conditions = this.regulationId[1];
+    this.userData.data_privacy = this.regulationId[2];
+    this.userData.honor_code = this.regulationId[3];
   }
 }

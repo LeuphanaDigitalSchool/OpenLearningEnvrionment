@@ -15,14 +15,14 @@
             <label>{{'email' | translate}}</label>
             <input name="email" ng-model="register.user.email" type="email" required>
             <div ng-messages="userRegister.email.$error" role="alert" multiple>
-                <div ng-message="required" class="my-message">{{'thisFieldIsRequired' | translate}}</div>
+              <div ng-message="required" class="my-message">{{'thisFieldIsRequired' | translate}}</div>
             </div>
           </md-input-container>
           <md-input-container flex>
             <label>{{'password' | translate}}</label>
             <input name="password" ng-model="register.user.password" type="password" required>
             <div ng-messages="userRegister.password.$error" role="alert" multiple>
-                <div ng-message="required" class="my-message">{{'thisFieldIsRequired' | translate}}</div>
+              <div ng-message="required" class="my-message">{{'thisFieldIsRequired' | translate}}</div>
             </div>
           </md-input-container>
         </div>
@@ -41,20 +41,10 @@
           </md-input-container>
         </div>
         <div layout="row" flex layout-align="space-around center">
-          <md-input-container>
-            <md-checkbox ng-model="register.user.honor_code" aria-label="Checkbox 1" required>
-              {{'honorCode' | translate}}
+          <md-input-container class="regulation" ng-repeat="regulation in register.regulations">
+            <md-checkbox ng-model="register.regulationId[regulation.id]" aria-label="Checkbox 1" required>
             </md-checkbox>
-          </md-input-container>
-          <md-input-container>
-            <md-checkbox ng-model="register.user.terms_and_conditions" aria-label="Checkbox 2" required>
-              {{'termsAndConditions' | translate}}
-            </md-checkbox>
-          </md-input-container>
-          <md-input-container>
-            <md-checkbox ng-model="register.user.data_privacy" aria-label="Checkbox 3" required>
-              {{'dataPrivacy' | translate}}
-            </md-checkbox>
+            <a ng-href="{{regulation.file.file.url}}" target="_blank">{{regulation.name}}</a>
           </md-input-container>
         </div>
         <div layout="row"  layout-align="end center" flex>
@@ -62,8 +52,8 @@
             back to login
           </md-button>
           <md-button type="submit" class="md-raised md-primary" ng-click="register.submit(userRegister, user)">
-             <md-progress-circular class="md-warn" md-mode="indeterminate" ng-hide="register.send"></md-progress-circular>
-             <div ng-show="register.send">{{ 'register' | translate }}</div>
+            <md-progress-circular class="md-warn" md-mode="indeterminate" ng-hide="register.send"></md-progress-circular>
+            <div ng-show="register.send">{{ 'register' | translate }}</div>
           </md-button>
         </div>
       </form>
