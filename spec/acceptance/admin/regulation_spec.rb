@@ -13,12 +13,6 @@ resource 'Api::V1::Admin::Regulations' do
     parameter :name, 'Regulation name', required: false
     parameter :file, 'File base64', required: true
 
-    example '#index (request not authorized)', document: false do
-      do_request
-      expect(response_body).to include('errors')
-      expect(response_status).to be 401
-    end
-
     example '#index (request authorized)' do
       login(user)
       do_request
