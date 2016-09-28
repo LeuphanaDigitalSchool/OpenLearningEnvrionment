@@ -17,6 +17,7 @@ md-datepicker {
 
 .mainlist.active .sublist {
   display: block;
+  padding: 5px 16px;
 }
 
 .mainlist .sublist {
@@ -26,6 +27,14 @@ md-datepicker {
 .sublist span {
   padding-left: 25px;
   line-height: 15px;
+}
+
+md-list-item.sublist {
+  min-height: inherit;
+}
+
+.mainlist md-list-item:before{
+  content: none;
 }
 
 .sub-switch {

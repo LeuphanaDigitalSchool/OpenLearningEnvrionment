@@ -45,7 +45,7 @@ class FileUploaderCtrl {
   clear() {
     this.fileName = null;
     this.storage.file = null;
-    for (var k in this.phaseData) this.phaseData[k] = null;
+    this.phaseData = null;
   }
   cancel(){
     this.$mdDialog.cancel();
@@ -81,7 +81,7 @@ class FileUploaderCtrl {
 
   pushPhase() {
     this.storage.course_phase_ids = [];
-    for (var k in this.phaseData) this.storage.course_phase_ids.push(k);
+    this.storage.course_phase_ids = this.phaseData;
   }
   initialData() {
     this.phaseData = null;
