@@ -1,9 +1,10 @@
 export default class CourseCrtl {
-  constructor(Restangular, $stateParams, $filter, toastr, $scope) {
+  constructor(Restangular, $stateParams, $filter, toastr, $scope, $rootScope) {
     "ngInject";
     this.Restangular = Restangular;
     this.$stateParams = $stateParams;
     this.courseId = $stateParams.id;
+    this.$rootScope = $rootScope;
     this.$scope = $scope;
     this.toastr = toastr;
     this.coursesApi = this.Restangular.oneUrl('course', '/api/v1/courses/'+this.courseId);
@@ -31,6 +32,7 @@ export default class CourseCrtl {
     this.sending = true;
     this.baseLephanaUser.customPUT(this.data, this.courseId).then(()=>{
       this.toastr.success('Thank you for edditing course', 'Success');
+      this.$rootScope.$broadcast('course:created');
       this.edit = false;
     }, (response)=> {
       this.sending = false;
