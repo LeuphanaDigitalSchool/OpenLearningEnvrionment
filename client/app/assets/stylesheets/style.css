@@ -87,9 +87,7 @@ md-list-item.sublist {
 /* 3. modules*/
 
 .settings a, .regulation a {
-  color: rgba(0,0,0,0.87);
   line-height: 46px;
-  text-decoration: none;
 }
 
 .photoBox {
