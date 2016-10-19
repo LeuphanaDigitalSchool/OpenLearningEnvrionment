@@ -119,8 +119,8 @@ export default class MyProfileCtrl {
     });
   }
   checkUserRegulations() {
-    this.userData.terms_and_conditions = this.regulationId[1];
-    this.userData.data_privacy = this.regulationId[2];
-    this.userData.honor_code = this.regulationId[3];
+    this.userData.terms_and_conditions = this.regulations[0];
+    this.userData.data_privacy = this.regulations[1];
+    this.userData.honor_code = this.regulations[2];
   }
 }
